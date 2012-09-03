@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B889AF6B-2744-4370-842A-04026D1370B5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FubuMVC.Authentication</RootNamespace>
+    <AssemblyName>FubuMVC.Authentication</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bottles">
+      <HintPath>..\packages\Bottles.0.9.1.345\lib\Bottles.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuCore">
+      <HintPath>..\packages\FubuCore.0.9.9.178\lib\FubuCore.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuLocalization">
+      <HintPath>..\packages\FubuLocalization.0.9.5.76\lib\FubuLocalization.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuMVC.Core, Version=0.9.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FubuMVC.References.0.9.8.1129\lib\net40\FubuMVC.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuMVC.StructureMap, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FubuMVC.References.0.9.8.1129\lib\net40\FubuMVC.StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlTags">
+      <HintPath>..\packages\HtmlTags.1.1.0.102\lib\4.0\HtmlTags.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="AjaxAuthenticationRedirect.cs" />
+    <Compile Include="ApplyAuthentication.cs" />
+    <Compile Include="ApplyAuthenticationPolicy.cs" />
+    <Compile Include="AuthenticationActionSource.cs" />
+    <Compile Include="AuthenticationBehavior.cs" />
+    <Compile Include="AuthenticationFilter.cs" />
+    <Compile Include="AuthenticationFilterNode.cs" />
+    <Compile Include="AuthenticationFilterResult.cs" />
+    <Compile Include="AuthenticationRegistry.cs" />
+    <Compile Include="AuthenticationSettings.cs" />
+    <Compile Include="AuthenticationTicket.cs" />
+    <Compile Include="DefaultAuthenticationRedirect.cs" />
+    <Compile Include="Encryption.cs" />
+    <Compile Include="IAuthenticationFilter.cs" />
+    <Compile Include="IAuthenticationRedirect.cs" />
+    <Compile Include="IAuthenticationService.cs" />
+    <Compile Include="IAuthenticationSession.cs" />
+    <Compile Include="IAuthenticationTicketEncryptor.cs" />
+    <Compile Include="IPrincipalBuilder.cs" />
+    <Compile Include="IPrincipalContext.cs" />
+    <Compile Include="ITicketSource.cs" />
+    <Compile Include="LoginBehavior.cs" />
+    <Compile Include="LoginKeys.cs" />
+    <Compile Include="LoginRequest.cs" />
+    <Compile Include="LoginStatus.cs" />
+    <Compile Include="LogoutRequest.cs" />
+    <Compile Include="NotAuthenticatedAttribute.cs" />
+    <Compile Include="SimpleCookieTicketSource.cs" />
+    <Compile Include="ThreadPrincipalContext.cs" />
+    <Compile Include="TicketAuthenticationSession.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
