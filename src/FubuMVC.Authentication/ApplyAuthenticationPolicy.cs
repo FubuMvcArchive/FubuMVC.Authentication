@@ -20,8 +20,8 @@ namespace FubuMVC.Authentication
         public void Configure(BehaviorGraph graph)
         {
             graph.Behaviors
-                                         .Where(x => !ExemptedFromAuthentication(x))
-                                         .Where(_filter).Each( x => x.Prepend(new AuthenticationFilterNode()));
+                .Where(x => !ExemptedFromAuthentication(x))
+                .Where(_filter).Each( x => x.Prepend(new AuthenticationFilterNode()));
         }
 
         public static bool ExemptedFromAuthentication(BehaviorChain chain)

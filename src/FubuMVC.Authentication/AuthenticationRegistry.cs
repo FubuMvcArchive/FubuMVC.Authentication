@@ -12,8 +12,8 @@ namespace FubuMVC.Authentication
             For<IPrincipalContext>().Use<ThreadPrincipalContext>();
             For<ITicketSource>().Use<SimpleCookieTicketSource>();
 
-        	For<IAuthenticationRedirect>().Add<DefaultAuthenticationRedirect>();
-			For<IAuthenticationRedirect>().Add<AjaxAuthenticationRedirect>();
+            For<IAuthenticationRedirect>().Add<DefaultAuthenticationRedirect>();
+            For<IAuthenticationRedirect>().Add<AjaxAuthenticationRedirect>();
         }
     }
 }

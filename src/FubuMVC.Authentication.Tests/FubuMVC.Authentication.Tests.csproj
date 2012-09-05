@@ -82,12 +82,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AjaxAuthenticationRedirectTester.cs" />
+    <Compile Include="ApplyAuthenticationPolicyTester.cs" />
     <Compile Include="AuthenticationBehaviorTester.cs" />
     <Compile Include="AuthenticationFilterTester.cs" />
+    <Compile Include="AuthenticationServiceRegistryTester.cs" />
     <Compile Include="DefaultAuthenticationRedirectTester.cs" />
     <Compile Include="EncryptionTester.cs" />
     <Compile Include="LoginBehaviorTester.cs" />
+    <Compile Include="LoginControllerTests.cs" />
     <Compile Include="LoginRequestTester.cs" />
+    <Compile Include="NotAuthenticatedModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThreadPrincipalContextTester.cs" />
     <Compile Include="TicketAuthenticationSessionTester.cs" />
