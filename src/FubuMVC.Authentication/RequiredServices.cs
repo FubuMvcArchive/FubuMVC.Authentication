@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using Bottles.Configuration;
-using StructureMap;
+using FubuCore;
 
 namespace FubuMVC.Authentication
 {
-    public class RequiredAuthenticationServices : IBottleConfigurationRule
+    // TODO -- Maybe we make this configurable/reusable (that's a tomorrow thing)
+    public class RequiredServices : IBottleConfigurationRule
     {
-        private readonly IContainer _container;
+        private readonly IServiceLocator _services;
 
-        public RequiredAuthenticationServices(IContainer container)
+        public RequiredServices(IServiceLocator services)
         {
-            _container = container;
+            _services = services;
         }
 
         public void Evaluate(BottleConfiguration configuration)
@@ -23,8 +24,13 @@ namespace FubuMVC.Authentication
         {
             types.Each(type =>
                            {
-                               if (!_container.Model.HasDefaultImplementationFor(type))
+                               try
                                {
+                                   _services.GetInstance(type);
+                               }
+                               catch
+                               {
+                                   // Yep, swallowing this one
                                    configuration.RegisterMissingService(type);
                                }
                            });
