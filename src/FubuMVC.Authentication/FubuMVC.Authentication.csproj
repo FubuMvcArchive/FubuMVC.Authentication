@@ -45,23 +45,13 @@
     <Reference Include="FubuMVC.Core">
       <HintPath>..\packages\FubuMVC.References.0.9.8.1140\lib\net40\FubuMVC.Core.dll</HintPath>
     </Reference>
-    <Reference Include="FubuMVC.StructureMap">
-      <HintPath>..\packages\FubuMVC.References.0.9.8.1140\lib\net40\FubuMVC.StructureMap.dll</HintPath>
-    </Reference>
     <Reference Include="HtmlTags">
       <HintPath>..\packages\HtmlTags.1.1.0.102\lib\4.0\HtmlTags.dll</HintPath>
-    </Reference>
-    <Reference Include="StructureMap">
-      <HintPath>..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -79,7 +69,6 @@
     <Compile Include="AuthenticationFilter.cs" />
     <Compile Include="AuthenticationFilterNode.cs" />
     <Compile Include="AuthenticationFilterResult.cs" />
-    <Compile Include="AuthenticationRegistry.cs" />
     <Compile Include="AuthenticationServiceRegistry.cs" />
     <Compile Include="RequiredServices.cs" />
     <Compile Include="AuthenticationSettings.cs" />
