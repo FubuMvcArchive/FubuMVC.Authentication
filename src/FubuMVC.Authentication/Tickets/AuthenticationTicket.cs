@@ -1,6 +1,6 @@
 using System;
 
-namespace FubuMVC.Authentication
+namespace FubuMVC.Authentication.Tickets
 {
     public class AuthenticationTicket
     {

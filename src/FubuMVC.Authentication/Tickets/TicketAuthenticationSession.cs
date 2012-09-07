@@ -1,6 +1,6 @@
 using FubuCore.Dates;
 
-namespace FubuMVC.Authentication
+namespace FubuMVC.Authentication.Tickets
 {
     public class TicketAuthenticationSession : IAuthenticationSession
     {

@@ -1,6 +1,6 @@
 using FubuLocalization;
 
-namespace FubuMVC.Authentication
+namespace FubuMVC.Authentication.Basic
 {
     public class LoginKeys : StringToken
     {

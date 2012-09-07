@@ -1,19 +1,32 @@
-﻿using System;
+using System;
+using FubuMVC.Authentication.Basic;
+using FubuMVC.Authentication.Tickets;
+using FubuMVC.Core.Http;
 using FubuTestingSupport;
 using NUnit.Framework;
 using Rhino.Mocks;
 
-namespace FubuMVC.Authentication.Tests
+namespace FubuMVC.Authentication.Tests.Basic
 {
+    public class StubLoginCookies : ILoginCookies
+    {
+        private readonly ICookieValue _user = MockRepository.GenerateMock<ICookieValue>();
+
+        public ICookieValue User
+        {
+            get { return _user; }
+        }
+    }
+
     [TestFixture]
     public class when_going_to_the_login_screen_with_a_remembered_user : InteractionContext<LoginController>
     {
-        private AuthenticationTicket theTicket;
+        private StubLoginCookies theCookies;
 
         protected override void beforeEach()
         {
-            theTicket = new AuthenticationTicket();
-            MockFor<ITicketSource>().Stub(x => x.CurrentTicket()).Return(theTicket);
+            theCookies = new StubLoginCookies();
+            Services.Inject<ILoginCookies>(theCookies);
         }
 
         [Test]
@@ -24,7 +37,7 @@ namespace FubuMVC.Authentication.Tests
                 UserName = null
             };
 
-            theTicket.UserName = "jeremy";
+            theCookies.User.Stub(x => x.Value).Return("jeremy");
 
             ClassUnderTest.Login(request);
 
@@ -40,7 +53,7 @@ namespace FubuMVC.Authentication.Tests
                 UserName = "josh"
             };
 
-            theTicket.UserName = "jeremy";
+            theCookies.User.Stub(x => x.Value).Return("jeremy");
 
             ClassUnderTest.Login(request);
 
@@ -56,7 +69,7 @@ namespace FubuMVC.Authentication.Tests
                 UserName = null
             };
 
-            theTicket.UserName = null;
+            theCookies.User.Stub(x => x.Value).Return(null);
 
             ClassUnderTest.Login(request);
 
@@ -70,7 +83,6 @@ namespace FubuMVC.Authentication.Tests
     {
         private LoginRequest theRequest;
         private AuthenticationSettings theSettings;
-        private AuthenticationTicket theTicket;
 
         protected override void beforeEach()
         {
@@ -79,9 +91,8 @@ namespace FubuMVC.Authentication.Tests
             theSettings = new AuthenticationSettings();
             Services.Inject(theSettings);
 
-            MockFor<ITicketSource>().Stub(x => x.CurrentTicket()).Return(theTicket = new AuthenticationTicket());
-
             theRequest = new LoginRequest();
+            Services.Inject<ILoginCookies>(new StubLoginCookies());
         }
 
 
@@ -118,7 +129,7 @@ namespace FubuMVC.Authentication.Tests
         {
             public const string MESSAGE = "Test";
 
-            public void Handle(LoginRequest request, AuthenticationTicket ticket, AuthenticationSettings settings)
+            public void Handle(LoginRequest request, ILoginCookies cookies, AuthenticationSettings settings)
             {
                 request.Message = MESSAGE;
             }

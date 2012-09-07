@@ -1,3 +1,5 @@
+using FubuMVC.Authentication.Basic;
+using FubuMVC.Authentication.Tickets;
 using StructureMap.Configuration.DSL;
 
 namespace FubuMVC.Authentication

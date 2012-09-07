@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using FubuCore.Util;
+using FubuMVC.Authentication.Basic;
 using FubuMVC.Core;
 using FubuMVC.Core.Registration.Conventions;
 using FubuMVC.Core.Registration.Nodes;
@@ -37,7 +38,8 @@ namespace FubuMVC.Authentication
         }
 
         /// <summary>
-        /// By default, you get ~/login and ~/logout with extensibility points. Use this method to turn them off.
+        /// By default, you get ~/login and ~/logout (with extensibility points). Use this method to turn them off.
+        /// If you use the defaults, just create a view against <see cref="FubuMVC.Authentication.LoginRequest"/>.
         /// </summary>
         /// <returns></returns>
         public ApplyAuthentication DoNotIncludeEndpoints()
@@ -52,7 +54,7 @@ namespace FubuMVC.Authentication
 
             if(_includeEndpoints)
             {
-                registry.Actions.FindWith<AuthenticationActionSource>();
+                registry.Actions.FindWith<BasicAuthenticationActionSource>();
                 registry.Configure(graph => graph.Behaviors
                                             .Where(x => x.InputType() == typeof(LoginRequest))
                                             .Each(x => x.Prepend(Process.For<LoginBehavior>())));

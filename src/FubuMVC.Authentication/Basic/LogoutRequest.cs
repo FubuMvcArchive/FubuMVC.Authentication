@@ -1,4 +1,4 @@
-namespace FubuMVC.Authentication
+namespace FubuMVC.Authentication.Basic
 {
     [NotAuthenticated]
     public class LogoutRequest{}

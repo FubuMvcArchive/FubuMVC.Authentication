@@ -21,6 +21,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,19 +34,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bottles">
-      <HintPath>..\packages\Bottles.0.9.1.345\lib\Bottles.dll</HintPath>
+      <HintPath>..\packages\Bottles.0.9.1.349\lib\Bottles.dll</HintPath>
     </Reference>
     <Reference Include="FubuCore">
-      <HintPath>..\packages\FubuCore.0.9.9.178\lib\FubuCore.dll</HintPath>
+      <HintPath>..\packages\FubuCore.0.9.9.179\lib\FubuCore.dll</HintPath>
     </Reference>
     <Reference Include="FubuLocalization">
       <HintPath>..\packages\FubuLocalization.0.9.5.76\lib\FubuLocalization.dll</HintPath>
     </Reference>
-    <Reference Include="FubuMVC.Core, Version=0.9.8.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FubuMVC.References.0.9.8.1129\lib\net40\FubuMVC.Core.dll</HintPath>
+    <Reference Include="FubuMVC.Core">
+      <HintPath>..\packages\FubuMVC.References.0.9.8.1138\lib\net40\FubuMVC.Core.dll</HintPath>
     </Reference>
-    <Reference Include="FubuMVC.StructureMap, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FubuMVC.References.0.9.8.1129\lib\net40\FubuMVC.StructureMap.dll</HintPath>
+    <Reference Include="FubuMVC.StructureMap">
+      <HintPath>..\packages\FubuMVC.References.0.9.8.1138\lib\net40\FubuMVC.StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="HtmlTags">
       <HintPath>..\packages\HtmlTags.1.1.0.102\lib\4.0\HtmlTags.dll</HintPath>
@@ -71,37 +73,44 @@
     <Compile Include="AjaxAuthenticationRedirect.cs" />
     <Compile Include="ApplyAuthentication.cs" />
     <Compile Include="ApplyAuthenticationPolicy.cs" />
-    <Compile Include="AuthenticationActionSource.cs" />
+    <Compile Include="Basic\NulloLoginFailureHandler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AuthenticationBehavior.cs" />
     <Compile Include="AuthenticationFilter.cs" />
     <Compile Include="AuthenticationFilterNode.cs" />
     <Compile Include="AuthenticationFilterResult.cs" />
     <Compile Include="AuthenticationRegistry.cs" />
     <Compile Include="AuthenticationServiceRegistry.cs" />
+    <Compile Include="RequiredAuthenticationServices.cs" />
     <Compile Include="AuthenticationSettings.cs" />
-    <Compile Include="AuthenticationTicket.cs" />
+    <Compile Include="Basic\BasicAuthenticationActionSource.cs" />
+    <Compile Include="Basic\BasicFubuLoginCookies.cs" />
+    <Compile Include="Basic\ILoginCookies.cs" />
+    <Compile Include="Basic\ILoginFailureHandler.cs" />
+    <Compile Include="Basic\LoginBehavior.cs" />
+    <Compile Include="Basic\LoginController.cs" />
+    <Compile Include="Basic\LoginKeys.cs" />
+    <Compile Include="Basic\LogoutController.cs" />
+    <Compile Include="Basic\LogoutRequest.cs" />
+    <Compile Include="Basic\SimpleCookieTicketSource.cs" />
     <Compile Include="DefaultAuthenticationRedirect.cs" />
-    <Compile Include="Encryption.cs" />
     <Compile Include="IAuthenticationFilter.cs" />
     <Compile Include="IAuthenticationRedirect.cs" />
     <Compile Include="IAuthenticationService.cs" />
     <Compile Include="IAuthenticationSession.cs" />
-    <Compile Include="IAuthenticationTicketEncryptor.cs" />
-    <Compile Include="ILoginFailureHandler.cs" />
     <Compile Include="IPrincipalBuilder.cs" />
     <Compile Include="IPrincipalContext.cs" />
-    <Compile Include="ITicketSource.cs" />
-    <Compile Include="LoginBehavior.cs" />
-    <Compile Include="LoginController.cs" />
-    <Compile Include="LoginKeys.cs" />
     <Compile Include="LoginRequest.cs" />
     <Compile Include="LoginStatus.cs" />
-    <Compile Include="LogoutRequest.cs" />
     <Compile Include="NotAuthenticatedAttribute.cs" />
-    <Compile Include="SimpleCookieTicketSource.cs" />
     <Compile Include="ThreadPrincipalContext.cs" />
-    <Compile Include="TicketAuthenticationSession.cs" />
+    <Compile Include="Tickets\AuthenticationTicket.cs" />
+    <Compile Include="Tickets\Encryption.cs" />
+    <Compile Include="Tickets\IAuthenticationTicketEncryptor.cs" />
+    <Compile Include="Tickets\ITicketSource.cs" />
+    <Compile Include="Tickets\TicketAuthenticationSession.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

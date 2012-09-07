@@ -1,27 +1,27 @@
-﻿using FubuCore;
+using FubuCore;
+using FubuMVC.Core;
 
-namespace FubuMVC.Authentication
+namespace FubuMVC.Authentication.Basic
 {
     public class LoginController
     {
-        private readonly ITicketSource _ticketSource;
+        private readonly ILoginCookies _cookies;
         private readonly ILoginFailureHandler _failureHandler;
         private readonly AuthenticationSettings _settings;
 
-        public LoginController(ITicketSource ticketSource, ILoginFailureHandler failureHandler, AuthenticationSettings settings)
+        public LoginController(ILoginCookies cookies, ILoginFailureHandler failureHandler, AuthenticationSettings settings)
         {
-            _ticketSource = ticketSource;
+            _cookies = cookies;
             _failureHandler = failureHandler;
             _settings = settings;
         }
 
+        [UrlPattern("login")]
         public LoginRequest Login(LoginRequest request)
         {
-            var ticket = _ticketSource.CurrentTicket();
-
             if (request.UserName.IsEmpty())
             {
-                var remembered = ticket.UserName;
+                var remembered = _cookies.User.Value;
 
                 if (remembered.IsNotEmpty())
                 {
@@ -35,7 +35,7 @@ namespace FubuMVC.Authentication
                 return request;
             }
 
-            _failureHandler.Handle(request, ticket, _settings);
+            _failureHandler.Handle(request, _cookies, _settings);
 
             if (request.Message.IsEmpty())
             {

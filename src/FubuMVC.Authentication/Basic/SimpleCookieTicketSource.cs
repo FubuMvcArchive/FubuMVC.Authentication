@@ -1,10 +1,11 @@
 using System;
 using System.Web;
 using FubuCore.Dates;
+using FubuMVC.Authentication.Tickets;
 using FubuMVC.Core.Http;
 using HtmlTags;
 
-namespace FubuMVC.Authentication
+namespace FubuMVC.Authentication.Basic
 {
     public class SimpleCookieTicketSource : ITicketSource
     {

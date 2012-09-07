@@ -5,7 +5,7 @@ using FubuMVC.Core.Behaviors;
 using FubuMVC.Core.Http;
 using FubuMVC.Core.Runtime;
 
-namespace FubuMVC.Authentication
+namespace FubuMVC.Authentication.Basic
 {
     public class LoginBehavior : BasicBehavior
     {

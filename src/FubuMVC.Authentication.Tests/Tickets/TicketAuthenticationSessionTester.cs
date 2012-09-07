@@ -1,11 +1,11 @@
 using System;
 using FubuCore;
+using FubuMVC.Authentication.Tickets;
 using FubuTestingSupport;
 using NUnit.Framework;
 using Rhino.Mocks;
 
-
-namespace FubuMVC.Authentication.Tests
+namespace FubuMVC.Authentication.Tests.Tickets
 {
     [TestFixture]
     public class when_marking_authentication : InteractionContext<TicketAuthenticationSession>

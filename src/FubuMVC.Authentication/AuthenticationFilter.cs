@@ -1,5 +1,4 @@
 using FubuCore;
-using FubuMVC.Core.Continuations;
 
 namespace FubuMVC.Authentication
 {
@@ -29,12 +28,6 @@ namespace FubuMVC.Authentication
             }
 
             return AuthenticationFilterResult.Redirect;
-        }
-
-        public FubuContinuation get_logout(LogoutRequest request)
-        {
-            _session.ClearAuthentication();
-            return FubuContinuation.RedirectTo(new LoginRequest());
         }
     }
 }

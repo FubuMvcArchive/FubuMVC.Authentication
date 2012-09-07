@@ -3,7 +3,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace FubuMVC.Authentication
+namespace FubuMVC.Authentication.Tickets
 {
     public class EncryptionSettings
     {

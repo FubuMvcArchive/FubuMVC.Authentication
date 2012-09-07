@@ -1,4 +1,8 @@
 ﻿using System.Linq;
+using Bottles;
+using Bottles.Configuration;
+using FubuMVC.Authentication.Basic;
+using FubuMVC.Authentication.Tickets;
 using FubuMVC.Core;
 using FubuMVC.Core.Registration;
 using FubuTestingSupport;
@@ -33,9 +37,33 @@ namespace FubuMVC.Authentication.Tests
         }
 
         [Test]
+        public void registers_default_IAuthenticationFilter()
+        {
+            theDefaultServiceIs<IAuthenticationFilter, AuthenticationFilter>();
+        }
+
+        [Test]
         public void registers_default_ITicketSource()
         {
             theDefaultServiceIs<ITicketSource, SimpleCookieTicketSource>();
+        }
+
+        [Test]
+        public void registers_default_IEncryptor()
+        {
+            theDefaultServiceIs<IEncryptor, Encryptor>();
+        }
+
+        [Test]
+        public void registers_default_ILoginCookies()
+        {
+            theDefaultServiceIs<ILoginCookies, BasicFubuLoginCookies>();
+        }
+
+        [Test]
+        public void registers_default_ILoginFailureHandler()
+        {
+            theDefaultServiceIs<ILoginFailureHandler, NulloLoginFailureHandler>();
         }
 
         [Test]
@@ -45,6 +73,15 @@ namespace FubuMVC.Authentication.Tests
                 .ServicesFor<IAuthenticationRedirect>()
                 .Select(x => x.Type)
                 .ShouldHaveTheSameElementsAs(typeof(DefaultAuthenticationRedirect), typeof(AjaxAuthenticationRedirect));
+        }
+
+        [Test]
+        public void adds_the_configuration_activator()
+        {
+            theServiceGraph
+                .ServicesFor<IActivator>()
+                .Any(x => x.Type == typeof(AssertBottleConfiguration))
+                .ShouldBeTrue();
         }
 
         private void theDefaultServiceIs<TPlugin, TImplementation>()

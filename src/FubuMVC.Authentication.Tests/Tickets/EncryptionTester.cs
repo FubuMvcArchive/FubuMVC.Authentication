@@ -1,8 +1,8 @@
+using FubuMVC.Authentication.Tickets;
+using FubuTestingSupport;
 using NUnit.Framework;
 
-using FubuTestingSupport;
-
-namespace FubuMVC.Authentication.Tests
+namespace FubuMVC.Authentication.Tests.Tickets
 {
     [TestFixture]
     public class EncryptionTester

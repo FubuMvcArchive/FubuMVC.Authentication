@@ -1,19 +1,19 @@
+using FubuMVC.Authentication.Basic;
 using FubuMVC.Core.Continuations;
 using FubuTestingSupport;
 using NUnit.Framework;
 using Rhino.Mocks;
 
-
-namespace FubuMVC.Authentication.Tests
+namespace FubuMVC.Authentication.Tests.Basic
 {
 	[TestFixture]
-	public class when_logging_out : InteractionContext<AuthenticationFilter>
+	public class when_logging_out : InteractionContext<LogoutController>
 	{
 		private FubuContinuation theContinuation;
 
 		protected override void beforeEach()
 		{
-			theContinuation = ClassUnderTest.get_logout(null);
+			theContinuation = ClassUnderTest.Logout(null);
 		}
 
 		[Test]
