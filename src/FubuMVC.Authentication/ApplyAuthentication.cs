@@ -71,6 +71,7 @@ namespace FubuMVC.Authentication
                 registry.Configure(graph => graph.Behaviors
                                             .Where(x => x.InputType() == typeof(LoginRequest))
                                             .Each(x => x.Prepend(Process.For<LoginBehavior>())));
+                registry.Policies.Add<AttachDefaultLoginView>();
             }
             
             registry.Policies.Add(new ApplyAuthenticationPolicy(_filters.Matches));

@@ -24,8 +24,6 @@ namespace FubuMVC.Authentication
             set { _userName = value == null ? null : value.ToLowerInvariant(); }
         }
 
-        public string Profile { get; set; }
-
         public string Password { get; set; }
         public int NumberOfTries { get; set; }
 

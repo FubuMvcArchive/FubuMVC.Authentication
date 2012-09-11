@@ -63,9 +63,12 @@
     <Compile Include="AjaxAuthenticationRedirect.cs" />
     <Compile Include="ApplyAuthentication.cs" />
     <Compile Include="ApplyAuthenticationPolicy.cs" />
+    <Compile Include="Basic\AttachDefaultLoginView.cs" />
     <Compile Include="Basic\BasicFubuAuthUser.cs" />
+    <Compile Include="Basic\DefaultLoginRequestWriter.cs" />
     <Compile Include="Basic\FlatFileAuthenticationService.cs" />
     <Compile Include="Basic\NulloLoginFailureHandler.cs" />
+    <Compile Include="Basic\WriteDefaultLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AuthenticationBehavior.cs" />
     <Compile Include="AuthenticationFilter.cs" />

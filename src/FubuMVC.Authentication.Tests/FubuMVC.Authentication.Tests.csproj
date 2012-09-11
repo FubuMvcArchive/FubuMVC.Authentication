@@ -94,6 +94,7 @@
     <Compile Include="Basic\LoginBehaviorTester.cs" />
     <Compile Include="Basic\LoginControllerTests.cs" />
     <Compile Include="Basic\when_logging_out.cs" />
+    <Compile Include="Basic\WriteDefaultLoginTester.cs" />
     <Compile Include="DefaultAuthenticationRedirectTester.cs" />
     <Compile Include="LoginRequestTester.cs" />
     <Compile Include="NotAuthenticatedModel.cs" />
