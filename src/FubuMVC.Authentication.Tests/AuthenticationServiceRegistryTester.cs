@@ -75,15 +75,6 @@ namespace FubuMVC.Authentication.Tests
                 .ShouldHaveTheSameElementsAs(typeof(DefaultAuthenticationRedirect), typeof(AjaxAuthenticationRedirect));
         }
 
-        [Test]
-        public void adds_the_configuration_activator()
-        {
-            theServiceGraph
-                .ServicesFor<IActivator>()
-                .Any(x => x.Type == typeof(AssertBottleConfiguration))
-                .ShouldBeTrue();
-        }
-
         private void theDefaultServiceIs<TPlugin, TImplementation>()
         {
             theServiceGraph.DefaultServiceFor<TPlugin>()

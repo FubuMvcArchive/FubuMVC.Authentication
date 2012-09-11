@@ -20,9 +20,6 @@ namespace FubuMVC.Authentication
 
             AddService<IAuthenticationRedirect, DefaultAuthenticationRedirect>();
             AddService<IAuthenticationRedirect, AjaxAuthenticationRedirect>();
-
-
-            ConfigureRequirements(x => x.AddRule<RequiredServices>());
         }
     }
 }
