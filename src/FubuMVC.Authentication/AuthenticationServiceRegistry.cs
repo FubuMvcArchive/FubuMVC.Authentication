@@ -1,5 +1,5 @@
-using FubuMVC.Authentication.Basic;
 using FubuMVC.Authentication.Tickets;
+using FubuMVC.Authentication.Tickets.Basic;
 using FubuMVC.Core.Registration;
 
 namespace FubuMVC.Authentication

@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using FubuCore;
 using FubuMVC.Core.Packaging;
 
-namespace FubuMVC.Authentication.Basic
+namespace FubuMVC.Authentication.Tickets.Basic
 {
     public class FlatFileAuthenticationService : IAuthenticationService
     {

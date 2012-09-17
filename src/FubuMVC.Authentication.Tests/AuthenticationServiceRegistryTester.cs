@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using Bottles;
 using Bottles.Configuration;
-using FubuMVC.Authentication.Basic;
 using FubuMVC.Authentication.Tickets;
+using FubuMVC.Authentication.Tickets.Basic;
 using FubuMVC.Core;
 using FubuMVC.Core.Registration;
 using FubuTestingSupport;

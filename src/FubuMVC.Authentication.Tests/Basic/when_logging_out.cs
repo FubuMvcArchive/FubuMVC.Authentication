@@ -1,4 +1,4 @@
-using FubuMVC.Authentication.Basic;
+using FubuMVC.Authentication.Tickets.Basic;
 using FubuMVC.Core.Continuations;
 using FubuTestingSupport;
 using NUnit.Framework;

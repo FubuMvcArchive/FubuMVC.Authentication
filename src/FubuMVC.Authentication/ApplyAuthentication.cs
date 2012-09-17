@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using FubuCore;
 using FubuCore.Util;
-using FubuMVC.Authentication.Basic;
+using FubuMVC.Authentication.Tickets.Basic;
 using FubuMVC.Core;
 using FubuMVC.Core.Registration.Conventions;
 using FubuMVC.Core.Registration.Nodes;

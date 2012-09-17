@@ -1,6 +1,6 @@
-﻿using FubuMVC.Core.Http;
+using FubuMVC.Core.Http;
 
-namespace FubuMVC.Authentication.Basic
+namespace FubuMVC.Authentication.Tickets.Basic
 {
     public interface ILoginCookies
     {

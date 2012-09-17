@@ -1,5 +1,5 @@
 ﻿using FubuCore;
-using FubuMVC.Authentication.Basic;
+using FubuMVC.Authentication.Tickets.Basic;
 using FubuMVC.Core.Registration.Nodes;
 using FubuMVC.Core.Resources.Conneg;
 using FubuMVC.Core.Runtime;

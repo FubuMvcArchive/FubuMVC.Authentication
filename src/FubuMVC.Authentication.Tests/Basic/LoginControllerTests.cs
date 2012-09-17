@@ -1,6 +1,6 @@
 using System;
-using FubuMVC.Authentication.Basic;
 using FubuMVC.Authentication.Tickets;
+using FubuMVC.Authentication.Tickets.Basic;
 using FubuMVC.Core.Http;
 using FubuTestingSupport;
 using NUnit.Framework;

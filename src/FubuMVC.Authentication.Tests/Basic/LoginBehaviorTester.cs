@@ -1,4 +1,4 @@
-using FubuMVC.Authentication.Basic;
+using FubuMVC.Authentication.Tickets.Basic;
 using FubuMVC.Core.Behaviors;
 using FubuMVC.Core.Http;
 using FubuMVC.Core.Runtime;

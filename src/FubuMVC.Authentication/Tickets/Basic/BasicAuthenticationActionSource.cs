@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using FubuMVC.Core.Registration;
 using FubuMVC.Core.Registration.Nodes;
 
-namespace FubuMVC.Authentication.Basic
+namespace FubuMVC.Authentication.Tickets.Basic
 {
     public class BasicAuthenticationActionSource : IActionSource
     {

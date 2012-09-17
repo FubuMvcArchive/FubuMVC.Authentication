@@ -1,8 +1,8 @@
-﻿using FubuMVC.Core;
+using FubuMVC.Core;
 using FubuMVC.Core.Registration;
 using FubuMVC.Core.Runtime.Conditionals;
 
-namespace FubuMVC.Authentication.Basic
+namespace FubuMVC.Authentication.Tickets.Basic
 {
     // TODO -- Come back to this after the ConfigurationGraph clean up (this lets us go after view attachment)
     [ConfigurationType(ConfigurationType.Instrumentation)]

@@ -1,3 +1,4 @@
+using System;
 using FubuCore.Dates;
 
 namespace FubuMVC.Authentication.Tickets
@@ -45,7 +46,7 @@ namespace FubuMVC.Authentication.Tickets
                          ticket.Expiration;
         }
 
-        public void MarkAuthenticated(string userName)
+        public void MarkAuthenticated(string userName, Action<AuthenticationTicket> continuation)
         {
             var ticket = new AuthenticationTicket{
                 UserName = userName,
@@ -56,6 +57,8 @@ namespace FubuMVC.Authentication.Tickets
             {
                 ticket.Expiration = _systemTime.UtcNow().AddMinutes(_settings.ExpireInMinutes);
             }
+
+            continuation(ticket);
 
             _source.Persist(ticket);
         }

@@ -1,6 +1,6 @@
 using System.Security.Principal;
 
-namespace FubuMVC.Authentication.Basic
+namespace FubuMVC.Authentication.Tickets.Basic
 {
     public class BasicFubuAuthUser
     {

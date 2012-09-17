@@ -1,4 +1,4 @@
-﻿namespace FubuMVC.Authentication.Basic
+namespace FubuMVC.Authentication.Tickets.Basic
 {
     public class NulloLoginFailureHandler : ILoginFailureHandler
     {
