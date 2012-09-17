@@ -68,7 +68,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Bottles, Version=0.9.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Bottles, Version=0.9.1.0, Culture=neutral, processorArchitecture=MSIL">
+		<HintPath>..\packages\Bottles.0.9.1.349\lib\Bottles.dll</HintPath>
+	</Reference>
     <Reference Include="DotNetOpenAuth.Core">
       <HintPath>..\packages\DotNetOpenAuth.Core.4.1.0.12182\lib\net40-full\DotNetOpenAuth.Core.dll</HintPath>
     </Reference>
