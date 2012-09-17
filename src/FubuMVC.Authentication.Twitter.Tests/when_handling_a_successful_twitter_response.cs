@@ -1,5 +1,7 @@
 ﻿using FubuMVC.Authentication.Tickets.Basic;
 using FubuMVC.Core.Behaviors;
+using FubuMVC.Core.Registration;
+using FubuMVC.Core.Registration.Nodes;
 using FubuMVC.Core.Runtime;
 using FubuTestingSupport;
 using NUnit.Framework;
@@ -42,7 +44,16 @@ namespace FubuMVC.Authentication.Twitter.Tests
             MockFor<IFubuRequest>().Stub(x => x.Get<TwitterLoginRequest>()).Return(theRequest);
 
             theLoginBehavior = MockFor<IActionBehavior>();
-            MockFor<IPartialFactory>().Stub(x => x.BuildPartial(typeof (LoginRequest))).Return(theLoginBehavior);
+
+            var chain = new BehaviorChain();
+            chain.AddToEnd(ActionCall.For<LoginController>(x => x.Login(null)));
+
+            var graph = new BehaviorGraph();
+            graph.AddChain(chain);
+
+            Services.Inject(graph);
+
+            MockFor<IPartialFactory>().Stub(x => x.BuildPartial(chain)).Return(theLoginBehavior);
 
             ClassUnderTest.Failure();
 

@@ -1,5 +1,6 @@
 ﻿using FubuCore;
 using FubuMVC.Authentication.Tickets.Basic;
+using FubuMVC.Core.Registration;
 using FubuMVC.Core.Runtime;
 
 namespace FubuMVC.Authentication.Twitter
@@ -9,12 +10,14 @@ namespace FubuMVC.Authentication.Twitter
         private readonly IFubuRequest _request;
         private readonly IOutputWriter _writer;
         private readonly IPartialFactory _factory;
+        private readonly BehaviorGraph _graph;
 
-        public TwitterResponseHandler(IFubuRequest request, IOutputWriter writer, IPartialFactory factory)
+        public TwitterResponseHandler(IFubuRequest request, IOutputWriter writer, IPartialFactory factory, BehaviorGraph graph)
         {
             _request = request;
             _writer = writer;
             _factory = factory;
+            _graph = graph;
         }
 
         public void Success()
@@ -40,8 +43,10 @@ namespace FubuMVC.Authentication.Twitter
 
             _request.Set(request);
 
+            var chain = _graph.BehaviorFor(typeof (LoginRequest));
+
             _factory
-                .BuildPartial(typeof(LoginRequest))
+                .BuildPartial(chain)
                 .InvokePartial();
         }
     }
