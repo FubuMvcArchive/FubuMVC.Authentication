@@ -13,6 +13,13 @@
     <tags>fubumvc authentication twitter</tags>
     <dependencies>
 	  <dependency id="FubuMVC.Authentication" version="0.1.0.26" />
+	  <dependency id="DotNetOpenAuth" version="4.1.0.12182" />
+	  <dependency id="DotNetOpenAuth.Core" version="4.1.0.12182" />
+	  <dependency id="DotNetOpenAuth.Core.UI" version="4.1.0.12182" />
+	  <dependency id="DotNetOpenAuth.OAuth.Common" version="4.1.0.12182" />
+	  <dependency id="DotNetOpenAuth.OAuth.Consumer" version="4.1.0.12182" />
+	  <dependency id="DotNetOpenAuth.OAuth.Core" version="4.1.0.12182" />
+	  <dependency id="DotNetOpenAuth.OAuth.ServiceProvider" version="4.1.0.12182" />
     </dependencies>
   </metadata>
   <files>
