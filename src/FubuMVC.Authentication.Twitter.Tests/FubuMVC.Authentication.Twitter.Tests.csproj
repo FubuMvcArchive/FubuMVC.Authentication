@@ -135,7 +135,6 @@
     <Compile Include="InMemoryTokenManagerTests.cs" />
     <Compile Include="OAuthSettingsRuleTester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StubAuthenticationSession.cs" />
     <Compile Include="StubTokenResponse.cs" />
     <Compile Include="StubTwitterProxy.cs" />
     <Compile Include="TwitterLoginBehaviorTests.cs" />

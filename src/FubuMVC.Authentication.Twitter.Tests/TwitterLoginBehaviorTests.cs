@@ -1,5 +1,4 @@
-﻿using FubuMVC.Authentication.Tickets;
-using FubuTestingSupport;
+﻿using FubuTestingSupport;
 using NUnit.Framework;
 using Rhino.Mocks;
 
@@ -10,7 +9,6 @@ namespace FubuMVC.Authentication.Twitter.Tests
     {
         private ITwitterResponseHandler theHandlers;
         private TwitterAuthResponse theResponse;
-        private AuthenticationTicket theTicket;
 
         protected override void beforeEach()
         {
@@ -18,10 +16,7 @@ namespace FubuMVC.Authentication.Twitter.Tests
 
             theResponse = new TwitterAuthResponse(123, "test_user", new StubTokenResponse { AccessToken = "Test1234"});
 
-            theTicket = new AuthenticationTicket();
-
             Services.Inject<ITwitterProxy>(new StubTwitterProxy(theResponse));
-            Services.Inject<IAuthenticationSession>(new StubAuthenticationSession(theTicket));
 
             ClassUnderTest.Execute();
         }
@@ -39,9 +34,9 @@ namespace FubuMVC.Authentication.Twitter.Tests
         }
 
         [Test]
-        public void sets_the_ticket_user_data()
+        public void marks_the_session_authenticated()
         {
-            theTicket.UserData.ShouldEqual(theResponse.Response.AccessToken);
+            MockFor<IAuthenticationSession>().AssertWasCalled(x => x.MarkAuthenticated(theResponse.ScreenName));
         }
     }
 

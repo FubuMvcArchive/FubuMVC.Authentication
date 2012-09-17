@@ -13,7 +13,6 @@ namespace FubuMVC.Authentication.Tests.Tickets
         private string theUserName;
         private AuthenticationTicket theResultingTicket;
         private AuthenticationSettings theSettings;
-        private string theUserData;
 
         protected override void beforeEach()
         {
@@ -24,9 +23,8 @@ namespace FubuMVC.Authentication.Tests.Tickets
             LocalSystemTime = DateTime.Today.AddHours(8);
 
             theUserName = "somebody";
-            theUserData = "something";
 
-            ClassUnderTest.MarkAuthenticated(theUserName, (ticket) => ticket.UserData = theUserData);
+            ClassUnderTest.MarkAuthenticated(theUserName);
 
             theResultingTicket = MockFor<ITicketSource>().GetArgumentsForCallsMadeOn(x => x.Persist(null))
                 [0][0].As<AuthenticationTicket>();
@@ -36,12 +34,6 @@ namespace FubuMVC.Authentication.Tests.Tickets
         public void the_ticket_should_have_the_user_name()
         {
             theResultingTicket.UserName.ShouldEqual(theUserName);
-        }
-
-        [Test]
-        public void the_ticket_should_have_the_user_data()
-        {
-            theResultingTicket.UserData.ShouldEqual(theUserData);
         }
 
         [Test]

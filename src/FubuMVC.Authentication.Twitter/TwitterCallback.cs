@@ -23,7 +23,8 @@
             var authenticated = false;
             _twitter.Process(response =>
             {
-                _session.MarkAuthenticated(response.ScreenName, ticket => ticket.UserData = response.AccessToken);
+                // TODO -- Keep the access token (response.AccessToken)
+                _session.MarkAuthenticated(response.ScreenName);
                 _handlers.Success();
 
                 authenticated = true;
