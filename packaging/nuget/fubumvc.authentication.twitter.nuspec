@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
-    <id>FubuMVC.Authentication</id>
+    <id>FubuMVC.Authentication.Twitter</id>
     <version>0.0</version>
     <authors>Jeremy Miller, Joshua Arnold</authors>
     <owners>Jeremy Miller, Joshua Arnold</owners>
@@ -9,13 +9,13 @@
     <projectUrl>http://mvc.fubu-project.org/</projectUrl>
     <iconUrl>https://github.com/DarthFubuMVC/fubu-collateral/raw/master/Icons/FubuMvc_256.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Extensible authentication behaviors (with sensible defaults) for your FubuMVC application.</description>
-    <tags>fubumvc authentication</tags>
+    <description>Extends the FubuMVC.Authentication Bottle and provides integration with Twitter authentication.</description>
+    <tags>fubumvc authentication twitter</tags>
     <dependencies>
-      <dependency id="FubuMVC.References" version="0.9.8.1140" />
+	  <dependency id="FubuMVC.Authentication" version="0.1.0.26" />
     </dependencies>
   </metadata>
   <files>
-    <file src="..\..\src\FubuMVC.Authentication\bin\release\FubuMVC.Authentication.*" target="lib\net40" />
+    <file src="..\..\src\FubuMVC.Authentication.Twitter\bin\release\FubuMVC.Authentication.Twitter.*" target="lib\net40" />
   </files>
 </package>
