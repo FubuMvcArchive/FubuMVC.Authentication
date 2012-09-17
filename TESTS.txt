@@ -1,1 +1,2 @@
 FubuMVC.Authentication.Tests
+FubuMVC.Authentication.Twitter.Tests
