@@ -1,6 +1,4 @@
 ﻿using System.Linq;
-using Bottles;
-using Bottles.Configuration;
 using FubuMVC.Authentication.Tickets;
 using FubuMVC.Authentication.Tickets.Basic;
 using FubuMVC.Core;

@@ -46,28 +46,5 @@ namespace FubuMVC.Authentication
         {
             return UserName.IsNotEmpty() && Password.IsNotEmpty();
         }
-
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof (LoginRequest)) return false;
-            return Equals((LoginRequest) obj);
-        }
-
-        public bool Equals(LoginRequest other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return Equals(other.Url, Url) && Equals(other.Message, Message);
-        }
-
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                return ((Url != null ? Url.GetHashCode() : 0)*397) ^ (Message != null ? Message.GetHashCode() : 0);
-            }
-        }
     }
 }

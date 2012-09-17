@@ -29,10 +29,17 @@ namespace FubuMVC.Authentication.Tests
         }
 
         [Test]
-        public void the_basic_fubu_principal_builder_is_registered()
+        public void the_fubu_principal_builder_is_registered()
         {
             theGraphWithBasicAuthentication.Services.DefaultServiceFor<IPrincipalBuilder>()
-                .Type.ShouldEqual(typeof (BasicFubuPrincipalBuilder));
+                .Type.ShouldEqual(typeof (FubuPrincipalBuilder));
+        }
+
+        [Test]
+        public void the_nullo_principal_roles_is_registered()
+        {
+            theGraphWithBasicAuthentication.Services.DefaultServiceFor<IPrincipalRoles>()
+                .Type.ShouldEqual(typeof(NulloPrincipalRoles));
         }
 
         [Test]

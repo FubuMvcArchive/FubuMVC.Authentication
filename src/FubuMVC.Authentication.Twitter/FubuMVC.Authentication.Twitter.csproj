@@ -34,6 +34,10 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="AttachDefaultTwitterView.cs" />
+    <Compile Include="DefaultTwitterLoginRequestWriter.cs" />
+    <Compile Include="ISystemUrls.cs" />
+    <Compile Include="OAuthSettingsRule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="InMemoryTokenManager.cs" />
     <Compile Include="ISignInEndpointBuilder.cs" />
@@ -42,12 +46,17 @@
     <Compile Include="OAuthSettings.cs" />
     <Compile Include="SignInEndpointBuilder.cs" />
     <Compile Include="TwitterAuthResponse.cs" />
+    <Compile Include="TwitterContentExtension.cs" />
     <Compile Include="TwitterController.cs" />
     <Compile Include="TwitterCallback.cs" />
-    <Compile Include="TwitterFubuExtension.cs" />
+    <Compile Include="TwitterEndpoints.cs" />
+    <Compile Include="ApplyTwitterAuthentication.cs" />
+    <Compile Include="TwitterLoginKeys.cs" />
     <Compile Include="TwitterResponseHandler.cs" />
+    <Compile Include="TwitterServiceRegistry.cs" />
     <Compile Include="TwitterSignInSettings.cs" />
     <Compile Include="TwitterProxy.cs" />
+    <Compile Include="WriteDefaultTwitterButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -59,6 +68,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Bottles, Version=0.9.1.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="DotNetOpenAuth.Core">
       <HintPath>..\packages\DotNetOpenAuth.Core.4.1.0.12182\lib\net40-full\DotNetOpenAuth.Core.dll</HintPath>
     </Reference>

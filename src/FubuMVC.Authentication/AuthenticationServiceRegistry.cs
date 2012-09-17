@@ -10,6 +10,8 @@ namespace FubuMVC.Authentication
         {
             SetServiceIfNone<IAuthenticationSession, TicketAuthenticationSession>();
             SetServiceIfNone<IAuthenticationFilter, AuthenticationFilter>();
+            SetServiceIfNone<IPrincipalBuilder, FubuPrincipalBuilder>();
+            SetServiceIfNone<IPrincipalRoles, NulloPrincipalRoles>();
 
             // TODO -- Break out the "Basic" stuff into a separate registry
             SetServiceIfNone<IPrincipalContext, ThreadPrincipalContext>();

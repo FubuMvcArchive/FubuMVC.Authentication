@@ -1,5 +1,3 @@
-using System.Security.Principal;
-
 namespace FubuMVC.Authentication.Tickets.Basic
 {
     public class BasicFubuAuthUser
@@ -10,14 +8,6 @@ namespace FubuMVC.Authentication.Tickets.Basic
         public bool Matches(LoginRequest request)
         {
             return UserName == request.UserName && Password == request.Password;
-        }
-    }
-
-    public class BasicFubuPrincipalBuilder : IPrincipalBuilder
-    {
-        public IPrincipal Build(string userName)
-        {
-            return new GenericPrincipal(new GenericIdentity(userName), new string[0]);
         }
     }
 }

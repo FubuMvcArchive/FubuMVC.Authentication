@@ -58,11 +58,7 @@ namespace FubuMVC.Authentication
 
             if(_useDefaults)
             {
-               registry.Services(x =>
-                                     {
-                                         x.SetServiceIfNone<IAuthenticationService, FlatFileAuthenticationService>();
-                                         x.SetServiceIfNone<IPrincipalBuilder, BasicFubuPrincipalBuilder>();
-                                     }); 
+               registry.Services(x => x.SetServiceIfNone<IAuthenticationService, FlatFileAuthenticationService>()); 
             }
 
             if(_includeEndpoints)

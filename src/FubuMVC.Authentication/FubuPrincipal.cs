@@ -33,5 +33,11 @@ namespace FubuMVC.Authentication
         {
             get { return true; }
         }
+
+        public static FubuPrincipal Current()
+        {
+            var context = new ThreadPrincipalContext();
+            return context.Current as FubuPrincipal;
+        }
     }
 }
