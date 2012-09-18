@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using FubuCore;
+using FubuMVC.ContentExtensions;
 using FubuMVC.Core.Resources.Conneg;
 using FubuMVC.Core.Runtime;
 using FubuMVC.Core.UI;
-using FubuMVC.Core.UI.Extensibility;
 using HtmlTags;
 
 namespace FubuMVC.Authentication.Tickets.Basic
@@ -39,7 +39,7 @@ namespace FubuMVC.Authentication.Tickets.Basic
             form.Append(new HtmlTag("input").Attr("type", "submit").Attr("value", LoginKeys.Login));
             
             view.Add(form);
-            view.WriteExtensions();
+            view.Add(new LiteralTag(view.WriteExtensions().ToHtmlString()));
 
             return view;
         }

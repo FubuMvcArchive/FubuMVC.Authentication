@@ -1,5 +1,5 @@
-﻿using FubuMVC.Core;
-using FubuMVC.Core.UI.Extensibility;
+﻿using FubuMVC.ContentExtensions;
+using FubuMVC.Core;
 
 namespace FubuMVC.Authentication.Twitter
 {
