@@ -13,7 +13,7 @@
     <tags>fubumvc authentication</tags>
     <dependencies>
       <dependency id="FubuMVC.References" version="0.9.8.1168" />
-	  <dependency id="FubuMVC.ContentExtensions" version="0.1.0.1" />
+	  <dependency id="FubuMVC.ContentExtensions" version="0.1.0.2" />
     </dependencies>
   </metadata>
   <files>
