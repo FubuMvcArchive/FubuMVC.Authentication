@@ -18,9 +18,9 @@ namespace FubuMVC.Authentication.Twitter
             registry.Extensions().For(new TwitterContentExtension());
         }
 
-        public void UseOAuthSettings(OAuthSettings setttings)
+        public void UseOAuthSettings(OAuthSettings settings)
         {
-            _settings = _settings;
+            _settings = settings;
         }
     }
 }

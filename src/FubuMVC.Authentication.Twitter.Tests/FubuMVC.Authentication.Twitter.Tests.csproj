@@ -109,7 +109,7 @@
     <Compile Include="StubTokenResponse.cs" />
     <Compile Include="StubTwitterProxy.cs" />
     <Compile Include="TwitterLoginBehaviorTests.cs" />
-    <Compile Include="TwitterRegistrationTests.cs" />
+    <Compile Include="TwitterBootstrapperTests.cs" />
     <Compile Include="TwitterServiceRegistryTester.cs" />
     <Compile Include="when_handling_a_successful_twitter_response.cs" />
     <Compile Include="when_the_callback_action_is_invoked.cs" />
