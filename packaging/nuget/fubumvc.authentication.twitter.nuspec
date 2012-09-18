@@ -12,7 +12,7 @@
     <description>Extends the FubuMVC.Authentication Bottle and provides integration with Twitter authentication.</description>
     <tags>fubumvc authentication twitter</tags>
     <dependencies>
-	  <dependency id="FubuMVC.Authentication" version="0.1.0.26" />
+	  <dependency id="FubuMVC.Authentication" version="0.1.0.34" />
 	  <dependency id="DotNetOpenAuth" version="4.1.0.12182" />
 	  <dependency id="DotNetOpenAuth.Core" version="4.1.0.12182" />
 	  <dependency id="DotNetOpenAuth.Core.UI" version="4.1.0.12182" />
