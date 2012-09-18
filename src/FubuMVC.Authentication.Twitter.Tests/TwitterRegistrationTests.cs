@@ -16,7 +16,7 @@ namespace FubuMVC.Authentication.Twitter.Tests
             registry.Import<ApplyTwitterAuthentication>();
 
             var graph = BehaviorGraph.BuildFrom(registry);
-            var chain = graph.BehaviorFor<TwitterController>(x => x.Partial(null));
+            var chain = graph.BehaviorFor<TwitterController>(x => x.Button(null));
 
             chain.HasOutput().ShouldBeTrue();
         }

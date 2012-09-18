@@ -12,8 +12,11 @@ namespace FubuMVC.Authentication.Twitter
         public IEnumerable<object> GetExtensions(IFubuPage<LoginRequest> page)
         {
             var chain = page.Get<BehaviorGraph>().BehaviorFor(typeof (TwitterLoginRequest));
-            var partial = page.Get<IPartialFactory>().BuildPartial(chain);
-            var output = page.Get<IOutputWriter>().Record(() => partial.InvokePartial());
+            var output = page.Get<IOutputWriter>().Record(() =>
+            {
+                var partial = page.Get<IPartialFactory>().BuildPartial(chain);
+                partial.InvokePartial();
+            });
 
             yield return output.GetText();
         }

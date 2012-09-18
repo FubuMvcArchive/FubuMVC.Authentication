@@ -11,7 +11,7 @@ namespace FubuMVC.Authentication.Twitter
     {
         public void Configure(BehaviorGraph graph)
         {
-            var chain = graph.BehaviorFor<TwitterController>(x => x.Partial(null));
+            var chain = graph.BehaviorFor<TwitterController>(x => x.Button(null));
             if (!chain.Output.HasView(typeof(Always)))
             {
                 chain.Output.Writers.AddToEnd(new WriteDefaultTwitterButton());

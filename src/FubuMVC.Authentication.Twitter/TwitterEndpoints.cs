@@ -9,7 +9,7 @@ namespace FubuMVC.Authentication.Twitter
         public IEnumerable<ActionCall> FindActions(TypePool types)
         {
             yield return ActionCall.For<TwitterController>(x => x.Login(null));
-            yield return ActionCall.For<TwitterController>(x => x.Partial(null));
+            yield return ActionCall.For<TwitterController>(x => x.Button(null));
             yield return ActionCall.For<TwitterController>(x => x.Callback(null));
         }
     }

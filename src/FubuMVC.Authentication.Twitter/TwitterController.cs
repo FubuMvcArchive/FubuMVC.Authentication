@@ -14,7 +14,7 @@ namespace FubuMVC.Authentication.Twitter
             _proxy = proxy;
         }
 
-        public TwitterLoginRequest Partial(TwitterLoginRequest request)
+        public TwitterLoginRequest Button(TwitterLoginRequest request)
         {
             return request;
         }
