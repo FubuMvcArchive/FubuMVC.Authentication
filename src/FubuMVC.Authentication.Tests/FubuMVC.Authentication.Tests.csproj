@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AjaxAuthenticationRedirectTester.cs" />
+    <Compile Include="ApplyAuthenticationExtensionTester.cs" />
     <Compile Include="ApplyAuthenticationPolicyTester.cs" />
     <Compile Include="AssemblyNeedsTheFubuModuleAttribute.cs" />
     <Compile Include="AuthenticationBehaviorTester.cs" />
@@ -90,6 +91,8 @@
     <Compile Include="AuthenticationFilterNodeTester.cs" />
     <Compile Include="AuthenticationFilterTester.cs" />
     <Compile Include="AuthenticationServiceRegistryTester.cs" />
+    <Compile Include="Basic\BasicLoginRedirectTester.cs" />
+    <Compile Include="Basic\BasicLoginSuccessHandlerTester.cs" />
     <Compile Include="Basic\FlatFileAuthenticationServiceTester.cs" />
     <Compile Include="Basic\LoginBehaviorTester.cs" />
     <Compile Include="Basic\LoginControllerTests.cs" />

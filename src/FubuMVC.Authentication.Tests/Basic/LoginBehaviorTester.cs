@@ -68,15 +68,15 @@ namespace FubuMVC.Authentication.Tests.Basic
         }
 
         [Test]
-        public void should_redirect_the_browser_to_the_original_url()
-        {
-            MockFor<IOutputWriter>().AssertWasCalled(x => x.RedirectToUrl(theLoginRequest.Url));
-        }
-
-        [Test]
         public void should_not_allow_the_inner_behavior_to_execute()
         {
             MockFor<IActionBehavior>().AssertWasNotCalled(x => x.Invoke());
+        }
+
+        [Test]
+        public void should_signal_the_success_handler()
+        {
+            MockFor<ILoginSuccessHandler>().AssertWasCalled(x => x.LoggedIn(theLoginRequest));
         }
     }
 
@@ -117,9 +117,9 @@ namespace FubuMVC.Authentication.Tests.Basic
         }
 
         [Test]
-        public void should_not_redirect_the_browser_to_the_original_url()
+        public void should_not_signal_the_success_handler()
         {
-            MockFor<IOutputWriter>().AssertWasNotCalled(x => x.RedirectToUrl(theLoginRequest.Url));
+            MockFor<ILoginSuccessHandler>().AssertWasNotCalled(x => x.LoggedIn(theLoginRequest));
         }
 
         [Test]

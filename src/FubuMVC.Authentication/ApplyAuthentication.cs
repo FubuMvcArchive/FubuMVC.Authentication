@@ -89,5 +89,10 @@ namespace FubuMVC.Authentication
             _internalRegistry.Services(x => x.SetServiceIfNone<IPrincipalBuilder, T>());
             _useDefaults = false;
         }
+
+        public void RedirectWith<T>() where T : IAuthenticationRedirect
+        {
+            _internalRegistry.Services(x => x.AddService<IAuthenticationRedirect, T>());
+        }
     }
 }

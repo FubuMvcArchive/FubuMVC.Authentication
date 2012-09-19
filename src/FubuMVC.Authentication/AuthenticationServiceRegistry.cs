@@ -18,6 +18,8 @@ namespace FubuMVC.Authentication
             SetServiceIfNone<ITicketSource, SimpleCookieTicketSource>();
             SetServiceIfNone<IEncryptor, Encryptor>();
             SetServiceIfNone<ILoginCookies, BasicFubuLoginCookies>();
+            SetServiceIfNone<IBasicLoginRedirect, BasicLoginRedirect>();
+            SetServiceIfNone<ILoginSuccessHandler, BasicLoginSuccessHandler>();
             SetServiceIfNone<ILoginFailureHandler, NulloLoginFailureHandler>();
 
             AddService<IAuthenticationRedirect, DefaultAuthenticationRedirect>();

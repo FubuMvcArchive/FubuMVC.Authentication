@@ -71,7 +71,9 @@
     <Compile Include="ApplyAuthenticationPolicy.cs" />
     <Compile Include="FubuPrincipal.cs" />
     <Compile Include="FubuPrincipalBuilder.cs" />
+    <Compile Include="ILoginSuccessHandler.cs" />
     <Compile Include="IPrincipalRoles.cs" />
+    <Compile Include="NulloLoginSuccessHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AuthenticationBehavior.cs" />
     <Compile Include="AuthenticationFilter.cs" />
@@ -95,9 +97,11 @@
     <Compile Include="Tickets\Basic\BasicAuthenticationActionSource.cs" />
     <Compile Include="Tickets\Basic\BasicFubuAuthUser.cs" />
     <Compile Include="Tickets\Basic\BasicFubuLoginCookies.cs" />
+    <Compile Include="Tickets\Basic\BasicLoginSuccessHandler.cs" />
     <Compile Include="Tickets\Basic\BasicPrincipalRoles.cs" />
     <Compile Include="Tickets\Basic\DefaultLoginRequestWriter.cs" />
     <Compile Include="Tickets\Basic\FlatFileAuthenticationService.cs" />
+    <Compile Include="Tickets\Basic\IBasicLoginRedirect.cs" />
     <Compile Include="Tickets\Basic\ILoginCookies.cs" />
     <Compile Include="Tickets\Basic\ILoginFailureHandler.cs" />
     <Compile Include="Tickets\Basic\LoginBehavior.cs" />

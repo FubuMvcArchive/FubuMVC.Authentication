@@ -32,6 +32,11 @@ namespace FubuMVC.Authentication.Tickets.Basic
             var form = view.FormFor<LoginRequest>();
             form.Append(new HtmlTag("legend").Text(LoginKeys.Login));
 
+            if(request.Message.IsNotEmpty())
+            {
+                form.Append(new HtmlTag("p").Text(request.Message).Style("color", "red"));
+            }
+
             form.Append(view.Edit(x => x.UserName));
             form.Append(view.Edit(x => x.Password));
             form.Append(view.Edit(x => x.RememberMe));

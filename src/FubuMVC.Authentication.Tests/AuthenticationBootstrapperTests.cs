@@ -1,4 +1,5 @@
-﻿using FubuCore;
+﻿using System;
+using FubuCore;
 using FubuMVC.Authentication.Tickets.Basic;
 using FubuMVC.Core;
 using FubuMVC.Core.Registration;
@@ -52,6 +53,20 @@ namespace FubuMVC.Authentication.Tests
         public void logout_endpoint_is_added()
         {
             theGraphWithBasicAuthentication.BehaviorFor(typeof(LogoutRequest)).ShouldNotBeNull();
+        }
+
+        [Test]
+        public void basic_login_redirect_is_registered()
+        {
+            theGraphWithBasicAuthentication.Services.DefaultServiceFor<IBasicLoginRedirect>()
+                .Type.ShouldEqual(typeof(BasicLoginRedirect));
+        }
+
+        [Test]
+        public void basic_login_success_handler_is_registered()
+        {
+            theGraphWithBasicAuthentication.Services.DefaultServiceFor<ILoginSuccessHandler>()
+                .Type.ShouldEqual(typeof(BasicLoginSuccessHandler));
         }
 
         // everything else is covered by the service registry tester

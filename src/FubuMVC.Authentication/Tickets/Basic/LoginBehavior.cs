@@ -13,17 +13,17 @@ namespace FubuMVC.Authentication.Tickets.Basic
         private readonly IFubuRequest _request;
         private readonly IAuthenticationService _service;
         private readonly IAuthenticationSession _session;
-        private readonly IOutputWriter _writer;
+        private readonly ILoginSuccessHandler _handler;
 
         public LoginBehavior(ICurrentHttpRequest httpRequest, IAuthenticationService service,
-                             IAuthenticationSession session, IOutputWriter writer, IFubuRequest request)
+                             IAuthenticationSession session, IFubuRequest request, ILoginSuccessHandler handler)
             : base(PartialBehavior.Ignored)
         {
             _httpRequest = httpRequest;
             _service = service;
             _session = session;
-            _writer = writer;
             _request = request;
+            _handler = handler;
         }
 
         protected override DoNext performInvoke()
@@ -37,16 +37,9 @@ namespace FubuMVC.Authentication.Tickets.Basic
             if (_service.Authenticate(login))
             {
                 _session.MarkAuthenticated(login.UserName);
-
-                var url = login.Url;
-                if (url.IsEmpty())
-                {
-                    url = "~/";
-                }
-
-                _writer.RedirectToUrl(url);
                 login.Status = LoginStatus.Succeeded;
 
+                _handler.LoggedIn(login);
                 return DoNext.Stop;
             }
 
