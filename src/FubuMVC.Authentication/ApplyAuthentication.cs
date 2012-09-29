@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using FubuCore;
 using FubuCore.Util;
 using FubuMVC.Authentication.Tickets.Basic;
+using FubuMVC.Authentication.Windows;
 using FubuMVC.Core;
 using FubuMVC.Core.Registration.Conventions;
 using FubuMVC.Core.Registration.Nodes;
@@ -15,6 +16,7 @@ namespace FubuMVC.Authentication
     public class ApplyAuthentication : IFubuRegistryExtension
     {
         private bool _includeEndpoints;
+        private bool _includeWindowsAuth;
         private bool _useDefaults = true;
         private FubuPackageRegistry _internalRegistry = new FubuPackageRegistry();
         private readonly CompositeFilter<BehaviorChain> _filters = new CompositeFilter<BehaviorChain>();
@@ -51,6 +53,12 @@ namespace FubuMVC.Authentication
             return this;
         }
 
+        public ApplyAuthentication IncludeWindowsAuthentication()
+        {
+            _includeWindowsAuth = true;
+            return this;
+        }
+
         void IFubuRegistryExtension.Configure(FubuRegistry registry)
         {
             registry.Services<AuthenticationServiceRegistry>();
@@ -68,6 +76,12 @@ namespace FubuMVC.Authentication
                                             .Where(x => x.InputType() == typeof(LoginRequest))
                                             .Each(x => x.Prepend(Process.For<LoginBehavior>())));
                 registry.Policies.Add<AttachDefaultLoginView>();
+            }
+
+            if(_includeWindowsAuth)
+            {
+                registry.Actions.FindWith<WindowsActionSource>();
+                registry.Services<WindowsRegistry>();
             }
             
             registry.Policies.Add(new ApplyAuthenticationPolicy(_filters.Matches));

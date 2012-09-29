@@ -116,6 +116,12 @@
     <Compile Include="Tickets\IAuthenticationTicketEncryptor.cs" />
     <Compile Include="Tickets\ITicketSource.cs" />
     <Compile Include="Tickets\TicketAuthenticationSession.cs" />
+    <Compile Include="Windows\AspNetWindowsAuthenticationContext.cs" />
+    <Compile Include="Windows\IWindowsAuthenticationContext.cs" />
+    <Compile Include="Windows\WindowsActionSource.cs" />
+    <Compile Include="Windows\WindowsController.cs" />
+    <Compile Include="Windows\WindowsRegistry.cs" />
+    <Compile Include="Windows\WindowsSignInRequest.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

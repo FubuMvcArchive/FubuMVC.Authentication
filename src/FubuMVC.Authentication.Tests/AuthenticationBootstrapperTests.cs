@@ -1,6 +1,6 @@
-﻿using System;
-using FubuCore;
+﻿using FubuCore;
 using FubuMVC.Authentication.Tickets.Basic;
+using FubuMVC.Authentication.Windows;
 using FubuMVC.Core;
 using FubuMVC.Core.Registration;
 using FubuTestingSupport;
@@ -131,6 +131,34 @@ namespace FubuMVC.Authentication.Tests
         {
             theGraphWithCustomServices.Services.DefaultServiceFor<IPrincipalBuilder>()
                 .Type.ShouldEqual(typeof(StubPrincipalBuilder));
+        }
+    }
+
+    [TestFixture]
+    public class setup_with_windows_authentication
+    {
+        private BehaviorGraph theGraphWithWindowsAuthentication;
+
+        [SetUp]
+        public void SetUp()
+        {
+            var registry = new FubuRegistry();
+            registry.Import<ApplyAuthentication>(x => x.IncludeWindowsAuthentication());
+
+            theGraphWithWindowsAuthentication = BehaviorGraph.BuildFrom(registry);
+        }
+
+        [Test]
+        public void the_windows_action_call_is_registered()
+        {
+            theGraphWithWindowsAuthentication.BehaviorFor<WindowsController>(x => x.Login(null)).ShouldNotBeNull();
+        }
+
+        [Test]
+        public void registers_the_windows_authentication_context()
+        {
+            theGraphWithWindowsAuthentication.Services.DefaultServiceFor<IWindowsAuthenticationContext>()
+                .Type.ShouldEqual(typeof (AspNetWindowsAuthenticationContext));
         }
     }
 }

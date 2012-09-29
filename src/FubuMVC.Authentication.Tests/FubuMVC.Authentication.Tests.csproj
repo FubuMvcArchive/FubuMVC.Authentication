@@ -107,6 +107,7 @@
     <Compile Include="Tickets\EncryptionTester.cs" />
     <Compile Include="Tickets\TicketAuthenticationSessionTester.cs" />
     <Compile Include="when_redirecting_an_unauthenticated_ajax_request.cs" />
+    <Compile Include="Windows\when_signing_in_with_windows_credentials.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
