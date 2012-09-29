@@ -6,6 +6,7 @@ using FubuCore;
 using FubuCore.Util;
 using FubuMVC.Authentication.Tickets.Basic;
 using FubuMVC.Authentication.Windows;
+using FubuMVC.ContentExtensions;
 using FubuMVC.Core;
 using FubuMVC.Core.Registration.Conventions;
 using FubuMVC.Core.Registration.Nodes;
@@ -82,6 +83,8 @@ namespace FubuMVC.Authentication
             {
                 registry.Actions.FindWith<WindowsActionSource>();
                 registry.Services<WindowsRegistry>();
+
+                registry.Extensions().For(new WindowsLoginExtension());
             }
             
             registry.Policies.Add(new ApplyAuthenticationPolicy(_filters.Matches));

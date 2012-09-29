@@ -9,6 +9,8 @@ namespace FubuMVC.Authentication.Tickets.Basic
         public static readonly LoginKeys Unknown = new LoginKeys("The credentials supplied are incorrect");
         public static readonly LoginKeys Login = new LoginKeys("Login");
 
+        public static readonly LoginKeys LoginWithWindows = new LoginKeys("Login with Windows");
+
         public static readonly LoginKeys YourUsername = new LoginKeys("Your email...");
         public static readonly LoginKeys YourPassword = new LoginKeys("Your password...");
         public static readonly LoginKeys RememberMe = new LoginKeys("Remember me on this device");

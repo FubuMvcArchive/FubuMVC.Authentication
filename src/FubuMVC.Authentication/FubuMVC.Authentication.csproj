@@ -120,6 +120,7 @@
     <Compile Include="Windows\IWindowsAuthenticationContext.cs" />
     <Compile Include="Windows\WindowsActionSource.cs" />
     <Compile Include="Windows\WindowsController.cs" />
+    <Compile Include="Windows\WindowsLoginExtension.cs" />
     <Compile Include="Windows\WindowsRegistry.cs" />
     <Compile Include="Windows\WindowsSignInRequest.cs" />
   </ItemGroup>
