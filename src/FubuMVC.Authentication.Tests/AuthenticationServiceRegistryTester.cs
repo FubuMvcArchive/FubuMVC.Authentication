@@ -43,7 +43,13 @@ namespace FubuMVC.Authentication.Tests
         [Test]
         public void registers_default_ITicketSource()
         {
-            theDefaultServiceIs<ITicketSource, SimpleCookieTicketSource>();
+            theDefaultServiceIs<ITicketSource, CookieTicketSource>();
+        }
+
+        [Test]
+        public void registers_default_ILoginCookieService()
+        {
+            theDefaultServiceIs<ILoginCookieService, LoginCookieService>();
         }
 
         [Test]

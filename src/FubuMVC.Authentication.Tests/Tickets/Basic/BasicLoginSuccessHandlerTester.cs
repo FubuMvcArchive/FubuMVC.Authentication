@@ -1,9 +1,9 @@
-﻿using FubuMVC.Authentication.Tickets.Basic;
+using FubuMVC.Authentication.Tickets.Basic;
 using FubuTestingSupport;
 using NUnit.Framework;
 using Rhino.Mocks;
 
-namespace FubuMVC.Authentication.Tests.Basic
+namespace FubuMVC.Authentication.Tests.Tickets.Basic
 {
     [TestFixture]
     public class BasicLoginSuccessHandlerTester : InteractionContext<BasicLoginSuccessHandler>

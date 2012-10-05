@@ -40,7 +40,7 @@ namespace FubuMVC.Authentication.Tests
         public void the_nullo_principal_roles_is_registered()
         {
             theGraphWithBasicAuthentication.Services.DefaultServiceFor<IPrincipalRoles>()
-                .Type.ShouldEqual(typeof(NulloPrincipalRoles));
+                .Type.ShouldEqual(typeof (NulloPrincipalRoles));
         }
 
         [Test]
@@ -52,24 +52,45 @@ namespace FubuMVC.Authentication.Tests
         [Test]
         public void logout_endpoint_is_added()
         {
-            theGraphWithBasicAuthentication.BehaviorFor(typeof(LogoutRequest)).ShouldNotBeNull();
+            theGraphWithBasicAuthentication.BehaviorFor(typeof (LogoutRequest)).ShouldNotBeNull();
         }
 
         [Test]
         public void basic_login_redirect_is_registered()
         {
             theGraphWithBasicAuthentication.Services.DefaultServiceFor<IBasicLoginRedirect>()
-                .Type.ShouldEqual(typeof(BasicLoginRedirect));
+                .Type.ShouldEqual(typeof (BasicLoginRedirect));
         }
 
         [Test]
         public void basic_login_success_handler_is_registered()
         {
             theGraphWithBasicAuthentication.Services.DefaultServiceFor<ILoginSuccessHandler>()
-                .Type.ShouldEqual(typeof(BasicLoginSuccessHandler));
+                .Type.ShouldEqual(typeof (BasicLoginSuccessHandler));
         }
 
-        // everything else is covered by the service registry tester
+        [Test]
+        public void default_cookie_settings_are_registered()
+        {
+            theGraphWithBasicAuthentication.Services.DefaultServiceFor<CookieSettings>()
+                .Value.As<CookieSettings>().ShouldNotBeNull();
+        }
+    }
+
+    [TestFixture]
+    public class altering_settings
+    {
+        [Test]
+        public void cookie_settings_can_be_altered()
+        {
+            var newName = "Test";
+            var registry = new FubuRegistry();
+            registry.Import<ApplyAuthentication>(x => x.AlterSettings(settings => settings.Name = newName));
+
+            var graph = BehaviorGraph.BuildFrom(registry);
+            graph.Services.DefaultServiceFor<CookieSettings>()
+                .Value.As<CookieSettings>().Name.ShouldEqual(newName);
+        }
     }
 
     [TestFixture]

@@ -19,6 +19,7 @@ namespace FubuMVC.Authentication
         private bool _includeEndpoints;
         private bool _includeWindowsAuth;
         private bool _useDefaults = true;
+        private CookieSettings _settings = new CookieSettings();
         private FubuPackageRegistry _internalRegistry = new FubuPackageRegistry();
         private readonly CompositeFilter<BehaviorChain> _filters = new CompositeFilter<BehaviorChain>();
 
@@ -63,6 +64,7 @@ namespace FubuMVC.Authentication
         void IFubuRegistryExtension.Configure(FubuRegistry registry)
         {
             registry.Services<AuthenticationServiceRegistry>();
+            registry.Services(x => x.SetServiceIfNone(_settings));
             _internalRegistry.As<IFubuRegistryExtension>().Configure(registry);
 
             if(_useDefaults)
@@ -93,6 +95,12 @@ namespace FubuMVC.Authentication
                 WhatMustBeBefore = node => node is AuthenticationFilterNode,
                 WhatMustBeAfter = node => node is AuthorizationNode
             });
+        }
+
+        // TODO -- This goes away when the settings collection makes it into the service registry
+        public void AlterSettings(Action<CookieSettings> configure)
+        {
+            configure(_settings);
         }
 
         public void AuthenticateWith<T>() where T : IAuthenticationService

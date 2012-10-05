@@ -15,9 +15,10 @@ namespace FubuMVC.Authentication
 
             // TODO -- Break out the "Basic" stuff into a separate registry
             SetServiceIfNone<IPrincipalContext, ThreadPrincipalContext>();
-            SetServiceIfNone<ITicketSource, SimpleCookieTicketSource>();
+            SetServiceIfNone<ITicketSource, CookieTicketSource>();
             SetServiceIfNone<IEncryptor, Encryptor>();
             SetServiceIfNone<ILoginCookies, BasicFubuLoginCookies>();
+            SetServiceIfNone<ILoginCookieService, LoginCookieService>();
             SetServiceIfNone<IBasicLoginRedirect, BasicLoginRedirect>();
             SetServiceIfNone<ILoginSuccessHandler, BasicLoginSuccessHandler>();
             SetServiceIfNone<ILoginFailureHandler, NulloLoginFailureHandler>();

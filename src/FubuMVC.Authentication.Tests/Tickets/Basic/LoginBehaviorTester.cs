@@ -6,7 +6,7 @@ using FubuTestingSupport;
 using NUnit.Framework;
 using Rhino.Mocks;
 
-namespace FubuMVC.Authentication.Tests.Basic
+namespace FubuMVC.Authentication.Tests.Tickets.Basic
 {
     [TestFixture]
     public class when_running_in_a_get : InteractionContext<LoginBehavior>

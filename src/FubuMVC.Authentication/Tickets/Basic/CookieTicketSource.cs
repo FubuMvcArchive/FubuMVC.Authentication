@@ -1,19 +1,16 @@
 using System;
-using System.Web;
 using FubuCore.Dates;
-using FubuMVC.Core.Http;
 using HtmlTags;
 
 namespace FubuMVC.Authentication.Tickets.Basic
 {
-    public class SimpleCookieTicketSource : ITicketSource
+    public class CookieTicketSource : ITicketSource
     {
         private readonly ISystemTime _systemTime;
         private readonly IEncryptor _encryptor;
-        private readonly ICookies _cookies;
-        public static readonly string CookieName = "FubuAuthTicket";
+        private readonly ILoginCookieService _cookies;
 
-        public SimpleCookieTicketSource(ISystemTime systemTime, IEncryptor encryptor, ICookies cookies)
+        public CookieTicketSource(ISystemTime systemTime, IEncryptor encryptor, ILoginCookieService cookies)
         {
             _systemTime = systemTime;
             _encryptor = encryptor;
@@ -24,7 +21,7 @@ namespace FubuMVC.Authentication.Tickets.Basic
         {
             try
             {
-                var cookie = _cookies.Request[CookieName];
+                var cookie = _cookies.Current();
                 if (cookie != null)
                 {
                     var json = cookie.Value;
@@ -43,24 +40,18 @@ namespace FubuMVC.Authentication.Tickets.Basic
 
         public void Persist(AuthenticationTicket ticket)
         {
-            var cookie = basicCookie();
+            var cookie = _cookies.CreateCookie(_systemTime);
             cookie.Value = _encryptor.Encrypt(JsonUtil.ToJson(ticket));
-            cookie.Expires = _systemTime.UtcNow().AddMonths(1);
 
-            _cookies.Response.Add(cookie);
+            _cookies.Update(cookie);
         }
 
         public void Delete()
         {
-            var cookie = basicCookie();
+            var cookie = _cookies.CreateCookie(_systemTime);
             cookie.Expires = _systemTime.UtcNow().AddYears(-1);
 
-            _cookies.Response.Add(cookie);
-        }
-
-        private static HttpCookie basicCookie()
-        {
-            return new HttpCookie(CookieName);
+            _cookies.Update(cookie);
         }
     }
 }

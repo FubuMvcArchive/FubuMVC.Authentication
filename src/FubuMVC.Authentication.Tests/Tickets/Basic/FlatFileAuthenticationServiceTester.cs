@@ -1,11 +1,9 @@
-﻿using System.Linq;
 using FubuCore;
 using FubuMVC.Authentication.Tickets.Basic;
-using FubuMVC.Core.Packaging;
 using FubuTestingSupport;
 using NUnit.Framework;
 
-namespace FubuMVC.Authentication.Tests.Basic
+namespace FubuMVC.Authentication.Tests.Tickets.Basic
 {
     [TestFixture]
     public class FlatFileAuthenticationServiceTester

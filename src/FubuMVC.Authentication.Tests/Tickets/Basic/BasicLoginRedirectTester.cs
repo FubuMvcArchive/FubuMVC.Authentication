@@ -1,11 +1,11 @@
-﻿using FubuMVC.Authentication.Tickets.Basic;
+using FubuMVC.Authentication.Tickets.Basic;
 using FubuMVC.Core.Http;
 using FubuMVC.Core.Runtime;
 using FubuTestingSupport;
 using NUnit.Framework;
 using Rhino.Mocks;
 
-namespace FubuMVC.Authentication.Tests.Basic
+namespace FubuMVC.Authentication.Tests.Tickets.Basic
 {
     [TestFixture]
     public class BasicLoginRedirectTester : InteractionContext<BasicLoginRedirect>

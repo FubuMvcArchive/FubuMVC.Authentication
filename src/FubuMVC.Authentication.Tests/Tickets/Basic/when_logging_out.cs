@@ -4,7 +4,7 @@ using FubuTestingSupport;
 using NUnit.Framework;
 using Rhino.Mocks;
 
-namespace FubuMVC.Authentication.Tests.Basic
+namespace FubuMVC.Authentication.Tests.Tickets.Basic
 {
 	[TestFixture]
 	public class when_logging_out : InteractionContext<LogoutController>

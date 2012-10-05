@@ -1,4 +1,4 @@
-﻿using FubuCore;
+using FubuCore;
 using FubuMVC.Authentication.Tickets.Basic;
 using FubuMVC.Core.Registration.Nodes;
 using FubuMVC.Core.Resources.Conneg;
@@ -8,7 +8,7 @@ using HtmlTags;
 using NUnit.Framework;
 using Rhino.Mocks;
 
-namespace FubuMVC.Authentication.Tests.Basic
+namespace FubuMVC.Authentication.Tests.Tickets.Basic
 {
     [TestFixture]
     public class WriteDefaultLoginTester
