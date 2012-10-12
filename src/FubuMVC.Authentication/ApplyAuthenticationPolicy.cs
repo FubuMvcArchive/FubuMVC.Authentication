@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FubuCore.Reflection;
-using FubuMVC.Core.Assets.Http;
 using FubuMVC.Core.Registration;
 using FubuMVC.Core.Registration.Nodes;
 
@@ -29,7 +28,8 @@ namespace FubuMVC.Authentication
             if (chain.InputType() != null && chain.InputType().HasAttribute<NotAuthenticatedAttribute>()) return true;
             if (chain.OfType<ActionCall>().Any(x => x.HasAttribute<NotAuthenticatedAttribute>())) return true;
 
-            if (chain.OfType<ActionCall>().Any(x => x.HandlerType == typeof(AssetWriter))) return true;
+            // TODO -- Come up with a better way of doing this
+            if (chain.OfType<ActionCall>().Any(x => x.HandlerType.Name == "AssetWriter")) return true;
 
             return false;
         }

@@ -1,6 +1,7 @@
 using FubuMVC.Core;
 using FubuMVC.Core.Registration;
 using FubuMVC.Core.Runtime.Conditionals;
+using FubuMVC.Core.View;
 
 namespace FubuMVC.Authentication.Tickets.Basic
 {

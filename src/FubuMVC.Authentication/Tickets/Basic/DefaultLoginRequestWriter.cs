@@ -11,12 +11,14 @@ namespace FubuMVC.Authentication.Tickets.Basic
     public class DefaultLoginRequestWriter : IMediaWriter<LoginRequest>
     {
         private readonly IServiceLocator _services;
+        private readonly IFubuRequest _request;
         private readonly IOutputWriter _writer;
 
-        public DefaultLoginRequestWriter(IServiceLocator services, IOutputWriter writer)
+        public DefaultLoginRequestWriter(IServiceLocator services, IOutputWriter writer, IFubuRequest request)
         {
             _services = services;
             _writer = writer;
+            _request = request;
         }
 
         public void Write(string mimeType, LoginRequest resource)
@@ -28,7 +30,7 @@ namespace FubuMVC.Authentication.Tickets.Basic
         public virtual HtmlDocument BuildView(LoginRequest request)
         {
             // TODO -- Revisit all of this when we get HTML conventions everywhere
-            var view = new FubuHtmlDocument<LoginRequest>(_services);
+            var view = new FubuHtmlDocument<LoginRequest>(_services, _request);
             var form = view.FormFor<LoginRequest>();
             form.Append(new HtmlTag("legend").Text(LoginKeys.Login));
 

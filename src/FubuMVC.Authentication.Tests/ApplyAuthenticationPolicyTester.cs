@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
-using FubuMVC.Core.Assets.Http;
 using FubuMVC.Core.Registration;
 using FubuMVC.Core.Registration.Nodes;
 using FubuTestingSupport;
@@ -23,13 +22,6 @@ namespace FubuMVC.Authentication.Tests
         public void exempt_includes_calls_with_the_NotAuthenticationAttribute()
         {
             var chain = chainFor<NotAuthenticatedEndpoint>(x => x.get_something());
-            ApplyAuthenticationPolicy.ExemptedFromAuthentication(chain).ShouldBeTrue();
-        }
-
-        [Test]
-        public void exempt_includes_asset_writer_calls()
-        {
-            var chain = chainFor<AssetWriter>(x => x.Write(null));
             ApplyAuthenticationPolicy.ExemptedFromAuthentication(chain).ShouldBeTrue();
         }
 
