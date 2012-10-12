@@ -12,8 +12,7 @@
     <description>Extensible authentication behaviors (with sensible defaults) for your FubuMVC application.</description>
     <tags>fubumvc authentication</tags>
     <dependencies>
-      <dependency id="FubuMVC.References" version="0.9.8.1168" />
-	  <dependency id="FubuMVC.ContentExtensions" version="0.1.0.2" />
+	  <dependency id="FubuMVC.ContentExtensions" version="0.1.0.31" />
     </dependencies>
   </metadata>
   <files>
