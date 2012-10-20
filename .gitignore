@@ -20,6 +20,8 @@ _ReSharper.*
 test-results
 src/packages
 *.dotCover
+*.ncrunchsolution*
+*.ncrunchproject*
 src/*/repositories.config
 .bottle-alias
 results

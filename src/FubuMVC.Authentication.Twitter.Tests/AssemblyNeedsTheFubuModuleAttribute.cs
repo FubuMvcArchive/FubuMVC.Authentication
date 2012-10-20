@@ -11,7 +11,7 @@ namespace FubuMVC.Authentication.Twitter.Tests
         [Test]
         public void the_attribute_exists()
         {
-            var assembly = typeof(ITwitterProxy).Assembly;
+            var assembly = typeof(TwitterController).Assembly;
 
             assembly.GetCustomAttributes(typeof(FubuModuleAttribute), true)
                 .Any().ShouldBeTrue();

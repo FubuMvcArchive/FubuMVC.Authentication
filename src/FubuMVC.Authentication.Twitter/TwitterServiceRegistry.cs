@@ -1,4 +1,5 @@
 using DotNetOpenAuth.OAuth.ChannelElements;
+using FubuMVC.Authentication.OAuth;
 using FubuMVC.Core.Registration;
 
 namespace FubuMVC.Authentication.Twitter
