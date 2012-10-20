@@ -3,7 +3,7 @@ using FubuCore;
 using FubuMVC.Core;
 using FubuMVC.Core.Urls;
 
-namespace FubuMVC.Authentication.Twitter
+namespace FubuMVC.Authentication.OAuth
 {
     public interface ISystemUrls
     {
