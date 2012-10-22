@@ -92,6 +92,7 @@
     <Reference Include="System.Net.Http.WebRequest">
       <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Http">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
     </Reference>
@@ -105,8 +106,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="authenticated_route_redirects_to_login.cs" />
+    <Compile Include="authenticated_request_against_an_authenticated_route.cs" />
+    <Compile Include="AuthenticationHarness.cs" />
+    <Compile Include="SampleController.cs" />
+    <Compile Include="unauthenticated_ajax_request_against_an_authenticated_route.cs" />
+    <Compile Include="unauthenticated_request_against_an_authenticated_route.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="unauthenticated_request_against_an_unauthenticated_route.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

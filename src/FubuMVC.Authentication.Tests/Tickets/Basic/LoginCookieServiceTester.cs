@@ -3,6 +3,7 @@ using System.Web;
 using FubuCore.Dates;
 using FubuMVC.Authentication.Tickets.Basic;
 using FubuMVC.Core.Http;
+using FubuMVC.Core.Runtime;
 using FubuTestingSupport;
 using NUnit.Framework;
 using Rhino.Mocks;
@@ -92,10 +93,7 @@ namespace FubuMVC.Authentication.Tests.Tickets.Basic
         {
             theCookie = new HttpCookie(CookieSettings.DefaultCookieName);
 
-            var request = new HttpCookieCollection();
-            request.Add(theCookie);
-
-            MockFor<ICookies>().Stub(x => x.Request).Return(request);
+            MockFor<ICookies>().Stub(x => x.Get(CookieSettings.DefaultCookieName)).Return(theCookie);
         }
 
         [Test]
@@ -108,22 +106,18 @@ namespace FubuMVC.Authentication.Tests.Tickets.Basic
     [TestFixture]
     public class when_updating_the_login_cookie : InteractionContext<LoginCookieService>
     {
-        private HttpCookieCollection theResponse;
+        private HttpCookie theCookie;
 
         protected override void beforeEach()
         {
-            theResponse = new HttpCookieCollection();
-
-            MockFor<ICookies>().Stub(x => x.Response).Return(theResponse);
+            theCookie = new HttpCookie("Test");
+            ClassUnderTest.Update(theCookie);
         }
 
         [Test]
         public void adds_the_cookie_to_the_response()
         {
-            var cookie = new HttpCookie("Test");
-            ClassUnderTest.Update(cookie);
-
-            theResponse.Get(cookie.Name).ShouldBeTheSameAs(cookie);
+            MockFor<IOutputWriter>().AssertWasCalled(x => x.AppendCookie(theCookie));
         }
     }
 }

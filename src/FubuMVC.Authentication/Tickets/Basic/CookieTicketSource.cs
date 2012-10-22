@@ -1,4 +1,5 @@
 using System;
+using System.Web;
 using FubuCore.Dates;
 using HtmlTags;
 
@@ -24,9 +25,7 @@ namespace FubuMVC.Authentication.Tickets.Basic
                 var cookie = _cookies.Current();
                 if (cookie != null)
                 {
-                    var json = cookie.Value;
-                    json = _encryptor.Decrypt(json);
-
+                    var json = DecodeJson(cookie);
                     return JsonUtil.Get<AuthenticationTicket>(json);
                 }
 
@@ -36,6 +35,12 @@ namespace FubuMVC.Authentication.Tickets.Basic
             {
                 return null;
             }
+        }
+
+        public string DecodeJson(HttpCookie cookie)
+        {
+            var json = cookie.Value.Replace("%2f", "/");
+            return _encryptor.Decrypt(json);
         }
 
         public void Persist(AuthenticationTicket ticket)
