@@ -99,7 +99,7 @@
       <HintPath>..\packages\FubuMVC.ContentExtensions.0.1.0.37\lib\net40\FubuMVC.ContentExtensions.dll</HintPath>
     </Reference>
     <Reference Include="FubuMVC.Core">
-      <HintPath>..\packages\FubuMVC.Core.0.9.8.1221\lib\net40\FubuMVC.Core.dll</HintPath>
+      <HintPath>..\packages\FubuMVC.Core.0.9.8.1223\lib\net40\FubuMVC.Core.dll</HintPath>
     </Reference>
     <Reference Include="FubuMVC.Core.View">
       <HintPath>..\packages\FubuMVC.Core.View.0.9.9.18\lib\net40\FubuMVC.Core.View.dll</HintPath>

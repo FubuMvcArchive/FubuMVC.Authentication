@@ -15,10 +15,10 @@ namespace FubuMVC.Authentication.IntegrationTesting
         protected override void beforeEach()
         {
             theResponse = endpoints.GetByInput(new TargetModel(), acceptType: "application/json", configure: r =>
-                                                                                                             {
-                                                                                                                 r.AllowAutoRedirect = false;
-                                                                                                                 r.Headers.Add(AjaxExtensions.XRequestedWithHeader, AjaxExtensions.XmlHttpRequestValue);
-                                                                                                             });
+            {
+                r.AllowAutoRedirect = false;
+                r.Headers.Add(AjaxExtensions.XRequestedWithHeader, AjaxExtensions.XmlHttpRequestValue);
+            });
         }
 
         [Test]
