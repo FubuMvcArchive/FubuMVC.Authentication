@@ -2,11 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FubuCore.Reflection;
+using FubuMVC.Core;
 using FubuMVC.Core.Registration;
 using FubuMVC.Core.Registration.Nodes;
 
 namespace FubuMVC.Authentication
 {
+    [ConfigurationType(ConfigurationType.InjectNodes)]
     public class ApplyAuthenticationPolicy : IConfigurationAction
     {
         private readonly Func<BehaviorChain, bool> _filter;

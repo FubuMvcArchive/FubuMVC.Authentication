@@ -13,8 +13,6 @@ namespace FubuMVC.Authentication.Twitter
             SetServiceIfNone<ISignInEndpointBuilder, SignInEndpointBuilder>();
             SetServiceIfNone<IConsumerTokenManager, InMemoryTokenManager>();
             SetServiceIfNone<ISystemUrls, SystemUrls>();
-
-            ConfigureRequirements(x => x.AddRule<OAuthSettingsRule>());
         }
     }
 }
