@@ -36,7 +36,6 @@
     </Compile>
     <Compile Include="AttachDefaultTwitterView.cs" />
     <Compile Include="DefaultTwitterLoginRequestWriter.cs" />
-    <Compile Include="ISystemUrls.cs" />
     <Compile Include="OAuthSettingsRule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="InMemoryTokenManager.cs" />
@@ -62,6 +61,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FubuMVC.Authentication.OAuth\FubuMVC.Authentication.OAuth.csproj">
+      <Project>{91493B70-E834-42D6-BB28-75DF09270442}</Project>
+      <Name>FubuMVC.Authentication.OAuth</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FubuMVC.Authentication\FubuMVC.Authentication.csproj">
       <Project>{B889AF6B-2744-4370-842A-04026D1370B5}</Project>
       <Name>FubuMVC.Authentication</Name>
@@ -71,23 +74,17 @@
     <Reference Include="Bottles">
       <HintPath>..\packages\Bottles.0.9.9.401\lib\Bottles.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetOpenAuth.Core">
-      <HintPath>..\packages\DotNetOpenAuth.Core.4.1.0.12182\lib\net40-full\DotNetOpenAuth.Core.dll</HintPath>
+    <Reference Include="DotNetOpenAuth.Core, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.Core.4.1.3.12303\lib\net40-full\DotNetOpenAuth.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetOpenAuth.Core.UI">
-      <HintPath>..\packages\DotNetOpenAuth.Core.UI.4.1.0.12182\lib\net40-full\DotNetOpenAuth.Core.UI.dll</HintPath>
+    <Reference Include="DotNetOpenAuth.OAuth, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.1.3.12303\lib\net40-full\DotNetOpenAuth.OAuth.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetOpenAuth.OAuth">
-      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.1.0.12182\lib\net40-full\DotNetOpenAuth.OAuth.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetOpenAuth.OAuth.Common">
-      <HintPath>..\packages\DotNetOpenAuth.OAuth.Common.4.1.0.12182\lib\net40-full\DotNetOpenAuth.OAuth.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetOpenAuth.OAuth.Consumer">
-      <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.1.0.12182\lib\net40-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetOpenAuth.OAuth.ServiceProvider">
-      <HintPath>..\packages\DotNetOpenAuth.OAuth.ServiceProvider.4.1.0.12182\lib\net40-full\DotNetOpenAuth.OAuth.ServiceProvider.dll</HintPath>
+    <Reference Include="DotNetOpenAuth.OAuth.Consumer, Version=4.1.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.1.3.12303\lib\net40-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
     </Reference>
     <Reference Include="FubuCore">
       <HintPath>..\packages\FubuCore.0.9.9.206\lib\FubuCore.dll</HintPath>
@@ -101,14 +98,21 @@
     <Reference Include="FubuMVC.Core">
       <HintPath>..\packages\FubuMVC.Core.0.9.9.1274\lib\net40\FubuMVC.Core.dll</HintPath>
     </Reference>
-    <Reference Include="FubuMVC.Core.View">
-      <HintPath>..\packages\FubuMVC.Core.View.0.9.9.43\lib\net40\FubuMVC.Core.View.dll</HintPath>
+    <Reference Include="FubuMVC.Core.View, Version=0.9.9.44, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\FubuMVC.Core.View.0.9.9.44\lib\net40\FubuMVC.Core.View.dll</HintPath>
     </Reference>
     <Reference Include="HtmlTags">
       <HintPath>..\packages\HtmlTags.1.2.0.128\lib\4.0\HtmlTags.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

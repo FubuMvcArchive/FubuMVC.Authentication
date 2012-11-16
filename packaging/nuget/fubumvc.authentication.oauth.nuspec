@@ -1,22 +1,22 @@
 <?xml version="1.0"?>
 <package xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
-    <id>FubuMVC.Authentication.Twitter</id>
+    <id>FubuMVC.Authentication.OAuth</id>
     <version>0.0</version>
-    <authors>Jeremy Miller, Joshua Arnold</authors>
+    <authors>Jeremy Miller, Joshua Arnold, Robert Greyling</authors>
     <owners>Jeremy Miller, Joshua Arnold</owners>
     <licenseUrl>https://github.com/DarthFubuMVC/fubumvc/raw/master/license.txt</licenseUrl>
     <projectUrl>http://mvc.fubu-project.org/</projectUrl>
     <iconUrl>https://github.com/DarthFubuMVC/fubu-collateral/raw/master/Icons/FubuMvc_256.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Extends the FubuMVC.Authentication Bottle and provides integration with Twitter authentication.</description>
-    <tags>fubumvc authentication twitter</tags>
+    <description>Extends the FubuMVC.Authentication Bottle and provides integration with OAuth providers.</description>
+    <tags>fubumvc authentication oauth oauth2</tags>
     <dependencies>
-	  <dependency id="FubuMVC.Authentication.OAuth" version="0.1.0.104" />
-	  <dependency id="DotNetOpenAuth.OAuth.Consumer" version="4.1.3.12303" />
+      <dependency id="FubuMVC.Authentication" version="0.1.0.69" />
+      <dependency id="DotNetOpenAuth.OAuth2.Client" version="0.25.0-draft4" />
     </dependencies>
   </metadata>
   <files>
-    <file src="..\..\src\FubuMVC.Authentication.Twitter\bin\release\FubuMVC.Authentication.Twitter.*" target="lib\net40" />
+    <file src="..\..\src\FubuMVC.Authentication.OAuth\bin\release\FubuMVC.Authentication.OAuth.*" target="lib\net40" />
   </files>
 </package>

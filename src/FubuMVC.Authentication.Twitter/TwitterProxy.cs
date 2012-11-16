@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using DotNetOpenAuth.OAuth;
 using DotNetOpenAuth.OAuth.ChannelElements;
+using FubuMVC.Authentication.OAuth;
 using FubuMVC.Core.Runtime;
 
 namespace FubuMVC.Authentication.Twitter
