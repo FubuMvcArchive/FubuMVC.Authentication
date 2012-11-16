@@ -1,15 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3E04D7BF-BA4A-4799-93EA-494597D55B5F}</ProjectGuid>
+    <ProjectGuid>{7DA71D90-AF0B-4843-996F-1AB863D2F80E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FubuMVC.Authentication.Tests</RootNamespace>
-    <AssemblyName>FubuMVC.Authentication.Tests</AssemblyName>
+    <RootNamespace>FubuMVC.Authentication.OAuth.Tests</RootNamespace>
+    <AssemblyName>FubuMVC.Authentication.OAuth.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,16 +39,8 @@
     <Reference Include="FubuLocalization">
       <HintPath>..\packages\FubuLocalization.0.9.5.105\lib\FubuLocalization.dll</HintPath>
     </Reference>
-    <Reference Include="FubuMVC.ContentExtensions, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\FubuMVC.ContentExtensions.0.1.0.60\lib\net40\FubuMVC.ContentExtensions.dll</HintPath>
-    </Reference>
     <Reference Include="FubuMVC.Core">
       <HintPath>..\packages\FubuMVC.Core.0.9.9.1274\lib\net40\FubuMVC.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="FubuMVC.Core.View, Version=0.9.9.44, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\FubuMVC.Core.View.0.9.9.44\lib\net40\FubuMVC.Core.View.dll</HintPath>
     </Reference>
     <Reference Include="FubuTestingSupport">
       <HintPath>..\packages\FubuTestingSupport.0.9.9.206\lib\FubuTestingSupport.dll</HintPath>
@@ -77,7 +68,6 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -85,45 +75,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AjaxAuthenticationRedirectTester.cs" />
-    <Compile Include="ApplyAuthenticationExtensionTester.cs" />
-    <Compile Include="ApplyAuthenticationPolicyTester.cs" />
     <Compile Include="AssemblyNeedsTheFubuModuleAttribute.cs" />
-    <Compile Include="AuthenticationBehaviorTester.cs" />
-    <Compile Include="AuthenticationBootstrapperTests.cs" />
-    <Compile Include="AuthenticationFilterNodeTester.cs" />
-    <Compile Include="AuthenticationFilterTester.cs" />
-    <Compile Include="AuthenticationServiceRegistryTester.cs" />
-    <Compile Include="DefaultAuthenticationRedirectTester.cs" />
-    <Compile Include="LoginRequestTester.cs" />
-    <Compile Include="NotAuthenticatedModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Stubs.cs" />
-    <Compile Include="ThreadPrincipalContextTester.cs" />
-    <Compile Include="Tickets\Basic\BasicLoginRedirectTester.cs" />
-    <Compile Include="Tickets\Basic\BasicLoginSuccessHandlerTester.cs" />
-    <Compile Include="Tickets\Basic\LoginCookieServiceTester.cs" />
-    <Compile Include="Tickets\Basic\CookieSettingsTester.cs" />
-    <Compile Include="Tickets\Basic\FlatFileAuthenticationServiceTester.cs" />
-    <Compile Include="Tickets\Basic\LoginBehaviorTester.cs" />
-    <Compile Include="Tickets\Basic\LoginControllerTests.cs" />
-    <Compile Include="Tickets\Basic\when_logging_out.cs" />
-    <Compile Include="Tickets\Basic\WriteDefaultLoginTester.cs" />
-    <Compile Include="Tickets\EncryptionTester.cs" />
-    <Compile Include="Tickets\TicketAuthenticationSessionTester.cs" />
-    <Compile Include="when_redirecting_an_unauthenticated_ajax_request.cs" />
-    <Compile Include="Windows\when_signing_in_with_windows_credentials.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FubuMVC.Authentication\FubuMVC.Authentication.csproj">
-      <Project>{B889AF6B-2744-4370-842A-04026D1370B5}</Project>
-      <Name>FubuMVC.Authentication</Name>
+    <ProjectReference Include="..\FubuMVC.Authentication.OAuth\FubuMVC.Authentication.OAuth.csproj">
+      <Project>{91493B70-E834-42D6-BB28-75DF09270442}</Project>
+      <Name>FubuMVC.Authentication.OAuth</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

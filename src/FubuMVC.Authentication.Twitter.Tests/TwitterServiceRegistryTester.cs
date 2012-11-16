@@ -50,12 +50,6 @@ namespace FubuMVC.Authentication.Twitter.Tests
             theDefaultServiceIs<IConsumerTokenManager, InMemoryTokenManager>();
         }
 
-        [Test]
-        public void registers_default_ISystemUrls()
-        {
-            theDefaultServiceIs<ISystemUrls, SystemUrls>();
-        }
-
         private void theDefaultServiceIs<TPlugin, TImplementation>()
         {
             theServiceGraph.DefaultServiceFor<TPlugin>()

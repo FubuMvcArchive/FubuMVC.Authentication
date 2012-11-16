@@ -1,15 +1,15 @@
-﻿using System.Web;
+using System.Web;
 using FubuCore;
 using FubuMVC.Core;
 using FubuMVC.Core.Urls;
 
-namespace FubuMVC.Authentication.Twitter
+namespace FubuMVC.Authentication.OAuth
 {
     public interface ISystemUrls
     {
         string FullUrlFor(object model);
     }
-    
+
     // TODO -- This obviously only works w/ ASP.NET as does all of this Bottle
     // Need a good way to do this in FubuMVC.Core
     public class SystemUrls : ISystemUrls
