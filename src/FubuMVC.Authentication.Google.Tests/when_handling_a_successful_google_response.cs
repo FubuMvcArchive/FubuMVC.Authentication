@@ -21,7 +21,7 @@ namespace FubuMVC.Authentication.Google.Tests
 
             MockFor<IFubuRequest>().Stub(x => x.Get<GoogleLoginRequest>()).Return(theRequest);
 
-            ClassUnderTest.Success();
+            ClassUnderTest.Success(new OAuthResponse());
         }
 
         [Test]

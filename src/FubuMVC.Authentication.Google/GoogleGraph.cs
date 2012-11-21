@@ -13,7 +13,7 @@ namespace FubuMVC.Authentication.Google
         private static readonly DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(GoogleGraph));
 
         [DataMember(Name = "id")]
-        public long Id { get; set; }
+        public string Id { get; set; }
 
         [DataMember(Name = "given_name")]
         public string FirstName { get; set; }

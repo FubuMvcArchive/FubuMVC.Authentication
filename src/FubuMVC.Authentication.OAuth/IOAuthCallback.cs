@@ -25,7 +25,7 @@ namespace FubuMVC.Authentication.OAuth
                 {
                     // TODO -- Keep the access token (response.AccessToken)
                     _session.MarkAuthenticated(response.Email);
-                    _handlers.Success();
+                    _handlers.Success(response);
 
                     authenticated = true;
                 });

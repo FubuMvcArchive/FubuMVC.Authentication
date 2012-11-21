@@ -7,7 +7,7 @@ namespace FubuMVC.Authentication.OAuth
 {
     public interface IOAuthResponseHandler
     {
-        void Success();
+        void Success(IOAuthResponse response);
         void Failure();
     }
 
@@ -26,7 +26,7 @@ namespace FubuMVC.Authentication.OAuth
             _graph = graph;
         }
 
-        public void Success()
+        public void Success(IOAuthResponse response)
         {
             var login = _request.Get<T>();
             var url = login.Url;

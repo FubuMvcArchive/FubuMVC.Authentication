@@ -22,7 +22,7 @@ namespace FubuMVC.Authentication.Google
         public Uri AuthEndpoint { get; private set; }
         public Uri TokenEndpoint { get; private set; }
         public Uri UserProfileEndpoint { get; private set; }
-        public string[] DataRequestScopes { get; private set; }
+        public string[] DataRequestScopes { get; set; }
         public IOAuthGraph UserProfileGraph { get; private set; }
         public Func<IFubuRequest, ISystemUrls, Uri> SignInCallbackEndpoint { get; set; }
 
