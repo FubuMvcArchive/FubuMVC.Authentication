@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using FubuMVC.Core;
+using FubuMVC.Core.Continuations;
 using FubuMVC.Core.Registration;
 using FubuTestingSupport;
 using NUnit.Framework;
@@ -36,7 +37,7 @@ namespace FubuMVC.Authentication.Tests
                 throw new System.NotImplementedException();
             }
 
-            public void Redirect()
+            public FubuContinuation Redirect()
             {
                 throw new System.NotImplementedException();
             }

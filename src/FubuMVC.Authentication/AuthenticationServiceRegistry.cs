@@ -9,7 +9,6 @@ namespace FubuMVC.Authentication
         public AuthenticationServiceRegistry()
         {
             SetServiceIfNone<IAuthenticationSession, TicketAuthenticationSession>();
-            SetServiceIfNone<IAuthenticationFilter, AuthenticationFilter>();
             SetServiceIfNone<IPrincipalBuilder, FubuPrincipalBuilder>();
             SetServiceIfNone<IPrincipalRoles, NulloPrincipalRoles>();
 
@@ -22,9 +21,7 @@ namespace FubuMVC.Authentication
             SetServiceIfNone<IBasicLoginRedirect, BasicLoginRedirect>();
             SetServiceIfNone<ILoginSuccessHandler, BasicLoginSuccessHandler>();
             SetServiceIfNone<ILoginFailureHandler, NulloLoginFailureHandler>();
-
-            AddService<IAuthenticationRedirect, DefaultAuthenticationRedirect>();
-            AddService<IAuthenticationRedirect, AjaxAuthenticationRedirect>();
+            SetServiceIfNone<IAuthenticationRedirector, AuthenticationRedirector>();
         }
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Net;
 using FubuCore;
+using FubuMVC.Core.Continuations;
 using FubuMVC.Core.Runtime;
 using FubuMVC.Core.Urls;
 using FubuTestingSupport;
@@ -15,19 +16,26 @@ namespace FubuMVC.Authentication.Tests
 	{
 		private string theUrl;
 		private IDictionary<string, object> theValues;
+	    private FubuContinuation theContinuation;
 
-		protected override void beforeEach()
+	    protected override void beforeEach()
 		{
 			theUrl = "test/login";
 
 			MockFor<IUrlRegistry>().Stub(x => x.UrlFor(typeof (LoginRequest)))
 				.Return(theUrl);
 
-			ClassUnderTest.Redirect();
+			theContinuation = ClassUnderTest.Redirect();
 
 			theValues = (IDictionary<string, object>) MockFor<IJsonWriter>()
 			                                          	.GetArgumentsForCallsMadeOn(x => x.Write(null, null), x => x.IgnoreArguments())[0][0];
 		}
+
+	    [Test]
+	    public void the_continuation_should_be_stop()
+	    {
+            theContinuation.AssertWasEndedWithStatusCode(HttpStatusCode.Unauthorized);
+	    }
 
 		[Test]
 		public void sets_the_navigate_page_property()
@@ -49,10 +57,5 @@ namespace FubuMVC.Authentication.Tests
 				.ShouldEqual(MimeType.Json.ToString());
 		}
 
-		[Test]
-		public void sets_the_status_code_to_unauthorized()
-		{
-			MockFor<IOutputWriter>().AssertWasCalled(x => x.WriteResponseCode(HttpStatusCode.Unauthorized));
-		}
 	}
 }

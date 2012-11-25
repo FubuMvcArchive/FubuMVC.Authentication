@@ -1,5 +1,7 @@
-﻿using FubuTestingSupport;
+﻿using FubuMVC.Core.Http;
+using FubuTestingSupport;
 using NUnit.Framework;
+using Rhino.Mocks;
 
 
 namespace FubuMVC.Authentication.Tests
@@ -12,5 +14,20 @@ namespace FubuMVC.Authentication.Tests
 		{
 			ClassUnderTest.Applies().ShouldBeTrue();
 		}
+
+	    [Test]
+	    public void redirects_to_the_login_page()
+	    {
+	        var relativeUrl = "/something";
+
+	        MockFor<ICurrentHttpRequest>().Stub(x => x.RelativeUrl())
+	                                      .Return(relativeUrl);
+
+            ClassUnderTest.Redirect()
+                .AssertWasRedirectedTo(new LoginRequest
+                                       {
+                                           Url = relativeUrl
+                                       });
+	    }
 	}
 }

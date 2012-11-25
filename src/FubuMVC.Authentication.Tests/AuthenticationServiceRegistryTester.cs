@@ -35,12 +35,6 @@ namespace FubuMVC.Authentication.Tests
         }
 
         [Test]
-        public void registers_default_IAuthenticationFilter()
-        {
-            theDefaultServiceIs<IAuthenticationFilter, AuthenticationFilter>();
-        }
-
-        [Test]
         public void registers_default_ITicketSource()
         {
             theDefaultServiceIs<ITicketSource, CookieTicketSource>();
@@ -71,12 +65,9 @@ namespace FubuMVC.Authentication.Tests
         }
 
         [Test]
-        public void registers_default_redirects()
+        public void registers_default_IAuthenticationRedirector()
         {
-            theServiceGraph
-                .ServicesFor<IAuthenticationRedirect>()
-                .Select(x => x.Type)
-                .ShouldHaveTheSameElementsAs(typeof(DefaultAuthenticationRedirect), typeof(AjaxAuthenticationRedirect));
+            theDefaultServiceIs<IAuthenticationRedirector, AuthenticationRedirector>();
         }
 
         private void theDefaultServiceIs<TPlugin, TImplementation>()

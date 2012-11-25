@@ -2,6 +2,7 @@
 using FubuCore.Binding;
 using FubuMVC.Core;
 using FubuMVC.Core.Ajax;
+using FubuMVC.Core.Continuations;
 using FubuMVC.Core.Runtime;
 using FubuMVC.Core.Urls;
 
@@ -27,13 +28,14 @@ namespace FubuMVC.Authentication
 			return _data.IsAjaxRequest();
 		}
 
-		public void Redirect()
+		public FubuContinuation Redirect()
 		{
 			var url = _urls.UrlFor(typeof (LoginRequest));
 		    var continuation = new AjaxContinuation {Success = false, NavigatePage = url};
 
 		    _jsonWriter.Write(continuation.ToDictionary(), MimeType.Json.ToString());
-			_outputWriter.WriteResponseCode(HttpStatusCode.Unauthorized);
+
+		    return FubuContinuation.EndWithStatusCode(HttpStatusCode.Unauthorized);
 		}
 	}
 }

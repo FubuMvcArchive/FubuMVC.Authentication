@@ -1,8 +1,10 @@
-﻿namespace FubuMVC.Authentication
+﻿using FubuMVC.Core.Continuations;
+
+namespace FubuMVC.Authentication
 {
 	public interface IAuthenticationRedirect
 	{
 		bool Applies();
-		void Redirect();
+		FubuContinuation Redirect();
 	}
 }

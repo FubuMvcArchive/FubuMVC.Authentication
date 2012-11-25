@@ -46,5 +46,23 @@ namespace FubuMVC.Authentication
         {
             return UserName.IsNotEmpty() && Password.IsNotEmpty();
         }
+
+        protected bool Equals(LoginRequest other)
+        {
+            return string.Equals(Url, other.Url);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((LoginRequest) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return (Url != null ? Url.GetHashCode() : 0);
+        }
     }
 }

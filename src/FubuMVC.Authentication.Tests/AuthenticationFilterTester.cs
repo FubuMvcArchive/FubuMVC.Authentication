@@ -1,4 +1,5 @@
 using System.Security.Principal;
+using FubuMVC.Core.Continuations;
 using FubuTestingSupport;
 using NUnit.Framework;
 
@@ -9,20 +10,26 @@ namespace FubuMVC.Authentication.Tests
     [TestFixture]
     public class when_authenticating_and_there_is_not_a_previous_authentication_token : InteractionContext<AuthenticationFilter>
     {
-		private AuthenticationFilterResult theResult;
+        private FubuContinuation theResult;
+        private FubuContinuation theRedirect;
 
         protected override void beforeEach()
         {
             MockFor<IAuthenticationSession>().Stub(x => x.PreviouslyAuthenticatedUser())
                 .Return(null);
 
+            theRedirect = FubuContinuation.RedirectTo<LoginRequest>();
+
+            MockFor<IAuthenticationRedirector>().Stub(x => x.Redirect())
+                                                .Return(theRedirect);
+
             theResult = ClassUnderTest.Authenticate();
         }
 
         [Test]
-        public void should_redirect()
+        public void should_redirect_based_on_what_IAuthenticationRedirector_decides()
         {
-        	theResult.ShouldEqual(AuthenticationFilterResult.Redirect);
+            theResult.ShouldBeTheSameAs(theRedirect);
         }
     }
 
@@ -31,7 +38,7 @@ namespace FubuMVC.Authentication.Tests
     {
         private string theUserName;
         private IPrincipal thePrincipal;
-		private AuthenticationFilterResult theResult;
+        private FubuContinuation theResult;
 
         protected override void beforeEach()
         {
@@ -58,7 +65,7 @@ namespace FubuMVC.Authentication.Tests
         [Test]
         public void should_continue()
         {
-			theResult.ShouldEqual(AuthenticationFilterResult.Continue);
+			theResult.AssertWasContinuedToNextBehavior();
         }
 
         [Test]
