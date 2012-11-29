@@ -1,5 +1,6 @@
 ﻿using FubuMVC.Core.Registration;
 using FubuMVC.Core.Registration.Nodes;
+using FubuMVC.Core.Security;
 using HtmlTags;
 using NUnit.Framework;
 using FubuCore.Reflection;
@@ -50,6 +51,18 @@ namespace FubuMVC.Authentication.Tests
             settings.ShouldBeExcluded(chain).ShouldBeTrue();
 
         }
+
+        [Test]
+        public void exclude_by_default_if_the_input_type_is_marked_as_NotAuthenticated()
+        {
+            var chain = new BehaviorChain();
+            chain.AddToEnd(ActionCall.For<AuthenticatedEndpoints>(x => x.post_something(null)));
+
+
+            var settings = new AuthenticationSettings();
+
+            settings.ShouldBeExcluded(chain).ShouldBeTrue();
+        }
     }
 
     public class AuthenticatedEndpoints
@@ -69,5 +82,16 @@ namespace FubuMVC.Authentication.Tests
         {
             return new HtmlTag("div");
         }
+
+        public void post_something(NotAuthenticatedMessage message)
+        {
+            
+        }
+    }
+
+    [NotAuthenticated]
+    public class NotAuthenticatedMessage
+    {
+        
     }
 }

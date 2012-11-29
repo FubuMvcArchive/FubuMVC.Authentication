@@ -6,6 +6,8 @@ using FubuMVC.Core.Registration.Nodes;
 using FubuMVC.Core.Registration.Policies;
 using System.Linq;
 using FubuCore;
+using FubuMVC.Core.Security;
+using FubuCore.Reflection;
 
 namespace FubuMVC.Authentication
 {
@@ -50,7 +52,19 @@ namespace FubuMVC.Authentication
     {
         public bool Matches(BehaviorChain chain)
         {
-            return chain.Calls.Any(x => x.HasAttribute<NotAuthenticatedAttribute>());
+            return chain.Calls.Any(ActionIsExempted);
+        }
+
+        public static bool ActionIsExempted(ActionCall call)
+        {
+            if (call.HasAttribute<NotAuthenticatedAttribute>()) return true;
+
+            if (call.InputType() != null && call.InputType().HasAttribute<NotAuthenticatedAttribute>())
+            {
+                return true;
+            }
+
+            return false;
         }
     }
     

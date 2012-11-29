@@ -1,5 +1,6 @@
 ﻿using FubuMVC.Core;
 using FubuMVC.Core.Runtime;
+using FubuMVC.Core.Security;
 
 namespace FubuMVC.Authentication.Windows
 {

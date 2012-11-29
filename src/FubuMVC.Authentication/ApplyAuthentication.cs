@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using FubuCore;
+using FubuCore.Descriptions;
 using FubuCore.Util;
 using FubuMVC.Authentication.Tickets.Basic;
 using FubuMVC.Authentication.Windows;
 using FubuMVC.ContentExtensions;
 using FubuMVC.Core;
+using FubuMVC.Core.Registration;
 using FubuMVC.Core.Registration.Conventions;
 using FubuMVC.Core.Registration.Nodes;
 using FubuMVC.Core.Security;
@@ -21,27 +23,11 @@ namespace FubuMVC.Authentication
         private bool _useDefaults = true;
         private CookieSettings _settings = new CookieSettings();
         private FubuPackageRegistry _internalRegistry = new FubuPackageRegistry();
-        private readonly CompositeFilter<BehaviorChain> _filters = new CompositeFilter<BehaviorChain>();
 
         public ApplyAuthentication()
         {
-            // Start by matching everything
-            Include(x => true);
-
             // By default, we'll use the built-in endpoints
             _includeEndpoints = true;
-        }
-
-        public ApplyAuthentication Include(Expression<Func<BehaviorChain, bool>> filter)
-        {
-            _filters.Includes += filter;
-            return this;
-        }
-
-        public ApplyAuthentication Exclude(Expression<Func<BehaviorChain, bool>> filter)
-        {
-            _filters.Excludes += filter;
-            return this;
         }
 
         /// <summary>
@@ -89,7 +75,7 @@ namespace FubuMVC.Authentication
                 registry.Extensions().For(new WindowsLoginExtension());
             }
             
-            registry.Policies.Add(new ApplyAuthenticationPolicy(_filters.Matches));
+            registry.Policies.Add(new ApplyAuthenticationPolicy());
 
             registry.Policies.Add(new ReorderBehaviorsPolicy{
                 WhatMustBeBefore = node => node is AuthenticationFilterNode,

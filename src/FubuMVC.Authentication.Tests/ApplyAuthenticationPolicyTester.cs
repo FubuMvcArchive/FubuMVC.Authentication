@@ -12,30 +12,9 @@ namespace FubuMVC.Authentication.Tests
     public class ApplyAuthenticationPolicyTester
     {
         [Test]
-        public void exempt_includes_models_with_the_NotAuthenticatedAttribute()
-        {
-            var chain = chainFor<TestAuthenticationEndpoint<NotAuthenticatedModel>>(x => x.get_something(null));
-            ApplyAuthenticationPolicy.ExemptedFromAuthentication(chain).ShouldBeTrue();
-        }
-
-        [Test]
-        public void exempt_includes_calls_with_the_NotAuthenticationAttribute()
-        {
-            var chain = chainFor<NotAuthenticatedEndpoint>(x => x.get_something());
-            ApplyAuthenticationPolicy.ExemptedFromAuthentication(chain).ShouldBeTrue();
-        }
-
-        [Test]
-        public void exempt_excludes_everything_else()
-        {
-            var chain = chainFor<TestAuthenticationEndpoint<AuthenticatedModel>>(x => x.get_something(null));
-            ApplyAuthenticationPolicy.ExemptedFromAuthentication(chain).ShouldBeFalse();
-        }
-
-        [Test]
         public void prepends_the_authentication_node()
         {
-            var thePolicy = new ApplyAuthenticationPolicy(x => true);
+            var thePolicy = new ApplyAuthenticationPolicy();
             
             var chain = chainFor<TestAuthenticationEndpoint<AuthenticatedModel>>(x => x.get_something(null));
             var graph = new BehaviorGraph();
@@ -50,12 +29,14 @@ namespace FubuMVC.Authentication.Tests
         [Test]
         public void uses_the_filter()
         {
-            var thePolicy = new ApplyAuthenticationPolicy(x => false);
+            var thePolicy = new ApplyAuthenticationPolicy();
 
             var chain = chainFor<TestAuthenticationEndpoint<AuthenticatedModel>>(x => x.get_something(null));
             var graph = new BehaviorGraph();
-
             graph.AddChain(chain);
+
+            // This is the filter set up that will explicitly exclude this chain
+            graph.Settings.Get<AuthenticationSettings>().ExcludeChains.InputTypeIs<AuthenticatedModel>();
 
             thePolicy.Configure(graph);
 

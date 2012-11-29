@@ -1,4 +1,5 @@
 ﻿using FubuMVC.Core;
+using FubuMVC.Core.Security;
 
 namespace FubuMVC.Authentication.Twitter
 {

@@ -1,6 +1,7 @@
 using FubuCore;
 using FubuCore.Util;
 using FubuMVC.Core;
+using FubuMVC.Core.Security;
 
 namespace FubuMVC.Authentication
 {
