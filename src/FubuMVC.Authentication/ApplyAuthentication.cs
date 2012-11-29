@@ -21,7 +21,6 @@ namespace FubuMVC.Authentication
         private bool _includeEndpoints;
         private bool _includeWindowsAuth;
         private bool _useDefaults = true;
-        private CookieSettings _settings = new CookieSettings();
         private FubuPackageRegistry _internalRegistry = new FubuPackageRegistry();
 
         public ApplyAuthentication()
@@ -49,8 +48,13 @@ namespace FubuMVC.Authentication
 
         void IFubuRegistryExtension.Configure(FubuRegistry registry)
         {
+            // GOOD
             registry.Services<AuthenticationServiceRegistry>();
-            registry.Services(x => x.SetServiceIfNone(_settings));
+            registry.Policies.Add(new ApplyAuthenticationPolicy());
+
+
+
+
             _internalRegistry.As<IFubuRegistryExtension>().Configure(registry);
 
             if(_useDefaults)
@@ -74,36 +78,7 @@ namespace FubuMVC.Authentication
 
                 registry.Extensions().For(new WindowsLoginExtension());
             }
-            
-            registry.Policies.Add(new ApplyAuthenticationPolicy());
-
-            registry.Policies.Add(new ReorderBehaviorsPolicy{
-                WhatMustBeBefore = node => node is AuthenticationFilterNode,
-                WhatMustBeAfter = node => node is AuthorizationNode
-            });
         }
 
-        // TODO -- This goes away when the settings collection makes it into the service registry
-        public void AlterSettings(Action<CookieSettings> configure)
-        {
-            configure(_settings);
-        }
-
-        public void AuthenticateWith<T>() where T : IAuthenticationService
-        {
-            _internalRegistry.Services(x => x.SetServiceIfNone<IAuthenticationService, T>());
-            _useDefaults = false;
-        }
-
-        public void BuildPrincipalWith<T>() where T : IPrincipalBuilder
-        {
-            _internalRegistry.Services(x => x.SetServiceIfNone<IPrincipalBuilder, T>());
-            _useDefaults = false;
-        }
-
-        public void RedirectWith<T>() where T : IAuthenticationRedirect
-        {
-            _internalRegistry.Services(x => x.AddService<IAuthenticationRedirect, T>());
-        }
     }
 }
