@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3E04D7BF-BA4A-4799-93EA-494597D55B5F}</ProjectGuid>
+    <ProjectGuid>{9C2AE17E-C6DD-4642-80A5-E4AA91754A5F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FubuMVC.Authentication.Tests</RootNamespace>
-    <AssemblyName>FubuMVC.Authentication.Tests</AssemblyName>
+    <RootNamespace>FubuMVC.Authentication.Windows</RootNamespace>
+    <AssemblyName>FubuMVC.Authentication.Windows</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -49,34 +49,8 @@
     <Reference Include="FubuMVC.Core.View">
       <HintPath>..\packages\FubuMVC.Core.View.0.9.9.75\lib\net40\FubuMVC.Core.View.dll</HintPath>
     </Reference>
-    <Reference Include="FubuMVC.StructureMap">
-      <HintPath>..\packages\FubuMVC.References.0.9.8.1168\lib\net40\FubuMVC.StructureMap.dll</HintPath>
-    </Reference>
-    <Reference Include="FubuTestingSupport">
-      <HintPath>..\packages\FubuTestingSupport.1.0.0.216\lib\FubuTestingSupport.dll</HintPath>
-    </Reference>
     <Reference Include="HtmlTags">
       <HintPath>..\packages\HtmlTags.1.2.0.136\lib\4.0\HtmlTags.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.2.5.10.11092\lib\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.mocks">
-      <HintPath>..\packages\NUnit.2.5.10.11092\lib\nunit.mocks.dll</HintPath>
-    </Reference>
-    <Reference Include="pnunit.framework">
-      <HintPath>..\packages\NUnit.2.5.10.11092\lib\pnunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="Rhino.Mocks">
-      <HintPath>..\packages\RhinoMocks.3.6.1\lib\net\Rhino.Mocks.dll</HintPath>
-    </Reference>
-    <Reference Include="StructureMap, Version=2.6.4.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
-    </Reference>
-    <Reference Include="StructureMap.AutoMocking, Version=2.6.4.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\structuremap.automocking.2.6.3\lib\StructureMap.AutoMocking.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -88,35 +62,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AjaxAuthenticationRedirectTester.cs" />
-    <Compile Include="ApplyAuthenticationPolicyTester.cs" />
-    <Compile Include="AssemblyNeedsTheFubuModuleAttribute.cs" />
-    <Compile Include="AuthenticationBootstrapperTests.cs" />
-    <Compile Include="AuthenticationFilterNodeTester.cs" />
-    <Compile Include="AuthenticationFilterTester.cs" />
-    <Compile Include="AuthenticationServiceRegistryTester.cs" />
-    <Compile Include="AuthenticationSettingsTester.cs" />
-    <Compile Include="DefaultAuthenticationRedirectTester.cs" />
-    <Compile Include="LoginRequestTester.cs" />
-    <Compile Include="NotAuthenticatedModel.cs" />
+    <Compile Include="AspNetWindowsAuthenticationContext.cs" />
+    <Compile Include="IWindowsAuthenticationContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Stubs.cs" />
-    <Compile Include="ThreadPrincipalContextTester.cs" />
-    <Compile Include="Tickets\Basic\BasicLoginRedirectTester.cs" />
-    <Compile Include="Tickets\Basic\BasicLoginSuccessHandlerTester.cs" />
-    <Compile Include="Tickets\Basic\LoginCookieServiceTester.cs" />
-    <Compile Include="Tickets\Basic\CookieSettingsTester.cs" />
-    <Compile Include="Tickets\Basic\FlatFileAuthenticationServiceTester.cs" />
-    <Compile Include="Tickets\Basic\LoginBehaviorTester.cs" />
-    <Compile Include="Tickets\Basic\LoginControllerTests.cs" />
-    <Compile Include="Tickets\Basic\when_logging_out.cs" />
-    <Compile Include="Tickets\Basic\WriteDefaultLoginTester.cs" />
-    <Compile Include="Tickets\EncryptionTester.cs" />
-    <Compile Include="Tickets\TicketAuthenticationSessionTester.cs" />
-    <Compile Include="when_redirecting_an_unauthenticated_ajax_request.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <Compile Include="WindowsActionSource.cs" />
+    <Compile Include="WindowsAuthFubuRegistryExtension.cs" />
+    <Compile Include="WindowsController.cs" />
+    <Compile Include="WindowsLoginExtension.cs" />
+    <Compile Include="WindowsRegistry.cs" />
+    <Compile Include="WindowsSignInRequest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FubuMVC.Authentication\FubuMVC.Authentication.csproj">
@@ -124,7 +78,9 @@
       <Name>FubuMVC.Authentication</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

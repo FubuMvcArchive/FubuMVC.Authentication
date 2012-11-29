@@ -10,6 +10,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Authentication.Twit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Authentication.IntegrationTesting", "FubuMVC.Authentication.IntegrationTesting\FubuMVC.Authentication.IntegrationTesting.csproj", "{997ED7D1-6FD7-4583-A64A-A332FB8095C5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Authentication.Windows", "FubuMVC.Authentication.Windows\FubuMVC.Authentication.Windows.csproj", "{9C2AE17E-C6DD-4642-80A5-E4AA91754A5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Authentication.Windows.Testing", "FubuMVC.Authentication.Windows.Testing\FubuMVC.Authentication.Windows.Testing.csproj", "{F9F30F2A-E49F-4275-9D93-5F21F3C7FB3E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +40,14 @@ Global
 		{997ED7D1-6FD7-4583-A64A-A332FB8095C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{997ED7D1-6FD7-4583-A64A-A332FB8095C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{997ED7D1-6FD7-4583-A64A-A332FB8095C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C2AE17E-C6DD-4642-80A5-E4AA91754A5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C2AE17E-C6DD-4642-80A5-E4AA91754A5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C2AE17E-C6DD-4642-80A5-E4AA91754A5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C2AE17E-C6DD-4642-80A5-E4AA91754A5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9F30F2A-E49F-4275-9D93-5F21F3C7FB3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9F30F2A-E49F-4275-9D93-5F21F3C7FB3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9F30F2A-E49F-4275-9D93-5F21F3C7FB3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9F30F2A-E49F-4275-9D93-5F21F3C7FB3E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,11 +1,10 @@
 ﻿using System.Security.Principal;
-using FubuMVC.Authentication.Windows;
 using FubuMVC.Core.Runtime;
 using FubuTestingSupport;
 using NUnit.Framework;
 using Rhino.Mocks;
 
-namespace FubuMVC.Authentication.Tests.Windows
+namespace FubuMVC.Authentication.Windows.Testing
 {
     [TestFixture]
     public class when_signing_in_with_windows_credentials : InteractionContext<WindowsController>

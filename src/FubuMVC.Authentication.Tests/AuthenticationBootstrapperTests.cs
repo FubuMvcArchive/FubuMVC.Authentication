@@ -1,6 +1,5 @@
 ﻿using FubuCore;
 using FubuMVC.Authentication.Tickets.Basic;
-using FubuMVC.Authentication.Windows;
 using FubuMVC.Core;
 using FubuMVC.Core.Registration;
 using FubuTestingSupport;
@@ -69,28 +68,6 @@ namespace FubuMVC.Authentication.Tests
                 .Type.ShouldEqual(typeof (BasicLoginSuccessHandler));
         }
 
-        [Test]
-        public void default_cookie_settings_are_registered()
-        {
-            theGraphWithBasicAuthentication.Services.DefaultServiceFor<CookieSettings>()
-                .Value.As<CookieSettings>().ShouldNotBeNull();
-        }
-    }
-
-    [TestFixture]
-    public class altering_settings
-    {
-        [Test]
-        public void cookie_settings_can_be_altered()
-        {
-            var newName = "Test";
-            var registry = new FubuRegistry();
-            registry.Import<ApplyAuthentication>(x => x.AlterSettings(settings => settings.Name = newName));
-
-            var graph = BehaviorGraph.BuildFrom(registry);
-            graph.Services.DefaultServiceFor<CookieSettings>()
-                .Value.As<CookieSettings>().Name.ShouldEqual(newName);
-        }
     }
 
     [TestFixture]
@@ -122,64 +99,4 @@ namespace FubuMVC.Authentication.Tests
         }
     }
 
-    [TestFixture]
-    public class authentication_with_custom_services
-    {
-        private BehaviorGraph theGraphWithCustomServices;
-
-        [SetUp]
-        public void SetUp()
-        {
-            var registry = new FubuRegistry();
-            registry.Import<ApplyAuthentication>(x =>
-                                                     {
-                                                         x.AuthenticateWith<StubAuthenticationService>();
-                                                         x.BuildPrincipalWith<StubPrincipalBuilder>();
-                                                     });
-
-            theGraphWithCustomServices = BehaviorGraph.BuildFrom(registry);
-        }
-
-        [Test]
-        public void the_auth_service_is_registered()
-        {
-            theGraphWithCustomServices.Services.DefaultServiceFor<IAuthenticationService>()
-                .Type.ShouldEqual(typeof(StubAuthenticationService));
-        }
-
-        [Test]
-        public void the_principal_builder_is_registered()
-        {
-            theGraphWithCustomServices.Services.DefaultServiceFor<IPrincipalBuilder>()
-                .Type.ShouldEqual(typeof(StubPrincipalBuilder));
-        }
-    }
-
-    [TestFixture]
-    public class setup_with_windows_authentication
-    {
-        private BehaviorGraph theGraphWithWindowsAuthentication;
-
-        [SetUp]
-        public void SetUp()
-        {
-            var registry = new FubuRegistry();
-            registry.Import<ApplyAuthentication>(x => x.IncludeWindowsAuthentication());
-
-            theGraphWithWindowsAuthentication = BehaviorGraph.BuildFrom(registry);
-        }
-
-        [Test]
-        public void the_windows_action_call_is_registered()
-        {
-            theGraphWithWindowsAuthentication.BehaviorFor<WindowsController>(x => x.Login(null)).ShouldNotBeNull();
-        }
-
-        [Test]
-        public void registers_the_windows_authentication_context()
-        {
-            theGraphWithWindowsAuthentication.Services.DefaultServiceFor<IWindowsAuthenticationContext>()
-                .Type.ShouldEqual(typeof (AspNetWindowsAuthenticationContext));
-        }
-    }
 }

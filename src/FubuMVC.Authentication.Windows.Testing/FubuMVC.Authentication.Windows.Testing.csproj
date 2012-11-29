@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{93C583A3-027A-4F9E-9B69-C0FBB57A86F6}</ProjectGuid>
+    <ProjectGuid>{F9F30F2A-E49F-4275-9D93-5F21F3C7FB3E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FubuMVC.Authentication.Twitter.Tests</RootNamespace>
-    <AssemblyName>FubuMVC.Authentication.Twitter.Tests</AssemblyName>
+    <RootNamespace>FubuMVC.Authentication.Windows.Testing</RootNamespace>
+    <AssemblyName>FubuMVC.Authentication.Windows.Testing</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -34,38 +34,14 @@
     <Reference Include="Bottles">
       <HintPath>..\packages\Bottles.1.0.0.425\lib\Bottles.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetOpenAuth.Core">
-      <HintPath>..\packages\DotNetOpenAuth.Core.4.1.0.12182\lib\net40-full\DotNetOpenAuth.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetOpenAuth.Core.UI">
-      <HintPath>..\packages\DotNetOpenAuth.Core.UI.4.1.0.12182\lib\net40-full\DotNetOpenAuth.Core.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetOpenAuth.OAuth">
-      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.1.0.12182\lib\net40-full\DotNetOpenAuth.OAuth.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetOpenAuth.OAuth.Common">
-      <HintPath>..\packages\DotNetOpenAuth.OAuth.Common.4.1.0.12182\lib\net40-full\DotNetOpenAuth.OAuth.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetOpenAuth.OAuth.Consumer">
-      <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.1.0.12182\lib\net40-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetOpenAuth.OAuth.ServiceProvider">
-      <HintPath>..\packages\DotNetOpenAuth.OAuth.ServiceProvider.4.1.0.12182\lib\net40-full\DotNetOpenAuth.OAuth.ServiceProvider.dll</HintPath>
-    </Reference>
     <Reference Include="FubuCore">
       <HintPath>..\packages\FubuCore.1.0.0.216\lib\FubuCore.dll</HintPath>
     </Reference>
     <Reference Include="FubuLocalization">
       <HintPath>..\packages\FubuLocalization.0.9.5.113\lib\FubuLocalization.dll</HintPath>
     </Reference>
-    <Reference Include="FubuMVC.ContentExtensions">
-      <HintPath>..\packages\FubuMVC.ContentExtensions.0.1.0.94\lib\net40\FubuMVC.ContentExtensions.dll</HintPath>
-    </Reference>
     <Reference Include="FubuMVC.Core">
       <HintPath>..\packages\FubuMVC.Core.0.9.9.1323\lib\net40\FubuMVC.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="FubuMVC.Core.View">
-      <HintPath>..\packages\FubuMVC.Core.View.0.9.9.75\lib\net40\FubuMVC.Core.View.dll</HintPath>
     </Reference>
     <Reference Include="FubuTestingSupport">
       <HintPath>..\packages\FubuTestingSupport.1.0.0.216\lib\FubuTestingSupport.dll</HintPath>
@@ -85,18 +61,14 @@
     <Reference Include="Rhino.Mocks">
       <HintPath>..\packages\RhinoMocks.3.6.1\lib\net\Rhino.Mocks.dll</HintPath>
     </Reference>
-    <Reference Include="StructureMap, Version=2.6.3.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="StructureMap">
       <HintPath>..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
     </Reference>
-    <Reference Include="StructureMap.AutoMocking, Version=2.6.3.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="StructureMap.AutoMocking">
       <HintPath>..\packages\structuremap.automocking.2.6.3\lib\StructureMap.AutoMocking.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -104,32 +76,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssemblyNeedsTheFubuModuleAttribute.cs" />
-    <Compile Include="debugging.cs" />
-    <Compile Include="InMemoryTokenManagerTests.cs" />
-    <Compile Include="OAuthSettingsRuleTester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StubTokenResponse.cs" />
-    <Compile Include="StubTwitterProxy.cs" />
-    <Compile Include="TwitterLoginBehaviorTests.cs" />
-    <Compile Include="TwitterBootstrapperTests.cs" />
-    <Compile Include="TwitterServiceRegistryTester.cs" />
-    <Compile Include="when_handling_a_successful_twitter_response.cs" />
-    <Compile Include="when_the_callback_action_is_invoked.cs" />
-    <Compile Include="WriteDefaultTwitterButtonTests.cs" />
+    <Compile Include="setup_with_windows_authentication.cs" />
+    <Compile Include="when_signing_in_with_windows_credentials.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\FubuMVC.Authentication.Twitter\FubuMVC.Authentication.Twitter.csproj">
-      <Project>{FA35FD75-E863-4AC3-81B7-A7B81A815898}</Project>
-      <Name>FubuMVC.Authentication.Twitter</Name>
+    <ProjectReference Include="..\FubuMVC.Authentication.Windows\FubuMVC.Authentication.Windows.csproj">
+      <Project>{9C2AE17E-C6DD-4642-80A5-E4AA91754A5F}</Project>
+      <Name>FubuMVC.Authentication.Windows</Name>
     </ProjectReference>
     <ProjectReference Include="..\FubuMVC.Authentication\FubuMVC.Authentication.csproj">
       <Project>{B889AF6B-2744-4370-842A-04026D1370B5}</Project>
       <Name>FubuMVC.Authentication</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
