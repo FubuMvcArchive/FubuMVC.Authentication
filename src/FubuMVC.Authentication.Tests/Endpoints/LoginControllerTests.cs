@@ -1,11 +1,12 @@
 using System;
+using FubuMVC.Authentication.Endpoints;
 using FubuMVC.Authentication.Tickets.Basic;
 using FubuMVC.Core.Http;
 using FubuTestingSupport;
 using NUnit.Framework;
 using Rhino.Mocks;
 
-namespace FubuMVC.Authentication.Tests.Tickets.Basic
+namespace FubuMVC.Authentication.Tests.Endpoints
 {
     public class StubLoginCookies : ILoginCookies
     {

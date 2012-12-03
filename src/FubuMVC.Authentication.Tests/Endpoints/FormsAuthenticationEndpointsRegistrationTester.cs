@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using FubuMVC.Authentication.Endpoints;
 using FubuMVC.Authentication.Tickets.Basic;
 using FubuMVC.Core.Continuations;
 using FubuMVC.Core.Registration;
@@ -6,7 +7,7 @@ using FubuMVC.Core.Registration.Nodes;
 using NUnit.Framework;
 using FubuTestingSupport;
 
-namespace FubuMVC.Authentication.Tests.Tickets.Basic
+namespace FubuMVC.Authentication.Tests.Endpoints
 {
     [TestFixture]
     public class FormsAuthenticationEndpointsRegistrationTester

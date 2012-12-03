@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using FubuCore;
+using FubuMVC.Authentication.Endpoints;
 using FubuMVC.Authentication.Tickets.Basic;
 using FubuMVC.Core;
 using FubuMVC.Core.Registration.Nodes;

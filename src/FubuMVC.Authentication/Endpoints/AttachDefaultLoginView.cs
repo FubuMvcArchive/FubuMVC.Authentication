@@ -3,7 +3,7 @@ using FubuMVC.Core.Registration;
 using FubuMVC.Core.Runtime.Conditionals;
 using FubuMVC.Core.View;
 
-namespace FubuMVC.Authentication.Tickets.Basic
+namespace FubuMVC.Authentication.Endpoints
 {
     // TODO -- Come back to this after the ConfigurationGraph clean up (this lets us go after view attachment)
     [ConfigurationType(ConfigurationType.Instrumentation)]

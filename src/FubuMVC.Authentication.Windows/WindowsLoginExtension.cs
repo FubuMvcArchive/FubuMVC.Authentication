@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using FubuMVC.Authentication.Endpoints;
 using FubuMVC.Authentication.Tickets.Basic;
 using FubuMVC.ContentExtensions;
 using FubuMVC.Core.Runtime;

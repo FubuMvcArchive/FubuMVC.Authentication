@@ -1,4 +1,6 @@
 ﻿using FubuCore;
+using FubuMVC.Authentication.Membership.FlatFile;
+using FubuMVC.Authentication.Tests.Endpoints;
 using FubuMVC.Authentication.Tests.Tickets.Basic;
 using FubuMVC.Authentication.Tickets.Basic;
 using FubuMVC.Core;

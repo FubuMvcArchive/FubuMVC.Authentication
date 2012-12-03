@@ -5,7 +5,7 @@ using FubuMVC.Core;
 using FubuMVC.Core.Registration;
 using FubuMVC.Core.Registration.Nodes;
 
-namespace FubuMVC.Authentication.Tickets.Basic
+namespace FubuMVC.Authentication.Endpoints
 {
     [Title("Applies LoginBehavior to the login screen")]
     [ConfigurationType(ConfigurationType.Explicit)]

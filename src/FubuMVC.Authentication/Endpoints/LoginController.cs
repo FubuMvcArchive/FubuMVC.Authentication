@@ -1,7 +1,8 @@
 using FubuCore;
+using FubuMVC.Authentication.Tickets.Basic;
 using FubuMVC.Core;
 
-namespace FubuMVC.Authentication.Tickets.Basic
+namespace FubuMVC.Authentication.Endpoints
 {
     public class LoginController
     {

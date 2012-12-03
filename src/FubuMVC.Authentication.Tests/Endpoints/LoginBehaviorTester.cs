@@ -1,4 +1,4 @@
-using FubuMVC.Authentication.Tickets.Basic;
+using FubuMVC.Authentication.Endpoints;
 using FubuMVC.Core.Behaviors;
 using FubuMVC.Core.Http;
 using FubuMVC.Core.Runtime;
@@ -6,7 +6,7 @@ using FubuTestingSupport;
 using NUnit.Framework;
 using Rhino.Mocks;
 
-namespace FubuMVC.Authentication.Tests.Tickets.Basic
+namespace FubuMVC.Authentication.Tests.Endpoints
 {
     [TestFixture]
     public class when_running_in_a_get : InteractionContext<LoginBehavior>

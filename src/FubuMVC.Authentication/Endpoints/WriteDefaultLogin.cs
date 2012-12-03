@@ -5,7 +5,7 @@ using FubuMVC.Core.Registration.ObjectGraph;
 using FubuMVC.Core.Resources.Conneg;
 using FubuMVC.Core.Runtime;
 
-namespace FubuMVC.Authentication.Tickets.Basic
+namespace FubuMVC.Authentication.Endpoints
 {
     public class WriteDefaultLogin : WriterNode
     {

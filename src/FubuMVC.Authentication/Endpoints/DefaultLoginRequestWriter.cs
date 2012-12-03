@@ -6,7 +6,7 @@ using FubuMVC.Core.Runtime;
 using FubuMVC.Core.UI;
 using HtmlTags;
 
-namespace FubuMVC.Authentication.Tickets.Basic
+namespace FubuMVC.Authentication.Endpoints
 {
     public class DefaultLoginRequestWriter : IMediaWriter<LoginRequest>
     {

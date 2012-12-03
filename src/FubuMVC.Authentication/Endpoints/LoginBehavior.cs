@@ -1,11 +1,10 @@
 using System;
-using FubuCore;
 using FubuMVC.Core;
 using FubuMVC.Core.Behaviors;
 using FubuMVC.Core.Http;
 using FubuMVC.Core.Runtime;
 
-namespace FubuMVC.Authentication.Tickets.Basic
+namespace FubuMVC.Authentication.Endpoints
 {
     public class LoginBehavior : BasicBehavior
     {

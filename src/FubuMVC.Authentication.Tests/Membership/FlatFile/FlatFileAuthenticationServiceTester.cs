@@ -1,9 +1,10 @@
 using FubuCore;
+using FubuMVC.Authentication.Membership.FlatFile;
 using FubuMVC.Authentication.Tickets.Basic;
 using FubuTestingSupport;
 using NUnit.Framework;
 
-namespace FubuMVC.Authentication.Tests.Tickets.Basic
+namespace FubuMVC.Authentication.Tests.Membership.FlatFile
 {
     [TestFixture]
     public class FlatFileAuthenticationServiceTester

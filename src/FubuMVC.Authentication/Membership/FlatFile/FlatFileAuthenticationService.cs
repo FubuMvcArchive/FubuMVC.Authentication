@@ -3,7 +3,7 @@ using System.Linq;
 using FubuCore;
 using FubuMVC.Core.Packaging;
 
-namespace FubuMVC.Authentication.Tickets.Basic
+namespace FubuMVC.Authentication.Membership.FlatFile
 {
     public class FlatFileAuthenticationService : IAuthenticationService
     {

@@ -1,4 +1,4 @@
-namespace FubuMVC.Authentication.Tickets.Basic
+namespace FubuMVC.Authentication.Membership.FlatFile
 {
     public class BasicFubuAuthUser
     {

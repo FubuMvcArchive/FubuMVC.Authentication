@@ -1,3 +1,4 @@
+using FubuMVC.Authentication.Membership.FlatFile;
 using FubuMVC.Authentication.Tickets;
 using FubuMVC.Authentication.Tickets.Basic;
 using FubuMVC.Core.Registration;
