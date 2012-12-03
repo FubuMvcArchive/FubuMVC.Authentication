@@ -4,7 +4,7 @@ namespace FubuMVC.Authentication.Membership
 {
     public class InMemoryMembershipRepository : IMembershipRepository
     {
-        private readonly Cache<string,UserInfo> _users = new Cache<string, UserInfo>(name => new UserInfo{UserName = }); 
+        private readonly Cache<string,UserInfo> _users = new Cache<string, UserInfo>(name => new UserInfo{UserName = name}); 
 
         public bool MatchesCredentials(LoginRequest request)
         {
