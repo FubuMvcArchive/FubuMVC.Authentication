@@ -1,3 +1,4 @@
+using FubuMVC.Authentication.Membership;
 using FubuMVC.Authentication.Membership.FlatFile;
 using FubuMVC.Authentication.Tickets;
 using FubuMVC.Authentication.Tickets.Basic;
@@ -10,8 +11,6 @@ namespace FubuMVC.Authentication
         public AuthenticationServiceRegistry()
         {
             SetServiceIfNone<IAuthenticationSession, TicketAuthenticationSession>();
-            SetServiceIfNone<IPrincipalBuilder, FubuPrincipalBuilder>();
-            SetServiceIfNone<IPrincipalRoles, NulloPrincipalRoles>();
 
             // TODO -- Break out the "Basic" stuff into a separate registry
             SetServiceIfNone<IPrincipalContext, ThreadPrincipalContext>();
@@ -23,7 +22,9 @@ namespace FubuMVC.Authentication
             SetServiceIfNone<ILoginSuccessHandler, BasicLoginSuccessHandler>();
             SetServiceIfNone<ILoginFailureHandler, NulloLoginFailureHandler>();
             SetServiceIfNone<IAuthenticationRedirector, AuthenticationRedirector>();
-            SetServiceIfNone<IAuthenticationService, FlatFileAuthenticationService>();
+            SetServiceIfNone<IAuthenticationService, MembershipAuthenticationService>();
+
+            SetServiceIfNone<IMembershipRepository, FlatFileMembershipRepository>();
         }
     }
 }

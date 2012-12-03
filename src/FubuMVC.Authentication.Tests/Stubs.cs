@@ -1,4 +1,5 @@
 ﻿using System.Security.Principal;
+using FubuMVC.Authentication.Membership;
 
 namespace FubuMVC.Authentication.Tests
 {
@@ -8,13 +9,11 @@ namespace FubuMVC.Authentication.Tests
         {
             throw new System.NotImplementedException();
         }
-    }
 
-    public class StubPrincipalBuilder : IPrincipalBuilder
-    {
         public IPrincipal Build(string userName)
         {
             throw new System.NotImplementedException();
         }
     }
+
 }

@@ -1,4 +1,7 @@
 ﻿using System.Linq;
+using FubuMVC.Authentication.Membership;
+using FubuMVC.Authentication.Membership.FlatFile;
+using FubuMVC.Authentication.Tests.Membership;
 using FubuMVC.Authentication.Tickets;
 using FubuMVC.Authentication.Tickets.Basic;
 using FubuMVC.Core;
@@ -68,6 +71,18 @@ namespace FubuMVC.Authentication.Tests
         public void registers_default_IAuthenticationRedirector()
         {
             theDefaultServiceIs<IAuthenticationRedirector, AuthenticationRedirector>();
+        }
+
+        [Test]
+        public void registers_default_IAuthenticationService()
+        {
+            theDefaultServiceIs<IAuthenticationService, MembershipAuthenticationService>();
+        }
+
+        [Test]
+        public void registers_default_membership_reposotory()
+        {
+            theDefaultServiceIs<IMembershipRepository, FlatFileMembershipRepository>();
         }
 
         private void theDefaultServiceIs<TPlugin, TImplementation>()

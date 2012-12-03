@@ -1,4 +1,5 @@
 using System.Security.Principal;
+using FubuMVC.Authentication.Membership;
 using FubuMVC.Core.Continuations;
 using FubuTestingSupport;
 using NUnit.Framework;
@@ -50,7 +51,7 @@ namespace FubuMVC.Authentication.Tests
             thePrincipal = MockFor<IPrincipal>();
 
 
-            MockFor<IPrincipalBuilder>().Stub(x => x.Build(theUserName))
+            MockFor<IAuthenticationService>().Stub(x => x.Build(theUserName))
                 .Return(thePrincipal);
 
             theResult = ClassUnderTest.Authenticate();

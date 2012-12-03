@@ -1,4 +1,5 @@
 ﻿using FubuCore;
+using FubuMVC.Authentication.Membership;
 using FubuMVC.Authentication.Membership.FlatFile;
 using FubuMVC.Authentication.Tests.Endpoints;
 using FubuMVC.Authentication.Tests.Tickets.Basic;
@@ -26,24 +27,10 @@ namespace FubuMVC.Authentication.Tests
         }
 
         [Test]
-        public void the_flat_file_auth_service_is_registered()
+        public void the_authentication_service_is_registered()
         {
             theGraphWithBasicAuthentication.Services.DefaultServiceFor<IAuthenticationService>()
-                .Type.ShouldEqual(typeof (FlatFileAuthenticationService));
-        }
-
-        [Test]
-        public void the_fubu_principal_builder_is_registered()
-        {
-            theGraphWithBasicAuthentication.Services.DefaultServiceFor<IPrincipalBuilder>()
-                .Type.ShouldEqual(typeof (FubuPrincipalBuilder));
-        }
-
-        [Test]
-        public void the_nullo_principal_roles_is_registered()
-        {
-            theGraphWithBasicAuthentication.Services.DefaultServiceFor<IPrincipalRoles>()
-                .Type.ShouldEqual(typeof (NulloPrincipalRoles));
+                .Type.ShouldEqual(typeof (MembershipAuthenticationService));
         }
 
         [Test]
