@@ -78,6 +78,7 @@
     <Compile Include="Membership\FlatFile\FlatFileMembershipRepository.cs" />
     <Compile Include="Membership\FubuPrincipal.cs" />
     <Compile Include="Membership\IMembershipRepository.cs" />
+    <Compile Include="Membership\InMemoryMembershipRepository.cs" />
     <Compile Include="Membership\MembershipAuthenticationService.cs" />
     <Compile Include="NotAuthenticatedFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
