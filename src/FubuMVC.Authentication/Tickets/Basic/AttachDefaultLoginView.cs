@@ -12,6 +12,8 @@ namespace FubuMVC.Authentication.Tickets.Basic
         public void Configure(BehaviorGraph graph)
         {
             var chain = graph.BehaviorFor<LoginController>(x => x.Login(null));
+            if (chain == null) return;
+
             if(!chain.Output.HasView(typeof(Always)))
             {
                chain.Output.Writers.AddToEnd(new WriteDefaultLogin()); 

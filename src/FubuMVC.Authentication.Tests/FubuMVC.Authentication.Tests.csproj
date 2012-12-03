@@ -104,6 +104,7 @@
     <Compile Include="ThreadPrincipalContextTester.cs" />
     <Compile Include="Tickets\Basic\BasicLoginRedirectTester.cs" />
     <Compile Include="Tickets\Basic\BasicLoginSuccessHandlerTester.cs" />
+    <Compile Include="Tickets\Basic\FormsAuthenticationEndpointsRegistrationTester.cs" />
     <Compile Include="Tickets\Basic\LoginCookieServiceTester.cs" />
     <Compile Include="Tickets\Basic\CookieSettingsTester.cs" />
     <Compile Include="Tickets\Basic\FlatFileAuthenticationServiceTester.cs" />

@@ -93,7 +93,8 @@
     <Compile Include="ThreadPrincipalContext.cs" />
     <Compile Include="Tickets\AuthenticationTicket.cs" />
     <Compile Include="Tickets\Basic\AttachDefaultLoginView.cs" />
-    <Compile Include="Tickets\Basic\BasicAuthenticationActionSource.cs" />
+    <Compile Include="Tickets\Basic\AttachLoginBehaviorToLoginController.cs" />
+    <Compile Include="Tickets\Basic\FormsAuthenticationEndpointsRegistration.cs" />
     <Compile Include="Tickets\Basic\BasicFubuAuthUser.cs" />
     <Compile Include="Tickets\Basic\BasicFubuLoginCookies.cs" />
     <Compile Include="Tickets\Basic\BasicLoginSuccessHandler.cs" />

@@ -22,6 +22,7 @@ namespace FubuMVC.Authentication
             SetServiceIfNone<ILoginSuccessHandler, BasicLoginSuccessHandler>();
             SetServiceIfNone<ILoginFailureHandler, NulloLoginFailureHandler>();
             SetServiceIfNone<IAuthenticationRedirector, AuthenticationRedirector>();
+            SetServiceIfNone<IAuthenticationService, FlatFileAuthenticationService>();
         }
     }
 }

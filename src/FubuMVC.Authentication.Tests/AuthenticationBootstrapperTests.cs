@@ -1,4 +1,5 @@
 ﻿using FubuCore;
+using FubuMVC.Authentication.Tests.Tickets.Basic;
 using FubuMVC.Authentication.Tickets.Basic;
 using FubuMVC.Core;
 using FubuMVC.Core.Registration;
@@ -16,6 +17,7 @@ namespace FubuMVC.Authentication.Tests
         public void SetUp()
         {
             var registry = new FubuRegistry();
+            registry.Actions.IncludeType<NothingEndpoint>(); // Have to do this to make it an isolated test
             registry.Import<ApplyAuthentication>();
 
             theGraphWithBasicAuthentication = BehaviorGraph.BuildFrom(registry);
@@ -70,33 +72,5 @@ namespace FubuMVC.Authentication.Tests
 
     }
 
-    [TestFixture]
-    public class opting_out_of_the_basic_endpoints
-    {
-        private BehaviorGraph theGraphWithoutEndpoints;
-
-        [SetUp]
-        public void SetUp()
-        {
-            var registry = new FubuRegistry();
-            registry.Import<ApplyAuthentication>(x => x.DoNotIncludeEndpoints());
-
-            theGraphWithoutEndpoints = BehaviorGraph.BuildFrom(registry);
-        }
-
-        [Test]
-        public void login_endpoint_is_not_added()
-        {
-            Exception<FubuException>.ShouldBeThrownBy(() => theGraphWithoutEndpoints.BehaviorFor(typeof(LoginRequest)))
-                .ErrorCode.ShouldEqual(2150);
-        }
-
-        [Test]
-        public void logout_endpoint_is_not_added()
-        {
-            Exception<FubuException>.ShouldBeThrownBy(() => theGraphWithoutEndpoints.BehaviorFor(typeof(LogoutRequest)))
-                .ErrorCode.ShouldEqual(2150);
-        }
-    }
 
 }
