@@ -18,8 +18,7 @@ namespace FubuMVC.Authentication
             SetServiceIfNone<IEncryptor, Encryptor>();
             SetServiceIfNone<ILoginCookies, BasicFubuLoginCookies>();
             SetServiceIfNone<ILoginCookieService, LoginCookieService>();
-            SetServiceIfNone<IBasicLoginRedirect, BasicLoginRedirect>();
-            SetServiceIfNone<ILoginSuccessHandler, BasicLoginSuccessHandler>();
+            SetServiceIfNone<ILoginSuccessHandler, LoginSuccessHandler>();
             SetServiceIfNone<ILoginFailureHandler, NulloLoginFailureHandler>();
             SetServiceIfNone<IAuthenticationRedirector, AuthenticationRedirector>();
             SetServiceIfNone<IAuthenticationService, MembershipAuthenticationService>();

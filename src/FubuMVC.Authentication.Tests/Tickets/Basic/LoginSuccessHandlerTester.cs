@@ -8,7 +8,7 @@ using Rhino.Mocks;
 namespace FubuMVC.Authentication.Tests.Tickets.Basic
 {
     [TestFixture]
-    public class BasicLoginRedirectTester : InteractionContext<BasicLoginRedirect>
+    public class LoginSuccessHandlerTester : InteractionContext<LoginSuccessHandler>
     {
         private LoginRequest theLoginRequest;
 
@@ -22,7 +22,7 @@ namespace FubuMVC.Authentication.Tests.Tickets.Basic
                 Url = "/where/i/wanted/to/go"
             };
 
-            ClassUnderTest.Redirect(theLoginRequest);
+            ClassUnderTest.LoggedIn(theLoginRequest);
         }
 
         [Test]

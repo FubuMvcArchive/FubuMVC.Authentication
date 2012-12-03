@@ -45,18 +45,12 @@ namespace FubuMVC.Authentication.Tests
             theGraphWithBasicAuthentication.BehaviorFor(typeof (LogoutRequest)).ShouldNotBeNull();
         }
 
-        [Test]
-        public void basic_login_redirect_is_registered()
-        {
-            theGraphWithBasicAuthentication.Services.DefaultServiceFor<IBasicLoginRedirect>()
-                .Type.ShouldEqual(typeof (BasicLoginRedirect));
-        }
 
         [Test]
         public void basic_login_success_handler_is_registered()
         {
             theGraphWithBasicAuthentication.Services.DefaultServiceFor<ILoginSuccessHandler>()
-                .Type.ShouldEqual(typeof (BasicLoginSuccessHandler));
+                .Type.ShouldEqual(typeof (LoginSuccessHandler));
         }
 
     }

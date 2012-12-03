@@ -3,21 +3,16 @@ using FubuMVC.Core.Runtime;
 
 namespace FubuMVC.Authentication.Tickets.Basic
 {
-    public interface IBasicLoginRedirect
-    {
-        void Redirect(LoginRequest request);
-    }
-
-    public class BasicLoginRedirect : IBasicLoginRedirect
+    public class LoginSuccessHandler : ILoginSuccessHandler
     {
         private readonly IOutputWriter _writer;
 
-        public BasicLoginRedirect(IOutputWriter writer)
+        public LoginSuccessHandler(IOutputWriter writer)
         {
             _writer = writer;
         }
 
-        public void Redirect(LoginRequest request)
+        public void LoggedIn(LoginRequest request)
         {
             var url = request.Url;
             if (url.IsEmpty())

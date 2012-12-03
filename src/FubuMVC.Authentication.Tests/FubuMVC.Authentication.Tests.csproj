@@ -105,8 +105,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stubs.cs" />
     <Compile Include="ThreadPrincipalContextTester.cs" />
-    <Compile Include="Tickets\Basic\BasicLoginRedirectTester.cs" />
-    <Compile Include="Tickets\Basic\BasicLoginSuccessHandlerTester.cs" />
+    <Compile Include="Tickets\Basic\LoginSuccessHandlerTester.cs" />
     <Compile Include="Endpoints\FormsAuthenticationEndpointsRegistrationTester.cs" />
     <Compile Include="Tickets\Basic\LoginCookieServiceTester.cs" />
     <Compile Include="Tickets\Basic\CookieSettingsTester.cs" />
