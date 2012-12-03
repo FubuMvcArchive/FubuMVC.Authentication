@@ -62,12 +62,6 @@ namespace FubuMVC.Authentication.Tests
         }
 
         [Test]
-        public void registers_default_ILoginFailureHandler()
-        {
-            theDefaultServiceIs<ILoginFailureHandler, NulloLoginFailureHandler>();
-        }
-
-        [Test]
         public void registers_default_IAuthenticationRedirector()
         {
             theDefaultServiceIs<IAuthenticationRedirector, AuthenticationRedirector>();

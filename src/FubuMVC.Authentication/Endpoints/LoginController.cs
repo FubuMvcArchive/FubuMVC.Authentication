@@ -7,13 +7,11 @@ namespace FubuMVC.Authentication.Endpoints
     public class LoginController
     {
         private readonly ILoginCookies _cookies;
-        private readonly ILoginFailureHandler _failureHandler;
         private readonly AuthenticationSettings _settings;
 
-        public LoginController(ILoginCookies cookies, ILoginFailureHandler failureHandler, AuthenticationSettings settings)
+        public LoginController(ILoginCookies cookies, AuthenticationSettings settings)
         {
             _cookies = cookies;
-            _failureHandler = failureHandler;
             _settings = settings;
         }
 
@@ -35,8 +33,6 @@ namespace FubuMVC.Authentication.Endpoints
             {
                 return request;
             }
-
-            _failureHandler.Handle(request, _cookies, _settings);
 
             if (request.Message.IsEmpty())
             {

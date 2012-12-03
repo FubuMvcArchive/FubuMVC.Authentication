@@ -105,16 +105,6 @@ namespace FubuMVC.Authentication.Tests.Endpoints
             request.Message.ShouldBeNull();
         }
 
-        [Test]
-        public void delegate_to_the_failure_handler()
-        {
-            theRequest.Status = LoginStatus.Failed;
-            Services.Inject<ILoginFailureHandler>(new StubLoginFailureHandler());
-
-            ClassUnderTest.Login(theRequest);
-
-            theRequest.Message.ShouldEqual(StubLoginFailureHandler.MESSAGE);
-        }
 
         [Test]
         public void uses_the_unknown_message_when_no_message_is_set()
@@ -123,16 +113,6 @@ namespace FubuMVC.Authentication.Tests.Endpoints
             ClassUnderTest.Login(theRequest);
 
             theRequest.Message.ShouldEqual(LoginKeys.Unknown.ToString());
-        }
-
-        public class StubLoginFailureHandler : ILoginFailureHandler
-        {
-            public const string MESSAGE = "Test";
-
-            public void Handle(LoginRequest request, ILoginCookies cookies, AuthenticationSettings settings)
-            {
-                request.Message = MESSAGE;
-            }
         }
     }
 }

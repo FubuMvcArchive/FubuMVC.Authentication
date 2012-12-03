@@ -103,7 +103,6 @@
     <Compile Include="Endpoints\DefaultLoginRequestWriter.cs" />
     <Compile Include="Tickets\Basic\ILoginCookieService.cs" />
     <Compile Include="Tickets\Basic\ILoginCookies.cs" />
-    <Compile Include="Tickets\Basic\ILoginFailureHandler.cs" />
     <Compile Include="Endpoints\LoginBehavior.cs" />
     <Compile Include="Endpoints\LoginController.cs" />
     <Compile Include="Tickets\Basic\LoginCookieService.cs" />
@@ -111,7 +110,6 @@
     <Compile Include="Endpoints\LogoutController.cs" />
     <Compile Include="Tickets\Basic\LoginSuccessHandler.cs" />
     <Compile Include="Tickets\Basic\LogoutRequest.cs" />
-    <Compile Include="Tickets\Basic\NulloLoginFailureHandler.cs" />
     <Compile Include="Tickets\Basic\CookieTicketSource.cs" />
     <Compile Include="Endpoints\WriteDefaultLogin.cs" />
     <Compile Include="Tickets\Encryption.cs" />
