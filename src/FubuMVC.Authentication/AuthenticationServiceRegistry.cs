@@ -1,7 +1,7 @@
+using FubuMVC.Authentication.Cookies;
 using FubuMVC.Authentication.Membership;
 using FubuMVC.Authentication.Membership.FlatFile;
 using FubuMVC.Authentication.Tickets;
-using FubuMVC.Authentication.Tickets.Basic;
 using FubuMVC.Core.Registration;
 
 namespace FubuMVC.Authentication

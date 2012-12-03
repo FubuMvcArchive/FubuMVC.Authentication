@@ -1,6 +1,5 @@
 using System.Linq;
 using FubuCore.Descriptions;
-using FubuMVC.Authentication.Tickets.Basic;
 using FubuMVC.Core;
 using FubuMVC.Core.Registration;
 using FubuMVC.Core.Registration.Nodes;

@@ -1,9 +1,9 @@
 ﻿using System;
-using FubuMVC.Authentication.Tickets.Basic;
+using FubuMVC.Authentication.Cookies;
 using FubuTestingSupport;
 using NUnit.Framework;
 
-namespace FubuMVC.Authentication.Tests.Tickets.Basic
+namespace FubuMVC.Authentication.Tests.Cookies
 {
     [TestFixture]
     public class CookieSettingsTester

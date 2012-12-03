@@ -1,5 +1,4 @@
 ﻿using FubuMVC.Authentication.Endpoints;
-using FubuMVC.Authentication.Tickets.Basic;
 using FubuMVC.Core.Behaviors;
 using FubuMVC.Core.Registration;
 using FubuMVC.Core.Registration.Nodes;

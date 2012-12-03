@@ -1,5 +1,5 @@
 using FubuCore;
-using FubuMVC.Authentication.Tickets.Basic;
+using FubuMVC.Authentication.Cookies;
 using FubuMVC.Core;
 
 namespace FubuMVC.Authentication.Endpoints

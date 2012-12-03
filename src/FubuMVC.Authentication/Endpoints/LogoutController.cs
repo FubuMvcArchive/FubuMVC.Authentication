@@ -1,4 +1,3 @@
-using FubuMVC.Authentication.Tickets.Basic;
 using FubuMVC.Core;
 using FubuMVC.Core.Continuations;
 

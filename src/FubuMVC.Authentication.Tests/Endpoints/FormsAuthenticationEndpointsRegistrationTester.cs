@@ -1,6 +1,5 @@
 ﻿using System.Net;
 using FubuMVC.Authentication.Endpoints;
-using FubuMVC.Authentication.Tickets.Basic;
 using FubuMVC.Core.Continuations;
 using FubuMVC.Core.Registration;
 using FubuMVC.Core.Registration.Nodes;

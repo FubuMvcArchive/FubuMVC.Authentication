@@ -1,9 +1,9 @@
 ﻿using System.Linq;
+using FubuMVC.Authentication.Cookies;
 using FubuMVC.Authentication.Membership;
 using FubuMVC.Authentication.Membership.FlatFile;
 using FubuMVC.Authentication.Tests.Membership;
 using FubuMVC.Authentication.Tickets;
-using FubuMVC.Authentication.Tickets.Basic;
 using FubuMVC.Core;
 using FubuMVC.Core.Registration;
 using FubuTestingSupport;

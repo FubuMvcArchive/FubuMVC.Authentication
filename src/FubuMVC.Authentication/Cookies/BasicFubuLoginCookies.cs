@@ -2,7 +2,7 @@ using FubuCore.Dates;
 using FubuMVC.Core.Http;
 using FubuMVC.Core.Runtime;
 
-namespace FubuMVC.Authentication.Tickets.Basic
+namespace FubuMVC.Authentication.Cookies
 {
     public class BasicFubuLoginCookies : ILoginCookies
     {

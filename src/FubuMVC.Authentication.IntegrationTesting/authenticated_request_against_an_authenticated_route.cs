@@ -2,8 +2,8 @@
 using System.IO;
 using System.Net;
 using System.Web;
+using FubuMVC.Authentication.Cookies;
 using FubuMVC.Authentication.Tickets;
-using FubuMVC.Authentication.Tickets.Basic;
 using FubuMVC.Core.Caching;
 using FubuMVC.Core.Runtime;
 using FubuTestingSupport;

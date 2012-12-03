@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using FubuCore.Dates;
 
-namespace FubuMVC.Authentication.Tickets.Basic
+namespace FubuMVC.Authentication.Cookies
 {
     public interface ILoginCookieService
     {

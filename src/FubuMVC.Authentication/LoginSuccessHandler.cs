@@ -1,7 +1,7 @@
 ﻿using FubuCore;
 using FubuMVC.Core.Runtime;
 
-namespace FubuMVC.Authentication.Tickets.Basic
+namespace FubuMVC.Authentication
 {
     public class LoginSuccessHandler : ILoginSuccessHandler
     {

@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Web;
 using FubuCore.Dates;
-using FubuMVC.Authentication.Tickets.Basic;
+using FubuMVC.Authentication.Cookies;
 using FubuMVC.Core.Http;
 using FubuMVC.Core.Runtime;
 using FubuTestingSupport;
 using NUnit.Framework;
 using Rhino.Mocks;
 
-namespace FubuMVC.Authentication.Tests.Tickets.Basic
+namespace FubuMVC.Authentication.Tests.Cookies
 {
     [TestFixture]
     public class LoginCookieServiceTester : InteractionContext<LoginCookieService>

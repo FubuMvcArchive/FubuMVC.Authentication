@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FubuMVC.Authentication.Tickets.Basic
+namespace FubuMVC.Authentication.Cookies
 {
     public class CookieSettings
     {
