@@ -1,6 +1,4 @@
-﻿using System;
-using System.Security.Principal;
-using FubuMVC.Core.Registration.ObjectGraph;
+﻿using System.Security.Principal;
 
 namespace FubuMVC.Authentication.Membership
 {
@@ -35,32 +33,6 @@ namespace FubuMVC.Authentication.Membership
             var user = _membership.FindByName(userName);
 
             return new FubuPrincipal(user);
-        }
-    }
-    
-
-    public class MembershipNode : AuthenticationNode
-    {
-        public MembershipNode(Type membershipType) : base(typeof(MembershipAuthentication))
-        {
-            // TODO -- throw if not IMembershipRepository
-        }
-
-        public ObjectDef SetMembershipType<T>() where T : IMembershipRepository
-        {
-            throw new NotImplementedException();
-        }
-
-        public ObjectDef MembershipDependency
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
         }
     }
 }

@@ -104,6 +104,7 @@
     <Compile Include="LoginRequestTester.cs" />
     <Compile Include="Membership\FlatFile\FlatFileMembershipRepositoryTester.cs" />
     <Compile Include="Membership\MembershipAuthenticationTester.cs" />
+    <Compile Include="Membership\MembershipNodeTester.cs" />
     <Compile Include="Membership\UserInfoTester.cs" />
     <Compile Include="NotAuthenticatedModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
