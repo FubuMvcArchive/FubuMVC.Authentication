@@ -128,10 +128,6 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FubuMVC.Authentication.Windows\FubuMVC.Authentication.Windows.csproj">
-      <Project>{9C2AE17E-C6DD-4642-80A5-E4AA91754A5F}</Project>
-      <Name>FubuMVC.Authentication.Windows</Name>
-    </ProjectReference>
     <ProjectReference Include="..\FubuMVC.Authentication\FubuMVC.Authentication.csproj">
       <Project>{B889AF6B-2744-4370-842A-04026D1370B5}</Project>
       <Name>FubuMVC.Authentication</Name>

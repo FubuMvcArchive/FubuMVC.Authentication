@@ -66,6 +66,7 @@
     <Compile Include="IWindowsAuthenticationContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WindowsActionSource.cs" />
+    <Compile Include="WindowsAuthenticationStrategy.cs" />
     <Compile Include="WindowsAuthFubuRegistryExtension.cs" />
     <Compile Include="WindowsController.cs" />
     <Compile Include="WindowsLoginExtension.cs" />
