@@ -25,13 +25,6 @@ namespace FubuMVC.Authentication.Tests
         }
 
         [Test]
-        public void the_authentication_service_is_registered()
-        {
-            theGraphWithBasicAuthentication.Services.DefaultServiceFor<IAuthenticationService>()
-                .Type.ShouldEqual(typeof (MembershipAuthenticationService));
-        }
-
-        [Test]
         public void login_endpoint_is_added()
         {
             theGraphWithBasicAuthentication.BehaviorFor(typeof (LoginRequest)).ShouldNotBeNull();

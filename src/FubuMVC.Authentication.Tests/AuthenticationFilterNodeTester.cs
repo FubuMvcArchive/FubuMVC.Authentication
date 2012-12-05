@@ -25,20 +25,6 @@ namespace FubuMVC.Authentication.Tests
             theNode.Category.ShouldEqual(BehaviorCategory.Authentication);
         }
 
-
-        public class ReplacementAuthenticationService : IAuthenticationService
-        {
-            public bool Authenticate(LoginRequest request)
-            {
-                throw new System.NotImplementedException();
-            }
-
-            public IPrincipal Build(string userName)
-            {
-                throw new System.NotImplementedException();
-            }
-        }
-
         public class SomeDependency { }
     }
 }

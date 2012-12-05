@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using FubuCore;
 
 namespace FubuMVC.Authentication
 {
+    [MarkedForTermination]
     public class RedirectLibrary
     {
         private readonly IList<Type> _redirectTypes = new List<Type>();

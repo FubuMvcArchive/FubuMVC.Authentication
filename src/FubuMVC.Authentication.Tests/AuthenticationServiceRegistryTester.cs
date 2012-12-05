@@ -67,11 +67,6 @@ namespace FubuMVC.Authentication.Tests
             theDefaultServiceIs<IAuthenticationRedirector, AuthenticationRedirector>();
         }
 
-        [Test]
-        public void registers_default_IAuthenticationService()
-        {
-            theDefaultServiceIs<IAuthenticationService, MembershipAuthenticationService>();
-        }
 
         [Test]
         public void registers_default_membership_reposotory()

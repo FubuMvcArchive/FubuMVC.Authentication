@@ -1,4 +1,6 @@
+using System.Diagnostics;
 using System.Security.Principal;
+using System.Threading;
 using FubuCore;
 using FubuMVC.Core.Continuations;
 
@@ -6,16 +8,16 @@ namespace FubuMVC.Authentication
 {
     public class AuthenticationFilter
     {
-        private readonly IAuthenticationService _authentication;
         private readonly IPrincipalContext _context;
         private readonly IAuthenticationRedirector _redirector;
         private readonly IAuthenticationSession _session;
+        private readonly IPrincipalBuilder _builder;
 
-        public AuthenticationFilter(IAuthenticationSession session, IAuthenticationService authentication,
+        public AuthenticationFilter(IAuthenticationSession session, IPrincipalBuilder builder,
                                     IPrincipalContext context, IAuthenticationRedirector redirector)
         {
             _session = session;
-            _authentication = authentication;
+            _builder = builder;
             _context = context;
             _redirector = redirector;
         }
@@ -26,7 +28,7 @@ namespace FubuMVC.Authentication
             if (userName.IsNotEmpty())
             {
                 _session.MarkAccessed();
-                IPrincipal principal = _authentication.Build(userName);
+                IPrincipal principal = _builder.Build(userName);
                 _context.Current = principal;
 
                 return FubuContinuation.NextBehavior();

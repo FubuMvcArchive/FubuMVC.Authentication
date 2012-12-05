@@ -1,6 +1,4 @@
 using FubuMVC.Authentication.Cookies;
-using FubuMVC.Authentication.Membership;
-using FubuMVC.Authentication.Membership.FlatFile;
 using FubuMVC.Authentication.Tickets;
 using FubuMVC.Core.Registration;
 
@@ -20,9 +18,6 @@ namespace FubuMVC.Authentication
             SetServiceIfNone<ILoginCookieService, LoginCookieService>();
             SetServiceIfNone<ILoginSuccessHandler, LoginSuccessHandler>();
             SetServiceIfNone<IAuthenticationRedirector, AuthenticationRedirector>();
-            SetServiceIfNone<IAuthenticationService, MembershipAuthenticationService>();
-
-            SetServiceIfNone<IMembershipRepository, FlatFileMembershipRepository>();
         }
     }
 }

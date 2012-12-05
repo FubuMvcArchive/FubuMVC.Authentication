@@ -56,18 +56,6 @@ namespace FubuMVC.Authentication.Tests.Endpoints
         }
 
         [Test]
-        public void should_mark_the_login_request_as_successful()
-        {
-            theLoginRequest.Status.ShouldEqual(LoginStatus.Succeeded);
-        }
-
-        [Test]
-        public void should_mark_the_session_as_authenticated()
-        {
-            MockFor<IAuthenticationSession>().AssertWasCalled(x => x.MarkAuthenticated(theLoginRequest.UserName));
-        }
-
-        [Test]
         public void should_not_allow_the_inner_behavior_to_execute()
         {
             MockFor<IActionBehavior>().AssertWasNotCalled(x => x.Invoke());
@@ -105,18 +93,6 @@ namespace FubuMVC.Authentication.Tests.Endpoints
         }
 
         [Test]
-        public void should_mark_the_login_request_as_failed()
-        {
-            theLoginRequest.Status.ShouldEqual(LoginStatus.Failed);
-        }
-
-        [Test]
-        public void should_NOT_mark_the_session_as_authenticated()
-        {
-            MockFor<IAuthenticationSession>().AssertWasNotCalled(x => x.MarkAuthenticated(theLoginRequest.UserName));
-        }
-
-        [Test]
         public void should_not_signal_the_success_handler()
         {
             MockFor<ILoginSuccessHandler>().AssertWasNotCalled(x => x.LoggedIn(theLoginRequest));
@@ -126,12 +102,6 @@ namespace FubuMVC.Authentication.Tests.Endpoints
         public void should_allow_the_inner_behavior_to_execute()
         {
             MockFor<IActionBehavior>().AssertWasCalled(x => x.Invoke());
-        }
-
-        [Test]
-        public void should_increment_the_number_of_retries()
-        {
-            theLoginRequest.NumberOfTries.ShouldEqual(3);
         }
     }
 }

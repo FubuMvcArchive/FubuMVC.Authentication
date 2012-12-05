@@ -96,14 +96,14 @@
     <Compile Include="AuthenticationFilterTester.cs" />
     <Compile Include="AuthenticationServiceRegistryTester.cs" />
     <Compile Include="AuthenticationSettingsTester.cs" />
+    <Compile Include="BasicAuthenticationTester.cs" />
     <Compile Include="DefaultAuthenticationRedirectTester.cs" />
     <Compile Include="LoginRequestTester.cs" />
     <Compile Include="Membership\FlatFile\FlatFileMembershipRepositoryTester.cs" />
-    <Compile Include="Membership\MembershipAuthenticationServiceTester.cs" />
+    <Compile Include="Membership\MembershipAuthenticationTester.cs" />
     <Compile Include="Membership\UserInfoTester.cs" />
     <Compile Include="NotAuthenticatedModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Stubs.cs" />
     <Compile Include="ThreadPrincipalContextTester.cs" />
     <Compile Include="LoginSuccessHandlerTester.cs" />
     <Compile Include="Endpoints\FormsAuthenticationEndpointsRegistrationTester.cs" />

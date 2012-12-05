@@ -6,7 +6,7 @@ using Rhino.Mocks;
 namespace FubuMVC.Authentication.Tests.Membership
 {
     [TestFixture]
-    public class MembershipAuthenticationServiceTester : InteractionContext<MembershipAuthenticationService>
+    public class MembershipAuthenticationTester : InteractionContext<MembershipAuthentication>
     {
         [Test]
         public void authentication_is_a_straight_up_delegation_positive()
@@ -16,7 +16,7 @@ namespace FubuMVC.Authentication.Tests.Membership
                                             .Return(true);
 
 
-            ClassUnderTest.Authenticate(request).ShouldBeTrue();
+            ClassUnderTest.AuthenticateCredentials(request).ShouldBeTrue();
         }
 
         [Test]
@@ -27,7 +27,7 @@ namespace FubuMVC.Authentication.Tests.Membership
                                             .Return(false);
 
 
-            ClassUnderTest.Authenticate(request).ShouldBeFalse();
+            ClassUnderTest.AuthenticateCredentials(request).ShouldBeFalse();
         }
 
         [Test]

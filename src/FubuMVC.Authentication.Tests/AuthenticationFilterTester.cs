@@ -51,7 +51,7 @@ namespace FubuMVC.Authentication.Tests
             thePrincipal = MockFor<IPrincipal>();
 
 
-            MockFor<IAuthenticationService>().Stub(x => x.Build(theUserName))
+            MockFor<IPrincipalBuilder>().Stub(x => x.Build(theUserName))
                 .Return(thePrincipal);
 
             theResult = ClassUnderTest.Authenticate();
