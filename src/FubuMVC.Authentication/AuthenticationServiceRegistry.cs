@@ -1,3 +1,4 @@
+using Bottles;
 using FubuMVC.Authentication.Cookies;
 using FubuMVC.Authentication.Tickets;
 using FubuMVC.Core.Registration;
@@ -18,6 +19,8 @@ namespace FubuMVC.Authentication
             SetServiceIfNone<ILoginCookieService, LoginCookieService>();
             SetServiceIfNone<ILoginSuccessHandler, LoginSuccessHandler>();
             SetServiceIfNone<IAuthenticationRedirector, AuthenticationRedirector>();
+
+            AddService<IActivator, AuthenticationIsConfigured>();
         }
     }
 }

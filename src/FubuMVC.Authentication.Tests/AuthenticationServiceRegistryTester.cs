@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Bottles;
 using FubuMVC.Authentication.Cookies;
 using FubuMVC.Authentication.Membership;
 using FubuMVC.Authentication.Membership.FlatFile;
@@ -23,6 +24,13 @@ namespace FubuMVC.Authentication.Tests
             registry.Services<AuthenticationServiceRegistry>();
 
             theServiceGraph = BehaviorGraph.BuildFrom(registry).Services;
+        }
+
+        [Test]
+        public void registers_the_AuthenticationIsConfigured()
+        {
+            theServiceGraph.ServicesFor<IActivator>().Select(x => x.Type)
+                .ShouldContain(typeof(AuthenticationIsConfigured));
         }
 
         [Test]

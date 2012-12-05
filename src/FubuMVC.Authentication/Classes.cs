@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using Bottles;
-using Bottles.Diagnostics;
 using FubuCore;
 using FubuMVC.Authentication.Endpoints;
 using FubuMVC.Authentication.Membership;
@@ -81,28 +78,6 @@ namespace FubuMVC.Authentication
         }
     }
 
-
-
-    public interface IAuthenticationService
-    {
-        bool TryToApply();
-        bool Authenticate(LoginRequest request);
-    }
-    
-    public class AuthenticationIsConfigured : IActivator
-    {
-        private readonly IEnumerable<IAuthenticationStrategy> _strategies;
-
-        public AuthenticationIsConfigured(IEnumerable<IAuthenticationStrategy> strategies)
-        {
-            _strategies = strategies;
-        }
-
-        public void Activate(IEnumerable<IPackageInfo> packages, IPackageLog log)
-        {
-            throw new NotImplementedException();
-        }
-    }
 
     // TODO -- build the BasicAuthenticationNode
     // TODO -- add the session

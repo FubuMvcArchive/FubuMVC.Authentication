@@ -71,10 +71,12 @@
     </Compile>
     <Compile Include="AjaxAuthenticationRedirect.cs" />
     <Compile Include="ApplyAuthenticationPolicy.cs" />
+    <Compile Include="AuthenticationIsConfigured.cs" />
     <Compile Include="AuthenticationRedirector.cs" />
     <Compile Include="AuthenticationService.cs" />
     <Compile Include="BasicAuthentication.cs" />
     <Compile Include="IAuthenticationRedirector.cs" />
+    <Compile Include="IAuthenticationService.cs" />
     <Compile Include="IAuthenticationStrategy.cs" />
     <Compile Include="ICredentialsAuthenticator.cs" />
     <Compile Include="ILoginSuccessHandler.cs" />
