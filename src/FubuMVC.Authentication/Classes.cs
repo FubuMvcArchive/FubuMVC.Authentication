@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Security.Principal;
 using Bottles;
 using Bottles.Diagnostics;
 using FubuCore;
@@ -11,7 +10,6 @@ using FubuMVC.Core.Continuations;
 using FubuMVC.Core.Registration;
 using FubuMVC.Core.Registration.Nodes;
 using FubuMVC.Core.Registration.ObjectGraph;
-using System.Linq;
 
 namespace FubuMVC.Authentication
 {
@@ -112,44 +110,4 @@ namespace FubuMVC.Authentication
     // TODO -- go to windows and add the node, but it has to be first
     // TODO -- go to windows and make sure there's a way to disable it
     // TODO -- windows needs its own IWindowsPrincipalSource.Build(WindowsPrincipal)
-
-    // TODO -- LoginBehavior needs to delegate to this
-    // TODO -- need to have AuthenticationFilter delegate to this
-
-    public class AuthenticationService : IAuthenticationService
-    {
-        private readonly IEnumerable<IAuthenticationStrategy> _strategies;
-
-        public AuthenticationService(IEnumerable<IAuthenticationStrategy> strategies)
-        {
-            // TODO -- throw if none
-            _strategies = strategies;
-        }
-
-        public bool TryToApply()
-        {
-            return _strategies.Any(x => x.TryToApply());
-        }
-
-        public bool Authenticate(LoginRequest request)
-        {
-            return _strategies.Any(x => x.Authenticate(request));
-        }
-    }
-
-    public interface IAuthenticationStrategy
-    {
-        bool TryToApply();
-        bool Authenticate(LoginRequest request);
-    }
-
-    public interface IPrincipalBuilder
-    {
-        IPrincipal Build(string userName);
-    }
-
-    public interface ICredentialsAuthenticator
-    {
-        bool AuthenticateCredentials(LoginRequest request);
-    }
 }
