@@ -12,6 +12,7 @@ namespace FubuMVC.Authentication
     public class AuthenticationSettings
     {
         private readonly ChainPredicate _exclusions = new ChainPredicate();
+        private AuthenticationChain _strategies;
 
         public AuthenticationSettings()
         {
@@ -22,6 +23,17 @@ namespace FubuMVC.Authentication
 
             MaximumNumberOfFailedAttempts = 3;
             CooloffPeriodInMinutes = 60;
+
+            _strategies = new AuthenticationChain();
+        }
+
+        /// <summary>
+        /// Register and orders the IAuthenticationStrategy's applied to this 
+        /// FubuMVC application
+        /// </summary>
+        public AuthenticationChain Strategies
+        {
+            get { return _strategies; }
         }
 
         public ChainPredicate ExcludeChains

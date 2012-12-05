@@ -1,5 +1,7 @@
 using Bottles;
 using FubuMVC.Authentication.Cookies;
+using FubuMVC.Authentication.Membership;
+using FubuMVC.Authentication.Membership.FlatFile;
 using FubuMVC.Authentication.Tickets;
 using FubuMVC.Core.Registration;
 
@@ -21,6 +23,8 @@ namespace FubuMVC.Authentication
             SetServiceIfNone<IAuthenticationRedirector, AuthenticationRedirector>();
 
             AddService<IActivator, AuthenticationIsConfigured>();
+
+            SetServiceIfNone<IMembershipRepository, FlatFileMembershipRepository>();
         }
     }
 }

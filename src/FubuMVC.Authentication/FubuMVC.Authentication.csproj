@@ -71,7 +71,9 @@
     </Compile>
     <Compile Include="AjaxAuthenticationRedirect.cs" />
     <Compile Include="ApplyAuthenticationPolicy.cs" />
+    <Compile Include="AuthenticationChain.cs" />
     <Compile Include="AuthenticationIsConfigured.cs" />
+    <Compile Include="AuthenticationNode.cs" />
     <Compile Include="AuthenticationRedirector.cs" />
     <Compile Include="AuthenticationService.cs" />
     <Compile Include="BasicAuthentication.cs" />
@@ -100,6 +102,7 @@
     <Compile Include="LoginRequest.cs" />
     <Compile Include="LoginStatus.cs" />
     <Compile Include="RedirectLibrary.cs" />
+    <Compile Include="RegisterAuthenticationStrategies.cs" />
     <Compile Include="ThreadPrincipalContext.cs" />
     <Compile Include="Tickets\AuthenticationTicket.cs" />
     <Compile Include="Endpoints\AttachDefaultLoginView.cs" />

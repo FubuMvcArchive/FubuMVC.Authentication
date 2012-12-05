@@ -95,6 +95,7 @@
     <Compile Include="AuthenticationFilterNodeTester.cs" />
     <Compile Include="AuthenticationFilterTester.cs" />
     <Compile Include="AuthenticationIsConfiguredTester.cs" />
+    <Compile Include="AuthenticationNodeTester.cs" />
     <Compile Include="AuthenticationServiceRegistryTester.cs" />
     <Compile Include="AuthenticationServiceTester.cs" />
     <Compile Include="AuthenticationSettingsTester.cs" />
