@@ -27,6 +27,12 @@ namespace FubuMVC.Authentication.Tests
         }
 
         [Test]
+        public void registers_IAuthenticationService()
+        {
+            theDefaultServiceIs<IAuthenticationService, AuthenticationService>();
+        }
+
+        [Test]
         public void registers_the_AuthenticationIsConfigured()
         {
             theServiceGraph.ServicesFor<IActivator>().Select(x => x.Type)

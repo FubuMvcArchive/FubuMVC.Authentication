@@ -1,4 +1,5 @@
 using FubuMVC.Authentication.Endpoints;
+using FubuMVC.Authentication.Membership;
 using FubuMVC.Core;
 
 namespace FubuMVC.Authentication
@@ -14,6 +15,10 @@ namespace FubuMVC.Authentication
             registry.Policies.Add<FormsAuthenticationEndpointsRegistration>();
             registry.Policies.Add<AttachLoginBehaviorToLoginController>();
             registry.Policies.Add<AttachDefaultLoginView>();
+
+            registry.AlterSettings<AuthenticationSettings>(x => {
+                x.Strategies.AddToEnd<MembershipNode>();
+            });
         }
     }
 

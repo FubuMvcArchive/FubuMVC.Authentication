@@ -1,40 +1,21 @@
-using System.Diagnostics;
-using System.Security.Principal;
-using System.Threading;
-using FubuCore;
 using FubuMVC.Core.Continuations;
 
 namespace FubuMVC.Authentication
 {
     public class AuthenticationFilter
     {
-        private readonly IPrincipalContext _context;
+        private readonly IAuthenticationService _authentication;
         private readonly IAuthenticationRedirector _redirector;
-        private readonly IAuthenticationSession _session;
-        private readonly IPrincipalBuilder _builder;
 
-        public AuthenticationFilter(IAuthenticationSession session, IPrincipalBuilder builder,
-                                    IPrincipalContext context, IAuthenticationRedirector redirector)
+        public AuthenticationFilter(IAuthenticationRedirector redirector, IAuthenticationService authentication)
         {
-            _session = session;
-            _builder = builder;
-            _context = context;
             _redirector = redirector;
+            _authentication = authentication;
         }
 
         public FubuContinuation Authenticate()
         {
-            string userName = _session.PreviouslyAuthenticatedUser();
-            if (userName.IsNotEmpty())
-            {
-                _session.MarkAccessed();
-                IPrincipal principal = _builder.Build(userName);
-                _context.Current = principal;
-
-                return FubuContinuation.NextBehavior();
-            }
-
-            return _redirector.Redirect();
+            return _authentication.TryToApply() ? FubuContinuation.NextBehavior() : _redirector.Redirect();
         }
     }
 }

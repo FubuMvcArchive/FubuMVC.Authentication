@@ -16,8 +16,8 @@ namespace FubuMVC.Authentication.Tests
 
         protected override void beforeEach()
         {
-            MockFor<IAuthenticationSession>().Stub(x => x.PreviouslyAuthenticatedUser())
-                .Return(null);
+            MockFor<IAuthenticationService>().Stub(x => x.TryToApply())
+                .Return(false);
 
             theRedirect = FubuContinuation.RedirectTo<LoginRequest>();
 
@@ -37,30 +37,14 @@ namespace FubuMVC.Authentication.Tests
     [TestFixture]
     public class when_authenticating_and_there_is_a_previously_authenticated_user : InteractionContext<AuthenticationFilter>
     {
-        private string theUserName;
-        private IPrincipal thePrincipal;
         private FubuContinuation theResult;
 
         protected override void beforeEach()
         {
-            theUserName = "a user";
-
-            MockFor<IAuthenticationSession>().Stub(x => x.PreviouslyAuthenticatedUser())
-                .Return(theUserName);
-
-            thePrincipal = MockFor<IPrincipal>();
-
-
-            MockFor<IPrincipalBuilder>().Stub(x => x.Build(theUserName))
-                .Return(thePrincipal);
+            MockFor<IAuthenticationService>().Stub(x => x.TryToApply())
+                .Return(true);
 
             theResult = ClassUnderTest.Authenticate();
-        }
-
-        [Test]
-        public void should_mark_the_session_as_accessed_for_sliding_expirations()
-        {
-            MockFor<IAuthenticationSession>().AssertWasCalled(x => x.MarkAccessed());
         }
 
         [Test]
@@ -69,10 +53,5 @@ namespace FubuMVC.Authentication.Tests
 			theResult.AssertWasContinuedToNextBehavior();
         }
 
-        [Test]
-        public void should_set_the_principal_for_the_authenticated_user()
-        {
-            MockFor<IPrincipalContext>().AssertWasCalled(x => x.Current = thePrincipal);
-        }
     }
 }

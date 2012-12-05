@@ -8,9 +8,13 @@ namespace FubuMVC.Authentication.Membership
     {
         private readonly Type _membershipType;
 
+        public MembershipNode() : this(null)
+        {
+        }
+
         public MembershipNode(Type membershipType) : base(typeof (MembershipAuthentication))
         {
-            if (!membershipType.CanBeCastTo<IMembershipRepository>())
+            if (membershipType != null && !membershipType.CanBeCastTo<IMembershipRepository>())
             {
                 throw new ArgumentOutOfRangeException("membershipType",
                                                       "membershipType has to be assignable to IMembershipRepository");
@@ -26,7 +30,7 @@ namespace FubuMVC.Authentication.Membership
 
         protected override void configure(ObjectDef def)
         {
-            def.DependencyByType<IMembershipRepository>(new ObjectDef(_membershipType));
+            if (_membershipType != null) def.DependencyByType<IMembershipRepository>(new ObjectDef(_membershipType));
         }
 
         public static MembershipNode For<T>() where T : IMembershipRepository

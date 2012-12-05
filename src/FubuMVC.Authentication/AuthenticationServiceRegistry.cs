@@ -21,6 +21,7 @@ namespace FubuMVC.Authentication
             SetServiceIfNone<ILoginCookieService, LoginCookieService>();
             SetServiceIfNone<ILoginSuccessHandler, LoginSuccessHandler>();
             SetServiceIfNone<IAuthenticationRedirector, AuthenticationRedirector>();
+            SetServiceIfNone<IAuthenticationService, AuthenticationService>();
 
             AddService<IActivator, AuthenticationIsConfigured>();
 
