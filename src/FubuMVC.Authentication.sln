@@ -16,6 +16,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Authentication.Wind
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationHarness", "AuthenticationHarness\AuthenticationHarness.csproj", "{D409B7B6-148E-4AFB-ABC1-0D99A5629446}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.PersistedMembership", "FubuMVC.PersistedMembership\FubuMVC.PersistedMembership.csproj", "{89C78A78-4C10-4C34-94AD-80C89F8C6606}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.PersistedMembership.Testing", "FubuMVC.PersistedMembership.Testing\FubuMVC.PersistedMembership.Testing.csproj", "{D320FB44-9A73-446E-80ED-5CA4C9C2838A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +58,14 @@ Global
 		{D409B7B6-148E-4AFB-ABC1-0D99A5629446}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D409B7B6-148E-4AFB-ABC1-0D99A5629446}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D409B7B6-148E-4AFB-ABC1-0D99A5629446}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89C78A78-4C10-4C34-94AD-80C89F8C6606}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89C78A78-4C10-4C34-94AD-80C89F8C6606}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89C78A78-4C10-4C34-94AD-80C89F8C6606}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89C78A78-4C10-4C34-94AD-80C89F8C6606}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D320FB44-9A73-446E-80ED-5CA4C9C2838A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D320FB44-9A73-446E-80ED-5CA4C9C2838A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D320FB44-9A73-446E-80ED-5CA4C9C2838A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D320FB44-9A73-446E-80ED-5CA4C9C2838A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
