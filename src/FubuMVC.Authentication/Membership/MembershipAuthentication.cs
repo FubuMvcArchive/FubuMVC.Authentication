@@ -28,6 +28,11 @@ namespace FubuMVC.Authentication.Membership
             return _membership.MatchesCredentials(request);
         }
 
+        public IMembershipRepository Membership
+        {
+            get { return _membership; }
+        }
+
         public IPrincipal Build(string userName)
         {
             var user = _membership.FindByName(userName);
