@@ -4,13 +4,20 @@ using System.Linq;
 
 namespace FubuMVC.Authentication.Membership
 {
-    public class FubuPrincipal : GenericPrincipal
+    public class FubuPrincipal : IPrincipal
     {
         private readonly IUserInfo _user;
+        private readonly Func<string, bool> _isInRole;
 
-        public FubuPrincipal(IUserInfo user) : base(new GenericIdentity(user.UserName), user.Roles.ToArray())
+        public FubuPrincipal(IUserInfo user) : this(user, role => user.Roles.Contains(role))
+        {
+        }
+
+        public FubuPrincipal(IUserInfo user, Func<string, bool> isInRole)
         {
             _user = user;
+            _isInRole = isInRole;
+            Identity = new GenericIdentity(user.UserName);
         }
 
         public T Get<T>() where T : class
@@ -18,10 +25,13 @@ namespace FubuMVC.Authentication.Membership
             return _user.Get<T>();
         }
 
-        public static FubuPrincipal Current()
+        public static FubuPrincipal Current
         {
-            var context = new ThreadPrincipalContext();
-            return context.Current as FubuPrincipal;
+            get
+            {
+                var context = new ThreadPrincipalContext();
+                return context.Current as FubuPrincipal;
+            }
         }
 
         public static void SetCurrent(Action<UserInfo> configuration)
@@ -32,5 +42,12 @@ namespace FubuMVC.Authentication.Membership
             var principal = new FubuPrincipal(user);
             new ThreadPrincipalContext().Current = principal;
         }
+
+        public bool IsInRole(string role)
+        {
+            return _isInRole(role);
+        }
+
+        public IIdentity Identity { get; private set; }
     }
 }

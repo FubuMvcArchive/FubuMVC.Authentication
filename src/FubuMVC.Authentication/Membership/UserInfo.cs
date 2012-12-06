@@ -34,15 +34,15 @@ namespace FubuMVC.Authentication.Membership
         {
             return _values[typeof (T)] as T;
         }
-
+        
         public void Set<T>(T value) where T : class
         {
             _values[typeof (T)] = value;
         }
 
-        public void AddRole(string role)
+        public void AddRoles(params string[] roles)
         {
-            _roles.Add(role);
+            roles.Each(r => _roles.Fill(r));
         }
 
         public bool Matches(LoginRequest request)

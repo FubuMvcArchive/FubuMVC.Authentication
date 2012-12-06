@@ -30,7 +30,7 @@ namespace FubuMVC.Authentication.Tests.Membership
 
             user.Roles = new string[]{"A", "B"};
 
-            user.AddRole("C");
+            user.AddRoles("C");
 
             user.Roles.ShouldHaveTheSameElementsAs("A", "B", "C");
         }
