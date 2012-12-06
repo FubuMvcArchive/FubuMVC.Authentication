@@ -26,26 +26,4 @@ namespace FubuMVC.PersistedMembership
             });
         }
     }
-
-    public class MembershipRepository<T> : IMembershipRepository where T : User
-    {
-        private readonly IEntityRepository _repository;
-        private readonly IPasswordHash _hash;
-
-        public MembershipRepository(IEntityRepository repository, IPasswordHash hash)
-        {
-            _repository = repository;
-            _hash = hash;
-        }
-
-        public bool MatchesCredentials(LoginRequest request)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IUserInfo FindByName(string username)
-        {
-            throw new NotImplementedException();
-        }
-    }
 }

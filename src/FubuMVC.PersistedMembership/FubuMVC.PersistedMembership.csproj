@@ -81,6 +81,7 @@
       <Link>CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="IPasswordHash.cs" />
+    <Compile Include="MembershipRepository.cs" />
     <Compile Include="PasswordHash.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
