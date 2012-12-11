@@ -1,6 +1,7 @@
 using System;
 using System.Web;
 using FubuCore.Dates;
+using FubuCore.Logging;
 using FubuMVC.Authentication.Tickets;
 using HtmlTags;
 
@@ -11,12 +12,14 @@ namespace FubuMVC.Authentication.Cookies
         private readonly ISystemTime _systemTime;
         private readonly IEncryptor _encryptor;
         private readonly ILoginCookieService _cookies;
+        private readonly ILogger _logger;
 
-        public CookieTicketSource(ISystemTime systemTime, IEncryptor encryptor, ILoginCookieService cookies)
+        public CookieTicketSource(ISystemTime systemTime, IEncryptor encryptor, ILoginCookieService cookies, ILogger logger)
         {
             _systemTime = systemTime;
             _encryptor = encryptor;
             _cookies = cookies;
+            _logger = logger;
         }
 
         public AuthenticationTicket CurrentTicket()
@@ -32,15 +35,16 @@ namespace FubuMVC.Authentication.Cookies
 
                 return null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _logger.Error("failed while trying to retrieve the user cookie", ex);
                 return null;
             }
         }
 
         public string DecodeJson(HttpCookie cookie)
         {
-            var json = cookie.Value.Replace("%2f", "/");
+            var json = cookie.Value;
             return _encryptor.Decrypt(json);
         }
 
