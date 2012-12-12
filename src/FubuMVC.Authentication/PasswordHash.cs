@@ -2,7 +2,7 @@
 using System.Security.Cryptography;
 using System.Web.Security;
 
-namespace FubuMVC.PersistedMembership
+namespace FubuMVC.Authentication
 {
     /// <summary>
     /// Salted password hashing with PBKDF2-SHA1.

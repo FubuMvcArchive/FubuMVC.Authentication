@@ -1,4 +1,4 @@
-﻿namespace FubuMVC.PersistedMembership
+﻿namespace FubuMVC.Authentication
 {
     public interface IPasswordHash
     {

@@ -70,6 +70,7 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="AjaxAuthenticationRedirect.cs" />
+    <Compile Include="ApplyAuthentication.cs" />
     <Compile Include="ApplyAuthenticationPolicy.cs" />
     <Compile Include="AuthenticationChain.cs" />
     <Compile Include="AuthenticationIsConfigured.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="IAuthenticationStrategy.cs" />
     <Compile Include="ICredentialsAuthenticator.cs" />
     <Compile Include="ILoginSuccessHandler.cs" />
+    <Compile Include="IPasswordHash.cs" />
     <Compile Include="IPrincipalBuilder.cs" />
     <Compile Include="Membership\FlatFile\FlatFileMembershipRepository.cs" />
     <Compile Include="Membership\FubuPrincipal.cs" />
@@ -90,6 +92,7 @@
     <Compile Include="Membership\MembershipAuthentication.cs" />
     <Compile Include="Membership\MembershipNode.cs" />
     <Compile Include="NotAuthenticatedFilter.cs" />
+    <Compile Include="PasswordHash.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AuthenticationFilter.cs" />
     <Compile Include="AuthenticationFilterNode.cs" />
@@ -97,7 +100,6 @@
     <Compile Include="AuthenticationSettings.cs" />
     <Compile Include="DefaultAuthenticationRedirect.cs" />
     <Compile Include="IAuthenticationRedirect.cs" />
-    <Compile Include="Classes.cs" />
     <Compile Include="IAuthenticationSession.cs" />
     <Compile Include="IPrincipalContext.cs" />
     <Compile Include="LoginRequest.cs" />

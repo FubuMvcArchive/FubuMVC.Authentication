@@ -21,8 +21,4 @@ namespace FubuMVC.Authentication
             });
         }
     }
-
-    // TODO -- go to windows and add the node, but it has to be first
-    // TODO -- go to windows and make sure there's a way to disable it
-    // TODO -- windows needs its own IWindowsPrincipalSource.Build(WindowsPrincipal)
 }

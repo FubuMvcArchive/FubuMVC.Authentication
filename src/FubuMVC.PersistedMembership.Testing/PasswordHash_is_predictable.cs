@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using FubuMVC.Authentication;
 using NUnit.Framework;
 using FubuTestingSupport;
 
