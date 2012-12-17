@@ -20,6 +20,11 @@ namespace FubuMVC.Authentication.Membership
             Identity = new GenericIdentity(user.UserName);
         }
 
+        public IUserInfo User
+        {
+            get { return _user; }
+        }
+
         public T Get<T>() where T : class
         {
             return _user.Get<T>();
