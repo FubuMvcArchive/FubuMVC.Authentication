@@ -15,6 +15,8 @@ namespace FubuMVC.Authentication.Membership
 
         public FubuPrincipal(IUserInfo user, Func<string, bool> isInRole)
         {
+            if (user == null) throw new ArgumentNullException("user");
+
             _user = user;
             _isInRole = isInRole;
             Identity = new GenericIdentity(user.UserName);

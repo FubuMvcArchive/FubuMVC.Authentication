@@ -1,4 +1,7 @@
-﻿using System.Security.Principal;
+﻿using System;
+using System.Runtime.Serialization;
+using System.Security.Principal;
+using FubuCore;
 
 namespace FubuMVC.Authentication.Membership
 {
@@ -36,8 +39,23 @@ namespace FubuMVC.Authentication.Membership
         public IPrincipal Build(string userName)
         {
             var user = _membership.FindByName(userName);
+            if (user == null)
+            {
+                throw new UnknownUserException(userName);
+            }
 
             return new FubuPrincipal(user);
+        }
+    }
+
+    public class UnknownUserException : Exception
+    {
+        public UnknownUserException(string user) : base("User {0} cannot be found".ToFormat(user))
+        {
+        }
+
+        protected UnknownUserException(SerializationInfo info, StreamingContext context) : base(info, context)
+        {
         }
     }
 }
