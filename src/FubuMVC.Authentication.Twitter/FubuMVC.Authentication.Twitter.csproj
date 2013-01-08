@@ -57,19 +57,11 @@
     <Compile Include="TwitterSignInSettings.cs" />
     <Compile Include="TwitterProxy.cs" />
     <Compile Include="WriteDefaultTwitterButton.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\FubuMVC.Authentication\FubuMVC.Authentication.csproj">
-      <Project>{B889AF6B-2744-4370-842A-04026D1370B5}</Project>
-      <Name>FubuMVC.Authentication</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="Bottles">
       <HintPath>..\packages\Bottles.1.0.0.441\lib\Bottles.dll</HintPath>
+    </Reference>
+    <Reference Include="DELETE_ME">
+      <HintPath>..\packages\CodeContracts.Unofficial.1.0.0.2\lib\net40-client\DELETE_ME.dll</HintPath>
     </Reference>
     <Reference Include="DotNetOpenAuth.Core">
       <HintPath>..\packages\DotNetOpenAuth.Core.4.1.0.12182\lib\net40-full\DotNetOpenAuth.Core.dll</HintPath>
@@ -96,20 +88,34 @@
       <HintPath>..\packages\FubuLocalization.0.9.5.124\lib\FubuLocalization.dll</HintPath>
     </Reference>
     <Reference Include="FubuMVC.ContentExtensions">
-      <HintPath>..\packages\FubuMVC.ContentExtensions.0.1.0.141\lib\net40\FubuMVC.ContentExtensions.dll</HintPath>
+      <HintPath>..\packages\FubuMVC.ContentExtensions.0.1.0.145\lib\net40\FubuMVC.ContentExtensions.dll</HintPath>
     </Reference>
     <Reference Include="FubuMVC.Core">
-      <HintPath>..\packages\FubuMVC.Core.0.9.9.1393\lib\net40\FubuMVC.Core.dll</HintPath>
+      <HintPath>..\packages\FubuMVC.Core.0.9.9.1400\lib\net40\FubuMVC.Core.dll</HintPath>
     </Reference>
     <Reference Include="FubuMVC.Core.View">
-      <HintPath>..\packages\FubuMVC.Core.View.0.9.9.118\lib\net40\FubuMVC.Core.View.dll</HintPath>
+      <HintPath>..\packages\FubuMVC.Core.View.0.9.9.119\lib\net40\FubuMVC.Core.View.dll</HintPath>
     </Reference>
     <Reference Include="HtmlTags">
       <HintPath>..\packages\HtmlTags.1.2.0.145\lib\4.0\HtmlTags.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Contracts">
+      <HintPath>..\packages\CodeContracts.Unofficial.1.0.0.2\lib\net35-client\Microsoft.Contracts.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FubuMVC.Authentication\FubuMVC.Authentication.csproj">
+      <Project>{B889AF6B-2744-4370-842A-04026D1370B5}</Project>
+      <Name>FubuMVC.Authentication</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
