@@ -1,4 +1,5 @@
 using FubuMVC.Core.Http;
+using FubuMVC.Core.Http.Cookies;
 
 namespace FubuMVC.Authentication.Cookies
 {

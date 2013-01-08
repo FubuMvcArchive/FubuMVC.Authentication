@@ -8,6 +8,9 @@ using FubuMVC.Core.Caching;
 using FubuMVC.Core.Runtime;
 using FubuTestingSupport;
 using NUnit.Framework;
+using Cookie = FubuMVC.Core.Http.Cookies.Cookie;
+using System.Linq;
+using FubuCore;
 
 namespace FubuMVC.Authentication.IntegrationTesting
 {
@@ -37,12 +40,13 @@ namespace FubuMVC.Authentication.IntegrationTesting
             var response = endpoints.GetByInput(new TargetModel(), acceptType: "text/json", configure: r =>
             {
                 var cookies = new CookieContainer();
-                cookies.Add(new Cookie
+                cookies.Add(new System.Net.Cookie
                                  {
                                      Domain = "localhost",
                                      Path = cookie.Path,
-                                     Expires = cookie.Expires,
-                                     Name = cookie.Name,
+
+                                     Expires = now.AddDays(1),
+                                     Name = cookie.States.Single().Name,
                                      Value = cookie.Value
                                  });
 
@@ -50,13 +54,13 @@ namespace FubuMVC.Authentication.IntegrationTesting
                 r.AllowAutoRedirect = false;
             });
 
-            response.StatusCode.ShouldEqual(HttpStatusCode.Found);
+            response.StatusCode.ShouldEqual(HttpStatusCode.OK);
         }
 
         #region Nested Type: CookieWriter
         public class CookieWriter : IOutputWriter
         {
-            public HttpCookie Cookie { get; set; }
+            public Cookie Cookie { get; set; }
 
             public void Dispose()
             {
@@ -81,6 +85,11 @@ namespace FubuMVC.Authentication.IntegrationTesting
             public void RedirectToUrl(string url)
             {
                 throw new NotImplementedException();
+            }
+
+            public void AppendCookie(Cookie cookie)
+            {
+                Cookie = cookie;
             }
 
             public void AppendHeader(string key, string value)
@@ -113,10 +122,6 @@ namespace FubuMVC.Authentication.IntegrationTesting
                 throw new NotImplementedException();
             }
 
-            public void AppendCookie(HttpCookie cookie)
-            {
-                Cookie = cookie;
-            }
         }
         #endregion
     }

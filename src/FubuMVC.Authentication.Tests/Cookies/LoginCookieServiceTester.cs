@@ -3,10 +3,12 @@ using System.Web;
 using FubuCore.Dates;
 using FubuMVC.Authentication.Cookies;
 using FubuMVC.Core.Http;
+using FubuMVC.Core.Http.Cookies;
 using FubuMVC.Core.Runtime;
 using FubuTestingSupport;
 using NUnit.Framework;
 using Rhino.Mocks;
+using System.Linq;
 
 namespace FubuMVC.Authentication.Tests.Cookies
 {
@@ -28,12 +30,12 @@ namespace FubuMVC.Authentication.Tests.Cookies
             Services.Inject(theSettings);
         }
 
-        private HttpCookie theCookie { get { return ClassUnderTest.CreateCookie(theSystemTime); } }
+        private Cookie theCookie { get { return ClassUnderTest.CreateCookie(theSystemTime); } }
 
         [Test]
         public void sets_the_name_from_the_settings()
         {
-            theCookie.Name.ShouldEqual(theSettings.Name);
+            theCookie.States.First().Name.ShouldEqual(theSettings.Name);
         }
 
         [Test]
@@ -54,7 +56,7 @@ namespace FubuMVC.Authentication.Tests.Cookies
         public void does_not_set_the_path_if_not_specified_in_the_settings()
         {
             theSettings.Path = null;
-            theCookie.Path.ShouldNotBeNull();
+            theCookie.Path.ShouldBeNull();
         }
 
         [Test]
@@ -80,18 +82,19 @@ namespace FubuMVC.Authentication.Tests.Cookies
         [Test]
         public void sets_the_expiration_date()
         {
-            theCookie.Expires.ShouldEqual(theSettings.ExpirationFor(today));
+            var actual = theCookie.Expires.Value.UtcDateTime;
+            actual.ShouldEqual(theSettings.ExpirationFor(today).ToUniversalTime());
         }
     }
 
     [TestFixture]
     public class when_getting_the_current_cookie : InteractionContext<LoginCookieService>
     {
-        private HttpCookie theCookie;
+        private Cookie theCookie;
 
         protected override void beforeEach()
         {
-            theCookie = new HttpCookie(CookieSettings.DefaultCookieName);
+            theCookie = new Cookie(CookieSettings.DefaultCookieName);
 
             MockFor<ICookies>().Stub(x => x.Get(CookieSettings.DefaultCookieName)).Return(theCookie);
         }
@@ -106,11 +109,11 @@ namespace FubuMVC.Authentication.Tests.Cookies
     [TestFixture]
     public class when_updating_the_login_cookie : InteractionContext<LoginCookieService>
     {
-        private HttpCookie theCookie;
+        private Cookie theCookie;
 
         protected override void beforeEach()
         {
-            theCookie = new HttpCookie("Test");
+            theCookie = new Cookie("Test");
             ClassUnderTest.Update(theCookie);
         }
 

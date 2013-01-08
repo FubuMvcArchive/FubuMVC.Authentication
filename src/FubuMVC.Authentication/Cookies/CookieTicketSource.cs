@@ -3,6 +3,7 @@ using System.Web;
 using FubuCore.Dates;
 using FubuCore.Logging;
 using FubuMVC.Authentication.Tickets;
+using FubuMVC.Core.Http.Cookies;
 using HtmlTags;
 
 namespace FubuMVC.Authentication.Cookies
@@ -42,7 +43,7 @@ namespace FubuMVC.Authentication.Cookies
             }
         }
 
-        public string DecodeJson(HttpCookie cookie)
+        public string DecodeJson(Cookie cookie)
         {
             var json = cookie.Value;
             return _encryptor.Decrypt(json);

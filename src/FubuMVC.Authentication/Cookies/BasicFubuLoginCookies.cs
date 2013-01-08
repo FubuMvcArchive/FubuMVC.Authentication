@@ -1,5 +1,5 @@
 using FubuCore.Dates;
-using FubuMVC.Core.Http;
+using FubuMVC.Core.Http.Cookies;
 using FubuMVC.Core.Runtime;
 
 namespace FubuMVC.Authentication.Cookies
@@ -8,8 +8,8 @@ namespace FubuMVC.Authentication.Cookies
     {
         public static readonly string FubuRemember = "FubuRememberMe";
 
-        private readonly ISystemTime _time;
         private readonly ICookies _cookies;
+        private readonly ISystemTime _time;
         private readonly IOutputWriter _writer;
 
         public BasicFubuLoginCookies(ISystemTime time, ICookies cookies, IOutputWriter writer)

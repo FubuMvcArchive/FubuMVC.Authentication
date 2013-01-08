@@ -2,6 +2,7 @@ using System.Web;
 using FubuCore;
 using FubuCore.Dates;
 using FubuMVC.Core.Http;
+using FubuMVC.Core.Http.Cookies;
 using FubuMVC.Core.Runtime;
 
 namespace FubuMVC.Authentication.Cookies
@@ -19,17 +20,19 @@ namespace FubuMVC.Authentication.Cookies
             _writer = writer;
         }
 
-        public HttpCookie Current()
+        public Cookie Current()
         {
             return _cookies.Get(_settings.Name);
         }
 
-        public HttpCookie CreateCookie(ISystemTime clock)
+        public Cookie CreateCookie(ISystemTime clock)
         {
-            var cookie = new HttpCookie(_settings.Name);
-            cookie.HttpOnly = _settings.HttpOnly;
-            cookie.Secure = _settings.Secure;
-            cookie.Domain = _settings.Domain;
+            var cookie = new Cookie(_settings.Name)
+            {
+                HttpOnly = _settings.HttpOnly,
+                Secure = _settings.Secure,
+                Domain = _settings.Domain
+            };
 
             if(_settings.Path.IsNotEmpty())
             {
@@ -41,7 +44,7 @@ namespace FubuMVC.Authentication.Cookies
             return cookie;
         }
 
-        public void Update(HttpCookie cookie)
+        public void Update(Cookie cookie)
         {
             _writer.AppendCookie(cookie);
         }

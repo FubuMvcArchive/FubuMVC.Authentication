@@ -1,7 +1,7 @@
 using System;
 using FubuMVC.Authentication.Cookies;
 using FubuMVC.Authentication.Endpoints;
-using FubuMVC.Core.Http;
+using FubuMVC.Core.Http.Cookies;
 using FubuTestingSupport;
 using NUnit.Framework;
 using Rhino.Mocks;
@@ -30,25 +30,25 @@ namespace FubuMVC.Authentication.Tests.Endpoints
         }
 
         [Test]
-        public void should_set_the_remembered_user_name_on_the_login_request_if_it_is_not_already_set()
+        public void does_nothing_if_there_is_no_remembered_user()
         {
-            var request = new LoginRequest()
+            var request = new LoginRequest
             {
                 UserName = null
             };
 
-            theCookies.User.Stub(x => x.Value).Return("jeremy");
+            theCookies.User.Stub(x => x.Value).Return(null);
 
             ClassUnderTest.Login(request);
 
-            request.UserName.ShouldEqual("jeremy");
-            request.RememberMe.ShouldBeTrue();
+            request.UserName.ShouldBeNull();
+            request.RememberMe.ShouldBeFalse();
         }
 
         [Test]
         public void should_not_set_the_remembered_user_name_if_there_is_already_a_different_name()
         {
-            var request = new LoginRequest()
+            var request = new LoginRequest
             {
                 UserName = "josh"
             };
@@ -62,19 +62,19 @@ namespace FubuMVC.Authentication.Tests.Endpoints
         }
 
         [Test]
-        public void does_nothing_if_there_is_no_remembered_user()
+        public void should_set_the_remembered_user_name_on_the_login_request_if_it_is_not_already_set()
         {
-            var request = new LoginRequest()
+            var request = new LoginRequest
             {
                 UserName = null
             };
 
-            theCookies.User.Stub(x => x.Value).Return(null);
+            theCookies.User.Stub(x => x.Value).Return("jeremy");
 
             ClassUnderTest.Login(request);
 
-            request.UserName.ShouldBeNull();
-            request.RememberMe.ShouldBeFalse();
+            request.UserName.ShouldEqual("jeremy");
+            request.RememberMe.ShouldBeTrue();
         }
     }
 
