@@ -37,5 +37,11 @@ namespace FubuMVC.Authentication.Tests.Cookies
         {
             theSettings.ExpirationInDays.ShouldEqual(30);
         }
+
+        [Test]
+        public void has_a_default_path()
+        {
+            theSettings.Path.ShouldEqual("/");
+        }
     }
 }
