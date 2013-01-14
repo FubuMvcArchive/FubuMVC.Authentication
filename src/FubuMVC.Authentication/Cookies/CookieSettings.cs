@@ -10,6 +10,7 @@ namespace FubuMVC.Authentication.Cookies
         {
             Name = DefaultCookieName;
             ExpirationInDays = 30;
+            Path = "/";
         }
 
         public string Name { get; set; }
