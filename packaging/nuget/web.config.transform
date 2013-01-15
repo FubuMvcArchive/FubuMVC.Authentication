@@ -1,10 +1,16 @@
 ﻿<configuration>
-  <location path="~/login/windows">
+  <location path="login/windows">
     <system.webServer>
       <security>
         <authentication>
-          <windowsAuthentication enabled="true" />
-          <anonymousAuthentication enabled="false"/>
+          <windowsAuthentication enabled="true">
+            <providers>
+              <clear />
+              <add value="Negotiate" />
+              <add value="NTLM" />
+            </providers>
+          </windowsAuthentication>
+          <anonymousAuthentication enabled="false" />
         </authentication>
       </security>
     </system.webServer>

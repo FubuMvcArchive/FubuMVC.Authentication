@@ -1,8 +1,10 @@
-﻿namespace FubuMVC.Authentication.Windows
+﻿using System.Security.Principal;
+
+namespace FubuMVC.Authentication.Windows
 {
-    // This is going to vary by the host (i.e., ASP.NET vs. Self Host)
+    // This is probably going to vary by the host (i.e., ASP.NET vs. Self Host vs. OWIN). Good luck w/ OWIN.
     public interface IWindowsAuthenticationContext
     {
-        string CurrentUser();
+        WindowsPrincipal Current();
     }
 }

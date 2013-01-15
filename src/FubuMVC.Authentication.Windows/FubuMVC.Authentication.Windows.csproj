@@ -67,14 +67,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AspNetWindowsAuthenticationContext.cs" />
+    <Compile Include="WindowsAuthentication.cs" />
     <Compile Include="IWindowsAuthenticationContext.cs" />
+    <Compile Include="IWindowsAuthentication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WindowsActionSource.cs" />
-    <Compile Include="WindowsAuthenticationStrategy.cs" />
-    <Compile Include="WindowsAuthFubuRegistryExtension.cs" />
+    <Compile Include="ApplyWindowsAuthentication.cs" />
     <Compile Include="WindowsController.cs" />
     <Compile Include="WindowsLoginExtension.cs" />
-    <Compile Include="WindowsRegistry.cs" />
+    <Compile Include="WindowsAuthenticationServiceRegistry.cs" />
     <Compile Include="WindowsSignInRequest.cs" />
   </ItemGroup>
   <ItemGroup>

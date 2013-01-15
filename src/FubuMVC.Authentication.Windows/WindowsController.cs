@@ -1,5 +1,5 @@
 ﻿using FubuMVC.Core;
-using FubuMVC.Core.Runtime;
+using FubuMVC.Core.Continuations;
 using FubuMVC.Core.Security;
 
 namespace FubuMVC.Authentication.Windows
@@ -7,24 +7,20 @@ namespace FubuMVC.Authentication.Windows
     [NotAuthenticated]
     public class WindowsController
     {
-        private readonly IAuthenticationSession _session;
-        private readonly IWindowsAuthenticationContext _windowsContext;
-        private readonly IOutputWriter _writer;
+        private readonly IWindowsAuthenticationContext _context;
+        private readonly IWindowsAuthentication _strategy;
 
-        public WindowsController(IAuthenticationSession session, IWindowsAuthenticationContext windowsContext, IOutputWriter writer)
+        public WindowsController(IWindowsAuthenticationContext context, IWindowsAuthentication strategy)
         {
-            _session = session;
-            _windowsContext = windowsContext;
-            _writer = writer;
+            _context = context;
+            _strategy = strategy;
         }
 
         [UrlPattern("login/windows")]
-        public void Login(WindowsSignInRequest request)
+        public FubuContinuation Login(WindowsSignInRequest request)
         {
-            var currentUser = _windowsContext.CurrentUser();
-            _session.MarkAuthenticated(currentUser);
-
-            _writer.RedirectToUrl(request.Url ?? "~/");
+            var principal = _context.Current();
+            return _strategy.Authenticate(request, principal);
         }
     }
 }

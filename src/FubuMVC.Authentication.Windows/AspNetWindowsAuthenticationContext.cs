@@ -5,26 +5,18 @@ namespace FubuMVC.Authentication.Windows
 {
     public class AspNetWindowsAuthenticationContext : IWindowsAuthenticationContext
     {
-        public string CurrentUser()
+        private readonly HttpContextBase _context;
+
+        public AspNetWindowsAuthenticationContext(HttpContextBase context)
         {
-            var context = HttpContext.Current;
-            var identity = context.Request.LogonUserIdentity;
+            _context = context;
+        }
 
-            if (identity == null)
-            {
-                return string.Empty;
-            }
+        public WindowsPrincipal Current()
+        {
+            var identity = _context.Request.LogonUserIdentity;
 
-            if (identity.IsAnonymous)
-            {
-                context.User = new WindowsPrincipal(WindowsIdentity.GetAnonymous());
-            }
-            else
-            {
-                context.User = new WindowsPrincipal(identity);
-            }
-
-            return context.User.Identity.Name;
+            return identity == null ? null : new WindowsPrincipal(identity);
         }
     }
 }

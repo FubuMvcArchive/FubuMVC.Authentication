@@ -10,7 +10,7 @@ namespace FubuMVC.Authentication.Windows
     {
         public IEnumerable<object> GetExtensions(IFubuPage<LoginRequest> page)
         {
-            yield return page.LinkTo<WindowsSignInRequest>().Text(LoginKeys.LoginWithWindows);
+            yield return page.LinkTo(new WindowsSignInRequest { Url = page.Model.Url }).Text(LoginKeys.LoginWithWindows);
         }
     }
 }
