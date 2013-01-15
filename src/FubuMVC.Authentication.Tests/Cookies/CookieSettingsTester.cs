@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Web;
 using FubuMVC.Authentication.Cookies;
 using FubuTestingSupport;
 using NUnit.Framework;

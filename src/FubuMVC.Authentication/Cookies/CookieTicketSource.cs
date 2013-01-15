@@ -1,5 +1,6 @@
 using System;
 using System.Web;
+using System.Web.Util;
 using FubuCore.Dates;
 using FubuCore.Logging;
 using FubuMVC.Authentication.Tickets;
@@ -43,16 +44,24 @@ namespace FubuMVC.Authentication.Cookies
             }
         }
 
+        public string EncodeJson(AuthenticationTicket ticket)
+        {
+            var value = _encryptor.Encrypt(JsonUtil.ToJson(ticket));
+            return HttpUtility.UrlEncode(value);
+        }
+
         public string DecodeJson(Cookie cookie)
         {
             var json = cookie.Value;
-            return _encryptor.Decrypt(json);
+            var value = HttpUtility.UrlDecode(json);
+
+            return _encryptor.Decrypt(value);
         }
 
         public void Persist(AuthenticationTicket ticket)
         {
             var cookie = _cookies.CreateCookie(_systemTime);
-            cookie.Value = _encryptor.Encrypt(JsonUtil.ToJson(ticket));
+            cookie.Value = EncodeJson(ticket);
 
             _cookies.Update(cookie);
         }

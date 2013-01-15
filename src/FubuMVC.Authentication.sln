@@ -1,5 +1,5 @@
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Authentication", "FubuMVC.Authentication\FubuMVC.Authentication.csproj", "{B889AF6B-2744-4370-842A-04026D1370B5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Authentication.Tests", "FubuMVC.Authentication.Tests\FubuMVC.Authentication.Tests.csproj", "{3E04D7BF-BA4A-4799-93EA-494597D55B5F}"

@@ -7,6 +7,8 @@ namespace FubuMVC.Authentication.Windows
         public WindowsRegistry()
         {
             SetServiceIfNone<IWindowsAuthenticationContext, AspNetWindowsAuthenticationContext>();
+            //AddService<IAuthenticationStrategy, WindowsAuthenticationStrategy>();
+            //SetServiceIfNone<IWindowsPrincipalBuilder, PassthroughWindowsPrincipalBuilder>();
         }
     }
 }

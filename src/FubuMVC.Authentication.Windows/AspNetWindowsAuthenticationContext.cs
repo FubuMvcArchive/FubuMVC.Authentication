@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System.Security.Principal;
+using System.Web;
 
 namespace FubuMVC.Authentication.Windows
 {
@@ -6,7 +7,24 @@ namespace FubuMVC.Authentication.Windows
     {
         public string CurrentUser()
         {
-            return HttpContext.Current.Request.ServerVariables["LOGON_USER"];
+            var context = HttpContext.Current;
+            var identity = context.Request.LogonUserIdentity;
+
+            if (identity == null)
+            {
+                return string.Empty;
+            }
+
+            if (identity.IsAnonymous)
+            {
+                context.User = new WindowsPrincipal(WindowsIdentity.GetAnonymous());
+            }
+            else
+            {
+                context.User = new WindowsPrincipal(identity);
+            }
+
+            return context.User.Identity.Name;
         }
     }
 }

@@ -1,0 +1,12 @@
+﻿<configuration>
+  <location path="~/login/windows">
+    <system.webServer>
+      <security>
+        <authentication>
+          <windowsAuthentication enabled="true" />
+          <anonymousAuthentication enabled="false"/>
+        </authentication>
+      </security>
+    </system.webServer>
+  </location>
+</configuration>
