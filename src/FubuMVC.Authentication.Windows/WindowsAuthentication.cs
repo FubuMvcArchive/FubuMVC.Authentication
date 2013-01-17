@@ -5,12 +5,12 @@ namespace FubuMVC.Authentication.Windows
 {
     public interface IWindowsPrincipalHandler
     {
-        void Authenticated(WindowsPrincipal principal);
+        void Authenticated(IPrincipal principal);
     }
 
     public class NulloWindowsPrincipalHandler : IWindowsPrincipalHandler
     {
-        public void Authenticated(WindowsPrincipal principal)
+        public void Authenticated(IPrincipal principal)
         {
             // no-op
         }
