@@ -88,6 +88,12 @@ namespace FubuMVC.Authentication.Tests
             theDefaultServiceIs<IMembershipRepository, FlatFileMembershipRepository>();
         }
 
+        [Test]
+        public void nullo_auditor_by_default()
+        {
+            theDefaultServiceIs<ILoginAuditor, NulloLoginAuditor>();
+        }
+
         private void theDefaultServiceIs<TPlugin, TImplementation>()
         {
             theServiceGraph.DefaultServiceFor<TPlugin>()

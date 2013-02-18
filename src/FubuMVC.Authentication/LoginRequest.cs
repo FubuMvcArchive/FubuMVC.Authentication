@@ -65,5 +65,10 @@ namespace FubuMVC.Authentication
         {
             return (Url != null ? Url.GetHashCode() : 0);
         }
+
+        public override string ToString()
+        {
+            return string.Format("Login request for UserName: {0}, Status: {1}, NumberOfTries: {2}, Message: {3}", _userName, Status, NumberOfTries, Message);
+        }
     }
 }

@@ -27,6 +27,7 @@ namespace FubuMVC.Authentication
             AddService<IActivator, AuthenticationIsConfigured>();
 
             SetServiceIfNone<IMembershipRepository, FlatFileMembershipRepository>();
+            SetServiceIfNone<ILoginAuditor, NulloLoginAuditor>();
         }
     }
 }
