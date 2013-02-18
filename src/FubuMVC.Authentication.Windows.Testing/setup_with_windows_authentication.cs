@@ -38,7 +38,7 @@ namespace FubuMVC.Authentication.Windows.Testing
             theGraph
                 .Services
                 .DefaultServiceFor<IWindowsPrincipalHandler>()
-                .Type.ShouldEqual(typeof(NulloWindowsPrincipalHandler));
+                .Type.ShouldEqual(typeof(DefaultWindowsPrincipalHandler));
         }
 
         [Test]

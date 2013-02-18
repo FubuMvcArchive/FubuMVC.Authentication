@@ -76,6 +76,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DefaultWindowsPrincipalHandlerTester.cs" />
     <Compile Include="WindowsAuthenticationTester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="setup_with_windows_authentication.cs" />

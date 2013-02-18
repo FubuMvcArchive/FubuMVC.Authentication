@@ -66,6 +66,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AspNetWindowsAuthenticationContext.cs" />
+    <Compile Include="DefaultWindowsPrincipalHandler.cs" />
+    <Compile Include="IWindowsPrincipalHandler.cs" />
+    <Compile Include="SuccessfulWindowsAuthentication.cs" />
     <Compile Include="WindowsAuthentication.cs" />
     <Compile Include="IWindowsAuthenticationContext.cs" />
     <Compile Include="IWindowsAuthentication.cs" />

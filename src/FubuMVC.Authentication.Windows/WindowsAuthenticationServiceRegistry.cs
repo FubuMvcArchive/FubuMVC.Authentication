@@ -7,7 +7,7 @@ namespace FubuMVC.Authentication.Windows
         public WindowsAuthenticationServiceRegistry()
         {
             SetServiceIfNone<IWindowsAuthenticationContext, AspNetWindowsAuthenticationContext>();
-            SetServiceIfNone<IWindowsPrincipalHandler, NulloWindowsPrincipalHandler>();
+            SetServiceIfNone<IWindowsPrincipalHandler, DefaultWindowsPrincipalHandler>();
             SetServiceIfNone<IWindowsAuthentication, WindowsAuthentication>();
         }
     }
