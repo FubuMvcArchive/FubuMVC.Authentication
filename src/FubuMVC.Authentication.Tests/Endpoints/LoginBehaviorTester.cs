@@ -31,6 +31,8 @@ namespace FubuMVC.Authentication.Tests.Endpoints
         {
             MockFor<IAuthenticationService>().AssertWasNotCalled(x => x.Authenticate(null), x => x.IgnoreArguments());
         }
+
+
     }
 
     [TestFixture]
@@ -53,6 +55,12 @@ namespace FubuMVC.Authentication.Tests.Endpoints
             MockFor<IAuthenticationService>().Stub(x => x.Authenticate(theLoginRequest)).Return(true);
 
             ClassUnderTest.Invoke();
+        }
+
+        [Test]
+        public void should_audit_the_request()
+        {
+            MockFor<ILoginAuditor>().AssertWasCalled(x => x.Audit(theLoginRequest));
         }
 
         [Test]
@@ -90,6 +98,12 @@ namespace FubuMVC.Authentication.Tests.Endpoints
             MockFor<IAuthenticationService>().Stub(x => x.Authenticate(theLoginRequest)).Return(false);
 
             ClassUnderTest.Invoke();
+        }
+
+        [Test]
+        public void should_audit_the_request()
+        {
+            MockFor<ILoginAuditor>().AssertWasCalled(x => x.Audit(theLoginRequest));
         }
 
         [Test]
