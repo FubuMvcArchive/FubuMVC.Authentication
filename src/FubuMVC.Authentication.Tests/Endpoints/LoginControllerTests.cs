@@ -99,10 +99,23 @@ namespace FubuMVC.Authentication.Tests.Endpoints
         [Test]
         public void show_initial_screen()
         {
-            var request = new LoginRequest();
+            var request = new LoginRequest{Status = LoginStatus.NotAuthenticated};
             ClassUnderTest.Login(request).ShouldBeTheSameAs(request);
 
             request.Message.ShouldBeNull();
+        }
+
+        [Test]
+        public void show_initial_screen_when_the_user_is_locked_out()
+        {
+            var request = new LoginRequest
+            {
+                Status = LoginStatus.LockedOut
+            };
+
+            ClassUnderTest.Login(request);
+
+            request.Message.ShouldEqual(LoginKeys.LockedOut.ToString());
         }
 
 
@@ -113,6 +126,17 @@ namespace FubuMVC.Authentication.Tests.Endpoints
             ClassUnderTest.Login(theRequest);
 
             theRequest.Message.ShouldEqual(LoginKeys.Unknown.ToString());
+        }
+
+        [Test]
+        public void leave_the_existing_message_if_failed()
+        {
+            theRequest.Status = LoginStatus.Failed;
+            theRequest.Message = "Something bad";
+
+            ClassUnderTest.Login(theRequest);
+
+            theRequest.Message.ShouldEqual("Something bad");
         }
     }
 }

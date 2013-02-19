@@ -78,7 +78,7 @@ namespace FubuMVC.PersistedMembership
                 };
 
                 history.Attempts = request.NumberOfTries;
-                history.LockedOutTime = request.LockedOut;
+                history.LockedOutTime = request.LockedOutUntil;
 
                 repo.Update(history);
             });
@@ -111,7 +111,7 @@ namespace FubuMVC.PersistedMembership
                 if (history == null) return;
 
                 request.NumberOfTries = history.Attempts;
-                request.LockedOut = history.LockedOutTime;
+                request.LockedOutUntil = history.LockedOutTime;
             });
         }
 

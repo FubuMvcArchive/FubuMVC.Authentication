@@ -27,6 +27,12 @@ namespace FubuMVC.Authentication.Tests
         }
 
         [Test]
+        public void registers_the_LockedOutRule()
+        {
+            theDefaultServiceIs<ILockedOutRule, LockedOutRule>();
+        }
+
+        [Test]
         public void registers_IAuthenticationService()
         {
             theDefaultServiceIs<IAuthenticationService, AuthenticationService>();

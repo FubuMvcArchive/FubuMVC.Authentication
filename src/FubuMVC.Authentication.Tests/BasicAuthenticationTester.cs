@@ -1,8 +1,4 @@
 ﻿using System.Security.Principal;
-using FubuMVC.Core.Behaviors;
-using FubuMVC.Core.Continuations;
-using FubuMVC.Core.Http;
-using FubuMVC.Core.Runtime;
 using FubuTestingSupport;
 using NUnit.Framework;
 using Rhino.Mocks;
@@ -21,17 +17,16 @@ namespace FubuMVC.Authentication.Tests
             theUserName = "a user";
 
             MockFor<IAuthenticationSession>().Stub(x => x.PreviouslyAuthenticatedUser())
-                .Return(theUserName);
+                                             .Return(theUserName);
 
             thePrincipal = MockFor<IPrincipal>();
 
 
             MockFor<IPrincipalBuilder>().Stub(x => x.Build(theUserName))
-                .Return(thePrincipal);
+                                        .Return(thePrincipal);
 
             theResult = ClassUnderTest.TryToApply();
         }
-
 
         [Test]
         public void should_mark_the_session_as_accessed_for_sliding_expirations()
@@ -40,15 +35,15 @@ namespace FubuMVC.Authentication.Tests
         }
 
         [Test]
-        public void was_successful()
-        {
-            theResult.ShouldBeTrue();
-        }
-
-        [Test]
         public void should_set_the_principal_for_the_authenticated_user()
         {
             MockFor<IPrincipalContext>().AssertWasCalled(x => x.Current = thePrincipal);
+        }
+
+        [Test]
+        public void was_successful()
+        {
+            theResult.ShouldBeTrue();
         }
     }
 
@@ -60,7 +55,7 @@ namespace FubuMVC.Authentication.Tests
         protected override void beforeEach()
         {
             MockFor<IAuthenticationSession>().Stub(x => x.PreviouslyAuthenticatedUser())
-                .Return(null);
+                                             .Return(null);
 
             theResult = ClassUnderTest.TryToApply();
         }
@@ -80,7 +75,7 @@ namespace FubuMVC.Authentication.Tests
 
         protected override void beforeEach()
         {
-            theLoginRequest = new LoginRequest()
+            theLoginRequest = new LoginRequest
             {
                 UserName = "frank",
                 Url = "/where/i/wanted/to/go",
@@ -90,13 +85,9 @@ namespace FubuMVC.Authentication.Tests
             MockFor<ICredentialsAuthenticator>().Stub(x => x.AuthenticateCredentials(theLoginRequest))
                                                 .Return(false);
 
-            theResult = ClassUnderTest.Authenticate(theLoginRequest);
-        }
+            MockFor<ILockedOutRule>().Stub(x => x.IsLockedOut(theLoginRequest)).Return(LoginStatus.NotAuthenticated);
 
-        [Test]
-        public void should_mark_the_login_request_as_failed()
-        {
-            theLoginRequest.Status.ShouldEqual(LoginStatus.Failed);
+            theResult = ClassUnderTest.Authenticate(theLoginRequest);
         }
 
         [Test]
@@ -112,11 +103,67 @@ namespace FubuMVC.Authentication.Tests
         }
 
         [Test]
+        public void should_mark_the_login_request_as_failed()
+        {
+            theLoginRequest.Status.ShouldEqual(LoginStatus.Failed);
+        }
+
+        [Test]
         public void the_result_was_not_successful()
         {
             theResult.ShouldBeFalse();
         }
     }
+
+
+    [TestFixture]
+    public class when_the_authentication_fails_because_the_user_is_locked_out : InteractionContext<BasicAuthentication>
+    {
+        private LoginRequest theLoginRequest;
+        private bool theResult;
+
+        protected override void beforeEach()
+        {
+            theLoginRequest = new LoginRequest
+            {
+                UserName = "frank",
+                Url = "/where/i/wanted/to/go",
+                NumberOfTries = 2
+            };
+
+            MockFor<ICredentialsAuthenticator>().Stub(x => x.AuthenticateCredentials(theLoginRequest))
+                                                .Return(false);
+
+            MockFor<ILockedOutRule>().Stub(x => x.IsLockedOut(theLoginRequest)).Return(LoginStatus.LockedOut);
+
+            theResult = ClassUnderTest.Authenticate(theLoginRequest);
+        }
+
+        [Test]
+        public void should_NOT_mark_the_session_as_authenticated()
+        {
+            MockFor<IAuthenticationSession>().AssertWasNotCalled(x => x.MarkAuthenticated(theLoginRequest.UserName));
+        }
+
+        [Test]
+        public void should_increment_the_number_of_retries()
+        {
+            theLoginRequest.NumberOfTries.ShouldEqual(3);
+        }
+
+        [Test]
+        public void should_mark_the_login_request_as_locked_out()
+        {
+            theLoginRequest.Status.ShouldEqual(LoginStatus.LockedOut);
+        }
+
+        [Test]
+        public void the_result_was_not_successful()
+        {
+            theResult.ShouldBeFalse();
+        }
+    }
+
 
     [TestFixture]
     public class when_authentication_succeeds : InteractionContext<BasicAuthentication>
@@ -126,7 +173,7 @@ namespace FubuMVC.Authentication.Tests
 
         protected override void beforeEach()
         {
-            theLoginRequest = new LoginRequest()
+            theLoginRequest = new LoginRequest
             {
                 UserName = "frank",
                 Url = "/where/i/wanted/to/go"
@@ -135,8 +182,18 @@ namespace FubuMVC.Authentication.Tests
             MockFor<ICredentialsAuthenticator>().Stub(x => x.AuthenticateCredentials(theLoginRequest))
                                                 .Return(true);
 
+            MockFor<ILockedOutRule>().Stub(x => x.IsLockedOut(theLoginRequest)).Return(LoginStatus.NotAuthenticated);
+
             theResult = ClassUnderTest.Authenticate(theLoginRequest);
         }
+
+
+        [Test]
+        public void does_not_check_for_lockout_on_success()
+        {
+            MockFor<ILockedOutRule>().AssertWasNotCalled(x => x.ProcessFailure(theLoginRequest));
+        }
+
 
         [Test]
         public void should_mark_the_login_request_as_successful()

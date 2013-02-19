@@ -9,13 +9,15 @@ namespace FubuMVC.Authentication
         private readonly IPrincipalContext _context;
         private readonly IPrincipalBuilder _builder;
         private readonly ICredentialsAuthenticator _authenticator;
+        private readonly ILockedOutRule _lockedOutRule;
 
-        public BasicAuthentication(IAuthenticationSession session, IPrincipalContext context, IPrincipalBuilder builder, ICredentialsAuthenticator authenticator)
+        public BasicAuthentication(IAuthenticationSession session, IPrincipalContext context, IPrincipalBuilder builder, ICredentialsAuthenticator authenticator, ILockedOutRule lockedOutRule)
         {
             _session = session;
             _context = context;
             _builder = builder;
             _authenticator = authenticator;
+            _lockedOutRule = lockedOutRule;
         }
 
         public bool TryToApply()
@@ -35,7 +37,12 @@ namespace FubuMVC.Authentication
 
         public bool Authenticate(LoginRequest request)
         {
-            if (_authenticator.AuthenticateCredentials(request))
+            if (_lockedOutRule.IsLockedOut(request) == LoginStatus.LockedOut)
+            {
+                request.Status = LoginStatus.LockedOut;
+                request.NumberOfTries++;
+            }
+            else if (_authenticator.AuthenticateCredentials(request))
             {
                 request.Status = LoginStatus.Succeeded;
                 _session.MarkAuthenticated(request.UserName);
@@ -44,6 +51,8 @@ namespace FubuMVC.Authentication
             {
                 request.Status = LoginStatus.Failed;
                 request.NumberOfTries++;
+
+                _lockedOutRule.ProcessFailure(request);
             }
 
             return request.Status == LoginStatus.Succeeded;

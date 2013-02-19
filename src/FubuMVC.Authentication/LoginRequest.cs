@@ -35,7 +35,7 @@ namespace FubuMVC.Authentication
         public string Message { get; set; }
         public bool RememberMe { get; set; }
 
-        public DateTime? LockedOut { get; set; }
+        public DateTime? LockedOutUntil { get; set; }
 
         public string Get(string key)
         {

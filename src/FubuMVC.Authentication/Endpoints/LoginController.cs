@@ -7,12 +7,10 @@ namespace FubuMVC.Authentication.Endpoints
     public class LoginController
     {
         private readonly ILoginCookies _cookies;
-        private readonly AuthenticationSettings _settings;
 
-        public LoginController(ILoginCookies cookies, AuthenticationSettings settings)
+        public LoginController(ILoginCookies cookies)
         {
             _cookies = cookies;
-            _settings = settings;
         }
 
         [UrlPattern("login")]
@@ -29,12 +27,11 @@ namespace FubuMVC.Authentication.Endpoints
                 }
             }
 
-            if (request.Status != LoginStatus.Failed)
+            if (request.Status == LoginStatus.LockedOut)
             {
-                return request;
+                request.Message = LoginKeys.LockedOut.ToString();
             }
-
-            if (request.Message.IsEmpty())
+            else if (request.Status == LoginStatus.Failed && request.Message.IsEmpty())
             {
                 request.Message = LoginKeys.Unknown.ToString();
             }

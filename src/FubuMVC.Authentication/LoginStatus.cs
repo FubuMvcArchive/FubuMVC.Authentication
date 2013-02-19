@@ -4,6 +4,7 @@ namespace FubuMVC.Authentication
     {
         NotAuthenticated,
         Failed,
-        Succeeded
+        Succeeded,
+        LockedOut
     }
 }

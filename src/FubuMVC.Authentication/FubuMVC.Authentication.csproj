@@ -82,6 +82,7 @@
     <Compile Include="IAuthenticationService.cs" />
     <Compile Include="IAuthenticationStrategy.cs" />
     <Compile Include="ICredentialsAuthenticator.cs" />
+    <Compile Include="ILockedOutRule.cs" />
     <Compile Include="ILoginAuditor.cs" />
     <Compile Include="ILoginSuccessHandler.cs" />
     <Compile Include="IPasswordHash.cs" />

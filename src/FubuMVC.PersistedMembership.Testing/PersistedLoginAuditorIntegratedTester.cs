@@ -136,7 +136,7 @@ namespace FubuMVC.PersistedMembership.Testing
                 Status = LoginStatus.Failed,
                 UserName = "NeverFailedBefore",
                 NumberOfTries = 1,
-                LockedOut = null
+                LockedOutUntil = null
                 
             };
 
@@ -162,7 +162,7 @@ namespace FubuMVC.PersistedMembership.Testing
                 Status = LoginStatus.Failed,
                 UserName = "NeverFailedBefore",
                 NumberOfTries = 1,
-                LockedOut = DateTime.Today.ToUniversalTime()
+                LockedOutUntil = DateTime.Today.ToUniversalTime()
 
             };
 
@@ -176,7 +176,7 @@ namespace FubuMVC.PersistedMembership.Testing
 
 
 
-            history.LockedOutTime.ShouldEqual(request.LockedOut);
+            history.LockedOutTime.ShouldEqual(request.LockedOutUntil);
         }
 
         [Test]
@@ -200,7 +200,7 @@ namespace FubuMVC.PersistedMembership.Testing
                 Status = LoginStatus.Failed,
                 UserName = history.UserName,
                 NumberOfTries = 3,
-                LockedOut = DateTime.Today.ToUniversalTime()
+                LockedOutUntil = DateTime.Today.ToUniversalTime()
 
             };
 
@@ -213,7 +213,7 @@ namespace FubuMVC.PersistedMembership.Testing
                         .FindWhere<LoginFailureHistory>(x => x.UserName == request.UserName);
 
             history2.Attempts.ShouldEqual(request.NumberOfTries);
-            history2.LockedOutTime.ShouldEqual(request.LockedOut);
+            history2.LockedOutTime.ShouldEqual(request.LockedOutUntil);
 
         }
 
@@ -255,7 +255,7 @@ namespace FubuMVC.PersistedMembership.Testing
             auditor.ApplyHistory(request);
 
             request.NumberOfTries.ShouldEqual(history.Attempts);
-            request.LockedOut.ShouldEqual(history.LockedOutTime.Value);
+            request.LockedOutUntil.ShouldEqual(history.LockedOutTime.Value);
         }
     }
 

@@ -10,10 +10,10 @@ namespace FubuMVC.Authentication.Membership
         private readonly IMembershipRepository _membership;
         private readonly BasicAuthentication _inner;
 
-        public MembershipAuthentication(IAuthenticationSession session, IPrincipalContext context, IMembershipRepository membership)
+        public MembershipAuthentication(IAuthenticationSession session, IPrincipalContext context, IMembershipRepository membership, ILockedOutRule lockedOutRule)
         {
             _membership = membership;
-            _inner = new BasicAuthentication(session, context, this, this);
+            _inner = new BasicAuthentication(session, context, this, this, lockedOutRule);
         }
 
         public bool TryToApply()
