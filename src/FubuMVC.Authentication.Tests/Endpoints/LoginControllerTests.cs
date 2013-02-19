@@ -97,9 +97,10 @@ namespace FubuMVC.Authentication.Tests.Endpoints
 
 
         [Test]
-        public void show_initial_screen()
+        public void show_initial_screen_not_logged_out()
         {
             var request = new LoginRequest{Status = LoginStatus.NotAuthenticated};
+
             ClassUnderTest.Login(request).ShouldBeTheSameAs(request);
 
             request.Message.ShouldBeNull();

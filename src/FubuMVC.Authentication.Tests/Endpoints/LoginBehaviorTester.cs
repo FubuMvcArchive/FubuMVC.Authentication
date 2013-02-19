@@ -9,15 +9,68 @@ using Rhino.Mocks;
 namespace FubuMVC.Authentication.Tests.Endpoints
 {
     [TestFixture]
-    public class when_running_in_a_get : InteractionContext<LoginBehavior>
+    public class when_running_in_a_get_that_is_not_locked_out : InteractionContext<LoginBehavior>
     {
+        private LoginRequest theLoginRequest;
+
         protected override void beforeEach()
         {
+            theLoginRequest = new LoginRequest();
+
             ClassUnderTest.InsideBehavior = MockFor<IActionBehavior>();
 
             MockFor<ICurrentHttpRequest>().Stub(x => x.HttpMethod()).Return("GET");
-        
+            MockFor<ILockedOutRule>().Stub(x => x.IsLockedOut(theLoginRequest)).Return(LoginStatus.NotAuthenticated);
+            MockFor<IFubuRequest>().Stub(x => x.Get<LoginRequest>()).Return(theLoginRequest);
+
             ClassUnderTest.Invoke();
+        }
+
+        [Test]
+        public void the_status_is_still_not_authenticated()
+        {
+            theLoginRequest.Status.ShouldEqual(LoginStatus.NotAuthenticated);
+        }
+
+        [Test]
+        public void the_inner_behavior_should_fire()
+        {
+            MockFor<IActionBehavior>().AssertWasCalled(x => x.Invoke());
+        }
+
+        [Test]
+        public void should_not_even_try_to_authenticate()
+        {
+            MockFor<IAuthenticationService>().AssertWasNotCalled(x => x.Authenticate(null), x => x.IgnoreArguments());
+        }
+
+
+    }
+
+    [TestFixture]
+    public class when_running_in_a_get_that_is_locked_out : InteractionContext<LoginBehavior>
+    {
+        private LoginRequest theLoginRequest;
+
+        protected override void beforeEach()
+        {
+            theLoginRequest = new LoginRequest();
+
+            ClassUnderTest.InsideBehavior = MockFor<IActionBehavior>();
+
+            MockFor<ICurrentHttpRequest>().Stub(x => x.HttpMethod()).Return("GET");
+            MockFor<ILockedOutRule>().Stub(x => x.IsLockedOut(theLoginRequest))
+                .Return(LoginStatus.LockedOut);
+
+            MockFor<IFubuRequest>().Stub(x => x.Get<LoginRequest>()).Return(theLoginRequest);
+
+            ClassUnderTest.Invoke();
+        }
+
+        [Test]
+        public void the_status_should_be_locked_out()
+        {
+            theLoginRequest.Status.ShouldEqual(LoginStatus.LockedOut);
         }
 
         [Test]

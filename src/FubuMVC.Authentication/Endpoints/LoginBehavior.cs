@@ -14,8 +14,9 @@ namespace FubuMVC.Authentication.Endpoints
         private readonly IAuthenticationService _service;
         private readonly ILoginSuccessHandler _handler;
         private readonly ILoginAuditor _auditor;
+        private readonly ILockedOutRule _lockedOutRule;
 
-        public LoginBehavior(ICurrentHttpRequest httpRequest, IAuthenticationService service, IFubuRequest request, ILoginSuccessHandler handler, ILoginAuditor auditor)
+        public LoginBehavior(ICurrentHttpRequest httpRequest, IAuthenticationService service, IFubuRequest request, ILoginSuccessHandler handler, ILoginAuditor auditor, ILockedOutRule lockedOutRule)
             : base(PartialBehavior.Ignored)
         {
             _httpRequest = httpRequest;
@@ -23,18 +24,23 @@ namespace FubuMVC.Authentication.Endpoints
             _request = request;
             _handler = handler;
             _auditor = auditor;
+            _lockedOutRule = lockedOutRule;
         }
 
         protected override DoNext performInvoke()
         {
+            var login = _request.Get<LoginRequest>();
+
             // This is here to make sure that you don't even bother checking the login if it's 
             // a GET
             if (!_httpRequest.HttpMethod().Equals("POST", StringComparison.OrdinalIgnoreCase))
             {
+                login.Status = _lockedOutRule.IsLockedOut(login);
+
                 return DoNext.Continue;
             }
 
-            var login = _request.Get<LoginRequest>();
+            
             _auditor.ApplyHistory(login);
 
             var authenticated = _service.Authenticate(login);
