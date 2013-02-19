@@ -35,6 +35,8 @@ namespace FubuMVC.Authentication.Endpoints
             }
 
             var login = _request.Get<LoginRequest>();
+            _auditor.ApplyHistory(login);
+
             var authenticated = _service.Authenticate(login);
             _auditor.Audit(login);
 

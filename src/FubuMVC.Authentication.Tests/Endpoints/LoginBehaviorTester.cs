@@ -58,6 +58,12 @@ namespace FubuMVC.Authentication.Tests.Endpoints
         }
 
         [Test]
+        public void should_have_applied_history()
+        {
+            MockFor<ILoginAuditor>().AssertWasCalled(x => x.ApplyHistory(theLoginRequest));
+        }
+
+        [Test]
         public void should_audit_the_request()
         {
             MockFor<ILoginAuditor>().AssertWasCalled(x => x.Audit(theLoginRequest));
@@ -99,6 +105,13 @@ namespace FubuMVC.Authentication.Tests.Endpoints
 
             ClassUnderTest.Invoke();
         }
+
+        [Test]
+        public void should_have_applied_history()
+        {
+            MockFor<ILoginAuditor>().AssertWasCalled(x => x.ApplyHistory(theLoginRequest));
+        }
+
 
         [Test]
         public void should_audit_the_request()
