@@ -20,7 +20,9 @@ namespace FubuMVC.Authentication
 
     public interface ILoginAuditor
     {
-        void Audit(LoginRequest request);
+        void Audit(LoginRequest request); // This is responsible for storing login status
+
+        void ApplyHistory(LoginRequest request);
         void Audit<T>(T log) where T : AuditMessage;
     }
 
@@ -29,6 +31,11 @@ namespace FubuMVC.Authentication
         public void Audit(LoginRequest request)
         {
             Debug.WriteLine(request);
+        }
+
+        public void ApplyHistory(LoginRequest request)
+        {
+            // do nothing
         }
 
         public void Audit<T>(T log) where T : AuditMessage

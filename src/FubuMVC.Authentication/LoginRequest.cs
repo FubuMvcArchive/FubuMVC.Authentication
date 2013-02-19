@@ -1,4 +1,6 @@
+using System;
 using FubuCore;
+using FubuCore.Dates;
 using FubuCore.Util;
 using FubuMVC.Core;
 using FubuMVC.Core.Security;
@@ -33,7 +35,7 @@ namespace FubuMVC.Authentication
         public string Message { get; set; }
         public bool RememberMe { get; set; }
 
-        public bool LockedOut { get; set; }
+        public DateTime? LockedOut { get; set; }
 
         public string Get(string key)
         {
