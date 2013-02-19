@@ -11,6 +11,7 @@ namespace FubuMVC.PersistedMembership
             registry.Services(x => {
                 x.ReplaceService<IMembershipRepository, MembershipRepository<T>>();
                 x.SetServiceIfNone<IPasswordHash, PasswordHash>();
+                x.SetServiceIfNone<ILoginAuditor, PersistedLoginAuditor>();
             });
 
             registry.AlterSettings<AuthenticationSettings>(x => {

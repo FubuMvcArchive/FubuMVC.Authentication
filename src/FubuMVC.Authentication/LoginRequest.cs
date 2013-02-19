@@ -33,6 +33,8 @@ namespace FubuMVC.Authentication
         public string Message { get; set; }
         public bool RememberMe { get; set; }
 
+        public bool LockedOut { get; set; }
+
         public string Get(string key)
         {
             return _properties[key];

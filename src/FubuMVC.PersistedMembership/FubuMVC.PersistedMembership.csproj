@@ -31,12 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AsyncCtpLibrary_Silverlight">
-      <HintPath>..\packages\RavenDB.Client.1.2.2142-Unstable\lib\sl40\AsyncCtpLibrary_Silverlight.dll</HintPath>
-    </Reference>
-    <Reference Include="AsyncCtpLibrary_Silverlight5">
-      <HintPath>..\packages\RavenDB.Client.1.2.2142-Unstable\lib\sl50\AsyncCtpLibrary_Silverlight5.dll</HintPath>
-    </Reference>
     <Reference Include="Bottles">
       <HintPath>..\packages\Bottles.1.0.0.446\lib\Bottles.dll</HintPath>
     </Reference>
@@ -62,19 +56,10 @@
     <Reference Include="Raven.Client.Embedded">
       <HintPath>..\packages\RavenDB.Embedded.1.2.2142-Unstable\lib\net40\Raven.Client.Embedded.dll</HintPath>
     </Reference>
-    <Reference Include="Raven.Client.Lightweight">
-      <HintPath>..\packages\RavenDB.Client.1.2.2142-Unstable\lib\net40\Raven.Client.Lightweight.dll</HintPath>
-    </Reference>
-    <Reference Include="Raven.Client.Silverlight">
-      <HintPath>..\packages\RavenDB.Client.1.2.2142-Unstable\lib\sl50\Raven.Client.Silverlight.dll</HintPath>
-    </Reference>
-    <Reference Include="Raven.Client.Silverlight-4">
-      <HintPath>..\packages\RavenDB.Client.1.2.2142-Unstable\lib\sl40\Raven.Client.Silverlight-4.dll</HintPath>
-    </Reference>
     <Reference Include="Raven.Database">
       <HintPath>..\packages\RavenDB.Database.1.2.2142-Unstable\lib\net40\Raven.Database.dll</HintPath>
     </Reference>
-    <Reference Include="StructureMap, Version=2.6.4.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+    <Reference Include="StructureMap">
       <HintPath>..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -91,6 +76,7 @@
       <Link>CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="MembershipRepository.cs" />
+    <Compile Include="PersistedLoginAuditor.cs" />
     <Compile Include="PersistedMembership.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />

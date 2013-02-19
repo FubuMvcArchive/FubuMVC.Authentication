@@ -5,16 +5,17 @@ namespace FubuMVC.Authentication
 {
     public class AuditMessage
     {
-        public Guid Id { get; set; }
-        public DateTime Timestamp { get; set; }
-        public string Type
-        {
-            get { return GetType().Name; }
-            set
-            {
-                // no-op;
-            }
-        }
+        public string UserName { get; set; }
+    }
+
+    public class LoginSuccess : AuditMessage
+    {
+        // TODO -- add IP address & probably other stuff
+    }
+
+    public class LoginFailure : AuditMessage
+    {
+        // TODO -- add IP address & probably other stuff
     }
 
     public interface ILoginAuditor

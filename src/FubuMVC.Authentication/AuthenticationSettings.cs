@@ -1,10 +1,7 @@
-using System;
-using System.Collections.Generic;
-using FubuMVC.Core;
+using FubuCore;
 using FubuMVC.Core.Registration;
 using FubuMVC.Core.Registration.Nodes;
 using FubuMVC.Core.Registration.Policies;
-using FubuCore;
 
 namespace FubuMVC.Authentication
 {
@@ -12,7 +9,7 @@ namespace FubuMVC.Authentication
     public class AuthenticationSettings
     {
         private readonly ChainPredicate _exclusions = new ChainPredicate();
-        private AuthenticationChain _strategies;
+        private readonly AuthenticationChain _strategies;
 
         public AuthenticationSettings()
         {
@@ -28,8 +25,8 @@ namespace FubuMVC.Authentication
         }
 
         /// <summary>
-        /// Register and orders the IAuthenticationStrategy's applied to this 
-        /// FubuMVC application
+        ///     Register and orders the IAuthenticationStrategy's applied to this
+        ///     FubuMVC application
         /// </summary>
         public AuthenticationChain Strategies
         {
@@ -41,11 +38,6 @@ namespace FubuMVC.Authentication
             get { return _exclusions; }
         }
 
-        public bool ShouldBeExcluded(BehaviorChain chain)
-        {
-            return _exclusions.As<IChainFilter>().Matches(chain);
-        }
-
         public bool SlidingExpiration { get; set; }
         public int ExpireInMinutes { get; set; }
 
@@ -54,5 +46,10 @@ namespace FubuMVC.Authentication
 
         // *should* only be for testing
         public bool NeverExpires { get; set; }
+
+        public bool ShouldBeExcluded(BehaviorChain chain)
+        {
+            return _exclusions.As<IChainFilter>().Matches(chain);
+        }
     }
 }

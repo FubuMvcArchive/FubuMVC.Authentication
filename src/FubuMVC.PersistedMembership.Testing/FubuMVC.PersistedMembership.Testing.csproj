@@ -31,12 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AsyncCtpLibrary_Silverlight">
-      <HintPath>..\packages\RavenDB.Client.1.2.2142-Unstable\lib\sl40\AsyncCtpLibrary_Silverlight.dll</HintPath>
-    </Reference>
-    <Reference Include="AsyncCtpLibrary_Silverlight5">
-      <HintPath>..\packages\RavenDB.Client.1.2.2142-Unstable\lib\sl50\AsyncCtpLibrary_Silverlight5.dll</HintPath>
-    </Reference>
     <Reference Include="Bottles">
       <HintPath>..\packages\Bottles.1.0.0.446\lib\Bottles.dll</HintPath>
     </Reference>
@@ -72,22 +66,16 @@
       <HintPath>..\packages\NUnit.2.5.10.11092\lib\pnunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="Raven.Abstractions">
-      <HintPath>..\packages\RavenDB.Database.1.2.2142-Unstable\lib\net40\Raven.Abstractions.dll</HintPath>
+      <HintPath>..\packages\RavenDB.Client.2.0.2230\lib\net40\Raven.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Raven.Client.Embedded">
-      <HintPath>..\packages\RavenDB.Embedded.1.2.2142-Unstable\lib\net40\Raven.Client.Embedded.dll</HintPath>
+      <HintPath>..\packages\RavenDB.Embedded.2.0.2230\lib\net40\Raven.Client.Embedded.dll</HintPath>
     </Reference>
     <Reference Include="Raven.Client.Lightweight">
-      <HintPath>..\packages\RavenDB.Client.1.2.2142-Unstable\lib\net40\Raven.Client.Lightweight.dll</HintPath>
-    </Reference>
-    <Reference Include="Raven.Client.Silverlight">
-      <HintPath>..\packages\RavenDB.Client.1.2.2142-Unstable\lib\sl50\Raven.Client.Silverlight.dll</HintPath>
-    </Reference>
-    <Reference Include="Raven.Client.Silverlight-4">
-      <HintPath>..\packages\RavenDB.Client.1.2.2142-Unstable\lib\sl40\Raven.Client.Silverlight-4.dll</HintPath>
+      <HintPath>..\packages\RavenDB.Client.2.0.2230\lib\net40\Raven.Client.Lightweight.dll</HintPath>
     </Reference>
     <Reference Include="Raven.Database">
-      <HintPath>..\packages\RavenDB.Database.1.2.2142-Unstable\lib\net40\Raven.Database.dll</HintPath>
+      <HintPath>..\packages\RavenDB.Database.2.0.2230\lib\net40\Raven.Database.dll</HintPath>
     </Reference>
     <Reference Include="Rhino.Mocks">
       <HintPath>..\packages\RhinoMocks.3.6.1\lib\net\Rhino.Mocks.dll</HintPath>
@@ -110,8 +98,10 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="is_registering_the_persisted_login_auditor.cs" />
     <Compile Include="MembershipRepositoryTester.cs" />
     <Compile Include="PasswordHash_is_predictable.cs" />
+    <Compile Include="PersistedLoginAuditorIntegratedTester.cs" />
     <Compile Include="PersistedMembershipIntegratedTester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
