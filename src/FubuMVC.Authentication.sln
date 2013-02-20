@@ -1,5 +1,5 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Authentication", "FubuMVC.Authentication\FubuMVC.Authentication.csproj", "{B889AF6B-2744-4370-842A-04026D1370B5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Authentication.Tests", "FubuMVC.Authentication.Tests\FubuMVC.Authentication.Tests.csproj", "{3E04D7BF-BA4A-4799-93EA-494597D55B5F}"
@@ -19,6 +19,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.PersistedMembership", "FubuMVC.PersistedMembership\FubuMVC.PersistedMembership.csproj", "{89C78A78-4C10-4C34-94AD-80C89F8C6606}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.PersistedMembership.Testing", "FubuMVC.PersistedMembership.Testing\FubuMVC.PersistedMembership.Testing.csproj", "{D320FB44-9A73-446E-80ED-5CA4C9C2838A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Authentication.Serenity", "FubuMVC.Authentication.Serenity\FubuMVC.Authentication.Serenity.csproj", "{2CC7DB30-C1BF-4EA5-8D2E-793915D378D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationStoryteller", "AuthenticationStoryteller\AuthenticationStoryteller.csproj", "{07214997-844D-4A13-A06E-871889F974DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -66,6 +70,14 @@ Global
 		{D320FB44-9A73-446E-80ED-5CA4C9C2838A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D320FB44-9A73-446E-80ED-5CA4C9C2838A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D320FB44-9A73-446E-80ED-5CA4C9C2838A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CC7DB30-C1BF-4EA5-8D2E-793915D378D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CC7DB30-C1BF-4EA5-8D2E-793915D378D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CC7DB30-C1BF-4EA5-8D2E-793915D378D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CC7DB30-C1BF-4EA5-8D2E-793915D378D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07214997-844D-4A13-A06E-871889F974DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07214997-844D-4A13-A06E-871889F974DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07214997-844D-4A13-A06E-871889F974DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07214997-844D-4A13-A06E-871889F974DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

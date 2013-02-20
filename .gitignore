@@ -26,3 +26,5 @@ results
 bottles.cmd
 fubu.cmd
 *.DotSettings.user
+storyteller.cmd
+run_st.cmd

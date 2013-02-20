@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<Test name="Log in successfully" lifecycle="Regression">
+  <Model>
+    <UserIs isStep="True" Username="jeremy" Password="jasper" />
+  </Model>
+  <LoginScreen>
+    <PreventReLogin isStep="True" />
+    <OpenLoginScreen isStep="True" />
+    <Login isStep="True" user="jeremy" password="jasper" />
+    <IsNotOnTheLoginScreen isStep="True" />
+  </LoginScreen>
+</Test>

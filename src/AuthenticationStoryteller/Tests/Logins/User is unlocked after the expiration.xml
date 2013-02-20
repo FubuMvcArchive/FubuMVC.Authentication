@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<Test name="User is unlocked after the expiration" lifecycle="Regression">
+  <Model>
+    <EstablishSystemTime isStep="True" time="0800" />
+    <SetAuthenticationSettings isStep="True" field="CooloffPeriodInMinutes" value="60" />
+    <UserIs isStep="True" Username="alba" Password="jasper" />
+  </Model>
+  <LoginScreen>
+    <OpenLoginScreen isStep="True" />
+    <Login isStep="True" user="alba" password="wrong" />
+    <TheMessageShouldBe isStep="True" message="Incorrect credentials. Attempt 1 of 3" />
+    <Login isStep="True" user="alba" password="wrong" />
+    <TheMessageShouldBe isStep="True" message="Incorrect credentials. Attempt 2 of 3" />
+    <Comment><![CDATA[On the third attempt, we lock out the user until the cooling off period is done]]></Comment>
+    <Login isStep="True" user="alba" password="wrong" />
+    <TheMessageShouldBe isStep="True" message="This user is locked out because of too many failed login attempts. Try back later." />
+    <ReopenTheLoginScreenAt isStep="True" time="1000" />
+    <Login isStep="True" user="alba" password="jasper" />
+    <IsNotOnTheLoginScreen isStep="True" />
+  </LoginScreen>
+</Test>
