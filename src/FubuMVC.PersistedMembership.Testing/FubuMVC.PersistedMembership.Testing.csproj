@@ -47,7 +47,7 @@
       <HintPath>..\packages\FubuMVC.StructureMap.1.0.1.1416\lib\net40\FubuMVC.StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="FubuPersistence">
-      <HintPath>..\packages\FubuPersistence.0.1.0.40\lib\net40\FubuPersistence.dll</HintPath>
+      <HintPath>..\packages\FubuPersistence.0.1.0.41\lib\net40\FubuPersistence.dll</HintPath>
     </Reference>
     <Reference Include="FubuTestingSupport">
       <HintPath>..\packages\FubuTestingSupport.1.0.1.228\lib\FubuTestingSupport.dll</HintPath>

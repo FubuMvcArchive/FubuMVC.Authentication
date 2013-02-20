@@ -44,7 +44,7 @@
       <HintPath>..\packages\FubuMVC.Core.1.0.1.1416\lib\net40\FubuMVC.Core.dll</HintPath>
     </Reference>
     <Reference Include="FubuPersistence">
-      <HintPath>..\packages\FubuPersistence.0.1.0.40\lib\net40\FubuPersistence.dll</HintPath>
+      <HintPath>..\packages\FubuPersistence.0.1.0.41\lib\net40\FubuPersistence.dll</HintPath>
     </Reference>
     <Reference Include="HtmlTags">
       <HintPath>..\packages\HtmlTags.1.2.0.147\lib\4.0\HtmlTags.dll</HintPath>
@@ -55,6 +55,9 @@
     </Reference>
     <Reference Include="Raven.Client.Embedded">
       <HintPath>..\packages\RavenDB.Embedded.1.2.2142-Unstable\lib\net40\Raven.Client.Embedded.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Client.Lightweight">
+      <HintPath>..\packages\RavenDB.Client.2.0.2230\lib\net40\Raven.Client.Lightweight.dll</HintPath>
     </Reference>
     <Reference Include="Raven.Database">
       <HintPath>..\packages\RavenDB.Database.1.2.2142-Unstable\lib\net40\Raven.Database.dll</HintPath>
