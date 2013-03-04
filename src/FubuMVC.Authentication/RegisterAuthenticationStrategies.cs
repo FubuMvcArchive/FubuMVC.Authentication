@@ -4,7 +4,7 @@ using FubuMVC.Core.Registration.Nodes;
 
 namespace FubuMVC.Authentication
 {
-    [ConfigurationType(ConfigurationType.Discovery)]
+    [ConfigurationType(ConfigurationType.Policy)]
     public class RegisterAuthenticationStrategies : IConfigurationAction
     {
         public void Configure(BehaviorGraph graph)

@@ -1,9 +1,12 @@
-﻿using FubuMVC.Authentication;
+﻿using System;
+using System.Linq.Expressions;
+using FubuMVC.Authentication;
 using FubuMVC.PersistedMembership;
 using FubuPersistence;
 using FubuPersistence.Reset;
 using StoryTeller;
 using StoryTeller.Engine;
+using FubuCore.Reflection;
 
 namespace AuthenticationStoryteller.Fixtures
 {
@@ -32,6 +35,28 @@ namespace AuthenticationStoryteller.Fixtures
         {
             _unitOfWork.Commit();
             _reset.CommitChanges(); // doesn't do anything now, but might later when we go to IIS
+        }
+
+        private IGrammar setter(Expression<Func<AuthenticationSettings, object>> property)
+        {
+            var accessor = property.ToAccessor();
+            var grammar = new SetPropertyGrammar(accessor)
+            {
+                DefaultValue = accessor.GetValue(new AuthenticationSettings()).ToString()
+            };
+
+            return grammar;
+        }
+
+        public IGrammar SetAuthenticationSettings()
+        {
+            return Paragraph("The Authentication Settings are", x => {
+                x += () => Context.CurrentObject = Retrieve<AuthenticationSettings>();
+                x += setter(o => o.ExpireInMinutes);
+                x += setter(o => o.SlidingExpiration);
+                x += setter(o => o.MaximumNumberOfFailedAttempts);
+                x += setter(o => o.CooloffPeriodInMinutes);
+            });
         }
 
         [ExposeAsTable("The users are")]

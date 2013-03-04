@@ -24,6 +24,5 @@ namespace AuthenticationStoryteller
 
     public class StorytellerSystem : FubuMvcSystem<AuthenticationStorytellerApplication>
     {
-         
     }
 }

@@ -1,4 +1,7 @@
-﻿namespace FubuMVC.Authentication
+﻿using FubuCore.Dates;
+using FubuMVC.Authentication.Endpoints;
+
+namespace FubuMVC.Authentication
 {
     public interface ILockedOutRule
     {
@@ -8,13 +11,56 @@
 
     public class LockedOutRule : ILockedOutRule
     {
+        private readonly AuthenticationSettings _settings;
+        private readonly ISystemTime _systemTime;
+
+        public LockedOutRule(AuthenticationSettings settings, ISystemTime systemTime)
+        {
+            _settings = settings;
+            _systemTime = systemTime;
+        }
+
         public LoginStatus IsLockedOut(LoginRequest request)
         {
+            if (request.NumberOfTries >= _settings.MaximumNumberOfFailedAttempts)
+            {
+                return LoginStatus.LockedOut;
+            }
+
+            if (request.LockedOutUntil != null)
+            {
+                if (request.LockedOutUntil.Value > _systemTime.UtcNow())
+                {
+                    return LoginStatus.LockedOut;
+                }
+            }
+
             return LoginStatus.NotAuthenticated;
         }
 
         public void ProcessFailure(LoginRequest request)
         {
+            if (request.LockedOutUntil != null && request.LockedOutUntil.Value <= _systemTime.UtcNow())
+            {
+                request.LockedOutUntil = null;
+            }
+
+            if (IsLockedOut(request) == LoginStatus.LockedOut)
+            {
+                request.Status = LoginStatus.LockedOut;
+                request.Message = LoginKeys.LockedOut.ToString();
+                if (request.LockedOutUntil == null)
+                {
+                    request.LockedOutUntil = _systemTime.UtcNow().AddMinutes(_settings.CooloffPeriodInMinutes);
+                }
+            }
+            else
+            {
+                request.Message = LoginKeys.Failed.ToFormat(request.NumberOfTries,
+                                                            _settings.MaximumNumberOfFailedAttempts);
+            }
         }
+
+        
     }
 }

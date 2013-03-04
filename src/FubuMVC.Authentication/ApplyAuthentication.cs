@@ -1,6 +1,8 @@
 using FubuMVC.Authentication.Endpoints;
 using FubuMVC.Authentication.Membership;
 using FubuMVC.Core;
+using FubuMVC.Core.Registration;
+using System.Linq;
 
 namespace FubuMVC.Authentication
 {
@@ -16,8 +18,21 @@ namespace FubuMVC.Authentication
             registry.Policies.Add<AttachLoginBehaviorToLoginController>();
             registry.Policies.Add<AttachDefaultLoginView>();
 
-            registry.AlterSettings<AuthenticationSettings>(x => {
-                x.Strategies.AddToEnd<MembershipNode>();
+            registry.Policies.Add<AddDefaultMembershipAuthentication>();
+        }
+    }
+
+    [ConfigurationType(ConfigurationType.Discovery)]
+    public class AddDefaultMembershipAuthentication : IConfigurationAction
+    {
+        public void Configure(BehaviorGraph graph)
+        {
+            graph.Settings.Alter<AuthenticationSettings>(settings =>
+            {
+                if (!settings.Strategies.OfType<MembershipNode>().Any())
+                {
+                    settings.Strategies.InsertFirst(new MembershipNode());
+                }
             });
         }
     }

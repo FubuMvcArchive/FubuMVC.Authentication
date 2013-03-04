@@ -40,4 +40,5 @@ $METHODS$
   <FileName>C:\code\FubuMVC.Authentication\src\AuthenticationStoryteller\storyteller.xml</FileName>
   <TimeoutInSeconds>60</TimeoutInSeconds>
   <Name>Authentication</Name>
+  <SystemTypeName>AuthenticationStoryteller.StorytellerSystem,AuthenticationStoryteller</SystemTypeName>
 </Project>

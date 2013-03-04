@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Linq.Expressions;
 using FubuCore;
+using FubuCore.Dates;
 using FubuCore.Reflection;
 using OpenQA.Selenium;
 using Serenity;
@@ -15,6 +16,9 @@ namespace FubuMVC.Authentication.Serenity
 {
     public class LoginScreenFixture : ScreenFixture<LoginRequest>
     {
+        public static By LoginSubmitButton = By.Id("login-submit");
+        public static By LoginMessageText = By.Id("login-message");
+
         public LoginScreenFixture()
         {
             Title = "Login Screen";
@@ -37,6 +41,8 @@ namespace FubuMVC.Authentication.Serenity
         {
             enterValue(x => x.UserName, user);
             enterValue(x => x.Password, password);
+
+            Driver.FindElement(LoginSubmitButton).Click();
         }
 
         // TODO (checked) -- this needs to be in ScreenFixture, Serenity
@@ -63,13 +69,15 @@ namespace FubuMVC.Authentication.Serenity
         [FormatAs("No message is shown")]
         public bool NoMessageIsShown()
         {
-            return readValue(x => x.Message).IsEmpty();
+            return TheMessageShouldBe().IsEmpty();
         }
 
         [FormatAs("The message displayed should be {message}")]
         public string TheMessageShouldBe()
         {
-            return readValue(x => x.Message);
+            Wait.Until(() => Driver.FindElements(LoginMessageText).Any());
+
+            return Driver.FindElement(LoginMessageText).Text;
         }
 
         [FormatAs("Should be on the login screen")]
@@ -97,6 +105,16 @@ namespace FubuMVC.Authentication.Serenity
         public void TryToGoHome()
         {
             Navigation.NavigateToHome();
+        }
+
+        [FormatAs("After {number} of minutes, reopen the login page")]
+        public void ReopenTheLoginScreen(int number)
+        {
+            var clock = (Clock)Retrieve<IClock>();
+
+            clock.RestartAtLocal(DateTime.Now.AddMinutes(number));
+
+            OpenLoginScreen();
         }
     }
 

@@ -1,6 +1,8 @@
 ﻿using FubuMVC.Authentication;
 using FubuMVC.Authentication.Membership;
 using FubuMVC.Core;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace FubuMVC.PersistedMembership
 {
@@ -16,6 +18,11 @@ namespace FubuMVC.PersistedMembership
 
             registry.AlterSettings<AuthenticationSettings>(x => {
                 x.Strategies.AddToEnd(new MembershipNode(typeof(MembershipRepository<T>)));
+
+                x.Strategies.OfType<MembershipNode>()
+                 .Where(node => node.MembershipType == typeof (MembershipAuthentication))
+                 .ToArray()
+                 .Each(node => node.Remove());
             });
         }
     }

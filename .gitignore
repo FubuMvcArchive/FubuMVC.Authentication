@@ -28,3 +28,10 @@ fubu.cmd
 *.DotSettings.user
 storyteller.cmd
 run_st.cmd
+Controls
+Core
+External
+editor.htm
+testEditor.css
+src/AuthenticationStoryteller/Authentication-results/
+src/data

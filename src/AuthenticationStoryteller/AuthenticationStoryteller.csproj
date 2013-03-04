@@ -52,6 +52,9 @@
     <Reference Include="FubuMVC.OwinHost">
       <HintPath>..\packages\FubuMVC.OwinHost.1.0.1.1419\lib\net40\FubuMVC.OwinHost.dll</HintPath>
     </Reference>
+    <Reference Include="FubuMVC.RavenDb">
+      <HintPath>..\packages\FubuMVC.RavenDb.0.1.0.42\lib\net40\FubuMVC.RavenDb.dll</HintPath>
+    </Reference>
     <Reference Include="FubuMVC.StructureMap">
       <HintPath>..\packages\FubuMVC.StructureMap.1.0.1.1419\lib\net40\FubuMVC.StructureMap.dll</HintPath>
     </Reference>
@@ -67,11 +70,20 @@
     <Reference Include="Microsoft.Owin.Hosting">
       <HintPath>..\packages\FubuMVC.Katana.1.0.1.1419\lib\net40\Microsoft.Owin.Hosting.dll</HintPath>
     </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.5.10.11092\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.mocks">
+      <HintPath>..\packages\NUnit.2.5.10.11092\lib\nunit.mocks.dll</HintPath>
+    </Reference>
     <Reference Include="Owin">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="Owin.Extensions">
       <HintPath>..\packages\Owin.Extensions.0.6.4\lib\net40\Owin.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="pnunit.framework">
+      <HintPath>..\packages\NUnit.2.5.10.11092\lib\pnunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="Raven.Abstractions">
       <HintPath>..\packages\RavenDB.Client.2.0.2230\lib\net40\Raven.Abstractions.dll</HintPath>
@@ -119,9 +131,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Fixtures\LockedOutLogicFixture.cs" />
     <Compile Include="Fixtures\ModelFixture.cs" />
     <Compile Include="HomeEndpoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StoryTellerDebug.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="StorytellerSystem.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -130,6 +146,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FubuMVC.Authentication.Serenity\FubuMVC.Authentication.Serenity.csproj">
+      <Project>{2CC7DB30-C1BF-4EA5-8D2E-793915D378D6}</Project>
+      <Name>FubuMVC.Authentication.Serenity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FubuMVC.Authentication\FubuMVC.Authentication.csproj">
       <Project>{B889AF6B-2744-4370-842A-04026D1370B5}</Project>
       <Name>FubuMVC.Authentication</Name>
