@@ -40,7 +40,6 @@ namespace FubuMVC.Authentication
             if (_lockedOutRule.IsLockedOut(request) == LoginStatus.LockedOut)
             {
                 request.Status = LoginStatus.LockedOut;
-                request.NumberOfTries++;
             }
             else if (_authenticator.AuthenticateCredentials(request))
             {

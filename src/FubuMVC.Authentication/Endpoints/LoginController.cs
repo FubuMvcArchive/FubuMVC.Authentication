@@ -16,6 +16,11 @@ namespace FubuMVC.Authentication.Endpoints
         [UrlPattern("login")]
         public LoginRequest Login(LoginRequest request)
         {
+            if (request.RememberMe && request.UserName.IsNotEmpty())
+            {
+                _cookies.User.Value = request.UserName;
+            }
+
             if (request.UserName.IsEmpty())
             {
                 var remembered = _cookies.User.Value;

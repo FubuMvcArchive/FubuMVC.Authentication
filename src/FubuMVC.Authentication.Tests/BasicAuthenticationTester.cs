@@ -146,9 +146,9 @@ namespace FubuMVC.Authentication.Tests
         }
 
         [Test]
-        public void should_increment_the_number_of_retries()
+        public void should_not_increment_the_number_of_retries()
         {
-            theLoginRequest.NumberOfTries.ShouldEqual(3);
+            theLoginRequest.NumberOfTries.ShouldEqual(2);
         }
 
         [Test]

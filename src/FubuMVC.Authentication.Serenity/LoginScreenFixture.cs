@@ -4,10 +4,10 @@ using System.Linq.Expressions;
 using FubuCore;
 using FubuCore.Dates;
 using FubuCore.Reflection;
+using FubuMVC.Authentication.Endpoints;
 using OpenQA.Selenium;
 using Serenity;
 using Serenity.Fixtures;
-using Serenity.Fixtures.Handlers;
 using StoryTeller;
 using StoryTeller.Assertions;
 using StoryTeller.Engine;
@@ -39,6 +39,9 @@ namespace FubuMVC.Authentication.Serenity
         [FormatAs("Login as {user}/{password}")]
         public void Login(string user, string password)
         {
+            // TODO -- need to fix this in Serenity
+            Wait.Until(() => SearchContext.FindElements(By.Name("UserName")).Any());
+
             enterValue(x => x.UserName, user);
             enterValue(x => x.Password, password);
 
@@ -54,7 +57,7 @@ namespace FubuMVC.Authentication.Serenity
         [FormatAs("Check the 'Remember me' checkbox")]
         public void CheckRememberMe()
         {
-            var checkbox = findElement(x => x.RememberMe);
+            IWebElement checkbox = findElement(x => x.RememberMe);
             if (!checkbox.Selected)
             {
                 checkbox.Click();
@@ -80,10 +83,19 @@ namespace FubuMVC.Authentication.Serenity
             return Driver.FindElement(LoginMessageText).Text;
         }
 
+        [FormatAs("The user account locked out message should be displayed")]
+        public bool TheLockedOutMessageShouldBeDisplayed()
+        {
+            string theMessage = TheMessageShouldBe().Trim();
+            StoryTellerAssert.Fail(theMessage != LoginKeys.LockedOut.ToString(), () => "Was '{0}'".ToFormat(theMessage));
+
+            return true;
+        }
+
         [FormatAs("Should be on the login screen")]
         public bool IsOnTheLoginScreen()
         {
-            var url = Application.Urls.UrlFor(new LoginRequest());
+            string url = Application.Urls.UrlFor(new LoginRequest());
             return Driver.Url.StartsWith(url);
         }
 
@@ -110,12 +122,11 @@ namespace FubuMVC.Authentication.Serenity
         [FormatAs("After {number} of minutes, reopen the login page")]
         public void ReopenTheLoginScreen(int number)
         {
-            var clock = (Clock)Retrieve<IClock>();
+            var clock = (Clock) Retrieve<IClock>();
 
             clock.RestartAtLocal(DateTime.Now.AddMinutes(number));
 
             OpenLoginScreen();
         }
     }
-
 }

@@ -49,6 +49,8 @@ namespace FubuMVC.Authentication
             {
                 request.Status = LoginStatus.LockedOut;
                 request.Message = LoginKeys.LockedOut.ToString();
+                request.NumberOfTries = 0; // This is important for the unlocking later
+
                 if (request.LockedOutUntil == null)
                 {
                     request.LockedOutUntil = _systemTime.UtcNow().AddMinutes(_settings.CooloffPeriodInMinutes);

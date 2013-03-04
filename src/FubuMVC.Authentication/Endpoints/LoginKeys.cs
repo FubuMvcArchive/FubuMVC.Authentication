@@ -4,7 +4,7 @@ namespace FubuMVC.Authentication.Endpoints
 {
     public class LoginKeys : StringToken
     {
-        public static readonly LoginKeys LockedOut = new LoginKeys("This user is locked out because of too many failed login attempts.  Try back later.");
+        public static readonly LoginKeys LockedOut = new LoginKeys("This user is locked out because of too many failed login attempts. Try back later.");
         public static readonly LoginKeys Failed = new LoginKeys("Incorrect credentials.  Attempt {0} of {1}");
         public static readonly LoginKeys Unknown = new LoginKeys("The credentials supplied are incorrect");
         public static readonly LoginKeys Login = new LoginKeys("Login");

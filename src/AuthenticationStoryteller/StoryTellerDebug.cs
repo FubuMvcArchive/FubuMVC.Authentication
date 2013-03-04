@@ -12,13 +12,12 @@ namespace StoryTellerTestHarness
         public void SetupRunner()
         {
             runner = new ProjectTestRunner(@"C:\code\FubuMVC.Authentication\src\AuthenticationStoryteller\storyteller.xml");
-            runner.Project.TimeoutInSeconds = 240;
         }
 
         [Test]
-        public void Log_in_unsuccessfully()
+        public void Remember_me()
         {
-            runner.RunAndAssertTest("Logins/Log in unsuccessfully");
+            runner.RunAndAssertTest("Logins/Remember me");
         }
 
         [TestFixtureTearDown]
