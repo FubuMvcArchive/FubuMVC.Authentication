@@ -1,4 +1,5 @@
 ﻿using System.Security.Principal;
+using FubuMVC.Authentication.Auditing;
 using FubuMVC.Core.Continuations;
 
 namespace FubuMVC.Authentication.Windows

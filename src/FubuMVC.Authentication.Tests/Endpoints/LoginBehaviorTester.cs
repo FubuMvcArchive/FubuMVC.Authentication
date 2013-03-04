@@ -1,3 +1,4 @@
+using FubuMVC.Authentication.Auditing;
 using FubuMVC.Authentication.Endpoints;
 using FubuMVC.Core.Behaviors;
 using FubuMVC.Core.Http;

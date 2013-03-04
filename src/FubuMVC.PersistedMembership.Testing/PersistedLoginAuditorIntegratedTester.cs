@@ -1,6 +1,7 @@
 ﻿using System;
 using FubuCore.Dates;
 using FubuMVC.Authentication;
+using FubuMVC.Authentication.Auditing;
 using FubuPersistence;
 using FubuPersistence.RavenDb;
 using NUnit.Framework;

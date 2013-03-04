@@ -1,4 +1,5 @@
 using System;
+using FubuMVC.Authentication.Auditing;
 using FubuMVC.Core;
 using FubuMVC.Core.Behaviors;
 using FubuMVC.Core.Http;

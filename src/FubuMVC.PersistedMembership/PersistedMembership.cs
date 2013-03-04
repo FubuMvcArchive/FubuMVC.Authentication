@@ -1,4 +1,5 @@
 ﻿using FubuMVC.Authentication;
+using FubuMVC.Authentication.Auditing;
 using FubuMVC.Authentication.Membership;
 using FubuMVC.Core;
 using System.Linq;

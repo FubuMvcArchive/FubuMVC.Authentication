@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Bottles;
+using FubuMVC.Authentication.Auditing;
 using FubuMVC.Authentication.Cookies;
 using FubuMVC.Authentication.Membership;
 using FubuMVC.Authentication.Membership.FlatFile;

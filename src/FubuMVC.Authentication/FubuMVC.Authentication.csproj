@@ -72,6 +72,10 @@
     <Compile Include="AjaxAuthenticationRedirect.cs" />
     <Compile Include="ApplyAuthentication.cs" />
     <Compile Include="ApplyAuthenticationPolicy.cs" />
+    <Compile Include="Auditing\AuditMessage.cs" />
+    <Compile Include="Auditing\LoginFailure.cs" />
+    <Compile Include="Auditing\LoginSuccess.cs" />
+    <Compile Include="Auditing\NulloLoginAuditor.cs" />
     <Compile Include="AuthenticationChain.cs" />
     <Compile Include="AuthenticationIsConfigured.cs" />
     <Compile Include="AuthenticationNode.cs" />
@@ -83,7 +87,7 @@
     <Compile Include="IAuthenticationStrategy.cs" />
     <Compile Include="ICredentialsAuthenticator.cs" />
     <Compile Include="ILockedOutRule.cs" />
-    <Compile Include="ILoginAuditor.cs" />
+    <Compile Include="Auditing\ILoginAuditor.cs" />
     <Compile Include="ILoginSuccessHandler.cs" />
     <Compile Include="IPasswordHash.cs" />
     <Compile Include="IPrincipalBuilder.cs" />

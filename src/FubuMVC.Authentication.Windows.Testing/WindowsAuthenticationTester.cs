@@ -1,4 +1,5 @@
 ﻿using System.Security.Principal;
+using FubuMVC.Authentication.Auditing;
 using FubuMVC.Core.Continuations;
 using FubuTestingSupport;
 using NUnit.Framework;

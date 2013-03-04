@@ -1,4 +1,6 @@
-﻿namespace FubuMVC.Authentication.Windows
+﻿using FubuMVC.Authentication.Auditing;
+
+namespace FubuMVC.Authentication.Windows
 {
     public class SuccessfulWindowsAuthentication : AuditMessage
     {

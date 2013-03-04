@@ -1,4 +1,5 @@
 ﻿using FubuMVC.Authentication;
+using FubuMVC.Authentication.Auditing;
 using FubuMVC.Core;
 using FubuPersistence.InMemory;
 using NUnit.Framework;
