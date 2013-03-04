@@ -26,7 +26,7 @@ namespace FubuMVC.Authentication
             if (userName.IsNotEmpty())
             {
                 _session.MarkAccessed();
-                IPrincipal principal = _builder.Build(userName);
+                var principal = _builder.Build(userName);
                 _context.Current = principal;
 
                 return true;

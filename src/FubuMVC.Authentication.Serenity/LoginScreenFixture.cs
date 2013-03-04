@@ -5,6 +5,7 @@ using FubuCore;
 using FubuCore.Dates;
 using FubuCore.Reflection;
 using FubuMVC.Authentication.Endpoints;
+using FubuMVC.Core.Urls;
 using OpenQA.Selenium;
 using Serenity;
 using Serenity.Fixtures;
@@ -119,14 +120,29 @@ namespace FubuMVC.Authentication.Serenity
             Navigation.NavigateToHome();
         }
 
+        [FormatAs("Should be on the home page")]
+        public bool ShouldBeOnTheHomePage()
+        {
+            return Driver.Url.StartsWith(Application.RootUrl);
+        }
+
         [FormatAs("After {number} of minutes, reopen the login page")]
         public void ReopenTheLoginScreen(int number)
         {
-            var clock = (Clock) Retrieve<IClock>();
+            var clock = (Clock)Retrieve<IClock>();
 
-            clock.RestartAtLocal(DateTime.Now.AddMinutes(number));
+            clock.RestartAtLocal(clock.UtcNow());
 
             OpenLoginScreen();
+        }
+
+        [FormatAs("After {number} of minutes")]
+        public void AfterMinutes(int number)
+        {
+            var clock = (Clock)Retrieve<IClock>();
+            var time = clock.UtcNow().AddMinutes(number).ToLocalTime();
+
+            clock.LocalNow(time);
         }
     }
 }

@@ -170,6 +170,7 @@
     <Content Include="Tests\Logins\User is unlocked after the expiration.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Tests\Logins\Expiration\" />
     <Folder Include="Tests\PersistedMembership\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
