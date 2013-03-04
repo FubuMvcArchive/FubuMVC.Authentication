@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq.Expressions;
+using FubuCore.Dates;
 using FubuMVC.Authentication;
 using FubuMVC.PersistedMembership;
 using FubuPersistence;
@@ -23,6 +24,9 @@ namespace AuthenticationStoryteller.Fixtures
 
         public override void SetUp(ITestContext context)
         {
+            var clock = (Clock)Retrieve<IClock>();
+            clock.Live();
+
             _reset = Retrieve<ICompleteReset>();
             _reset.ResetState();
 
