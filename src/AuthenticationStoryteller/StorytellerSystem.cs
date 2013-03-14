@@ -1,4 +1,5 @@
-﻿using FubuMVC.Core;
+﻿using FubuCore.Binding;
+using FubuMVC.Core;
 using FubuMVC.PersistedMembership;
 using FubuMVC.StructureMap;
 using Serenity;
@@ -24,5 +25,9 @@ namespace AuthenticationStoryteller
 
     public class StorytellerSystem : FubuMvcSystem<AuthenticationStorytellerApplication>
     {
+        protected override void configureApplication(IApplicationUnderTest application, BindingRegistry binding)
+        {
+            WebDriverSettings.Current.Browser = BrowserType.Chrome;
+        }
     }
 }
