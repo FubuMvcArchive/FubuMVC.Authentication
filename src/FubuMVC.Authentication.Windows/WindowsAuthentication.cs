@@ -31,7 +31,7 @@ namespace FubuMVC.Authentication.Windows
             {
                 _auditor.Audit(new FailedWindowsAuthentication{User = principal.Identity.Name});
 
-                return FubuContinuation.RedirectTo(new LoginRequest {Url = request.Url});
+                return FubuContinuation.RedirectTo(new LoginRequest {Url = request.Url}, "GET");
             }
 
             

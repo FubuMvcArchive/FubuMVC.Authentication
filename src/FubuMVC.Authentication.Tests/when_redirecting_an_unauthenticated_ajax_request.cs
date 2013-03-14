@@ -22,7 +22,7 @@ namespace FubuMVC.Authentication.Tests
 		{
 			theUrl = "test/login";
 
-			MockFor<IUrlRegistry>().Stub(x => x.UrlFor(typeof (LoginRequest)))
+			MockFor<IUrlRegistry>().Stub(x => x.UrlFor(new LoginRequest(), "GET"))
 				.Return(theUrl);
 
 			theContinuation = ClassUnderTest.Redirect();

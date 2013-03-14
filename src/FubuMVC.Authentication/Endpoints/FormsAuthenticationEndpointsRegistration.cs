@@ -14,7 +14,8 @@ namespace FubuMVC.Authentication.Endpoints
         {
             if (!HasLogin(graph))
             {
-                graph.AddChain().AddToEnd(ActionCall.For<LoginController>(x => x.Login(null)));
+                graph.AddChain().AddToEnd(ActionCall.For<LoginController>(x => x.get_login(null)));
+                graph.AddChain().AddToEnd(ActionCall.For<LoginController>(x => x.post_login(null)));
             }
 
             if (!HasLogout(graph))

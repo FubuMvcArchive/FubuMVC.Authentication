@@ -19,7 +19,7 @@ namespace FubuMVC.Authentication.Tests.Endpoints
                 x.Import<ApplyAuthentication>();
             });
 
-            graph.BehaviorFor<LoginController>(x => x.Login(null)).ShouldBeNull();
+            graph.BehaviorFor<LoginController>(x => x.get_login(null)).ShouldBeNull();
             graph.BehaviorFor<LogoutController>(x => x.Logout(null)).ShouldBeNull();
         }
 
@@ -32,7 +32,7 @@ namespace FubuMVC.Authentication.Tests.Endpoints
                 x.Import<ApplyAuthentication>();
             });
 
-            graph.BehaviorFor<LoginController>(x => x.Login(null)).ShouldNotBeNull();
+            graph.BehaviorFor<LoginController>(x => x.get_login(null)).ShouldNotBeNull();
             graph.BehaviorFor<LogoutController>(x => x.Logout(null)).ShouldNotBeNull();
         }
 

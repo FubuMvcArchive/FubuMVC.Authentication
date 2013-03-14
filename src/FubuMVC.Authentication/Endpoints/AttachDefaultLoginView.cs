@@ -11,7 +11,7 @@ namespace FubuMVC.Authentication.Endpoints
     {
         public void Configure(BehaviorGraph graph)
         {
-            var chain = graph.BehaviorFor<LoginController>(x => x.Login(null));
+            var chain = graph.BehaviorFor<LoginController>(x => x.get_login(null));
             if (chain == null) return;
 
             if(!chain.Output.HasView(typeof(Always)))

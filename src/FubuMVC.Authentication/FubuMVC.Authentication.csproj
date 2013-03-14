@@ -115,7 +115,6 @@
     <Compile Include="ThreadPrincipalContext.cs" />
     <Compile Include="Tickets\AuthenticationTicket.cs" />
     <Compile Include="Endpoints\AttachDefaultLoginView.cs" />
-    <Compile Include="Endpoints\AttachLoginBehaviorToLoginController.cs" />
     <Compile Include="Endpoints\FormsAuthenticationEndpointsRegistration.cs" />
     <Compile Include="Membership\UserInfo.cs" />
     <Compile Include="Cookies\BasicFubuLoginCookies.cs" />
@@ -123,7 +122,6 @@
     <Compile Include="Endpoints\DefaultLoginRequestWriter.cs" />
     <Compile Include="Cookies\ILoginCookieService.cs" />
     <Compile Include="Cookies\ILoginCookies.cs" />
-    <Compile Include="Endpoints\LoginBehavior.cs" />
     <Compile Include="Endpoints\LoginController.cs" />
     <Compile Include="Cookies\LoginCookieService.cs" />
     <Compile Include="Endpoints\LoginKeys.cs" />

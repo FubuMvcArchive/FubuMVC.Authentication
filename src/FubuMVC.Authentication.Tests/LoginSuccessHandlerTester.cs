@@ -21,13 +21,13 @@ namespace FubuMVC.Authentication.Tests
                 Url = "/where/i/wanted/to/go"
             };
 
-            ClassUnderTest.LoggedIn(theLoginRequest);
+            
         }
 
         [Test]
         public void should_redirect_the_browser_to_the_original_url()
         {
-            MockFor<IOutputWriter>().AssertWasCalled(x => x.RedirectToUrl(theLoginRequest.Url));
+            ClassUnderTest.LoggedIn(theLoginRequest).AssertWasRedirectedTo(theLoginRequest.Url);
         }
     }
 }

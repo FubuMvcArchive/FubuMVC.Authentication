@@ -1,26 +1,19 @@
 ﻿using FubuCore;
-using FubuMVC.Core.Runtime;
+using FubuMVC.Core.Continuations;
 
 namespace FubuMVC.Authentication
 {
     public class LoginSuccessHandler : ILoginSuccessHandler
     {
-        private readonly IOutputWriter _writer;
-
-        public LoginSuccessHandler(IOutputWriter writer)
+        public FubuContinuation LoggedIn(LoginRequest request)
         {
-            _writer = writer;
-        }
-
-        public void LoggedIn(LoginRequest request)
-        {
-            var url = request.Url;
+            string url = request.Url;
             if (url.IsEmpty())
             {
                 url = "~/";
             }
 
-            _writer.RedirectToUrl(url);
+            return FubuContinuation.RedirectTo(url);
         }
     }
 }

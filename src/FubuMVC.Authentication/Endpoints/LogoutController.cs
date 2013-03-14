@@ -16,7 +16,7 @@ namespace FubuMVC.Authentication.Endpoints
         public FubuContinuation Logout(LogoutRequest request)
         {
             _session.ClearAuthentication();
-            return FubuContinuation.RedirectTo(new LoginRequest());
+            return FubuContinuation.RedirectTo(new LoginRequest(), "GET");
         }
     }
 }

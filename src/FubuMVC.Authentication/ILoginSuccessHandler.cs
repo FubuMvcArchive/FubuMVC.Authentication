@@ -1,7 +1,9 @@
-﻿namespace FubuMVC.Authentication
+﻿using FubuMVC.Core.Continuations;
+
+namespace FubuMVC.Authentication
 {
     public interface ILoginSuccessHandler
     {
-        void LoggedIn(LoginRequest request);
+        FubuContinuation LoggedIn(LoginRequest request);
     }
 }

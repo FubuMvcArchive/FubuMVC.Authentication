@@ -25,7 +25,7 @@ namespace FubuMVC.Authentication.Tests.Endpoints
 		[Test]
 		public void should_redirect_to_the_login_page()
 		{
-			theContinuation.AssertWasRedirectedTo<LoginRequest>(r => r.Url == null);
+			theContinuation.AssertWasRedirectedTo<LoginRequest>(r => r.Url == null, "GET");
 		}
 	}
 }

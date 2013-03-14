@@ -110,7 +110,6 @@
     <Compile Include="Endpoints\FormsAuthenticationEndpointsRegistrationTester.cs" />
     <Compile Include="Cookies\LoginCookieServiceTester.cs" />
     <Compile Include="Cookies\CookieSettingsTester.cs" />
-    <Compile Include="Endpoints\LoginBehaviorTester.cs" />
     <Compile Include="Endpoints\LoginControllerTests.cs" />
     <Compile Include="Endpoints\when_logging_out.cs" />
     <Compile Include="Endpoints\WriteDefaultLoginTester.cs" />

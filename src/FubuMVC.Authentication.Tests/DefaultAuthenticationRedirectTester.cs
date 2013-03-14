@@ -27,7 +27,7 @@ namespace FubuMVC.Authentication.Tests
                 .AssertWasRedirectedTo(new LoginRequest
                                        {
                                            Url = relativeUrl
-                                       });
+                                       }, "GET");
 	    }
 	}
 }

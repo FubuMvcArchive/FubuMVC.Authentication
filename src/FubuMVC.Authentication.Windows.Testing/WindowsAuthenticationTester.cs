@@ -87,7 +87,7 @@ namespace FubuMVC.Authentication.Windows.Testing
         [Test]
         public void should_redirect_to_the_login_page()
         {
-            theContinuation.AssertWasRedirectedTo(new LoginRequest{Url = theRequest.Url});
+            theContinuation.AssertWasRedirectedTo(new LoginRequest{Url = theRequest.Url}, "GET");
         }
 
         [Test]

@@ -46,7 +46,7 @@ namespace FubuMVC.Authentication.Twitter.Tests
             theLoginBehavior = MockFor<IActionBehavior>();
 
             var chain = new BehaviorChain();
-            chain.AddToEnd(ActionCall.For<LoginController>(x => x.Login(null)));
+            chain.AddToEnd(ActionCall.For<LoginController>(x => x.get_login(null)));
 
             var graph = new BehaviorGraph();
             graph.AddChain(chain);

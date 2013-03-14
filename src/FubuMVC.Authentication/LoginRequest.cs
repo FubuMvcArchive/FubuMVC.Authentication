@@ -1,6 +1,5 @@
 using System;
 using FubuCore;
-using FubuCore.Dates;
 using FubuCore.Util;
 using FubuMVC.Core;
 using FubuMVC.Core.Security;
@@ -61,7 +60,7 @@ namespace FubuMVC.Authentication
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
+            if (obj.GetType() != GetType()) return false;
             return Equals((LoginRequest) obj);
         }
 
@@ -72,7 +71,8 @@ namespace FubuMVC.Authentication
 
         public override string ToString()
         {
-            return string.Format("Login request for UserName: {0}, Status: {1}, NumberOfTries: {2}, Message: {3}", _userName, Status, NumberOfTries, Message);
+            return string.Format("Login request for UserName: {0}, Status: {1}, NumberOfTries: {2}, Message: {3}",
+                                 _userName, Status, NumberOfTries, Message);
         }
     }
 }

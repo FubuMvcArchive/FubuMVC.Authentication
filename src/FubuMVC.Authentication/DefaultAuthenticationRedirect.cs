@@ -22,7 +22,7 @@ namespace FubuMVC.Authentication
 			return FubuContinuation.RedirectTo(new LoginRequest
 			{
 				Url = _currentRequest.RelativeUrl()
-			});
+			}, "GET");
 		}
 	}
 }

@@ -96,7 +96,7 @@ namespace FubuMVC.Authentication.Serenity
         [FormatAs("Should be on the login screen")]
         public bool IsOnTheLoginScreen()
         {
-            string url = Application.Urls.UrlFor(new LoginRequest());
+            string url = Application.Urls.UrlFor(new LoginRequest(), "GET");
             return Driver.Url.StartsWith(url);
         }
 

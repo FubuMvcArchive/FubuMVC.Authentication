@@ -6,6 +6,7 @@ using FubuMVC.Core;
 using FubuMVC.Core.Registration;
 using FubuTestingSupport;
 using NUnit.Framework;
+using System.Linq;
 
 namespace FubuMVC.Authentication.Tests
 {
@@ -27,7 +28,8 @@ namespace FubuMVC.Authentication.Tests
         [Test]
         public void login_endpoint_is_added()
         {
-            theGraphWithBasicAuthentication.BehaviorFor(typeof (LoginRequest)).ShouldNotBeNull();
+            theGraphWithBasicAuthentication.Behaviors.Where(x => x.InputType() == typeof (LoginRequest))
+                                           .Count().ShouldEqual(2);
         }
 
         [Test]

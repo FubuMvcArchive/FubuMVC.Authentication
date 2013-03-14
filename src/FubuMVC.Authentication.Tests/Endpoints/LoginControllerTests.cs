@@ -1,7 +1,12 @@
 using System;
+using FubuMVC.Authentication.Auditing;
 using FubuMVC.Authentication.Cookies;
 using FubuMVC.Authentication.Endpoints;
+using FubuMVC.Core.Behaviors;
+using FubuMVC.Core.Continuations;
+using FubuMVC.Core.Http;
 using FubuMVC.Core.Http.Cookies;
+using FubuMVC.Core.Runtime;
 using FubuTestingSupport;
 using NUnit.Framework;
 using Rhino.Mocks;
@@ -39,7 +44,7 @@ namespace FubuMVC.Authentication.Tests.Endpoints
 
             theCookies.User.Stub(x => x.Value).Return(null);
 
-            ClassUnderTest.Login(request);
+            ClassUnderTest.get_login(request);
 
             request.UserName.ShouldBeNull();
             request.RememberMe.ShouldBeFalse();
@@ -55,7 +60,7 @@ namespace FubuMVC.Authentication.Tests.Endpoints
 
             theCookies.User.Stub(x => x.Value).Return("jeremy");
 
-            ClassUnderTest.Login(request);
+            ClassUnderTest.get_login(request);
 
             request.UserName.ShouldEqual("josh");
             request.RememberMe.ShouldBeFalse();
@@ -71,7 +76,7 @@ namespace FubuMVC.Authentication.Tests.Endpoints
 
             theCookies.User.Stub(x => x.Value).Return("jeremy");
 
-            ClassUnderTest.Login(request);
+            ClassUnderTest.get_login(request);
 
             request.UserName.ShouldEqual("jeremy");
             request.RememberMe.ShouldBeTrue();
@@ -101,7 +106,7 @@ namespace FubuMVC.Authentication.Tests.Endpoints
         {
             var request = new LoginRequest{Status = LoginStatus.NotAuthenticated};
 
-            ClassUnderTest.Login(request).ShouldBeTheSameAs(request);
+            ClassUnderTest.get_login(request).ShouldBeTheSameAs(request);
 
             request.Message.ShouldBeNull();
         }
@@ -109,12 +114,11 @@ namespace FubuMVC.Authentication.Tests.Endpoints
         [Test]
         public void show_initial_screen_when_the_user_is_locked_out()
         {
-            var request = new LoginRequest
-            {
-                Status = LoginStatus.LockedOut
-            };
+            var request = new LoginRequest();
 
-            ClassUnderTest.Login(request);
+            MockFor<ILockedOutRule>().Stub(x => x.IsLockedOut(request)).Return(LoginStatus.LockedOut);
+
+            ClassUnderTest.get_login(request);
 
             request.Message.ShouldEqual(LoginKeys.LockedOut.ToString());
         }
@@ -124,7 +128,11 @@ namespace FubuMVC.Authentication.Tests.Endpoints
         public void uses_the_unknown_message_when_no_message_is_set()
         {
             theRequest.Status = LoginStatus.Failed;
-            ClassUnderTest.Login(theRequest);
+
+            MockFor<ILockedOutRule>().Stub(x => x.IsLockedOut(theRequest)).Return(LoginStatus.NotAuthenticated);
+
+
+            ClassUnderTest.get_login(theRequest);
 
             theRequest.Message.ShouldEqual(LoginKeys.Unknown.ToString());
         }
@@ -135,9 +143,177 @@ namespace FubuMVC.Authentication.Tests.Endpoints
             theRequest.Status = LoginStatus.Failed;
             theRequest.Message = "Something bad";
 
-            ClassUnderTest.Login(theRequest);
+            ClassUnderTest.get_login(theRequest);
 
             theRequest.Message.ShouldEqual("Something bad");
+        }
+    }
+
+
+    [TestFixture]
+    public class when_running_in_a_get_that_is_not_locked_out : InteractionContext<LoginController>
+    {
+        private LoginRequest theLoginRequest;
+
+        protected override void beforeEach()
+        {
+            theLoginRequest = new LoginRequest();
+
+            MockFor<ICurrentHttpRequest>().Stub(x => x.HttpMethod()).Return("GET");
+            MockFor<ILockedOutRule>().Stub(x => x.IsLockedOut(theLoginRequest)).Return(LoginStatus.NotAuthenticated);
+            MockFor<IFubuRequest>().Stub(x => x.Get<LoginRequest>()).Return(theLoginRequest);
+
+            Services.Inject<ILoginCookies>(new StubLoginCookies());
+
+            ClassUnderTest.get_login(theLoginRequest);
+        }
+
+        [Test]
+        public void the_status_is_still_not_authenticated()
+        {
+            theLoginRequest.Status.ShouldEqual(LoginStatus.NotAuthenticated);
+        }
+
+        [Test]
+        public void should_not_even_try_to_authenticate()
+        {
+            MockFor<IAuthenticationService>().AssertWasNotCalled(x => x.Authenticate(null), x => x.IgnoreArguments());
+        }
+
+
+    }
+
+    [TestFixture]
+    public class when_running_in_a_get_that_is_locked_out : InteractionContext<LoginController>
+    {
+        private LoginRequest theLoginRequest;
+
+        protected override void beforeEach()
+        {
+            theLoginRequest = new LoginRequest();
+
+            MockFor<ICurrentHttpRequest>().Stub(x => x.HttpMethod()).Return("GET");
+            MockFor<ILockedOutRule>().Stub(x => x.IsLockedOut(theLoginRequest))
+                .Return(LoginStatus.LockedOut);
+
+            Services.Inject<ILoginCookies>(new StubLoginCookies());
+
+            MockFor<IFubuRequest>().Stub(x => x.Get<LoginRequest>()).Return(theLoginRequest);
+
+            ClassUnderTest.get_login(theLoginRequest);
+        }
+
+        [Test]
+        public void the_status_should_be_locked_out()
+        {
+            theLoginRequest.Status.ShouldEqual(LoginStatus.LockedOut);
+        }
+
+        [Test]
+        public void should_not_even_try_to_authenticate()
+        {
+            MockFor<IAuthenticationService>().AssertWasNotCalled(x => x.Authenticate(null), x => x.IgnoreArguments());
+        }
+
+
+    }
+
+    [TestFixture]
+    public class when_successfully_authenticating : InteractionContext<LoginController>
+    {
+        private LoginRequest theLoginRequest;
+        private FubuContinuation theContinuation;
+        private FubuContinuation successfulContinuation;
+
+        protected override void beforeEach()
+        {
+            theLoginRequest = new LoginRequest()
+            {
+                UserName = "frank",
+                Url = "/where/i/wanted/to/go"
+            };
+            MockFor<IFubuRequest>().Stub(x => x.Get<LoginRequest>()).Return(theLoginRequest);
+
+            MockFor<IAuthenticationService>().Stub(x => x.Authenticate(theLoginRequest)).Return(true);
+
+            successfulContinuation = FubuContinuation.RedirectTo("something");
+            MockFor<ILoginSuccessHandler>().Stub(x => x.LoggedIn(theLoginRequest)).Return(successfulContinuation);
+
+            Services.Inject<ILoginCookies>(new StubLoginCookies());
+
+            theContinuation = ClassUnderTest.post_login(theLoginRequest);
+        }
+
+        [Test]
+        public void should_have_applied_history()
+        {
+            MockFor<ILoginAuditor>().AssertWasCalled(x => x.ApplyHistory(theLoginRequest));
+        }
+
+        [Test]
+        public void should_audit_the_request()
+        {
+            MockFor<ILoginAuditor>().AssertWasCalled(x => x.Audit(theLoginRequest));
+        }
+
+        [Test]
+        public void should_not_allow_the_inner_behavior_to_execute()
+        {
+            MockFor<IActionBehavior>().AssertWasNotCalled(x => x.Invoke());
+        }
+
+        [Test]
+        public void should_use_the_continuation_from_the_success_handler()
+        {
+            theContinuation.ShouldBeTheSameAs(successfulContinuation);
+        }
+    }
+
+    [TestFixture]
+    public class when_UNsuccessfully_authenticating : InteractionContext<LoginController>
+    {
+        private LoginRequest theLoginRequest;
+        private FubuContinuation theContinuation;
+
+        protected override void beforeEach()
+        {
+            theLoginRequest = new LoginRequest()
+            {
+                UserName = "frank",
+                Url = "/where/i/wanted/to/go",
+                NumberOfTries = 2
+            };
+            
+            MockFor<IFubuRequest>().Stub(x => x.Get<LoginRequest>()).Return(theLoginRequest);
+
+            MockFor<IAuthenticationService>().Stub(x => x.Authenticate(theLoginRequest)).Return(false);
+
+            theContinuation = ClassUnderTest.post_login(theLoginRequest);
+        }
+
+        [Test]
+        public void should_have_applied_history()
+        {
+            MockFor<ILoginAuditor>().AssertWasCalled(x => x.ApplyHistory(theLoginRequest));
+        }
+
+
+        [Test]
+        public void should_audit_the_request()
+        {
+            MockFor<ILoginAuditor>().AssertWasCalled(x => x.Audit(theLoginRequest));
+        }
+
+        [Test]
+        public void should_not_signal_the_success_handler()
+        {
+            MockFor<ILoginSuccessHandler>().AssertWasNotCalled(x => x.LoggedIn(theLoginRequest));
+        }
+
+        [Test]
+        public void should_proceed_to_the_login_page()
+        {
+            theContinuation.AssertWasTransferedTo(theLoginRequest, "GET");
         }
     }
 }

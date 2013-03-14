@@ -1,21 +1,52 @@
 using FubuCore;
+using FubuMVC.Authentication.Auditing;
 using FubuMVC.Authentication.Cookies;
 using FubuMVC.Core;
+using FubuMVC.Core.Continuations;
+using FubuMVC.Core.Runtime;
 
 namespace FubuMVC.Authentication.Endpoints
 {
     public class LoginController
     {
         private readonly ILoginCookies _cookies;
+        private readonly IAuthenticationService _service;
+        private readonly ILoginSuccessHandler _handler;
+        private readonly ILoginAuditor _auditor;
+        private readonly ILockedOutRule _lockedOutRule;
 
-        public LoginController(ILoginCookies cookies)
+        public LoginController(ILoginCookies cookies, IAuthenticationService service, ILoginSuccessHandler handler, ILoginAuditor auditor, ILockedOutRule lockedOutRule)
         {
             _cookies = cookies;
+            _service = service;
+            _handler = handler;
+            _auditor = auditor;
+            _lockedOutRule = lockedOutRule;
         }
 
-        [UrlPattern("login")]
-        public LoginRequest Login(LoginRequest request)
+        public FubuContinuation post_login(LoginRequest request)
         {
+            _auditor.ApplyHistory(request);
+
+            var authenticated = _service.Authenticate(request);
+            _auditor.Audit(request);
+
+            if (authenticated)
+            {
+                return _handler.LoggedIn(request);
+            }
+
+            return FubuContinuation.TransferTo(request, "GET");
+        }
+
+        public LoginRequest get_login(LoginRequest request)
+        {
+            if (request.Status == LoginStatus.NotAuthenticated)
+            {
+                request.Status = _lockedOutRule.IsLockedOut(request);
+            }
+            
+
             if (request.RememberMe && request.UserName.IsNotEmpty())
             {
                 _cookies.User.Value = request.UserName;
