@@ -36,6 +36,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Authentication.Face
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Authentication.Facebook.Tests", "FubuMVC.Authentication.Facebook.Tests\FubuMVC.Authentication.Facebook.Tests.csproj", "{A2402242-C7FD-4087-8E87-A38084A0EE51}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Authentication.Github", "FubuMVC.Authentication.Github\FubuMVC.Authentication.Github.csproj", "{35AC3AB0-2912-4739-B5FB-81A73C5BA89D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Authentication.Github.Tests", "FubuMVC.Authentication.Github.Tests\FubuMVC.Authentication.Github.Tests.csproj", "{541A61AC-03A2-4ADD-A57A-48624C5DF422}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Authentication.WindowsLive.Tests", "FubuMVC.Authentication.WindowsLive.Tests\FubuMVC.Authentication.WindowsLive.Tests.csproj", "{65CBB140-9A7C-46D1-9A74-43C6DEE66EEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Authentication.WindowsLive", "FubuMVC.Authentication.WindowsLive\FubuMVC.Authentication.WindowsLive.csproj", "{CDD4D3E4-CC08-45B2-971F-BE79546EFFDF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -114,6 +122,22 @@ Global
 		{A2402242-C7FD-4087-8E87-A38084A0EE51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2402242-C7FD-4087-8E87-A38084A0EE51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2402242-C7FD-4087-8E87-A38084A0EE51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35AC3AB0-2912-4739-B5FB-81A73C5BA89D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35AC3AB0-2912-4739-B5FB-81A73C5BA89D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35AC3AB0-2912-4739-B5FB-81A73C5BA89D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35AC3AB0-2912-4739-B5FB-81A73C5BA89D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{541A61AC-03A2-4ADD-A57A-48624C5DF422}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{541A61AC-03A2-4ADD-A57A-48624C5DF422}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{541A61AC-03A2-4ADD-A57A-48624C5DF422}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{541A61AC-03A2-4ADD-A57A-48624C5DF422}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65CBB140-9A7C-46D1-9A74-43C6DEE66EEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65CBB140-9A7C-46D1-9A74-43C6DEE66EEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65CBB140-9A7C-46D1-9A74-43C6DEE66EEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65CBB140-9A7C-46D1-9A74-43C6DEE66EEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDD4D3E4-CC08-45B2-971F-BE79546EFFDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDD4D3E4-CC08-45B2-971F-BE79546EFFDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDD4D3E4-CC08-45B2-971F-BE79546EFFDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDD4D3E4-CC08-45B2-971F-BE79546EFFDF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
