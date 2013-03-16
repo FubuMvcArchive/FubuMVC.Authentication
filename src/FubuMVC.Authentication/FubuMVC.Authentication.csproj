@@ -34,19 +34,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bottles">
-      <HintPath>..\packages\Bottles.1.0.0.454\lib\Bottles.dll</HintPath>
+      <HintPath>..\packages\Bottles.1.0.0.458\lib\Bottles.dll</HintPath>
     </Reference>
     <Reference Include="FubuCore">
-      <HintPath>..\packages\FubuCore.1.0.2.232\lib\FubuCore.dll</HintPath>
+      <HintPath>..\packages\FubuCore.1.0.2.233\lib\FubuCore.dll</HintPath>
     </Reference>
     <Reference Include="FubuLocalization">
-      <HintPath>..\packages\FubuLocalization.0.9.5.131\lib\FubuLocalization.dll</HintPath>
+      <HintPath>..\packages\FubuLocalization.0.9.5.133\lib\FubuLocalization.dll</HintPath>
     </Reference>
     <Reference Include="FubuMVC.ContentExtensions">
-      <HintPath>..\packages\FubuMVC.ContentExtensions.0.1.0.163\lib\net40\FubuMVC.ContentExtensions.dll</HintPath>
+      <HintPath>..\packages\FubuMVC.ContentExtensions.0.1.0.167\lib\net40\FubuMVC.ContentExtensions.dll</HintPath>
     </Reference>
     <Reference Include="FubuMVC.Core">
-      <HintPath>..\packages\FubuMVC.Core.1.0.1.1428\lib\net40\FubuMVC.Core.dll</HintPath>
+      <HintPath>..\packages\FubuMVC.Core.1.0.1.1434\lib\net40\FubuMVC.Core.dll</HintPath>
     </Reference>
     <Reference Include="FubuMVC.Core.UI">
       <HintPath>..\packages\FubuMVC.Core.UI.1.0.1.450\lib\net40\FubuMVC.Core.UI.dll</HintPath>
@@ -61,9 +61,6 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\CommonAssemblyInfo.cs">
@@ -135,7 +132,9 @@
     <Compile Include="Tickets\ITicketSource.cs" />
     <Compile Include="Tickets\TicketAuthenticationSession.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
