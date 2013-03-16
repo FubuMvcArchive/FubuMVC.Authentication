@@ -1,17 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3E04D7BF-BA4A-4799-93EA-494597D55B5F}</ProjectGuid>
+    <ProjectGuid>{7DA71D90-AF0B-4843-996F-1AB863D2F80E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FubuMVC.Authentication.Tests</RootNamespace>
-    <AssemblyName>FubuMVC.Authentication.Tests</AssemblyName>
+    <RootNamespace>FubuMVC.Authentication.OAuth2.Tests</RootNamespace>
+    <AssemblyName>FubuMVC.Authentication.OAuth2.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,93 +32,73 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Bottles">
+    <Reference Include="Bottles, Version=1.0.0.458, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Bottles.1.0.0.458\lib\Bottles.dll</HintPath>
     </Reference>
-    <Reference Include="FubuCore">
+    <Reference Include="FubuCore, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\FubuCore.1.1.0.234\lib\FubuCore.dll</HintPath>
     </Reference>
-    <Reference Include="FubuLocalization">
+    <Reference Include="FubuLocalization, Version=0.9.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\FubuLocalization.0.9.5.133\lib\FubuLocalization.dll</HintPath>
     </Reference>
-    <Reference Include="FubuMVC.Core">
+    <Reference Include="FubuMVC.Core, Version=1.0.1.1434, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\FubuMVC.Core.1.0.1.1434\lib\net40\FubuMVC.Core.dll</HintPath>
     </Reference>
-    <Reference Include="FubuTestingSupport">
+    <Reference Include="FubuTestingSupport, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\FubuTestingSupport.1.1.0.234\lib\FubuTestingSupport.dll</HintPath>
     </Reference>
-    <Reference Include="HtmlTags">
+    <Reference Include="HtmlTags, Version=1.2.0.150, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\HtmlTags.1.2.0.150\lib\4.0\HtmlTags.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="nunit.framework">
+    <Reference Include="nunit.framework, Version=2.5.10.11092, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NUnit.2.5.10.11092\lib\nunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.mocks">
+    <Reference Include="nunit.mocks, Version=2.5.10.11092, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NUnit.2.5.10.11092\lib\nunit.mocks.dll</HintPath>
     </Reference>
-    <Reference Include="pnunit.framework">
+    <Reference Include="pnunit.framework, Version=1.0.4109.34242, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NUnit.2.5.10.11092\lib\pnunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="Rhino.Mocks">
+    <Reference Include="Rhino.Mocks, Version=3.6.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\RhinoMocks.3.6.1\lib\net\Rhino.Mocks.dll</HintPath>
     </Reference>
-    <Reference Include="StructureMap">
+    <Reference Include="StructureMap, Version=2.6.4.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\structuremap.2.6.4.69\lib\net40\StructureMap.dll</HintPath>
     </Reference>
-    <Reference Include="StructureMap.AutoMocking">
+    <Reference Include="StructureMap.AutoMocking, Version=2.6.4.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\structuremap.automocking.2.6.4.69\lib\net40\StructureMap.AutoMocking.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AjaxAuthenticationRedirectTester.cs" />
-    <Compile Include="ApplyAuthenticationPolicyTester.cs" />
     <Compile Include="AssemblyNeedsTheFubuModuleAttribute.cs" />
-    <Compile Include="AuthenticationBootstrapperTests.cs" />
-    <Compile Include="AuthenticationFilterNodeTester.cs" />
-    <Compile Include="AuthenticationFilterTester.cs" />
-    <Compile Include="AuthenticationIsConfiguredTester.cs" />
-    <Compile Include="AuthenticationNodeTester.cs" />
-    <Compile Include="AuthenticationServiceRegistryTester.cs" />
-    <Compile Include="AuthenticationServiceTester.cs" />
-    <Compile Include="AuthenticationSettingsTester.cs" />
-    <Compile Include="BasicAuthenticationTester.cs" />
-    <Compile Include="DefaultAuthenticationRedirectTester.cs" />
-    <Compile Include="FubuPrincipalTester.cs" />
-    <Compile Include="LockedOutRuleTester.cs" />
-    <Compile Include="LoginRequestTester.cs" />
-    <Compile Include="Membership\FlatFile\FlatFileMembershipRepositoryTester.cs" />
-    <Compile Include="Membership\MembershipAuthenticationTester.cs" />
-    <Compile Include="Membership\MembershipNodeTester.cs" />
-    <Compile Include="Membership\UserInfoTester.cs" />
-    <Compile Include="NotAuthenticatedModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ThreadPrincipalContextTester.cs" />
-    <Compile Include="LoginSuccessHandlerTester.cs" />
-    <Compile Include="Endpoints\FormsAuthenticationEndpointsRegistrationTester.cs" />
-    <Compile Include="Cookies\LoginCookieServiceTester.cs" />
-    <Compile Include="Cookies\CookieSettingsTester.cs" />
-    <Compile Include="Endpoints\LoginControllerTests.cs" />
-    <Compile Include="Endpoints\when_logging_out.cs" />
-    <Compile Include="Endpoints\WriteDefaultLoginTester.cs" />
-    <Compile Include="Tickets\EncryptionTester.cs" />
-    <Compile Include="Tickets\TicketAuthenticationSessionTester.cs" />
-    <Compile Include="when_redirecting_an_unauthenticated_ajax_request.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FubuMVC.Authentication\FubuMVC.Authentication.csproj">
-      <Project>{b889af6b-2744-4370-842a-04026d1370b5}</Project>
-      <Name>FubuMVC.Authentication</Name>
+    <ProjectReference Include="..\FubuMVC.Authentication.OAuth2\FubuMVC.Authentication.OAuth2.csproj">
+      <Project>{91493B70-E834-42D6-BB28-75DF09270442}</Project>
+      <Name>FubuMVC.Authentication.OAuth2</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
