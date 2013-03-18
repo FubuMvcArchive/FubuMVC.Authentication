@@ -9,6 +9,7 @@ deploy
 deploy/*
 src/CommonAssemblyInfo.cs
 _ReSharper.*
+*ncrunch*
 *.csproj.user
 *.resharper.user
 *.ReSharper.user
