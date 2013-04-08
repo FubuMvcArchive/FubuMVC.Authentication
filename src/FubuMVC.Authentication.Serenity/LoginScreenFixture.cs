@@ -25,6 +25,12 @@ namespace FubuMVC.Authentication.Serenity
             Title = "Login Screen";
         }
 
+        [FormatAs("Recycle the browser")]
+        public void RecycleTheBrowser()
+        {
+            Retrieve<IApplicationUnderTest>().Browser.Recycle();
+        }
+
         [FormatAs("Go to the login screen")]
         public void OpenLoginScreen()
         {

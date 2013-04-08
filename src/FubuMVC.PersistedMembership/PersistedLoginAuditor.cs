@@ -36,22 +36,10 @@ namespace FubuMVC.PersistedMembership
                 Timestamp = _systemTime.UtcNow()
             };
 
-            _transaction.WithRepository(repo =>
-            {
-                repo.Update(audit);
-
-                // TODO -- need to watch this w/ RavenDb's async nature
-                var history = repo.FindWhere<LoginFailureHistory>(x => x.UserName == request.UserName) ?? new LoginFailureHistory
-                {
-                    UserName = request.UserName
-                };
-
-                history.Attempts = request.NumberOfTries;
-                history.LockedOutTime = request.LockedOutUntil;
-
-                repo.Update(history);
-            });
+            _transaction.Execute<LoginPersistor>(x => x.LogFailure(request, audit));
         }
+
+
 
         private void logSuccess(LoginRequest request)
         {
@@ -61,28 +49,16 @@ namespace FubuMVC.PersistedMembership
                 Timestamp = _systemTime.UtcNow()
             };
 
-            _transaction.WithRepository(repo => {
-                repo.Update(audit);
-
-                // TODO -- need to watch this w/ RavenDb's async nature
-                var history = repo.FindWhere<LoginFailureHistory>(x => x.UserName == request.UserName);
-                if (history != null)
-                {
-                    repo.Remove(history);
-                }
-            });
+            _transaction.Execute<LoginPersistor>(x => x.LogSuccess(request, audit));
         }
+
+
 
         public void ApplyHistory(LoginRequest request)
         {
-            _transaction.WithRepository(repo => {
-                var history = repo.FindWhere<LoginFailureHistory>(x => x.UserName == request.UserName);
-                if (history == null) return;
-
-                request.NumberOfTries = history.Attempts;
-                request.LockedOutUntil = history.LockedOutTime;
-            });
+            _transaction.Execute<LoginPersistor>(x => x.ApplyHistory(request));
         }
+
 
         public void Audit<T>(T log) where T : AuditMessage
         {

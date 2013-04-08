@@ -79,14 +79,12 @@
     </Compile>
     <Compile Include="Audit.cs" />
     <Compile Include="LoginFailureHistory.cs" />
+    <Compile Include="LoginPersistor.cs" />
     <Compile Include="MembershipRepository.cs" />
     <Compile Include="PersistedLoginAuditor.cs" />
     <Compile Include="PersistedMembership.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FubuMVC.Authentication\FubuMVC.Authentication.csproj">
