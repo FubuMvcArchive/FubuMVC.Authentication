@@ -36,7 +36,7 @@ namespace FubuMVC.PersistedMembership
                 Timestamp = _systemTime.UtcNow()
             };
 
-            _transaction.Execute<LoginPersistor>(x => x.LogFailure(request, audit));
+            _transaction.Execute<LoginAuditPersistor>(x => x.LogFailure(request, audit));
         }
 
 
@@ -49,14 +49,14 @@ namespace FubuMVC.PersistedMembership
                 Timestamp = _systemTime.UtcNow()
             };
 
-            _transaction.Execute<LoginPersistor>(x => x.LogSuccess(request, audit));
+            _transaction.Execute<LoginAuditPersistor>(x => x.LogSuccess(request, audit));
         }
 
 
 
         public void ApplyHistory(LoginRequest request)
         {
-            _transaction.Execute<LoginPersistor>(x => x.ApplyHistory(request));
+            _transaction.Execute<LoginAuditPersistor>(x => x.ApplyHistory(request));
         }
 
 

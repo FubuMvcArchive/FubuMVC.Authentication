@@ -86,46 +86,33 @@ namespace FubuMVC.PersistedMembership.Testing
             theAudit.Username.ShouldEqual(request.UserName);
         }
 
-        private void waitForHistoryToAppear(string username)
-        {
-            theContainer.GetInstance<IDocumentSession>().Query<LoginFailureHistory>().Customize(x => x.WaitForNonStaleResults())
-                .Any(x => x.UserName == username).ShouldBeTrue();
-        }
-
-        private void waitForHistoryToDisappear(string username)
-        {
-            theContainer.GetInstance<IDocumentSession>().Query<LoginFailureHistory>().Customize(x => x.WaitForNonStaleResults())
-                .Any(x => x.UserName == username).ShouldBeFalse();
-        }
 
         [Test]
         public void when_logging_success_wipe_clean_the_login_failure_history()
         {
             var history = new LoginFailureHistory
             {
-                UserName = "doofus",
+                Id = "doofus",
                 Attempts = 3
             };
 
-            theContainer.GetInstance<ITransaction>().WithRepository(repo =>
+            theContainer.GetInstance<ITransaction>().Execute<IDocumentSession>(repo =>
             {
-                repo.Update(history);
+                repo.Store(history);
             });
 
-            waitForHistoryToAppear(history.UserName);
 
 
 
             var request = new LoginRequest
             {
                 Status = LoginStatus.Succeeded,
-                UserName = history.UserName
+                UserName = history.Id
             };
 
             var auditor = theContainer.GetInstance<PersistedLoginAuditor>();
             auditor.Audit(request);
 
-            waitForHistoryToDisappear(history.UserName);
 
         }
 
@@ -144,10 +131,8 @@ namespace FubuMVC.PersistedMembership.Testing
             var auditor = theContainer.GetInstance<PersistedLoginAuditor>();
             auditor.Audit(request);
 
-            waitForHistoryToAppear(request.UserName);
 
-            var history = theContainer.GetInstance<IEntityRepository>()
-                        .FindWhere<LoginFailureHistory>(x => x.UserName == request.UserName);
+            var history = theContainer.GetInstance<IDocumentSession>().Load<LoginFailureHistory>(request.UserName);
 
 
             history.ShouldNotBeNull();
@@ -170,10 +155,9 @@ namespace FubuMVC.PersistedMembership.Testing
             var auditor = theContainer.GetInstance<PersistedLoginAuditor>();
             auditor.Audit(request);
 
-            waitForHistoryToAppear(request.UserName);
 
-            var history = theContainer.GetInstance<IEntityRepository>()
-                        .FindWhere<LoginFailureHistory>(x => x.UserName == request.UserName);
+            var history = theContainer.GetInstance<IDocumentSession>()
+                        .Load<LoginFailureHistory>(request.UserName);
 
 
 
@@ -185,21 +169,20 @@ namespace FubuMVC.PersistedMembership.Testing
         {
             var history = new LoginFailureHistory
             {
-                UserName = "AlreadyFailed",
+                Id = "AlreadyFailed",
                 Attempts = 2
             };
 
-            theContainer.GetInstance<ITransaction>().WithRepository(repo =>
+            theContainer.GetInstance<ITransaction>().Execute<IDocumentSession>(repo =>
             {
-                repo.Update(history);
+                repo.Store(history);
             });
 
-            waitForHistoryToAppear(history.UserName);
 
             var request = new LoginRequest
             {
                 Status = LoginStatus.Failed,
-                UserName = history.UserName,
+                UserName = history.Id,
                 NumberOfTries = 3,
                 LockedOutUntil = DateTime.Today.ToUniversalTime()
 
@@ -208,10 +191,9 @@ namespace FubuMVC.PersistedMembership.Testing
             var auditor = theContainer.GetInstance<PersistedLoginAuditor>();
             auditor.Audit(request);
 
-            waitForHistoryToAppear(request.UserName);
 
-            var history2 = theContainer.GetInstance<IEntityRepository>()
-                        .FindWhere<LoginFailureHistory>(x => x.UserName == request.UserName);
+            var history2 = theContainer.GetInstance<IDocumentSession>()
+                        .Load<LoginFailureHistory>(request.UserName);
 
             history2.Attempts.ShouldEqual(request.NumberOfTries);
             history2.LockedOutTime.ShouldEqual(request.LockedOutUntil);
@@ -239,18 +221,17 @@ namespace FubuMVC.PersistedMembership.Testing
         {
             var history = new LoginFailureHistory
             {
-                UserName = "AlreadyLockedOut",
+                Id = "AlreadyLockedOut",
                 Attempts = 3,
                 LockedOutTime = DateTime.Today.AddMinutes(30)
             };
 
-            theContainer.GetInstance<ITransaction>().WithRepository(repo => repo.Update(history));
-            waitForHistoryToAppear(history.UserName);
+            theContainer.GetInstance<ITransaction>().Execute<IDocumentSession>(repo => repo.Store(history));
 
             var auditor = theContainer.GetInstance<PersistedLoginAuditor>();
             var request = new LoginRequest
             {
-                UserName = history.UserName
+                UserName = history.Id
             };
 
             auditor.ApplyHistory(request);

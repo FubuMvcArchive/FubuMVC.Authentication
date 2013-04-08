@@ -79,7 +79,7 @@
     </Compile>
     <Compile Include="Audit.cs" />
     <Compile Include="LoginFailureHistory.cs" />
-    <Compile Include="LoginPersistor.cs" />
+    <Compile Include="LoginAuditPersistor.cs" />
     <Compile Include="MembershipRepository.cs" />
     <Compile Include="PersistedLoginAuditor.cs" />
     <Compile Include="PersistedMembership.cs" />

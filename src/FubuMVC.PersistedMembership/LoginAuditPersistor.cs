@@ -1,48 +1,49 @@
 ﻿using FubuMVC.Authentication;
 using FubuPersistence;
+using Raven.Client;
 
 namespace FubuMVC.PersistedMembership
 {
-    public class LoginPersistor
+    public class LoginAuditPersistor
     {
         private readonly IEntityRepository _repository;
+        private readonly IDocumentSession _session;
 
-        public LoginPersistor(IEntityRepository repository)
+        public LoginAuditPersistor(IEntityRepository repository, IDocumentSession session)
         {
             _repository = repository;
+            _session = session;
         }
 
         public void LogFailure(LoginRequest request, Audit audit)
         {
             _repository.Update(audit);
 
-            // TODO -- need to watch this w/ RavenDb's async nature
-            var history = _repository.FindWhere<LoginFailureHistory>(x => x.UserName == request.UserName) ?? new LoginFailureHistory
+            var history = _session.Load<LoginFailureHistory>(request.UserName) ?? new LoginFailureHistory
             {
-                UserName = request.UserName
+                Id = request.UserName
             };
 
             history.Attempts = request.NumberOfTries;
             history.LockedOutTime = request.LockedOutUntil;
 
-            _repository.Update(history);
+            _session.Store(history);
         }
 
         public void LogSuccess(LoginRequest request, Audit audit)
         {
             _repository.Update(audit);
 
-            // TODO -- need to watch this w/ RavenDb's async nature
-            var history = _repository.FindWhere<LoginFailureHistory>(x => x.UserName == request.UserName);
+            var history = _session.Load<LoginFailureHistory>(request.UserName);
             if (history != null)
             {
-                _repository.Remove(history);
+                _session.Delete(history);
             }
         }
 
         public void ApplyHistory(LoginRequest request)
         {
-            var history = _repository.FindWhere<LoginFailureHistory>(x => x.UserName == request.UserName);
+            var history = _session.Load<LoginFailureHistory>(request.UserName);
             if (history == null) return;
 
             request.NumberOfTries = history.Attempts;
