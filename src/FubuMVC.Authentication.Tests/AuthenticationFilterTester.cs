@@ -1,6 +1,7 @@
 using System.Security.Principal;
 using FubuMVC.Authentication.Membership;
 using FubuMVC.Core.Continuations;
+using FubuMVC.Core.Http;
 using FubuTestingSupport;
 using NUnit.Framework;
 
@@ -16,6 +17,8 @@ namespace FubuMVC.Authentication.Tests
 
         protected override void beforeEach()
         {
+            MockFor<ICurrentChain>().Stub(x => x.IsInPartial()).Return(false);
+
             MockFor<IAuthenticationService>().Stub(x => x.TryToApply())
                 .Return(false);
 
@@ -41,6 +44,7 @@ namespace FubuMVC.Authentication.Tests
 
         protected override void beforeEach()
         {
+            MockFor<ICurrentChain>().Stub(x => x.IsInPartial()).Return(false);
             MockFor<IAuthenticationService>().Stub(x => x.TryToApply())
                 .Return(true);
 
@@ -53,5 +57,27 @@ namespace FubuMVC.Authentication.Tests
 			theResult.AssertWasContinuedToNextBehavior();
         }
 
+    }
+
+    [TestFixture]
+    public class when_authenticating_in_a_partial_always_go_to_next : InteractionContext<AuthenticationFilter>
+    {
+        private FubuContinuation theResult;
+
+        protected override void beforeEach()
+        {
+            MockFor<ICurrentChain>().Stub(x => x.IsInPartial()).Return(true);
+
+            MockFor<IAuthenticationService>().Stub(x => x.TryToApply())
+                .Return(false);
+
+            theResult = ClassUnderTest.Authenticate();
+        }
+
+        [Test]
+        public void should_continue()
+        {
+            theResult.AssertWasContinuedToNextBehavior();
+        }
     }
 }

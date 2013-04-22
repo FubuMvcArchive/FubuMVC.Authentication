@@ -1,10 +1,12 @@
-﻿using FubuMVC.Core.Registration;
+﻿using FubuMVC.Authentication.Endpoints;
+using FubuMVC.Core.Registration;
 using FubuMVC.Core.Registration.Nodes;
 using FubuMVC.Core.Security;
 using HtmlTags;
 using NUnit.Framework;
 using FubuCore.Reflection;
 using FubuTestingSupport;
+using System.Linq;
 
 namespace FubuMVC.Authentication.Tests
 {
@@ -50,6 +52,19 @@ namespace FubuMVC.Authentication.Tests
 
             settings.ShouldBeExcluded(chain).ShouldBeTrue();
 
+        }
+
+        [Test]
+        public void apply_a_custome_exclusion_and_it_does_not_apply_to_login_page()
+        {
+            var settings = new AuthenticationSettings();
+            var chain = new BehaviorChain();
+            chain.AddToEnd(ActionCall.For<LoginController>(x => x.get_login(null)));
+            settings.ShouldBeExcluded(chain).ShouldBeTrue();
+            
+            settings.ExcludeChains.ChainMatches(c => c.Calls.Count() == 5); // just need a fake
+
+            settings.ShouldBeExcluded(chain).ShouldBeTrue();
         }
 
         [Test]
