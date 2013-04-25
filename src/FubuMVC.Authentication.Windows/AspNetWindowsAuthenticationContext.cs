@@ -1,4 +1,5 @@
-﻿using System.Security.Principal;
+﻿using System;
+using System.Security.Principal;
 using System.Web;
 
 namespace FubuMVC.Authentication.Windows
@@ -14,7 +15,11 @@ namespace FubuMVC.Authentication.Windows
 
         public WindowsPrincipal Current()
         {
-            var identity = _context.Request.LogonUserIdentity;
+            var identity = _context.User.Identity as WindowsIdentity;
+            if (identity == null)
+            {
+                throw new InvalidOperationException("User identity must be a WindowsIdentity");
+            }
 
             return identity == null ? null : new WindowsPrincipal(identity);
         }
