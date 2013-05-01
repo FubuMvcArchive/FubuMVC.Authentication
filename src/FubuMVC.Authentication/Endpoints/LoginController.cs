@@ -31,6 +31,8 @@ namespace FubuMVC.Authentication.Endpoints
             var authenticated = _service.Authenticate(request);
             _auditor.Audit(request);
 
+            SetRememberMeCookie(request);
+
             if (authenticated)
             {
                 return _handler.LoggedIn(request);
@@ -45,12 +47,8 @@ namespace FubuMVC.Authentication.Endpoints
             {
                 request.Status = _lockedOutRule.IsLockedOut(request);
             }
-            
 
-            if (request.RememberMe && request.UserName.IsNotEmpty())
-            {
-                _cookies.User.Value = request.UserName;
-            }
+            SetRememberMeCookie(request);
 
             if (request.UserName.IsEmpty())
             {
@@ -75,6 +73,12 @@ namespace FubuMVC.Authentication.Endpoints
             return request;
         }
 
-
+        private void SetRememberMeCookie(LoginRequest request)
+        {
+            if (request.RememberMe && request.UserName.IsNotEmpty())
+            {
+                _cookies.User.Value = request.UserName;
+            }
+        }
     }
 }
