@@ -81,6 +81,38 @@ namespace FubuMVC.Authentication.Tests.Endpoints
             request.UserName.ShouldEqual("jeremy");
             request.RememberMe.ShouldBeTrue();
         }
+
+        [Test]
+        public void UserName_should_set_itself_on_the_post_route_if_remember_me_is_true()
+        {
+            const string username = "fakeuser";
+            var request = new LoginRequest
+            {
+                UserName = username,
+                RememberMe = true
+            };
+
+            ClassUnderTest.post_login(request);
+
+            theCookies.User.AssertWasCalled(x => x.Value = username);
+            request.UserName.ShouldEqual(username);
+        }
+
+        [Test]
+        public void UserName_should_not_set_itself_on_the_post_route_if_remember_me_is_false()
+        {
+            const string username = "fakeuser";
+            var request = new LoginRequest
+            {
+                UserName = username,
+                RememberMe = false
+            };
+
+            ClassUnderTest.post_login(request);
+
+            theCookies.User.AssertWasNotCalled(x => x.Value = username);
+            theCookies.User.ShouldNotEqual(username);
+        }
     }
 
     [TestFixture]
