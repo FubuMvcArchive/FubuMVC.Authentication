@@ -128,7 +128,7 @@
     <Compile Include="unauthenticated_request_against_an_unauthenticated_route.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="ripple.dependencies.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FubuMVC.Authentication\FubuMVC.Authentication.csproj">
