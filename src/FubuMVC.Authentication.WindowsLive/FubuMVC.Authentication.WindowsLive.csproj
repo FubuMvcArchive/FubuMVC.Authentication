@@ -35,44 +35,23 @@
     <Reference Include="Bottles">
       <HintPath>..\packages\Bottles\lib\Bottles.dll</HintPath>
     </Reference>
-    <Reference Include="Bottles, Version=1.0.0.458, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Bottles.1.0.0.458\lib\Bottles.dll</HintPath>
-    </Reference>
     <Reference Include="FubuCore">
       <HintPath>..\packages\FubuCore\lib\FubuCore.dll</HintPath>
-    </Reference>
-    <Reference Include="FubuCore, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FubuCore.1.0.2.233\lib\FubuCore.dll</HintPath>
     </Reference>
     <Reference Include="FubuLocalization">
       <HintPath>..\packages\FubuLocalization\lib\FubuLocalization.dll</HintPath>
     </Reference>
-    <Reference Include="FubuLocalization, Version=0.9.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FubuLocalization.0.9.5.133\lib\FubuLocalization.dll</HintPath>
-    </Reference>
     <Reference Include="FubuMVC.ContentExtensions">
       <HintPath>..\packages\FubuMVC.ContentExtensions\lib\net40\FubuMVC.ContentExtensions.dll</HintPath>
-    </Reference>
-    <Reference Include="FubuMVC.ContentExtensions, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FubuMVC.ContentExtensions.0.1.0.167\lib\net40\FubuMVC.ContentExtensions.dll</HintPath>
     </Reference>
     <Reference Include="FubuMVC.Core">
       <HintPath>..\packages\FubuMVC.Core\lib\net40\FubuMVC.Core.dll</HintPath>
     </Reference>
-    <Reference Include="FubuMVC.Core, Version=1.0.1.1434, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FubuMVC.Core.1.0.1.1434\lib\net40\FubuMVC.Core.dll</HintPath>
-    </Reference>
     <Reference Include="FubuMVC.Core.View">
       <HintPath>..\packages\FubuMVC.Core.View\lib\net40\FubuMVC.Core.View.dll</HintPath>
     </Reference>
-    <Reference Include="FubuMVC.Core.View, Version=1.0.0.427, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FubuMVC.Core.View.1.0.0.427\lib\net40\FubuMVC.Core.View.dll</HintPath>
-    </Reference>
     <Reference Include="HtmlTags">
       <HintPath>..\packages\HtmlTags\lib\4.0\HtmlTags.dll</HintPath>
-    </Reference>
-    <Reference Include="HtmlTags, Version=1.2.0.150, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\HtmlTags.1.2.0.150\lib\4.0\HtmlTags.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -102,7 +81,7 @@
     <Compile Include="WriteDefaultWindowsLiveButton.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="ripple.dependencies.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FubuMVC.Authentication.OAuth2\FubuMVC.Authentication.OAuth2.csproj">

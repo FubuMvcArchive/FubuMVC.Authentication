@@ -86,7 +86,7 @@
     <Compile Include="WriteDefaultGithubButtonTester.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="ripple.dependencies.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FubuMVC.Authentication.Github\FubuMVC.Authentication.Github.csproj">

@@ -112,7 +112,7 @@
     <Compile Include="when_redirecting_an_unauthenticated_ajax_request.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="ripple.dependencies.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FubuMVC.Authentication\FubuMVC.Authentication.csproj">
