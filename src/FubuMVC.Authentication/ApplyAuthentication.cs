@@ -26,8 +26,9 @@ namespace FubuMVC.Authentication
     {
         public void Configure(BehaviorGraph graph)
         {
-            graph.Settings.Alter<AuthenticationSettings>(settings =>
-            {
+            graph.Settings.Alter<AuthenticationSettings>(settings => {
+                if (settings.MembershipEnabled == MembershipStatus.Disabled) return;
+
                 if (!settings.Strategies.OfType<MembershipNode>().Any())
                 {
                     settings.Strategies.InsertFirst(new MembershipNode());

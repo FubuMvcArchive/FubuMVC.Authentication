@@ -21,6 +21,13 @@ namespace FubuMVC.Authentication.Tests
         }
 
         [Test]
+        public void membership_status_is_enabled_by_default()
+        {
+            new AuthenticationSettings().MembershipEnabled
+                                        .ShouldEqual(MembershipStatus.Enabled);
+        }
+
+        [Test]
         public void excludes_is_always_false_with_no_exclusions()
         {
             var settings = new AuthenticationSettings();

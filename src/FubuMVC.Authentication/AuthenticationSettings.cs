@@ -20,6 +20,7 @@ namespace FubuMVC.Authentication
 
             MaximumNumberOfFailedAttempts = 3;
             CooloffPeriodInMinutes = 60;
+            MembershipEnabled = MembershipStatus.Enabled;
 
             _strategies = new AuthenticationChain();
         }
@@ -38,6 +39,9 @@ namespace FubuMVC.Authentication
             get { return _exclusions; }
         }
 
+        public MembershipStatus MembershipEnabled { get; set; }
+        
+
         public bool SlidingExpiration { get; set; }
         public int ExpireInMinutes { get; set; }
 
@@ -51,5 +55,11 @@ namespace FubuMVC.Authentication
         {
             return _exclusions.As<IChainFilter>().Matches(chain);
         }
+    }
+
+    public enum MembershipStatus
+    {
+        Enabled,
+        Disabled
     }
 }
