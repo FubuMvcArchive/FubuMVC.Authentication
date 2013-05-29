@@ -20,7 +20,7 @@ namespace FubuMVC.Authentication.Tests
             MockFor<ICurrentChain>().Stub(x => x.IsInPartial()).Return(false);
 
             MockFor<IAuthenticationService>().Stub(x => x.TryToApply())
-                .Return(false);
+                .Return(new AuthResult{Success = false});
 
             theRedirect = FubuContinuation.RedirectTo<LoginRequest>();
 
@@ -46,7 +46,7 @@ namespace FubuMVC.Authentication.Tests
         {
             MockFor<ICurrentChain>().Stub(x => x.IsInPartial()).Return(false);
             MockFor<IAuthenticationService>().Stub(x => x.TryToApply())
-                .Return(true);
+                .Return(new AuthResult{Success = true});
 
             theResult = ClassUnderTest.Authenticate();
         }
@@ -60,6 +60,54 @@ namespace FubuMVC.Authentication.Tests
     }
 
     [TestFixture]
+    public class when_authenticating_and_the_service_returns_a_continuation_on_success : InteractionContext<AuthenticationFilter>
+    {
+        private FubuContinuation theResult;
+        private FubuContinuation theContinuation;
+
+        protected override void beforeEach()
+        {
+            theContinuation = FubuContinuation.RedirectTo("somewhere");
+
+            MockFor<ICurrentChain>().Stub(x => x.IsInPartial()).Return(false);
+            MockFor<IAuthenticationService>().Stub(x => x.TryToApply())
+                .Return(new AuthResult { Success = true, Continuation = theContinuation});
+
+            theResult = ClassUnderTest.Authenticate();
+        }
+
+        [Test]
+        public void should_continue_to_what_the_service_determined()
+        {
+            theResult.ShouldBeTheSameAs(theContinuation);
+        }
+    }
+
+    [TestFixture]
+    public class when_authenticating_and_the_service_returns_a_continuation_on_failure : InteractionContext<AuthenticationFilter>
+    {
+        private FubuContinuation theResult;
+        private FubuContinuation theContinuation;
+
+        protected override void beforeEach()
+        {
+            theContinuation = FubuContinuation.RedirectTo("somewhere");
+
+            MockFor<ICurrentChain>().Stub(x => x.IsInPartial()).Return(false);
+            MockFor<IAuthenticationService>().Stub(x => x.TryToApply())
+                .Return(new AuthResult { Success = false, Continuation = theContinuation });
+
+            theResult = ClassUnderTest.Authenticate();
+        }
+
+        [Test]
+        public void should_continue_to_what_the_service_determined()
+        {
+            theResult.ShouldBeTheSameAs(theContinuation);
+        }
+    }
+
+    [TestFixture]
     public class when_authenticating_in_a_partial_always_go_to_next : InteractionContext<AuthenticationFilter>
     {
         private FubuContinuation theResult;
@@ -69,7 +117,7 @@ namespace FubuMVC.Authentication.Tests
             MockFor<ICurrentChain>().Stub(x => x.IsInPartial()).Return(true);
 
             MockFor<IAuthenticationService>().Stub(x => x.TryToApply())
-                .Return(false);
+                .Return(new AuthResult{Success = false});
 
             theResult = ClassUnderTest.Authenticate();
         }

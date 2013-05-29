@@ -18,9 +18,18 @@ namespace FubuMVC.Authentication
             _strategies = strategies;
         }
 
-        public bool TryToApply()
+        public AuthResult TryToApply()
         {
-            return _strategies.Any(x => x.TryToApply());
+            foreach (var strategy in _strategies)
+            {
+                var result = strategy.TryToApply();
+                if (result.IsDeterministic())
+                {
+                    return result;
+                }
+            }
+
+            return new AuthResult{Success = false};
         }
 
         public bool Authenticate(LoginRequest request)

@@ -20,7 +20,7 @@ namespace FubuMVC.Authentication
             _lockedOutRule = lockedOutRule;
         }
 
-        public bool TryToApply()
+        public AuthResult TryToApply()
         {
             string userName = _session.PreviouslyAuthenticatedUser();
             if (userName.IsNotEmpty())
@@ -29,10 +29,10 @@ namespace FubuMVC.Authentication
                 var principal = _builder.Build(userName);
                 _context.Current = principal;
 
-                return true;
+                return new AuthResult{Success = true};
             }
 
-            return false;
+            return new AuthResult{Success = false};;
         }
 
         public bool Authenticate(LoginRequest request)

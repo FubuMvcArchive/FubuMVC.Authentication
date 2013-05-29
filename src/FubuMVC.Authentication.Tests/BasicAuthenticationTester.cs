@@ -10,7 +10,7 @@ namespace FubuMVC.Authentication.Tests
     {
         private string theUserName;
         private IPrincipal thePrincipal;
-        private bool theResult;
+        private AuthResult theResult;
 
         protected override void beforeEach()
         {
@@ -43,14 +43,14 @@ namespace FubuMVC.Authentication.Tests
         [Test]
         public void was_successful()
         {
-            theResult.ShouldBeTrue();
+            theResult.Success.ShouldBeTrue();
         }
     }
 
     [TestFixture]
     public class when_unsuccessfully_trying_to_apply_authentication : InteractionContext<BasicAuthentication>
     {
-        private bool theResult;
+        private AuthResult theResult;
 
         protected override void beforeEach()
         {
@@ -63,7 +63,7 @@ namespace FubuMVC.Authentication.Tests
         [Test]
         public void should_return_false_because_no_user_is_previously_authenticated()
         {
-            theResult.ShouldBeFalse();
+            theResult.Success.ShouldBeFalse();
         }
     }
 

@@ -21,7 +21,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile></DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -77,6 +78,7 @@
     <Compile Include="AuthenticationNode.cs" />
     <Compile Include="AuthenticationRedirector.cs" />
     <Compile Include="AuthenticationService.cs" />
+    <Compile Include="AuthResult.cs" />
     <Compile Include="BasicAuthentication.cs" />
     <Compile Include="IAuthenticationRedirector.cs" />
     <Compile Include="IAuthenticationService.cs" />

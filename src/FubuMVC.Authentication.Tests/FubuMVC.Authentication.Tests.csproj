@@ -89,6 +89,7 @@
     <Compile Include="AuthenticationServiceRegistryTester.cs" />
     <Compile Include="AuthenticationServiceTester.cs" />
     <Compile Include="AuthenticationSettingsTester.cs" />
+    <Compile Include="AuthResultTester.cs" />
     <Compile Include="BasicAuthenticationTester.cs" />
     <Compile Include="DefaultAuthenticationRedirectTester.cs" />
     <Compile Include="FubuPrincipalTester.cs" />

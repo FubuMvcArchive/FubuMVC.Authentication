@@ -20,7 +20,10 @@ namespace FubuMVC.Authentication
         {
             if (_currentChain.IsInPartial()) return FubuContinuation.NextBehavior();
 
-            return _authentication.TryToApply() ? FubuContinuation.NextBehavior() : _redirector.Redirect();
+            var result = _authentication.TryToApply();
+            if (result.Continuation != null) return result.Continuation;
+
+            return result.Success ? FubuContinuation.NextBehavior() : _redirector.Redirect();
         }
     }
 }

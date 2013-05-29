@@ -2,7 +2,7 @@ namespace FubuMVC.Authentication
 {
     public interface IAuthenticationService
     {
-        bool TryToApply();
+        AuthResult TryToApply();
         bool Authenticate(LoginRequest request);
     }
 }

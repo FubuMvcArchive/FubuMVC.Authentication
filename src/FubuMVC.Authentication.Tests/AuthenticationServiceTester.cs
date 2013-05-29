@@ -1,4 +1,5 @@
 ﻿using System;
+using FubuMVC.Core.Continuations;
 using FubuTestingSupport;
 using NUnit.Framework;
 using System.Collections.Generic;
@@ -25,20 +26,32 @@ namespace FubuMVC.Authentication.Tests
         }
 
         [Test]
+        public void stops_if_any_strategy_is_deterministic()
+        {
+            var result = new AuthResult {Continuation = FubuContinuation.RedirectTo("somewhere"), Success = false};
+            theStrategies[0].Stub(x => x.TryToApply()).Return(result);
+
+            ClassUnderTest.TryToApply().ShouldBeTheSameAs(result);
+        }
+
+        [Test]
         public void try_to_apply_fails_if_all_fail()
         {
-            theStrategies.Each(x => x.Stub(o => o.TryToApply()).Return(false));
+            theStrategies.Each(x => x.Stub(o => o.TryToApply()).Return(AuthResult.Failed()));
 
-            ClassUnderTest.TryToApply().ShouldBeFalse();
+            ClassUnderTest.TryToApply().Success.ShouldBeFalse();
         }
 
 
         [Test]
         public void try_to_apply_succeeds_if_any_succeeds()
         {
-            theStrategies[3].Stub(x => x.TryToApply()).Return(true);
+            theStrategies[0].Stub(x => x.TryToApply()).Return(AuthResult.Failed());
+            theStrategies[1].Stub(x => x.TryToApply()).Return(AuthResult.Failed());
+            theStrategies[2].Stub(x => x.TryToApply()).Return(AuthResult.Failed());
+            theStrategies[3].Stub(x => x.TryToApply()).Return(AuthResult.Successful());
 
-            ClassUnderTest.TryToApply().ShouldBeTrue();
+            ClassUnderTest.TryToApply().Success.ShouldBeTrue();
         }
 
         [Test]

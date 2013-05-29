@@ -16,7 +16,7 @@ namespace FubuMVC.Authentication.Membership
             _inner = new BasicAuthentication(session, context, this, this, lockedOutRule);
         }
 
-        public bool TryToApply()
+        public AuthResult TryToApply()
         {
             return _inner.TryToApply();
         }
