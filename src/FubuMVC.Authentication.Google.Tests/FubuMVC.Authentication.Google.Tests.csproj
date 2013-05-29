@@ -86,7 +86,7 @@
     <Compile Include="WriteDefaultGoogleButtonTester.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="ripple.dependencies.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FubuMVC.Authentication.Google\FubuMVC.Authentication.Google.csproj">

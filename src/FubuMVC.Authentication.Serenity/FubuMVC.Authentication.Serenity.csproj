@@ -99,7 +99,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="ripple.dependencies.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FubuMVC.Authentication\FubuMVC.Authentication.csproj">
