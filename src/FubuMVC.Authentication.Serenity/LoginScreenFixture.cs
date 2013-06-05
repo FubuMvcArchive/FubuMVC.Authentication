@@ -12,6 +12,7 @@ using Serenity.Fixtures;
 using StoryTeller;
 using StoryTeller.Assertions;
 using StoryTeller.Engine;
+using FubuMVC.Core;
 
 namespace FubuMVC.Authentication.Serenity
 {
@@ -103,7 +104,7 @@ namespace FubuMVC.Authentication.Serenity
         public bool IsOnTheLoginScreen()
         {
             string url = Application.Urls.UrlFor(new LoginRequest(), "GET");
-            return Driver.Url.StartsWith(url);
+            return Driver.Url.EndsWith(url.Split('?').First());
         }
 
         [FormatAs("Should have moved off the login screen")]
