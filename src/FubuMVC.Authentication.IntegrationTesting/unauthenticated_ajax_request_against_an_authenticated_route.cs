@@ -33,10 +33,12 @@ namespace FubuMVC.Authentication.IntegrationTesting
             var continuation = theResponse.ReadAsJson<AjaxContinuation>();
 
             continuation.Success.ShouldBeFalse();
-            continuation.NavigatePage.ShouldEqual(Urls.UrlFor(new LoginRequest
+            var loginUrl = Urls.UrlFor(new LoginRequest
             {
                 Url = null
-            }, "GET"));
+            }, "GET");
+
+            loginUrl.ShouldEndWith(continuation.NavigatePage);
         }
     }
 }

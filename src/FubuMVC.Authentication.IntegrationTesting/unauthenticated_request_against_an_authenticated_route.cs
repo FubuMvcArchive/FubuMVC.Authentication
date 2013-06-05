@@ -14,7 +14,7 @@ namespace FubuMVC.Authentication.IntegrationTesting
             response.StatusCode.ShouldEqual(HttpStatusCode.Redirect);
 
             var loginUrl = Urls.UrlFor(new LoginRequest { Url = "/some/authenticated/route"}, "GET");
-            response.ResponseHeaderFor(HttpResponseHeader.Location).ShouldEqual(loginUrl);
+            loginUrl.ShouldEndWith(response.ResponseHeaderFor(HttpResponseHeader.Location));
         }
     }
 }
