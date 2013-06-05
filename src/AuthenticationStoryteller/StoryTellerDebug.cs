@@ -12,7 +12,6 @@ namespace StoryTellerTestHarness
         public void SetupRunner()
         {
             runner = new ProjectTestRunner(@"C:\code\FubuMVC.Authentication\src\AuthenticationStoryteller\storyteller.xml");
-            runner.Project.TimeoutInSeconds = 240;
         }
 
         [Test]

@@ -38,3 +38,4 @@ src/AuthenticationStoryteller/Authentication-results/
 src/data
 logs/ripple.log
 Gemfile.lock
+logs
