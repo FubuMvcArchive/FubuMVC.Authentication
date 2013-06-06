@@ -1,5 +1,7 @@
 ﻿using System;
+using FubuCore.Logging;
 using FubuMVC.Core.Continuations;
+using FubuMVC.Core.Runtime.Logging;
 using FubuTestingSupport;
 using NUnit.Framework;
 using System.Collections.Generic;
@@ -21,7 +23,7 @@ namespace FubuMVC.Authentication.Tests
         public void constructor_function_throws_exception_if_there_are_no_strategies()
         {
             Exception<ArgumentOutOfRangeException>.ShouldBeThrownBy(() => {
-                new AuthenticationService(new IAuthenticationStrategy[0]);
+                new AuthenticationService(new RecordingLogger(), new IAuthenticationStrategy[0]);
             });
         }
 

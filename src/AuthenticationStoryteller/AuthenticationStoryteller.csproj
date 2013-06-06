@@ -49,6 +49,9 @@
     <Reference Include="FubuMVC.Core">
       <HintPath>..\packages\FubuMVC.Core\lib\net40\FubuMVC.Core.dll</HintPath>
     </Reference>
+    <Reference Include="FubuMVC.Diagnostics">
+      <HintPath>..\packages\FubuMVC.Diagnostics\lib\net40\FubuMVC.Diagnostics.dll</HintPath>
+    </Reference>
     <Reference Include="FubuMVC.Katana">
       <HintPath>..\packages\FubuMVC.Katana\lib\net40\FubuMVC.Katana.dll</HintPath>
     </Reference>

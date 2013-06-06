@@ -1,21 +1,20 @@
 using FubuCore;
 using FubuMVC.Authentication.Auditing;
 using FubuMVC.Authentication.Cookies;
-using FubuMVC.Core;
 using FubuMVC.Core.Continuations;
-using FubuMVC.Core.Runtime;
 
 namespace FubuMVC.Authentication.Endpoints
 {
     public class LoginController
     {
-        private readonly ILoginCookies _cookies;
-        private readonly IAuthenticationService _service;
-        private readonly ILoginSuccessHandler _handler;
         private readonly ILoginAuditor _auditor;
+        private readonly ILoginCookies _cookies;
+        private readonly ILoginSuccessHandler _handler;
         private readonly ILockedOutRule _lockedOutRule;
+        private readonly IAuthenticationService _service;
 
-        public LoginController(ILoginCookies cookies, IAuthenticationService service, ILoginSuccessHandler handler, ILoginAuditor auditor, ILockedOutRule lockedOutRule)
+        public LoginController(ILoginCookies cookies, IAuthenticationService service, ILoginSuccessHandler handler,
+                               ILoginAuditor auditor, ILockedOutRule lockedOutRule)
         {
             _cookies = cookies;
             _service = service;
@@ -28,7 +27,7 @@ namespace FubuMVC.Authentication.Endpoints
         {
             _auditor.ApplyHistory(request);
 
-            var authenticated = _service.Authenticate(request);
+            bool authenticated = _service.Authenticate(request);
             _auditor.Audit(request);
 
             SetRememberMeCookie(request);
@@ -52,7 +51,7 @@ namespace FubuMVC.Authentication.Endpoints
 
             if (request.UserName.IsEmpty())
             {
-                var remembered = _cookies.User.Value;
+                string remembered = _cookies.User.Value;
 
                 if (remembered.IsNotEmpty())
                 {

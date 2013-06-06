@@ -21,5 +21,12 @@ namespace FubuMVC.Authentication
         {
             return new AuthResult{Success = true};
         }
+
+        public override string ToString()
+        {
+            if (Continuation != null) return string.Format("Success: {0}, Continuation: {1}", Success, Continuation);
+
+            return "Success: " + Success;
+        }
     }
 }
