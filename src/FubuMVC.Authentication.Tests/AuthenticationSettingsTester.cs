@@ -85,6 +85,18 @@ namespace FubuMVC.Authentication.Tests
 
             settings.ShouldBeExcluded(chain).ShouldBeTrue();
         }
+
+		[Test]
+		public void exclude_by_default_actions_marked_as_pass_through()
+		{
+			var chain = new BehaviorChain();
+			chain.AddToEnd(ActionCall.For<AuthenticatedEndpoints>(x => x.get_pass_through_authentication()));
+
+
+			var settings = new AuthenticationSettings();
+
+			settings.ShouldBeExcluded(chain).ShouldBeTrue();
+		}
     }
 
     public class AuthenticatedEndpoints
@@ -104,6 +116,12 @@ namespace FubuMVC.Authentication.Tests
         {
             return new HtmlTag("div");
         }
+
+		[PassThroughAuthentication]
+		public string get_pass_through_authentication()
+		{
+			return "hello, everybody";
+		}
 
         public void post_something(NotAuthenticatedMessage message)
         {

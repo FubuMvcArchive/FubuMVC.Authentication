@@ -9,11 +9,15 @@ namespace FubuMVC.Authentication
     public class AuthenticationSettings
     {
         private readonly ChainPredicate _exclusions = new ChainPredicate();
+		private readonly ChainPredicate _passthroughChains = new ChainPredicate();
         private readonly AuthenticationChain _strategies;
 
         public AuthenticationSettings()
         {
             _exclusions.Matching<NotAuthenticatedFilter>();
+			_exclusions.Matching<ExcludePassThroughAuthentication>();
+
+	        _passthroughChains.Matching<IncludePassThroughAuthentication>();
 
             ExpireInMinutes = 180;
             SlidingExpiration = true;
@@ -38,6 +42,11 @@ namespace FubuMVC.Authentication
         {
             get { return _exclusions; }
         }
+
+	    public ChainPredicate PassThroughChains
+	    {
+			get { return _passthroughChains; }
+	    }
 
         public MembershipStatus MembershipEnabled { get; set; }
         

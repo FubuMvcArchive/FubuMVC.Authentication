@@ -91,6 +91,7 @@
     <Compile Include="AuthenticationSettingsTester.cs" />
     <Compile Include="AuthResultTester.cs" />
     <Compile Include="BasicAuthenticationTester.cs" />
+    <Compile Include="ApplyPassThroughAuthenticationPolicyTester.cs" />
     <Compile Include="DefaultAuthenticationRedirectTester.cs" />
     <Compile Include="FubuPrincipalTester.cs" />
     <Compile Include="LockedOutRuleTester.cs" />
@@ -100,6 +101,8 @@
     <Compile Include="Membership\MembershipNodeTester.cs" />
     <Compile Include="Membership\UserInfoTester.cs" />
     <Compile Include="NotAuthenticatedModel.cs" />
+    <Compile Include="PassThroughAuthenticationFilterTester.cs" />
+    <Compile Include="pass_through_authentication_for_a_partial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThreadPrincipalContextTester.cs" />
     <Compile Include="LoginSuccessHandlerTester.cs" />

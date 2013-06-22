@@ -16,6 +16,7 @@ namespace FubuMVC.Authentication
             registry.Policies.Add(new ApplyAuthenticationPolicy());
             registry.Policies.Add<FormsAuthenticationEndpointsRegistration>();
             registry.Policies.Add<AttachDefaultLoginView>();
+			registry.Policies.Add<ApplyPassThroughAuthenticationPolicy>();
 
             registry.Policies.Add<AddDefaultMembershipAuthentication>();
         }

@@ -13,6 +13,12 @@ namespace FubuMVC.Authentication.Tests
         
     }
 
+	[PassThroughAuthentication]
+	public class PassThroughModel
+	{
+		
+	}
+
     [NotAuthenticated]
     public class NotAuthenticatedEndpoint
     {
