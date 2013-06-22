@@ -13,7 +13,7 @@ namespace FubuMVC.Authentication.Tests
 
 		protected override void beforeEach()
 		{
-			MockFor<ICurrentChain>().Stub(x => x.IsInPartial()).Return(true);
+			MockFor<ICurrentChain>().Stub(x => x.IsInPartial()).Return(false);
 			theContinuation = ClassUnderTest.Filter();
 		}
 

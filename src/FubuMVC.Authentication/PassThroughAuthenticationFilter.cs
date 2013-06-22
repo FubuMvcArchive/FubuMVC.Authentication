@@ -16,7 +16,7 @@ namespace FubuMVC.Authentication
 
 		public FubuContinuation Filter()
 		{
-			if (_currentChain.IsInPartial())
+			if (!_currentChain.IsInPartial())
 			{
 				_authentication.TryToApply();
 			}
