@@ -46,6 +46,13 @@ namespace FubuMVC.Authentication.Tests
                 .Type.ShouldEqual(typeof (LoginSuccessHandler));
         }
 
+        [Test]
+        public void basic_logout_success_handler_is_registered()
+        {
+            theGraphWithBasicAuthentication.Services.DefaultServiceFor<ILogoutSuccessHandler>()
+                                           .Type.ShouldEqual(typeof (LogoutSuccessHandler));
+        }
+
     }
 
 

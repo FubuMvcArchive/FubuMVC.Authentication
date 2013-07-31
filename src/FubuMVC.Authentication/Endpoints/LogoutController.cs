@@ -6,17 +6,19 @@ namespace FubuMVC.Authentication.Endpoints
     public class LogoutController
     {
         private readonly IAuthenticationSession _session;
+        private readonly ILogoutSuccessHandler _logoutSuccessHandler;
 
-        public LogoutController(IAuthenticationSession session)
+        public LogoutController(IAuthenticationSession session, ILogoutSuccessHandler logoutSuccessHandler)
         {
             _session = session;
+            _logoutSuccessHandler = logoutSuccessHandler;
         }
 
         [UrlPattern("logout")]
         public FubuContinuation Logout(LogoutRequest request)
         {
             _session.ClearAuthentication();
-            return FubuContinuation.RedirectTo(new LoginRequest(), "GET");
+            return _logoutSuccessHandler.LoggedOut();
         }
     }
 }
