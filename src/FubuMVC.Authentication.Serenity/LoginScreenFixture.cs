@@ -104,7 +104,9 @@ namespace FubuMVC.Authentication.Serenity
         public bool IsOnTheLoginScreen()
         {
             string url = Application.Urls.UrlFor(new LoginRequest(), "GET");
-            return Driver.Url.EndsWith(url.Split('?').First());
+            string actualUrl = Driver.Url.Split('?').First();
+
+            return actualUrl.Equals(url);
         }
 
         [FormatAs("Should have moved off the login screen")]

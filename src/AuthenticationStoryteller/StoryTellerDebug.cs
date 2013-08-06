@@ -15,9 +15,9 @@ namespace StoryTellerTestHarness
         }
 
         [Test]
-        public void Log_in_successfully()
+        public void The_user_is_no_longer_frozen_after_the_lockout_period_is_over()
         {
-            runner.RunAndAssertTest("Logins/Log in successfully");
+            runner.RunAndAssertTest("Logins/The user is no longer frozen after the lockout period is over");
         }
 
         [TestFixtureTearDown]
