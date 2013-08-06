@@ -1,3 +1,4 @@
+using System.Net;
 using FubuMVC.Authentication.Endpoints;
 using FubuMVC.Core.Continuations;
 using FubuTestingSupport;
@@ -10,9 +11,13 @@ namespace FubuMVC.Authentication.Tests.Endpoints
 	public class when_logging_out : InteractionContext<LogoutController>
 	{
 		private FubuContinuation theContinuation;
+	    private FubuContinuation expectedContinuation;
 
-		protected override void beforeEach()
+	    protected override void beforeEach()
 		{
+		    expectedContinuation = FubuContinuation.EndWithStatusCode(HttpStatusCode.Accepted);
+            MockFor<ILogoutSuccessHandler>().Stub(x => x.LoggedOut()).Return(expectedContinuation);
+
 			theContinuation = ClassUnderTest.Logout(null);
 		}
 
@@ -23,9 +28,9 @@ namespace FubuMVC.Authentication.Tests.Endpoints
 		}
 
 		[Test]
-		public void should_redirect_to_the_login_page()
+		public void should_return_the_continuation_from_the_registered_logout_handler()
 		{
-			theContinuation.AssertWasRedirectedTo<LoginRequest>(r => r.Url == null, "GET");
+		    theContinuation.ShouldBeTheSameAs(expectedContinuation);
 		}
 	}
 }

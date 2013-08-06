@@ -96,6 +96,7 @@
     <Compile Include="FubuPrincipalTester.cs" />
     <Compile Include="LockedOutRuleTester.cs" />
     <Compile Include="LoginRequestTester.cs" />
+    <Compile Include="LogoutSuccessHandlerTester.cs" />
     <Compile Include="Membership\FlatFile\FlatFileMembershipRepositoryTester.cs" />
     <Compile Include="Membership\MembershipAuthenticationTester.cs" />
     <Compile Include="Membership\MembershipNodeTester.cs" />
