@@ -10,7 +10,7 @@ rescue LoadError
 end
 
 
-FubuRake::Solution.new do |sln|
+solution = FubuRake::Solution.new do |sln|
 	sln.compile = {
 		:solutionfile => 'src/FubuMVC.Authentication.sln'
 	}
@@ -20,8 +20,20 @@ FubuRake::Solution.new do |sln|
 		:copyright => 'Copyright 2012-2013 Jeremy D. Miller, Josh Arnold, Robert Greyling, et al. All rights reserved.'
 	}
 	
+	sln.ci_steps = ['st:ci:run']
+	
 	sln.ripple_enabled = true
 	sln.fubudocs_enabled = true
-	
-
 end
+
+FubuRake::Storyteller.new({
+  :path => 'src/AuthenticationStoryteller',
+  :compilemode => solution.compilemode,
+})
+
+FubuRake::Storyteller.new({
+  :prefix => 'st:ci',
+  :profile => 'Phantom',
+  :path => 'src/AuthenticationStoryteller',
+  :compilemode => solution.compilemode,
+})

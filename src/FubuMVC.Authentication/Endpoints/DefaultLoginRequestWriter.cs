@@ -44,6 +44,8 @@ namespace FubuMVC.Authentication.Endpoints
             form.Append(view.Edit(x => x.RememberMe));
             form.Append(view.DisplayFor(x => x.Message).Id("login-message"));
 
+            form.Append(new HiddenTag().Name("Url").Attr("value", request.Url));
+
             form.Append(new HtmlTag("input").Attr("type", "submit").Attr("value", LoginKeys.Login).Id("login-submit"));
             
             view.Add(form);

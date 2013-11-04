@@ -15,9 +15,9 @@ namespace StoryTellerTestHarness
         }
 
         [Test]
-        public void The_user_is_no_longer_frozen_after_the_lockout_period_is_over()
+        public void Sliding_expiration_is_OFF()
         {
-            runner.RunAndAssertTest("Logins/The user is no longer frozen after the lockout period is over");
+            runner.RunAndAssertTest("Logins/Expiration/Sliding expiration is OFF");
         }
 
         [TestFixtureTearDown]

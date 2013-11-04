@@ -1,8 +1,10 @@
 ﻿using FubuCore.Binding;
 using FubuMVC.Core;
 using FubuMVC.PersistedMembership;
+using FubuMVC.Spark;
 using FubuMVC.StructureMap;
 using Serenity;
+using Spark;
 using StructureMap;
 
 namespace AuthenticationStoryteller
@@ -20,6 +22,10 @@ namespace AuthenticationStoryteller
         public StorytellerFubuRegistry()
         {
             Import<PersistedMembership<User>>();
+
+            AlterSettings<SparkEngineSettings>(x => {
+                x.PrecompileViews = false;
+            });
         }
     }
 
