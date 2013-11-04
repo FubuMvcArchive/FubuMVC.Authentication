@@ -20,6 +20,9 @@ namespace FubuMVC.Authentication
         [QueryString]
         public string Url { get; set; }
 
+        [QueryString]
+        public string ReturnUrl { set { Url = value; }}
+
         public string UserName
         {
             get { return _userName; }
