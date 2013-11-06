@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FubuCore.Descriptions;
 using FubuCore.Logging;
 using FubuCore;
 
@@ -27,20 +28,46 @@ namespace FubuMVC.Authentication
             foreach (var strategy in _strategies)
             {
                 var result = strategy.TryToApply();
-                _logger.Debug(() => "Authentication returned {0} from strategy {1}".ToFormat(result, strategy));
+                _logger.DebugMessage(new TriedToApplyStrategy { Result = result, Strategy = strategy });
+                
                 if (result.IsDeterministic())
                 {
                     return result;
                 }
             }
 
-            _logger.Debug(() => "No authentication strategies were able to make a deterministic authentication result");
+            _logger.DebugMessage(new NonDeterministicResult());
             return new AuthResult{Success = false};
         }
 
         public bool Authenticate(LoginRequest request)
         {
             return _strategies.Any(x => x.Authenticate(request));
+        }
+    }
+
+    public class NonDeterministicResult : LogTopic
+    {
+        public override string ToString()
+        {
+            return "No authentication strategies were able to make a deterministic authentication result";
+        }
+    }
+
+    public class TriedToApplyStrategy : LogTopic, DescribesItself
+    {
+        public AuthResult Result { get; set; }
+        public IAuthenticationStrategy Strategy { get; set; }
+
+        public override string ToString()
+        {
+            return "Authentication returned {0}".ToFormat(Result);
+        }
+
+        public void Describe(Description description)
+        {
+            description.Title = "Trying to apply strategy {0}".ToFormat(Strategy);
+            description.ShortDescription = ToString();
         }
     }
 }
