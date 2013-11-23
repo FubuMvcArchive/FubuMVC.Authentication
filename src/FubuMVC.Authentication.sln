@@ -44,6 +44,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Authentication.Wind
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Authentication.WindowsLive", "FubuMVC.Authentication.WindowsLive\FubuMVC.Authentication.WindowsLive.csproj", "{CDD4D3E4-CC08-45B2-971F-BE79546EFFDF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Authentication.Docs", "FubuMVC.Authentication.Docs\FubuMVC.Authentication.Docs.csproj", "{3BD453F9-9003-4D59-B7FE-E463473831AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -138,6 +140,10 @@ Global
 		{CDD4D3E4-CC08-45B2-971F-BE79546EFFDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDD4D3E4-CC08-45B2-971F-BE79546EFFDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDD4D3E4-CC08-45B2-971F-BE79546EFFDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BD453F9-9003-4D59-B7FE-E463473831AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BD453F9-9003-4D59-B7FE-E463473831AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BD453F9-9003-4D59-B7FE-E463473831AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BD453F9-9003-4D59-B7FE-E463473831AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
