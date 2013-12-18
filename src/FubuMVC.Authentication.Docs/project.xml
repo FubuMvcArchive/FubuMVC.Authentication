@@ -1,11 +1,15 @@
 <?xml version="1.0"?>
-<ProjectRoot xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <TagLine>A member of the Fubu family of projects</TagLine>
+<ProjectRoot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <TagLine>Authenticate your FubuMVC applications to keep the riffraff out</TagLine>
+  <Description>Authentication Strategies for FubuMVC Applications</Description>
   <Name>FubuMVC.Authentication</Name>
+  <TwitterHandle>@fubumvc</TwitterHandle>
   <GitHubPage>http://github.com/DarthFubuMVC/FubuMVC.Authentication</GitHubPage>
   <UserGroupUrl>https://groups.google.com/forum/?fromgroups#!forum/fubumvc-devel</UserGroupUrl>
   <BuildServerUrl>http://build.fubu-project.org/project.html?projectId=project52&amp;tab=projectOverview</BuildServerUrl>
+  <TeamCityBuildType />
   <BottleName>FubuMVC.Authentication.Docs</BottleName>
+  <PluginTo />
   <Nugets>
     <PublishedNuget>
       <Name>FubuMVC.Authentication</Name>
