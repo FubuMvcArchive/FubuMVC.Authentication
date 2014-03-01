@@ -21,7 +21,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile></DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -91,6 +92,8 @@
     <Compile Include="ILogoutSuccessHandler.cs" />
     <Compile Include="IPasswordHash.cs" />
     <Compile Include="IPrincipalBuilder.cs" />
+    <Compile Include="LoggedInUserRedirectOnLoginPolicy.cs" />
+    <Compile Include="LoggedInUserRedirector.cs" />
     <Compile Include="LogoutSuccessHandler.cs" />
     <Compile Include="Membership\FlatFile\FlatFileMembershipRepository.cs" />
     <Compile Include="Membership\FubuPrincipal.cs" />
@@ -137,6 +140,7 @@
     <Compile Include="Tickets\IAuthenticationTicketEncryptor.cs" />
     <Compile Include="Tickets\ITicketSource.cs" />
     <Compile Include="Tickets\TicketAuthenticationSession.cs" />
+    <Compile Include="Utilities\ActionCallExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
