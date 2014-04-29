@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using FubuMVC.Authentication.Endpoints;
-using FubuMVC.ContentExtensions;
 using FubuMVC.Core.UI;
+using FubuMVC.Core.UI.Extensions;
 using FubuMVC.Core.View;
 
 namespace FubuMVC.Authentication.Windows

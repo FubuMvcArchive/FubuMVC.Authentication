@@ -3,23 +3,21 @@ using FubuCore.Binding;
 using FubuMVC.Core;
 using FubuMVC.Core.Ajax;
 using FubuMVC.Core.Continuations;
-using FubuMVC.Core.Registration.Routes;
 using FubuMVC.Core.Runtime;
 using FubuMVC.Core.Urls;
+using HtmlTags;
 
 namespace FubuMVC.Authentication
 {
 	public class AjaxAuthenticationRedirect : IAuthenticationRedirect
 	{
 		private readonly IRequestData _data;
-		private readonly IJsonWriter _jsonWriter;
 		private readonly IOutputWriter _outputWriter;
 		private readonly IUrlRegistry _urls;
 
-		public AjaxAuthenticationRedirect(IRequestData data, IJsonWriter jsonWriter, IOutputWriter outputWriter, IUrlRegistry urls)
+		public AjaxAuthenticationRedirect(IRequestData data, IOutputWriter outputWriter, IUrlRegistry urls)
 		{
 			_data = data;
-			_jsonWriter = jsonWriter;
 			_outputWriter = outputWriter;
 			_urls = urls;
 		}
@@ -31,12 +29,18 @@ namespace FubuMVC.Authentication
 
 		public FubuContinuation Redirect()
 		{
-			var url = _urls.UrlFor(new LoginRequest(), "GET");
-		    var continuation = new AjaxContinuation {Success = false, NavigatePage = url};
+			var continuation = BuildAjaxContinuation();
 
-		    _jsonWriter.Write(continuation.ToDictionary(), MimeType.Json.ToString());
+		    _outputWriter.Write(MimeType.Json, JsonUtil.ToJson(continuation.ToDictionary()));
 
 		    return FubuContinuation.EndWithStatusCode(HttpStatusCode.Unauthorized);
 		}
+
+	    public AjaxContinuation BuildAjaxContinuation()
+	    {
+	        var url = _urls.UrlFor(new LoginRequest(), "GET");
+	        var continuation = new AjaxContinuation {Success = false, NavigatePage = url};
+	        return continuation;
+	    }
 	}
 }

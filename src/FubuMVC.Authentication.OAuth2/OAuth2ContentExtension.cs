@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using FubuMVC.ContentExtensions;
 using FubuMVC.Core.Registration;
 using FubuMVC.Core.Runtime;
+using FubuMVC.Core.UI.Extensions;
 using FubuMVC.Core.View;
 
 namespace FubuMVC.Authentication.OAuth2

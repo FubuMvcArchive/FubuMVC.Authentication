@@ -25,10 +25,10 @@ namespace FubuMVC.Authentication.Tests
 			MockFor<IUrlRegistry>().Stub(x => x.UrlFor(new LoginRequest(), "GET"))
 				.Return(theUrl);
 
+
+	        theValues = ClassUnderTest.BuildAjaxContinuation().ToDictionary();
 			theContinuation = ClassUnderTest.Redirect();
 
-			theValues = (IDictionary<string, object>) MockFor<IJsonWriter>()
-			                                          	.GetArgumentsForCallsMadeOn(x => x.Write(null, null), x => x.IgnoreArguments())[0][0];
 		}
 
 	    [Test]
@@ -52,9 +52,9 @@ namespace FubuMVC.Authentication.Tests
 		[Test]
 		public void writes_the_json_mimetype()
 		{
-			MockFor<IJsonWriter>()
-				.GetArgumentsForCallsMadeOn(x => x.Write(null, null), x => x.IgnoreArguments())[0][1]
-				.ShouldEqual(MimeType.Json.ToString());
+			MockFor<IOutputWriter>()
+				.GetArgumentsForCallsMadeOn(x => x.Write(MimeType.Json, null), x => x.IgnoreArguments())[0][0]
+				.ShouldEqual(MimeType.Json.Value);
 		}
 
 	}

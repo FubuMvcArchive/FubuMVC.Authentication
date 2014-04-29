@@ -1,4 +1,5 @@
 ﻿using FubuMVC.Authentication.Endpoints;
+using FubuMVC.Core;
 using FubuMVC.Core.Behaviors;
 using FubuMVC.Core.Registration;
 using FubuMVC.Core.Registration.Nodes;
@@ -17,6 +18,12 @@ namespace FubuMVC.Authentication.Twitter.Tests
         protected override void beforeEach()
         {
             theRequest = new TwitterLoginRequest {Url = "hello/there"};
+
+
+            Services.Container.Configure(x => {
+                x.For<IFubuRequestContext>().Use<FubuRequestContext>();
+                x.For<BehaviorGraph>().Use(new BehaviorGraph());
+            });
 
             MockFor<IFubuRequest>().Stub(x => x.Get<TwitterLoginRequest>()).Return(theRequest);
 
