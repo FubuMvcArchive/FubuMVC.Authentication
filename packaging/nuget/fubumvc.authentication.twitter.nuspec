@@ -23,6 +23,6 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="..\..\src\FubuMVC.Authentication.Twitter\bin\release\FubuMVC.Authentication.Twitter.*" target="lib\net40" />
+    <file src="..\..\src\FubuMVC.Authentication.Twitter\bin\release\FubuMVC.Authentication.Twitter.*" target="lib\net45" />
   </files>
 </package>
