@@ -5,9 +5,9 @@ namespace FubuMVC.Authentication
 {
 	public class DefaultAuthenticationRedirect : IAuthenticationRedirect
 	{
-		private readonly ICurrentHttpRequest _currentRequest;
+		private readonly IHttpRequest _currentRequest;
 
-		public DefaultAuthenticationRedirect(ICurrentHttpRequest currentRequest)
+		public DefaultAuthenticationRedirect(IHttpRequest currentRequest)
 		{
 			_currentRequest = currentRequest;
 		}

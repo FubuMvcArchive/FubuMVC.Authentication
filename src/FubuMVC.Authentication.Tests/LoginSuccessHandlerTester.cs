@@ -13,7 +13,7 @@ namespace FubuMVC.Authentication.Tests
 
         protected override void beforeEach()
         {
-            MockFor<ICurrentHttpRequest>().Stub(x => x.HttpMethod()).Return("POST");
+            MockFor<IHttpRequest>().Stub(x => x.HttpMethod()).Return("POST");
 
             theLoginRequest = new LoginRequest()
             {

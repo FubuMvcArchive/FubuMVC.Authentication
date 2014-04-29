@@ -20,7 +20,7 @@ namespace FubuMVC.Authentication.Tests
 	    {
 	        var relativeUrl = "/something";
 
-	        MockFor<ICurrentHttpRequest>().Stub(x => x.RelativeUrl())
+	        MockFor<IHttpRequest>().Stub(x => x.RelativeUrl())
 	                                      .Return(relativeUrl);
 
             ClassUnderTest.Redirect()

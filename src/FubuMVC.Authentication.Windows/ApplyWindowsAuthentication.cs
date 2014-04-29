@@ -1,5 +1,5 @@
 ﻿using FubuMVC.Core;
-using FubuMVC.ContentExtensions;
+using FubuMVC.Core.UI.Extensions;
 
 namespace FubuMVC.Authentication.Windows
 {

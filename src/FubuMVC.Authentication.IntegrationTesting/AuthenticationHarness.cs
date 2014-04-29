@@ -1,34 +1,62 @@
+using FubuMVC.Authentication.Membership;
+using FubuMVC.Core;
+using FubuMVC.Core.Endpoints;
 using FubuMVC.Core.Urls;
-using FubuMVC.TestingHarness;
+using FubuMVC.Katana;
+using FubuMVC.StructureMap;
 using NUnit.Framework;
 using StructureMap;
 
 namespace FubuMVC.Authentication.IntegrationTesting
 {
-    public class AuthenticationHarness : FubuRegistryHarness
+
+    public class AuthenticationHarness
     {
         private IContainer theContainer;
+        private EmbeddedFubuMvcServer server;
 
-        protected override void configure(Core.FubuRegistry registry)
+        protected virtual void configure(Core.FubuRegistry registry)
         {
             registry.Actions.IncludeType<SampleController>();
             registry.Import<ApplyAuthentication>();
+
+
+            registry.AlterSettings<AuthenticationSettings>(_ => {
+                _.Strategies.AddToEnd(MembershipNode.For<InMemoryMembershipRepository>());
+            });
         }
 
         [SetUp]
         public void AuthenticationSetup()
         {
+            var registry = new FubuRegistry();
+            configure(registry);
+
+            theContainer = new Container();
+
+            server = FubuApplication.For(registry).StructureMap(theContainer).RunEmbeddedWithAutoPort();
+
             beforeEach();
+        }
+
+        protected EndpointDriver endpoints
+        {
+            get
+            {
+                return server.Endpoints;
+            }
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            server.Dispose();
         }
 
         protected virtual void beforeEach()
         {
         }
 
-        protected override void configureContainer(IContainer container)
-        {
-            theContainer = container;
-        }
 
         public IContainer Container { get { return theContainer; } }
 

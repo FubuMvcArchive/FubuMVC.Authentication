@@ -54,6 +54,9 @@
       <HintPath>..\packages\HtmlTags\lib\4.0\HtmlTags.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin\lib\net40\Owin.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -68,7 +71,6 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="ApplyGoogleAuthentication.cs" />
-    <Compile Include="AttachDefaultGoogleView.cs" />
     <Compile Include="DefaultGoogleLoginRequestWriter.cs" />
     <Compile Include="GoogleController.cs" />
     <Compile Include="GoogleEndpoints.cs" />
@@ -77,7 +79,6 @@
     <Compile Include="GoogleServiceRegistry.cs" />
     <Compile Include="GoogleSignInSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WriteDefaultGoogleButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ripple.dependencies.config" />

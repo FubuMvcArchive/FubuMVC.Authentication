@@ -1,5 +1,5 @@
-﻿using FubuMVC.ContentExtensions;
-using FubuMVC.Core;
+﻿using FubuMVC.Core;
+using FubuMVC.Core.UI.Extensions;
 
 namespace FubuMVC.Authentication.Twitter
 {
@@ -11,7 +11,6 @@ namespace FubuMVC.Authentication.Twitter
         {
             registry.Actions.FindWith<TwitterEndpoints>();
             registry.Services<TwitterServiceRegistry>();
-            registry.Policies.Add<AttachDefaultTwitterView>();
 
             registry.Services(x => x.SetServiceIfNone(_settings));
 

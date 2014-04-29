@@ -18,19 +18,22 @@ namespace FubuMVC.PersistedMembership.Testing
         {
             var container = new Container(new InMemoryPersistenceRegistry());
 
-            FubuApplication
+            using (var runtime = FubuApplication
                 .For<FubuRepoWithPersistedMembership>()
                 .StructureMap(container)
-                .Bootstrap();
+                .Bootstrap())
+            {
+                container.GetInstance<IMembershipRepository>()
+                                          .ShouldBeOfType<MembershipRepository<User>>();
 
-            container.GetInstance<IMembershipRepository>()
-                                      .ShouldBeOfType<MembershipRepository<User>>();
+                container.GetInstance<IPasswordHash>().ShouldBeOfType<PasswordHash>();
 
-            container.GetInstance<IPasswordHash>().ShouldBeOfType<PasswordHash>();
+                container.GetAllInstances<IAuthenticationStrategy>()
+                    .OfType<MembershipAuthentication>()
+                    .Any(x => x.Membership is MembershipRepository<User>).ShouldBeTrue();
+            }
 
-            container.GetAllInstances<IAuthenticationStrategy>()
-                .OfType<MembershipAuthentication>()
-                .Any(x => x.Membership is MembershipRepository<User>).ShouldBeTrue();
+
         }
     }
 
