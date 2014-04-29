@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<TestResult xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ExecutionTime="0.6043206" ExceptionText="" WasCancelled="false" Locator="Logins/Log in successfully">
+<TestResult xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ExecutionTime="34.8726359" ExceptionText="" WasCancelled="false" Locator="Logins/Log in successfully">
   <Html>&lt;!DOCTYPE html&gt;
 &lt;html&gt;&lt;head&gt;&lt;title&gt;&lt;/title&gt;&lt;style&gt;body {
   font-family: Calibri, Verdana;
@@ -215,6 +215,7 @@ h3.section-title {
 }
 
 table {
+  text-align: left;
   width: 100%;
   border: 1px solid #BFBFBF;
   border-collapse: collapse;
@@ -228,7 +229,6 @@ table.table th {
   font-weight: bold;
   letter-spacing: 2px;
   text-transform: uppercase;
-  text-align: left;
   padding: 6px 6px 6px 12px;
 }
 
@@ -237,6 +237,10 @@ table.table td {
   border-right: 1px dotted #BFBFBF;
   border-bottom: 1px solid #BFBFBF;
   padding: 3px 3px 3px 6px;
+}
+
+tbody td:first-of-type {
+  padding-left: 5px;
 }
 
 td.fail, td.pass, td.exception {
@@ -328,4 +332,5 @@ div.embedded &gt; div {
 }&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div id="testEditor" class="main test-editor"&gt;&lt;h2 class="testName"&gt;Log in successfully&lt;/h2&gt;&lt;h5&gt;Suite: AuthenticationStoryteller/Logins&lt;/h5&gt;&lt;div class="results results-pass"&gt;Succeeded with Rights: 1, Wrongs: 0, Exceptions: 0, SyntaxErrors: 0&lt;/div&gt;&lt;div class="container section test-editor"&gt;&lt;div&gt;&lt;div class="step-holder"&gt;&lt;div class="section"&gt;&lt;h3 title="AuthenticationStoryteller.Fixtures.ModelFixture" class="section-title"&gt;The system state&lt;/h3&gt;&lt;div class="section-body"&gt;&lt;div&gt;&lt;div class="table-title"&gt;The users are&lt;/div&gt;&lt;div class="table-container table-cell"&gt;&lt;table cellpadding="0" cellspacing="0" class="table"&gt;&lt;thead&gt;&lt;tr&gt;&lt;th class="left-cell"&gt;UserName&lt;/th&gt;&lt;th&gt;Password&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="input left-cell"&gt;jeremy&lt;/td&gt;&lt;td class="input"&gt;jasper&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="section"&gt;&lt;h3 title="FubuMVC.Authentication.Serenity.LoginScreenFixture" class="section-title"&gt;Login Screen&lt;/h3&gt;&lt;div class="section-body"&gt;&lt;div class="OpenLoginScreen sentence"&gt;&lt;span&gt;Go to the login screen&lt;/span&gt;&lt;/div&gt;&lt;div class="Login sentence"&gt;&lt;span&gt;Login as &lt;/span&gt;&lt;span class="input"&gt;jeremy&lt;/span&gt;&lt;span&gt;/&lt;/span&gt;&lt;span class="input"&gt;jasper&lt;/span&gt;&lt;/div&gt;&lt;div class="IsNotOnTheLoginScreen sentence pass"&gt;&lt;span class="fact"&gt;Should have moved off the login screen&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;hr /&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</Html>
   <Counts Rights="1" Wrongs="0" Exceptions="0" SyntaxErrors="0" />
   <FullExceptionText />
+  <RetryAttemptNumber>0</RetryAttemptNumber>
 </TestResult>

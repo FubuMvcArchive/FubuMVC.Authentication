@@ -69,7 +69,7 @@
       <HintPath>..\packages\FubuMVC.Katana\lib\net40\Microsoft.Owin.Hosting.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit\lib\nunit.framework.dll</HintPath>

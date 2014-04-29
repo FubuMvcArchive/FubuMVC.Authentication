@@ -27,6 +27,7 @@ end
 FubuRake::Storyteller.new({
   :path => 'src/AuthenticationStoryteller',
   :compilemode => solution.compilemode,
+  :profile => 'Chrome'
 })
 
 FubuRake::Storyteller.new({

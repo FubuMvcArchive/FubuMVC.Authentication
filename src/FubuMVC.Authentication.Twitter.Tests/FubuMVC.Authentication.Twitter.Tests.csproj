@@ -41,7 +41,7 @@
       <HintPath>..\packages\CodeContracts.Unofficial\lib\net40-client\DELETE_ME.dll</HintPath>
     </Reference>
     <Reference Include="DotNetOpenAuth">
-      <HintPath>..\packages\DotNetOpenAuth.Ultimate\lib\net40-full\DotNetOpenAuth.dll</HintPath>
+      <HintPath>..\packages\DotNetOpenAuth.Ultimate\lib\net45-full\DotNetOpenAuth.dll</HintPath>
     </Reference>
     <Reference Include="FubuCore">
       <HintPath>..\packages\FubuCore\lib\FubuCore.dll</HintPath>
