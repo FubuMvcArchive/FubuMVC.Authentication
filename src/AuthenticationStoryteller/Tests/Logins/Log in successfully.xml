@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Test name="Log in successfully" lifecycle="Regression">
+<Test name="Log in successfully" lifecycle="Regression" retryAttemptNumber="0">
   <Model>
     <UsersAre isStep="True">
       <table>
