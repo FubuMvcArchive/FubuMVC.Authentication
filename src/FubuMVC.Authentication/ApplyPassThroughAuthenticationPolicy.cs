@@ -15,6 +15,7 @@ namespace FubuMVC.Authentication
             var filter = settings.PassThroughChains.As<IChainFilter>();
 
             graph.Behaviors
+                .OfType<RoutedChain>()
                 .Where(filter.Matches)
                 .Each(x => x.Prepend(ActionFilter.For<PassThroughAuthenticationFilter>(a => a.Filter())));
         }
