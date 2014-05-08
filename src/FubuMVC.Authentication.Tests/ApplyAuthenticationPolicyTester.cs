@@ -45,7 +45,7 @@ namespace FubuMVC.Authentication.Tests
 
         private static BehaviorChain chainFor<T>(Expression<Func<T, object>> expression)
         {
-            var chain = new BehaviorChain();
+            var chain = new RoutedChain("something");
             chain.AddToEnd(ActionCall.For(expression));
             return chain;
         }
