@@ -4,6 +4,8 @@ using System.Linq;
 using FubuCore.Descriptions;
 using FubuCore.Logging;
 using FubuCore;
+using FubuMVC.Authentication.Auditing;
+using FubuMVC.Authentication.Cookies;
 
 namespace FubuMVC.Authentication
 {
@@ -11,8 +13,14 @@ namespace FubuMVC.Authentication
     {
         private readonly ILogger _logger;
         private readonly IEnumerable<IAuthenticationStrategy> _strategies;
+        private readonly ILoginAuditor _auditor;
+        private readonly ILoginCookies _cookies;
 
-        public AuthenticationService(ILogger logger, IEnumerable<IAuthenticationStrategy> strategies)
+        public AuthenticationService(
+            ILogger logger,
+            IEnumerable<IAuthenticationStrategy> strategies,
+            ILoginAuditor auditor,
+            ILoginCookies cookies)
         {
             if (!strategies.Any())
             {
@@ -21,6 +29,8 @@ namespace FubuMVC.Authentication
 
             _logger = logger;
             _strategies = strategies;
+            _auditor = auditor;
+            _cookies = cookies;
         }
 
         public AuthResult TryToApply()
@@ -42,7 +52,23 @@ namespace FubuMVC.Authentication
 
         public bool Authenticate(LoginRequest request)
         {
-            return _strategies.Any(x => x.Authenticate(request));
+            return Authenticate(request, _strategies);
+        }
+
+        public bool Authenticate(LoginRequest request, IEnumerable<IAuthenticationStrategy> strategies)
+        {
+            _auditor.ApplyHistory(request);
+            var authResult = strategies.Any(x => x.Authenticate(request));
+            _auditor.Audit(request);
+            return authResult;
+        }
+
+        public void SetRememberMeCookie(LoginRequest request)
+        {
+            if (request.RememberMe && request.UserName.IsNotEmpty())
+            {
+                _cookies.User.Value = request.UserName;
+            }
         }
     }
 
