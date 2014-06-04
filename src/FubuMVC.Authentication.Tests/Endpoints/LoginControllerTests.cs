@@ -1,4 +1,7 @@
 using System;
+using System.Collections;
+using System.Runtime.Remoting.Messaging;
+using FubuCore.Logging;
 using FubuMVC.Authentication.Auditing;
 using FubuMVC.Authentication.Cookies;
 using FubuMVC.Authentication.Endpoints;
@@ -32,6 +35,8 @@ namespace FubuMVC.Authentication.Tests.Endpoints
         {
             theCookies = new StubLoginCookies();
             Services.Inject<ILoginCookies>(theCookies);
+
+            this.SetupAuthenticationService();
         }
 
         [Test]
@@ -266,7 +271,7 @@ namespace FubuMVC.Authentication.Tests.Endpoints
             };
             MockFor<IFubuRequest>().Stub(x => x.Get<LoginRequest>()).Return(theLoginRequest);
 
-            MockFor<IAuthenticationService>().Stub(x => x.Authenticate(theLoginRequest)).Return(true);
+            this.SetupAuthenticationService();
 
             successfulContinuation = FubuContinuation.RedirectTo("something");
             MockFor<ILoginSuccessHandler>().Stub(x => x.LoggedIn(theLoginRequest)).Return(successfulContinuation);
@@ -318,7 +323,7 @@ namespace FubuMVC.Authentication.Tests.Endpoints
             
             MockFor<IFubuRequest>().Stub(x => x.Get<LoginRequest>()).Return(theLoginRequest);
 
-            MockFor<IAuthenticationService>().Stub(x => x.Authenticate(theLoginRequest)).Return(false);
+            this.SetupAuthenticationService(false);
 
             theContinuation = ClassUnderTest.post_login(theLoginRequest);
         }
@@ -347,5 +352,21 @@ namespace FubuMVC.Authentication.Tests.Endpoints
         {
             theContinuation.AssertWasTransferedTo(theLoginRequest, "GET");
         }
+    }
+
+    public static class AuthenticationServiceHelper {
+
+        public static void SetupAuthenticationService(this InteractionContext<LoginController> context, bool authenticates = true)
+        {
+            var strategies = context.Services.CreateMockArrayFor<IAuthenticationStrategy>(1);
+            strategies[0].Stub(x => x.Authenticate(Arg<LoginRequest>.Is.Anything)).Return(authenticates);
+            var authService = new AuthenticationService(
+                context.MockFor<ILogger>(), 
+                strategies, 
+                context.MockFor<ILoginAuditor>(),
+                context.MockFor<ILoginCookies>());
+            context.Services.Inject(authService as IAuthenticationService);
+        }
+
     }
 }

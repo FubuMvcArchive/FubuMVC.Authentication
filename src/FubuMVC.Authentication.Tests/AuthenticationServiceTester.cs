@@ -1,5 +1,6 @@
 ﻿using System;
 using FubuCore.Logging;
+using FubuMVC.Authentication.Auditing;
 using FubuMVC.Core.Continuations;
 using FubuMVC.Core.Runtime.Logging;
 using FubuTestingSupport;
@@ -23,7 +24,7 @@ namespace FubuMVC.Authentication.Tests
         public void constructor_function_throws_exception_if_there_are_no_strategies()
         {
             Exception<ArgumentOutOfRangeException>.ShouldBeThrownBy(() => {
-                new AuthenticationService(new RecordingLogger(), new IAuthenticationStrategy[0]);
+                new AuthenticationService(new RecordingLogger(), new IAuthenticationStrategy[0], null, null);
             });
         }
 
@@ -75,6 +76,32 @@ namespace FubuMVC.Authentication.Tests
             theStrategies[3].Stub(x => x.Authenticate(request)).Return(true);
 
             ClassUnderTest.Authenticate(request).ShouldBeTrue();
+        }
+
+
+        [Test]
+        public void should_have_applied_history()
+        {
+            var request = new LoginRequest();
+            ClassUnderTest.Authenticate(request);
+            MockFor<ILoginAuditor>().AssertWasCalled(x => x.ApplyHistory(request));
+        }
+
+        [Test]
+        public void should_audit_the_request()
+        {
+            var request = new LoginRequest();
+            ClassUnderTest.Authenticate(request);
+            MockFor<ILoginAuditor>().AssertWasCalled(x => x.Audit(request));
+        }
+
+        [Test]
+        public void executes_strategies_sent_through_parameter()
+        {
+            var request = new LoginRequest();
+            IAuthenticationStrategy[] paramStrategies = Services.CreateMockArrayFor<IAuthenticationStrategy>(1);
+            ClassUnderTest.Authenticate(request, paramStrategies);
+            paramStrategies[0].AssertWasCalled(x => x.Authenticate(request));
         }
     }
 }
