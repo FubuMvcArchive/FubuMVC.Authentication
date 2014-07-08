@@ -95,6 +95,7 @@
     <Compile Include="DefaultAuthenticationRedirectTester.cs" />
     <Compile Include="FubuPrincipalTester.cs" />
     <Compile Include="LockedOutRuleTester.cs" />
+    <Compile Include="LoggedInUserRedirectorTester.cs" />
     <Compile Include="LoginRequestTester.cs" />
     <Compile Include="LogoutSuccessHandlerTester.cs" />
     <Compile Include="Membership\FlatFile\FlatFileMembershipRepositoryTester.cs" />
