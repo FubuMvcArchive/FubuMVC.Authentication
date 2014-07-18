@@ -28,6 +28,8 @@ namespace FubuMVC.Authentication.Membership
 
         public bool AuthenticateCredentials(LoginRequest request)
         {
+            if (request.UserName.IsEmpty()) return false;
+
             return _membership.MatchesCredentials(request);
         }
 
