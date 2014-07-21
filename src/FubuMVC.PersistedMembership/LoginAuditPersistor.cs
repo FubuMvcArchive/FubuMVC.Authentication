@@ -1,4 +1,5 @@
-﻿using FubuMVC.Authentication;
+﻿using FubuCore;
+using FubuMVC.Authentication;
 using FubuPersistence;
 using Raven.Client;
 
@@ -17,6 +18,8 @@ namespace FubuMVC.PersistedMembership
 
         public void LogFailure(LoginRequest request, Audit audit)
         {
+            if (request.UserName.IsEmpty()) return;
+
             _repository.Update(audit);
 
             var history = _session.Load<LoginFailureHistory>(request.UserName) ?? new LoginFailureHistory
@@ -43,6 +46,7 @@ namespace FubuMVC.PersistedMembership
 
         public void ApplyHistory(LoginRequest request)
         {
+            if (request.UserName.IsEmpty()) return;
             var history = _session.Load<LoginFailureHistory>(request.UserName);
             if (history == null) return;
 

@@ -189,6 +189,7 @@
       <Link>CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="is_registering_the_persisted_login_auditor.cs" />
+    <Compile Include="LoginAuditPersistorTester.cs" />
     <Compile Include="MembershipRepositoryTester.cs" />
     <Compile Include="PasswordHash_is_predictable.cs" />
     <Compile Include="PersistedLoginAuditorIntegratedTester.cs" />
