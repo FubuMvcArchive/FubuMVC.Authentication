@@ -18,7 +18,7 @@ namespace FubuMVC.Authentication.Tests
 		public void SetUp()
 		{
 			theRequestData = new InMemoryRequestData();
-			theRedirect = new AjaxAuthenticationRedirect(theRequestData, null, null, null);
+			theRedirect = new AjaxAuthenticationRedirect(theRequestData, null, null);
 		}
 
 		[Test]

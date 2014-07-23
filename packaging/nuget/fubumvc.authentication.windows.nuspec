@@ -16,7 +16,7 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="..\..\src\FubuMVC.Authentication.Windows\bin\release\FubuMVC.Authentication.Windows.*" target="lib\net40" />
+    <file src="..\..\src\FubuMVC.Authentication.Windows\bin\release\FubuMVC.Authentication.Windows.*" target="lib\net45" />
 	<file src="web.config.transform" target="content" />
   </files>
 </package>

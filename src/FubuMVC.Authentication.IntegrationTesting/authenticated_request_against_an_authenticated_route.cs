@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Net;
-using System.Web;
 using FubuMVC.Authentication.Cookies;
 using FubuMVC.Authentication.Tickets;
 using FubuMVC.Core.Caching;
@@ -9,46 +9,44 @@ using FubuMVC.Core.Runtime;
 using FubuTestingSupport;
 using NUnit.Framework;
 using Cookie = FubuMVC.Core.Http.Cookies.Cookie;
-using System.Linq;
-using FubuCore;
 
 namespace FubuMVC.Authentication.IntegrationTesting
 {
     [TestFixture]
     public class authenticated_request_against_an_authenticated_route : AuthenticationHarness
     {
+
+
         [Test]
         public void login_with_default_credentials_and_retrieve_a_resource()
         {
             // create the auth ticket
             var now = DateTime.Now;
             var ticket = new AuthenticationTicket
-                         {
-                             Expiration = now.AddDays(1),
-                             LastAccessed = now,
-                             UserName = "fubu"
-                         };
+            {
+                Expiration = now.AddDays(1),
+                LastAccessed = now,
+                UserName = "fubu"
+            };
 
             var writer = new CookieWriter();
             Container
-                .With(typeof(IOutputWriter), writer)
+                .With(typeof (IOutputWriter), writer)
                 .GetInstance<CookieTicketSource>()
                 .Persist(ticket);
 
             var cookie = writer.Cookie;
 
-            var response = endpoints.GetByInput(new TargetModel(), acceptType: "text/json", configure: r =>
-            {
+            var response = endpoints.GetByInput(new TargetModel(), acceptType: "text/json", configure: r => {
                 var cookies = new CookieContainer();
                 cookies.Add(new System.Net.Cookie
-                                 {
-                                     Domain = "localhost",
-                                     Path = cookie.Path,
-
-                                     Expires = now.AddDays(1),
-                                     Name = cookie.States.Single().Name,
-                                     Value = cookie.Value
-                                 });
+                {
+                    Domain = "localhost",
+                    Path = cookie.Path,
+                    Expires = now.AddDays(1),
+                    Name = cookie.States.Single().Name,
+                    Value = cookie.Value
+                });
 
                 r.CookieContainer = cookies;
                 r.AllowAutoRedirect = false;
@@ -58,6 +56,7 @@ namespace FubuMVC.Authentication.IntegrationTesting
         }
 
         #region Nested Type: CookieWriter
+
         public class CookieWriter : IOutputWriter
         {
             public Cookie Cookie { get; set; }
@@ -121,8 +120,8 @@ namespace FubuMVC.Authentication.IntegrationTesting
             {
                 throw new NotImplementedException();
             }
-
         }
+
         #endregion
     }
 }

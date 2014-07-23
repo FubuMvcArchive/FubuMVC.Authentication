@@ -11,7 +11,11 @@ namespace FubuMVC.Authentication.Tests.Membership
         [Test]
         public void authentication_is_a_straight_up_delegation_positive()
         {
-            var request = new LoginRequest();
+            var request = new LoginRequest
+            {
+                UserName = "foo",
+                Password = "bar"
+            };
             MockFor<IMembershipRepository>().Stub(x => x.MatchesCredentials(request))
                                             .Return(true);
 
@@ -20,9 +24,29 @@ namespace FubuMVC.Authentication.Tests.Membership
         }
 
         [Test]
+        public void empty_user_name_is_automatically_negative()
+        {
+            ClassUnderTest.AuthenticateCredentials(new LoginRequest
+            {
+                UserName = null,
+                Password = "something"
+            }).ShouldBeFalse();
+
+            ClassUnderTest.AuthenticateCredentials(new LoginRequest
+            {
+                UserName = "something",
+                Password = null
+            }).ShouldBeFalse();
+        }
+
+        [Test]
         public void authentication_is_a_straight_up_delegation_negative()
         {
-            var request = new LoginRequest();
+            var request = new LoginRequest
+            {
+                UserName = "foo",
+                Password = "bar"
+            };
             MockFor<IMembershipRepository>().Stub(x => x.MatchesCredentials(request))
                                             .Return(false);
 

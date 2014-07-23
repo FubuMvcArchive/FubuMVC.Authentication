@@ -34,6 +34,12 @@ namespace FubuMVC.PersistedMembership.Testing
 
         }
 
+        [TearDown]
+        public void TearDown()
+        {
+            theContainer.Dispose();
+        }
+
         [Test]
         public void write_audit_message()
         {

@@ -1,13 +1,4 @@
-begin
-  require 'bundler/setup'
-  require 'fuburake'
-rescue LoadError
-  puts 'Bundler and all the gems need to be installed prior to running this rake script. Installing...'
-  system("gem install bundler --source http://rubygems.org")
-  sh 'bundle install'
-  system("bundle exec rake", *ARGV)
-  exit 0
-end
+require 'fuburake'
 
 
 solution = FubuRake::Solution.new do |sln|
@@ -24,11 +15,19 @@ solution = FubuRake::Solution.new do |sln|
 	
 	sln.ripple_enabled = true
 	sln.fubudocs_enabled = true
+	
+	
+
+	sln.options[:nuget_publish_folder] = 'nupkgs'
+	sln.options[:nuget_publish_url] = 'https://www.myget.org/F/fubumvc-edge/'
+
+
 end
 
 FubuRake::Storyteller.new({
   :path => 'src/AuthenticationStoryteller',
   :compilemode => solution.compilemode,
+  :profile => 'Chrome'
 })
 
 FubuRake::Storyteller.new({

@@ -24,26 +24,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Authentication.Sere
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationStoryteller", "AuthenticationStoryteller\AuthenticationStoryteller.csproj", "{07214997-844D-4A13-A06E-871889F974DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Authentication.OAuth2", "FubuMVC.Authentication.OAuth2\FubuMVC.Authentication.OAuth2.csproj", "{91493B70-E834-42D6-BB28-75DF09270442}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Authentication.OAuth2.Tests", "FubuMVC.Authentication.OAuth2.Tests\FubuMVC.Authentication.OAuth2.Tests.csproj", "{7DA71D90-AF0B-4843-996F-1AB863D2F80E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Authentication.Google", "FubuMVC.Authentication.Google\FubuMVC.Authentication.Google.csproj", "{3EBBB267-45D5-4FFD-88F7-74AA3A346EC1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Authentication.Google.Tests", "FubuMVC.Authentication.Google.Tests\FubuMVC.Authentication.Google.Tests.csproj", "{390CEDB4-6B89-4960-98E8-9AB1AF5C0256}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Authentication.Facebook", "FubuMVC.Authentication.Facebook\FubuMVC.Authentication.Facebook.csproj", "{4A45D917-4149-436F-8477-CF321CA6D52D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Authentication.Facebook.Tests", "FubuMVC.Authentication.Facebook.Tests\FubuMVC.Authentication.Facebook.Tests.csproj", "{A2402242-C7FD-4087-8E87-A38084A0EE51}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Authentication.Github", "FubuMVC.Authentication.Github\FubuMVC.Authentication.Github.csproj", "{35AC3AB0-2912-4739-B5FB-81A73C5BA89D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Authentication.Github.Tests", "FubuMVC.Authentication.Github.Tests\FubuMVC.Authentication.Github.Tests.csproj", "{541A61AC-03A2-4ADD-A57A-48624C5DF422}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Authentication.WindowsLive.Tests", "FubuMVC.Authentication.WindowsLive.Tests\FubuMVC.Authentication.WindowsLive.Tests.csproj", "{65CBB140-9A7C-46D1-9A74-43C6DEE66EEF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Authentication.WindowsLive", "FubuMVC.Authentication.WindowsLive\FubuMVC.Authentication.WindowsLive.csproj", "{CDD4D3E4-CC08-45B2-971F-BE79546EFFDF}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FubuMVC.Authentication.Docs", "FubuMVC.Authentication.Docs\FubuMVC.Authentication.Docs.csproj", "{3BD453F9-9003-4D59-B7FE-E463473831AD}"
 EndProject
 Global
@@ -100,46 +80,6 @@ Global
 		{07214997-844D-4A13-A06E-871889F974DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07214997-844D-4A13-A06E-871889F974DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07214997-844D-4A13-A06E-871889F974DF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{91493B70-E834-42D6-BB28-75DF09270442}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{91493B70-E834-42D6-BB28-75DF09270442}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{91493B70-E834-42D6-BB28-75DF09270442}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{91493B70-E834-42D6-BB28-75DF09270442}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7DA71D90-AF0B-4843-996F-1AB863D2F80E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7DA71D90-AF0B-4843-996F-1AB863D2F80E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7DA71D90-AF0B-4843-996F-1AB863D2F80E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7DA71D90-AF0B-4843-996F-1AB863D2F80E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3EBBB267-45D5-4FFD-88F7-74AA3A346EC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3EBBB267-45D5-4FFD-88F7-74AA3A346EC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3EBBB267-45D5-4FFD-88F7-74AA3A346EC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3EBBB267-45D5-4FFD-88F7-74AA3A346EC1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{390CEDB4-6B89-4960-98E8-9AB1AF5C0256}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{390CEDB4-6B89-4960-98E8-9AB1AF5C0256}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{390CEDB4-6B89-4960-98E8-9AB1AF5C0256}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{390CEDB4-6B89-4960-98E8-9AB1AF5C0256}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4A45D917-4149-436F-8477-CF321CA6D52D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4A45D917-4149-436F-8477-CF321CA6D52D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4A45D917-4149-436F-8477-CF321CA6D52D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4A45D917-4149-436F-8477-CF321CA6D52D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A2402242-C7FD-4087-8E87-A38084A0EE51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A2402242-C7FD-4087-8E87-A38084A0EE51}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A2402242-C7FD-4087-8E87-A38084A0EE51}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A2402242-C7FD-4087-8E87-A38084A0EE51}.Release|Any CPU.Build.0 = Release|Any CPU
-		{35AC3AB0-2912-4739-B5FB-81A73C5BA89D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{35AC3AB0-2912-4739-B5FB-81A73C5BA89D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{35AC3AB0-2912-4739-B5FB-81A73C5BA89D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{35AC3AB0-2912-4739-B5FB-81A73C5BA89D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{541A61AC-03A2-4ADD-A57A-48624C5DF422}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{541A61AC-03A2-4ADD-A57A-48624C5DF422}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{541A61AC-03A2-4ADD-A57A-48624C5DF422}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{541A61AC-03A2-4ADD-A57A-48624C5DF422}.Release|Any CPU.Build.0 = Release|Any CPU
-		{65CBB140-9A7C-46D1-9A74-43C6DEE66EEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{65CBB140-9A7C-46D1-9A74-43C6DEE66EEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{65CBB140-9A7C-46D1-9A74-43C6DEE66EEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{65CBB140-9A7C-46D1-9A74-43C6DEE66EEF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CDD4D3E4-CC08-45B2-971F-BE79546EFFDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CDD4D3E4-CC08-45B2-971F-BE79546EFFDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CDD4D3E4-CC08-45B2-971F-BE79546EFFDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CDD4D3E4-CC08-45B2-971F-BE79546EFFDF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3BD453F9-9003-4D59-B7FE-E463473831AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3BD453F9-9003-4D59-B7FE-E463473831AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BD453F9-9003-4D59-B7FE-E463473831AD}.Release|Any CPU.ActiveCfg = Release|Any CPU

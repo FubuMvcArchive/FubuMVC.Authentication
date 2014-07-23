@@ -7,7 +7,7 @@ using FubuTestingSupport;
 namespace FubuMVC.Authentication.Tests
 {
     [TestFixture]
-    public class AddDefaultMembershipAuthenticationTester
+    public class register_membership_with_a_default_repository_if_none_exists
     {
         [Test]
         public void insert_membership_node_when_it_is_enabled_and_missing()
@@ -16,7 +16,7 @@ namespace FubuMVC.Authentication.Tests
             graph.Settings.Get<AuthenticationSettings>()
                 .MembershipEnabled = MembershipStatus.Enabled;
 
-            new AddDefaultMembershipAuthentication().Configure(graph);
+            new RegisterAuthenticationStrategies().Configure(graph);
 
             graph.Settings.Get<AuthenticationSettings>()
                  .Strategies.Single().ShouldBeOfType<MembershipNode>();
@@ -30,7 +30,7 @@ namespace FubuMVC.Authentication.Tests
             settings.MembershipEnabled = MembershipStatus.Enabled;
             settings.Strategies.InsertFirst(new MembershipNode());
 
-            new AddDefaultMembershipAuthentication().Configure(graph);
+            new RegisterAuthenticationStrategies().Configure(graph);
 
             settings.Strategies.Count().ShouldEqual(1);
         }
@@ -42,7 +42,7 @@ namespace FubuMVC.Authentication.Tests
             var settings = graph.Settings.Get<AuthenticationSettings>();
             settings.MembershipEnabled = MembershipStatus.Disabled;
 
-            new AddDefaultMembershipAuthentication().Configure(graph);
+            new RegisterAuthenticationStrategies().Configure(graph);
 
             settings.Strategies.Any().ShouldBeFalse();
         }

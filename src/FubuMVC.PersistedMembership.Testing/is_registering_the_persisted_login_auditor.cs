@@ -18,8 +18,11 @@ namespace FubuMVC.PersistedMembership.Testing
         public void PersistedLoginAuditor_is_registered()
         {
             var container = new Container(new InMemoryPersistenceRegistry());
-            var application = FubuApplication.For<FubuRepoWithPersistedMembership>().StructureMap(container).Bootstrap();
-            application.Factory.Get<ILoginAuditor>().ShouldBeOfType<PersistedLoginAuditor>();
+            using (var application = FubuApplication.For<FubuRepoWithPersistedMembership>().StructureMap(container).Bootstrap())
+            {
+                application.Factory.Get<ILoginAuditor>().ShouldBeOfType<PersistedLoginAuditor>();
+            }
+            
         }
     }
 }

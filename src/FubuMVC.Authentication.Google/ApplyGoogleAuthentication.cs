@@ -1,6 +1,6 @@
 ﻿using FubuMVC.Authentication.OAuth2;
-using FubuMVC.ContentExtensions;
 using FubuMVC.Core;
+using FubuMVC.Core.UI.Extensions;
 
 namespace FubuMVC.Authentication.Google
 {
@@ -10,7 +10,6 @@ namespace FubuMVC.Authentication.Google
         {
             registry.Actions.FindWith<GoogleEndpoints>();
             registry.Services<GoogleServiceRegistry>();
-            registry.Policies.Add<AttachDefaultGoogleView>();
             registry.Extensions().For(new OAuth2ContentExtension<GoogleLoginRequest>());
         }
     }

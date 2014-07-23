@@ -196,7 +196,7 @@ namespace FubuMVC.Authentication.Tests.Endpoints
         {
             theLoginRequest = new LoginRequest();
 
-            MockFor<ICurrentHttpRequest>().Stub(x => x.HttpMethod()).Return("GET");
+            MockFor<IHttpRequest>().Stub(x => x.HttpMethod()).Return("GET");
             MockFor<ILockedOutRule>().Stub(x => x.IsLockedOut(theLoginRequest)).Return(LoginStatus.NotAuthenticated);
             MockFor<IFubuRequest>().Stub(x => x.Get<LoginRequest>()).Return(theLoginRequest);
 
@@ -229,7 +229,7 @@ namespace FubuMVC.Authentication.Tests.Endpoints
         {
             theLoginRequest = new LoginRequest();
 
-            MockFor<ICurrentHttpRequest>().Stub(x => x.HttpMethod()).Return("GET");
+            MockFor<IHttpRequest>().Stub(x => x.HttpMethod()).Return("GET");
             MockFor<ILockedOutRule>().Stub(x => x.IsLockedOut(theLoginRequest))
                 .Return(LoginStatus.LockedOut);
 
