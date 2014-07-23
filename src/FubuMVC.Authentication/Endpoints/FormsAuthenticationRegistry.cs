@@ -1,5 +1,6 @@
 using FubuCore.Descriptions;
 using FubuMVC.Core;
+using FubuMVC.Validation;
 
 namespace FubuMVC.Authentication.Endpoints
 {
@@ -10,6 +11,7 @@ namespace FubuMVC.Authentication.Endpoints
         {
             Actions.IncludeType<LoginController>();
             Actions.IncludeType<LogoutController>();
+            Policies.Local.Add<ValidationPolicy>();
         }
     }
 }
