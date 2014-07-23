@@ -43,6 +43,9 @@
     <Reference Include="FubuLocalization">
       <HintPath>..\packages\FubuLocalization\lib\FubuLocalization.dll</HintPath>
     </Reference>
+    <Reference Include="FubuMVC.Ajax">
+      <HintPath>..\packages\FubuMVC.Ajax\lib\net40\FubuMVC.Ajax.dll</HintPath>
+    </Reference>
     <Reference Include="FubuMVC.Core">
       <HintPath>..\packages\FubuMVC.Core\lib\net40\FubuMVC.Core.dll</HintPath>
     </Reference>
@@ -52,8 +55,14 @@
     <Reference Include="FubuMVC.StructureMap">
       <HintPath>..\packages\FubuMVC.StructureMap\lib\net40\FubuMVC.StructureMap.dll</HintPath>
     </Reference>
+    <Reference Include="FubuMVC.Validation">
+      <HintPath>..\packages\FubuMVC.Validation\lib\FubuMVC.Validation.dll</HintPath>
+    </Reference>
     <Reference Include="FubuTestingSupport">
       <HintPath>..\packages\FubuTestingSupport\lib\FubuTestingSupport.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuValidation">
+      <HintPath>..\packages\FubuValidation\lib\FubuValidation.dll</HintPath>
     </Reference>
     <Reference Include="HtmlTags">
       <HintPath>..\packages\HtmlTags\lib\4.0\HtmlTags.dll</HintPath>
@@ -126,6 +135,7 @@
     <Compile Include="unauthenticated_request_against_an_authenticated_route.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="unauthenticated_request_against_an_unauthenticated_route.cs" />
+    <Compile Include="validation_is_applied_to_login_request.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ripple.dependencies.config" />

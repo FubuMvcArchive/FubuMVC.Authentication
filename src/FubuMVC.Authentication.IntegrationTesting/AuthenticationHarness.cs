@@ -1,6 +1,7 @@
 using FubuMVC.Authentication.Membership;
 using FubuMVC.Core;
 using FubuMVC.Core.Endpoints;
+using FubuMVC.Core.Registration;
 using FubuMVC.Core.Urls;
 using FubuMVC.Katana;
 using FubuMVC.StructureMap;
@@ -24,6 +25,14 @@ namespace FubuMVC.Authentication.IntegrationTesting
             registry.AlterSettings<AuthenticationSettings>(_ => {
                 _.Strategies.AddToEnd(MembershipNode.For<InMemoryMembershipRepository>());
             });
+        }
+
+        public BehaviorGraph BehaviorGraph
+        {
+            get
+            {
+                return Container.GetInstance<BehaviorGraph>();
+            }
         }
 
         [SetUp]

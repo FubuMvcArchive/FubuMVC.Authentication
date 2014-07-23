@@ -4,7 +4,6 @@ using System.Linq;
 using System.Net;
 using FubuMVC.Authentication.Cookies;
 using FubuMVC.Authentication.Tickets;
-using FubuMVC.Core;
 using FubuMVC.Core.Caching;
 using FubuMVC.Core.Runtime;
 using FubuTestingSupport;
