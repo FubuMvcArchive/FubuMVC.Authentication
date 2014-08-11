@@ -1,4 +1,4 @@
-using FubuCore;
+﻿using FubuCore;
 using FubuMVC.Core.Registration;
 using FubuMVC.Core.Registration.Nodes;
 using FubuMVC.Core.Registration.Policies;
@@ -49,7 +49,8 @@ namespace FubuMVC.Authentication
 	    }
 
         public MembershipStatus MembershipEnabled { get; set; }
-        
+
+        public bool LoginAccessMode { get; set; }
 
         public bool SlidingExpiration { get; set; }
         public int ExpireInMinutes { get; set; }

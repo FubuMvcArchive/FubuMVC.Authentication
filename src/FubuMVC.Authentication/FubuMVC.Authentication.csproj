@@ -21,7 +21,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile></DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -91,6 +92,8 @@
     <Compile Include="ILogoutSuccessHandler.cs" />
     <Compile Include="IPasswordHash.cs" />
     <Compile Include="IPrincipalBuilder.cs" />
+    <Compile Include="LoginPageAccessFilter.cs" />
+    <Compile Include="LoginPageAccessPolicy.cs" />
     <Compile Include="LogoutSuccessHandler.cs" />
     <Compile Include="Membership\FlatFile\FlatFileMembershipRepository.cs" />
     <Compile Include="Membership\FubuPrincipal.cs" />
