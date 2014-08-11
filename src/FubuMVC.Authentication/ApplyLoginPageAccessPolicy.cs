@@ -6,7 +6,7 @@ using FubuMVC.Core.Registration.Nodes;
 namespace FubuMVC.Authentication
 {
     [ConfigurationType(ConfigurationType.InjectNodes)]
-    public class LoginPageAccessPolicy : IConfigurationAction
+    public class ApplyLoginPageAccessPolicy : IConfigurationAction
     {
         public void Configure(BehaviorGraph graph)
         {

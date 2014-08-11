@@ -50,7 +50,7 @@ namespace FubuMVC.Authentication
 
         public MembershipStatus MembershipEnabled { get; set; }
 
-        public bool LoginAccessMode { get; set; }
+        public bool AllowAccessToLogin { get; set; }
 
         public bool SlidingExpiration { get; set; }
         public int ExpireInMinutes { get; set; }

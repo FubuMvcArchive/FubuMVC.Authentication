@@ -93,7 +93,7 @@
     <Compile Include="IPasswordHash.cs" />
     <Compile Include="IPrincipalBuilder.cs" />
     <Compile Include="LoginPageAccessFilter.cs" />
-    <Compile Include="LoginPageAccessPolicy.cs" />
+    <Compile Include="ApplyLoginPageAccessPolicy.cs" />
     <Compile Include="LogoutSuccessHandler.cs" />
     <Compile Include="Membership\FlatFile\FlatFileMembershipRepository.cs" />
     <Compile Include="Membership\FubuPrincipal.cs" />
