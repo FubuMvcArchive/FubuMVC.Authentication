@@ -11,7 +11,8 @@ solution = FubuRake::Solution.new do |sln|
 		:copyright => 'Copyright 2012-2013 Jeremy D. Miller, Josh Arnold, Robert Greyling, et al. All rights reserved.'
 	}
 	
-	sln.ci_steps = ['st:ci:run']
+	# some kind of stupid assembly binding problem is knocking this out
+	#sln.ci_steps = ['st:ci:run']
 	
 	sln.ripple_enabled = true
 	sln.fubudocs_enabled = true
