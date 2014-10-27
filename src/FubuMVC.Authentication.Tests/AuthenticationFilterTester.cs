@@ -2,13 +2,44 @@ using System.Security.Principal;
 using FubuMVC.Authentication.Membership;
 using FubuMVC.Core.Continuations;
 using FubuMVC.Core.Http;
+using FubuMVC.Core.Security;
 using FubuTestingSupport;
+using HtmlTags;
 using NUnit.Framework;
 
 using Rhino.Mocks;
 
 namespace FubuMVC.Authentication.Tests
 {
+    [TestFixture]
+    public class when_authenticating_and_authentication_is_disabled : InteractionContext<AuthenticationFilter>
+    {
+        private FubuContinuation theResult;
+
+        protected override void beforeEach()
+        {
+            Services.Inject(new SecuritySettings
+            {
+                AuthenticationEnabled = false
+            });
+
+            theResult = ClassUnderTest.Authenticate();
+        }
+
+        [Test]
+        public void should_continue()
+        {
+            theResult.AssertWasContinuedToNextBehavior();
+        }
+
+        [Test]
+        public void should_not_actually_do_authentication()
+        {
+            MockFor<IAuthenticationService>().AssertWasNotCalled(x => x.TryToApply());
+        }
+    }
+
+
     [TestFixture]
     public class when_authenticating_and_there_is_not_a_previous_authentication_token : InteractionContext<AuthenticationFilter>
     {
